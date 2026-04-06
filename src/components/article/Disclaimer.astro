@@ -1,0 +1,33 @@
+---
+interface Props {
+  type: 'financial' | 'professional' | 'referral' | 'ai';
+}
+
+const { type } = Astro.props;
+
+const disclaimers = {
+  financial: {
+    title: 'Financial Disclaimer',
+    text: 'Cost estimates in this article are based on industry averages and may vary significantly by vendor, season, and specific requirements. Always request itemized quotes from multiple vendors before budgeting.',
+  },
+  professional: {
+    title: 'Professional Advice',
+    text: 'This article provides general information only. For legal marriage requirements, visa rules, and local regulations, always consult a licensed local wedding planner or legal professional in your destination country.',
+  },
+  referral: {
+    title: 'Vendor Referral Disclosure',
+    text: 'BeachBride matches couples with vendors in our network. We may receive compensation when you connect with a vendor through our platform. This does not affect our editorial content or vendor recommendations.',
+  },
+  ai: {
+    title: 'AI-Assisted Content',
+    text: 'Portions of this article were researched or drafted with AI assistance and reviewed by our editorial team for accuracy.',
+  },
+};
+
+const disclaimer = disclaimers[type];
+---
+
+<div class="mt-8 p-4 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-600 not-prose">
+  <p class="font-semibold text-gray-700 mb-1">{disclaimer.title}</p>
+  <p>{disclaimer.text}</p>
+</div>

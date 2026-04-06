@@ -1,0 +1,21 @@
+name = "beachbride-workers"
+main = "workers/form-handler.ts"
+compatibility_date = "2024-01-01"
+
+[[routes]]
+pattern = "beachbride.com/workers/form"
+zone_name = "beachbride.com"
+
+[[routes]]
+pattern = "beachbride.com/workers/contact"
+zone_name = "beachbride.com"
+
+# Worker secrets — set via: wrangler secret put <NAME>
+# Or in Cloudflare dashboard → Workers → beachbride-workers → Settings → Variables
+#
+# MAILGUN_API_KEY
+# MAILGUN_DOMAIN
+# SENDY_URL
+# SENDY_API_KEY
+# SENDY_LIST_ID
+# SENDY_NURTURE_LIST_ID

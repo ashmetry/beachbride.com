@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import vendors from '../../data/vendors.json';
+import destinations from '../../data/destinations.json';
+
+const LEAD_TYPES = ['planner', 'photographer', 'florist', 'caterer', 'dj', 'officiant'];
+const typeLabels: Record<string, string> = {
+  planner: 'Wedding Planner',
+  photographer: 'Photographer',
+  florist: 'Florist',
+  caterer: 'Caterer',
+  dj: 'DJ / Entertainment',
+  officiant: 'Officiant',
+};
+const typeIcons: Record<string, string> = {
+  planner: '📋', photographer: '📸', florist: '💐', caterer: '🍽️', dj: '🎵', officiant: '💍',
+};
+
+// Featured vendors first (premium/pro tier)
+const sorted = [...vendors].sort((a, b) => {
+  const tierOrder = { pro: 0, premium: 1, free: 2 };
+  return (tierOrder[a.tier as keyof typeof tierOrder] ?? 2) - (tierOrder[b.tier as keyof typeof tierOrder] ?? 2);
+});
+---
+
+<BaseLayout
+  title="Destination Wedding Vendors — Vetted Planners, Photographers & More"
+  description="Find vetted destination wedding vendors — planners, photographers, florists, caterers, and DJs serving Cancun, Punta Cana, Bali, Santorini, Hawaii, and more."
+  canonical="https://beachbride.com/vendors/"
+>
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div class="text-center mb-10">
+      <h1 class="text-3xl font-bold text-gray-900 mb-3">Find your perfect vendor team</h1>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        All vendors in our directory are reviewed for responsiveness, portfolio quality, and real couple reviews.
+        Want us to make a personalized match? <a href="/quiz/?stage=2" class="text-brand hover:underline">Take our quiz →</a>
+      </p>
+    </div>
+
+    <!-- Browse by destination -->
+    <section class="mb-12">
+      <h2 class="text-lg font-bold text-gray-900 mb-4">Browse by destination</h2>
+      <div class="flex flex-wrap gap-2">
+        {destinations.map(d => (
+          <a
+            href={`/vendors/${d.slug}/`}
+            class="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-full text-sm font-medium text-gray-700 hover:border-brand hover:text-brand transition-colors no-underline"
+          >
+            <span>{d.emoji}</span>
+            <span>{d.name}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Browse by type -->
+    <section class="mb-12">
+      <h2 class="text-lg font-bold text-gray-900 mb-4">Browse by vendor type</h2>
+      <div class="grid grid-cols-3 sm:grid-cols-6 gap-3">
+        {LEAD_TYPES.map(type => (
+          <div class="card p-3 text-center cursor-default">
+            <div class="text-2xl mb-1">{typeIcons[type]}</div>
+            <p class="text-xs font-medium text-gray-700">{typeLabels[type]}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- All vendors -->
+    <section>
+      <h2 class="text-lg font-bold text-gray-900 mb-4">All vendors</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {sorted.filter(v => LEAD_TYPES.includes(v.type)).map(v => (
+          <a href={`/vendors/${v.slug}/`} class="card p-5 hover:shadow-md transition-shadow no-underline group">
+            <div class="flex items-start gap-3">
+              <div class="w-11 h-11 rounded-xl bg-brand-light flex items-center justify-center text-xl flex-shrink-0">
+                {typeIcons[v.type] ?? '🏢'}
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5">
+                  <h3 class="font-bold text-gray-900 group-hover:text-brand transition-colors truncate text-sm">{v.name}</h3>
+                  {v.tier !== 'free' && (
+                    <span class="text-xs px-1.5 py-0.5 rounded bg-brand-accent/10 text-brand-accent font-semibold flex-shrink-0">
+                      {v.tier === 'pro' ? 'Pro' : '★'}
+                    </span>
+                  )}
+                </div>
+                <p class="text-xs text-gray-400 capitalize mb-1">{typeLabels[v.type] ?? v.type}</p>
+                <p class="text-xs text-gray-500 line-clamp-2">{v.description}</p>
+                {v.rating && (
+                  <p class="text-xs text-gray-400 mt-1">★ {v.rating} &middot; {v.destinations.join(', ')}</p>
+                )}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Vendor CTA -->
+    <div class="mt-16 bg-gray-900 text-white rounded-2xl p-8 text-center">
+      <h2 class="text-xl font-bold mb-2">Are you a wedding vendor?</h2>
+      <p class="text-gray-400 mb-6 text-sm">Join our vetted network and connect with couples planning their dream destination wedding.</p>
+      <a href="/vendors/upgrade/" class="btn-primary">List your business →</a>
+    </div>
+  </main>
+</BaseLayout>

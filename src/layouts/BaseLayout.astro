@@ -1,0 +1,52 @@
+---
+import MetaTags from '../components/meta/MetaTags.astro';
+import SchemaOrg from '../components/meta/SchemaOrg.astro';
+import SiteNav from '../components/layout/SiteNav.astro';
+import SiteFooter from '../components/layout/SiteFooter.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+  ogImage?: string;
+  noIndex?: boolean;
+  type?: 'website' | 'article';
+}
+
+const { title, description, canonical, schema, ogImage, noIndex, type } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <MetaTags
+      title={title}
+      description={description}
+      canonical={canonical}
+      ogImage={ogImage}
+      noIndex={noIndex}
+      type={type}
+    />
+    {schema && <SchemaOrg schema={schema} />}
+  </head>
+  <body>
+    <SiteNav />
+    <slot />
+    <SiteFooter />
+
+    <!-- Capture UTM parameters into sessionStorage for form attribution -->
+    <script>
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(
+          function (key) {
+            const val = params.get(key);
+            if (val) sessionStorage.setItem(key, val);
+          }
+        );
+      })();
+    </script>
+  </body>
+</html>

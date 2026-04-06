@@ -1,0 +1,68 @@
+---
+import MetaTags from '../components/meta/MetaTags.astro';
+import SchemaOrg from '../components/meta/SchemaOrg.astro';
+import { SITE_CONFIG } from '../lib/site-config';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+  ogImage?: string;
+}
+
+const { title, description, canonical, schema, ogImage } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <MetaTags
+      title={title}
+      description={description}
+      canonical={canonical}
+      ogImage={ogImage}
+      noIndex={true}
+      type="website"
+    />
+    {schema && <SchemaOrg schema={schema} />}
+  </head>
+  <body>
+    <!-- Minimal nav — no distractions on landing pages -->
+    <header class="py-4 px-6 border-b border-gray-100 bg-white">
+      <a href="/" class="flex items-center gap-2 no-underline w-fit">
+        <span class="text-xl font-bold text-brand">Beach<span class="text-brand-accent">Bride</span></span>
+      </a>
+    </header>
+
+    <slot />
+
+    <footer class="py-8 text-center text-xs text-gray-400 border-t border-gray-100 mt-12">
+      <div class="max-w-2xl mx-auto px-4 space-y-2">
+        <p>
+          &copy; {year} BeachBride.com &middot;
+          <a href="/privacy-policy/" class="hover:text-gray-600">Privacy</a>
+          &middot;
+          <a href="/terms-of-service/" class="hover:text-gray-600">Terms</a>
+        </p>
+        <p class="text-gray-500">
+          BeachBride is a referral and affiliate service. We may earn a commission on purchases made through links on this site.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(
+          function (key) {
+            const val = params.get(key);
+            if (val) sessionStorage.setItem(key, val);
+          }
+        );
+      })();
+    </script>
+  </body>
+</html>

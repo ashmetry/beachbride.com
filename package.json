@@ -1,0 +1,37 @@
+{
+  "name": "beachbride-site",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "content:discover": "node scripts/content-engine/discover.js",
+    "content:generate": "node scripts/content-engine/generate.js",
+    "content:publish": "node scripts/content-engine/publish.js",
+    "content:status": "node scripts/content-engine/status.js",
+    "wp:audit": "node scripts/wp-migration/audit.js",
+    "wp:audit:dry": "node scripts/wp-migration/audit.js --dry-run"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.0.0",
+    "@astrojs/react": "^4.0.0",
+    "@astrojs/sitemap": "^3.0.0",
+    "@astrojs/tailwind": "^5.0.0",
+    "@fontsource/dm-sans": "^5.0.0",
+    "@tailwindcss/typography": "^0.5.0",
+    "astro": "^5.0.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "tailwindcss": "^3.4.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "dotenv": "^17.4.0",
+    "googleapis": "^171.4.0",
+    "typescript": "^5.0.0",
+    "wrangler": "^4.0.0",
+    "yaml": "^2.8.3"
+  }
+}

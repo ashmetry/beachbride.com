@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import destinations from '../../data/destinations.json';
+import { getOrganizationSchema } from '../../lib/schema/organization';
+---
+
+<BaseLayout
+  title="Destination Wedding Locations — BeachBride"
+  description="Explore the world's best destination wedding locations. Compare costs, legal requirements, best times to visit, and top venues for Cancun, Bali, Santorini, and more."
+  canonical="https://beachbride.com/destinations/"
+  schema={getOrganizationSchema()}
+>
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">Choose your destination</h1>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Each destination guide covers venues, vetted vendors, real costs, best seasons, and legal requirements — everything you need to decide and start planning.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {destinations.map(dest => (
+        <a
+          href={`/destinations/${dest.slug}/`}
+          class="card group hover:shadow-md transition-shadow no-underline"
+        >
+          <div class="bg-brand-light aspect-[16/9] flex items-center justify-center text-6xl">
+            {dest.emoji}
+          </div>
+          <div class="p-5">
+            <div class="flex items-center justify-between mb-1">
+              <h2 class="text-lg font-bold text-gray-900 group-hover:text-brand transition-colors">{dest.name}</h2>
+              <span class="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">{dest.country}</span>
+            </div>
+            <p class="text-sm text-gray-500 mb-3">{dest.tagline}</p>
+            <div class="flex items-center justify-between text-xs text-gray-400">
+              <span>
+                Avg: ${(dest.avgCostUSD.min / 1000).toFixed(0)}k–${(dest.avgCostUSD.max / 1000).toFixed(0)}k
+              </span>
+              <span class="text-brand font-semibold">View guide →</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-16 text-center bg-brand-light rounded-2xl p-10">
+      <p class="text-brand-accent font-semibold uppercase tracking-widest text-sm mb-2">Not sure where to go?</p>
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">Take our 60-second quiz</h2>
+      <p class="text-gray-600 mb-6">Tell us your vibe and we'll match you to the perfect destination — plus send a personalized planning guide.</p>
+      <a href="/quiz/" class="btn-primary">Find my destination →</a>
+    </div>
+  </main>
+</BaseLayout>

@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  slugs: string[];
+  currentSlug: string;
+}
+
+const { slugs, currentSlug } = Astro.props;
+
+const allArticles = await getCollection('articles');
+const related = slugs
+  .map(slug => allArticles.find(a => a.slug === slug))
+  .filter(Boolean)
+  .filter(a => a!.slug !== currentSlug)
+  .slice(0, 3);
+---
+
+{related.length > 0 && (
+  <section class="mt-12 not-prose">
+    <h2 class="text-xl font-bold text-gray-900 mb-5">Related Guides</h2>
+    <div class="grid sm:grid-cols-3 gap-4">
+      {related.map(article => (
+        <a
+          href={`/${article!.slug}/`}
+          class="card p-4 hover:shadow-md transition-shadow no-underline group"
+        >
+          {article!.data.heroImage && (
+            <img
+              src={article!.data.heroImage}
+              alt={article!.data.title}
+              class="w-full rounded-lg mb-3 object-cover aspect-video"
+              loading="lazy"
+            />
+          )}
+          <p class="font-semibold text-gray-900 group-hover:text-brand transition-colors text-sm leading-snug">
+            {article!.data.title}
+          </p>
+        </a>
+      ))}
+    </div>
+  </section>
+)}

@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/layout/Breadcrumb.astro';
+import vendors from '../../data/vendors.json';
+import destinations from '../../data/destinations.json';
+import { getVendorSchema } from '../../lib/schema/localBusiness';
+
+export async function getStaticPaths() {
+  return vendors.map(v => ({ params: { slug: v.slug }, props: { vendor: v } }));
+}
+
+const { vendor } = Astro.props;
+
+const LEAD_TYPES = ['planner', 'photographer', 'florist', 'caterer', 'dj', 'officiant'];
+const isLeadVendor = LEAD_TYPES.includes(vendor.type);
+
+const typeLabels: Record<string, string> = {
+  planner: 'Wedding Planner', photographer: 'Photographer', florist: 'Florist',
+  caterer: 'Caterer', dj: 'DJ / Entertainment', officiant: 'Officiant',
+  resort: 'Resort', jeweler: 'Jeweler',
+};
+const typeIcons: Record<string, string> = {
+  planner: '📋', photographer: '📸', florist: '💐', caterer: '🍽️',
+  dj: '🎵', officiant: '💍', resort: '🏨', jeweler: '💎',
+};
+
+const vendorDestinations = destinations.filter(d => vendor.destinations.includes(d.slug));
+const schema = getVendorSchema({
+  name: vendor.name,
+  description: vendor.description,
+  slug: vendor.slug,
+  type: vendor.type,
+  destination: vendorDestinations[0]?.name,
+  website: vendor.website,
+  phone: vendor.contact?.phone,
+  rating: vendor.rating,
+  reviewCount: vendor.reviewCount,
+});
+---
+
+<BaseLayout
+  title={`${vendor.name} — ${typeLabels[vendor.type] ?? vendor.type} | BeachBride`}
+  description={vendor.description}
+  canonical={`https://beachbride.com/vendors/${vendor.slug}/`}
+  schema={schema}
+>
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+    <Breadcrumb crumbs={[
+      { label: 'Vendors', href: '/vendors/' },
+      { label: vendor.name },
+    ]} />
+
+    <div class="card p-6 sm:p-8 mb-8">
+      <div class="flex items-start gap-4">
+        <div class="w-16 h-16 rounded-2xl bg-brand-light flex items-center justify-center text-3xl flex-shrink-0">
+          {typeIcons[vendor.type] ?? '🏢'}
+        </div>
+        <div class="flex-1">
+          <div class="flex flex-wrap items-center gap-2 mb-1">
+            <h1 class="text-2xl font-bold text-gray-900">{vendor.name}</h1>
+            {vendor.tier !== 'free' && (
+              <span class="text-xs px-2 py-1 rounded-full bg-brand-accent/10 text-brand-accent font-semibold">
+                {vendor.tier === 'pro' ? 'Pro Vendor' : 'Featured Vendor'}
+              </span>
+            )}
+          </div>
+          <p class="text-gray-500 capitalize text-sm mb-2">{typeLabels[vendor.type] ?? vendor.type}</p>
+          {vendor.rating && (
+            <p class="text-sm text-gray-600">
+              ★ <strong>{vendor.rating}</strong> &nbsp;({vendor.reviewCount} reviews)
+            </p>
+          )}
+        </div>
+      </div>
+
+      <p class="mt-5 text-gray-700 leading-relaxed">{vendor.description}</p>
+
+      <!-- Destinations -->
+      <div class="mt-5 flex flex-wrap gap-2">
+        {vendorDestinations.map(d => (
+          <a
+            href={`/destinations/${d.slug}/`}
+            class="flex items-center gap-1.5 px-3 py-1.5 bg-brand-light rounded-full text-sm text-brand font-medium no-underline hover:bg-brand hover:text-white transition-colors"
+          >
+            <span>{d.emoji}</span>
+            <span>{d.name}</span>
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-6 pt-6 border-t border-gray-100 flex flex-col sm:flex-row gap-3">
+        {isLeadVendor ? (
+          <>
+            <a href="/quiz/?stage=2" class="btn-primary flex-1 text-center">
+              Request a quote →
+            </a>
+            {vendor.website && (
+              <a
+                href={vendor.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-outline flex-1 text-center"
+              >
+                Visit website
+              </a>
+            )}
+          </>
+        ) : (
+          vendor.website && (
+            <a
+              href={vendor.website}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              class="btn-primary flex-1 text-center"
+            >
+              View resort →
+            </a>
+          )
+        )}
+      </div>
+    </div>
+
+    <!-- Related vendors in same destinations -->
+    <div class="mt-10">
+      <h2 class="text-lg font-bold text-gray-900 mb-4">Other vendors in {vendorDestinations[0]?.name ?? 'this destination'}</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        {vendors
+          .filter(v => v.slug !== vendor.slug && v.destinations.some(d => vendor.destinations.includes(d)))
+          .slice(0, 4)
+          .map(v => (
+            <a href={`/vendors/${v.slug}/`} class="card p-4 hover:shadow-md transition-shadow no-underline group flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center text-lg flex-shrink-0">
+                {typeIcons[v.type] ?? '🏢'}
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-gray-900 group-hover:text-brand transition-colors">{v.name}</p>
+                <p class="text-xs text-gray-400 capitalize">{typeLabels[v.type] ?? v.type}</p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </main>
+</BaseLayout>

@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getOrganizationSchema, getWebSiteSchema } from '../lib/schema/organization';
+import { SITE_CONFIG } from '../lib/site-config';
+
+const destinations = [
+  { slug: 'cancun', name: 'Cancun', country: 'Mexico', emoji: '🌊', tagline: 'Turquoise water, white sand, all-inclusive luxury' },
+  { slug: 'punta-cana', name: 'Punta Cana', country: 'Dominican Republic', emoji: '🌴', tagline: 'Palm-fringed beaches and world-class resorts' },
+  { slug: 'jamaica', name: 'Jamaica', country: 'Jamaica', emoji: '🏝️', tagline: 'Lush mountains meet crystal-clear sea' },
+  { slug: 'hawaii', name: 'Hawaii', country: 'USA', emoji: '🌺', tagline: 'Volcanic drama and tropical paradise' },
+  { slug: 'bali', name: 'Bali', country: 'Indonesia', emoji: '🪷', tagline: 'Spiritual beauty and exotic romance' },
+  { slug: 'santorini', name: 'Santorini', country: 'Greece', emoji: '🤍', tagline: 'Iconic sunsets over the caldera' },
+  { slug: 'tulum', name: 'Tulum', country: 'Mexico', emoji: '🌿', tagline: 'Bohemian chic meets ancient Mayan coast' },
+  { slug: 'costa-rica', name: 'Costa Rica', country: 'Costa Rica', emoji: '🦜', tagline: 'Rainforest, volcanoes, and Pacific beaches' },
+];
+
+const schemas = [getOrganizationSchema(), getWebSiteSchema()];
+---
+
+<BaseLayout
+  title="BeachBride — Destination Wedding Planning Made Simple"
+  description="Plan your dream destination wedding with BeachBride. Find vetted planners, photographers, and venues across the world's most beautiful beach destinations."
+  canonical="https://beachbride.com/"
+  schema={schemas}
+>
+  <!-- Hero -->
+  <section class="relative bg-brand-dark text-white overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand to-teal-400 opacity-90"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 py-24 sm:py-32 text-center">
+      <p class="text-brand-accent font-semibold tracking-widest uppercase text-sm mb-4">Destination Wedding Planning</p>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+        Your dream wedding,<br class="hidden sm:block" /> on the beach.
+      </h1>
+      <p class="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto mb-10">
+        We match couples with vetted planners, photographers, and venues at the world's most beautiful destinations — and deliver a personalized guide the moment you start.
+      </p>
+      <a href="/quiz/" class="inline-flex items-center gap-2 bg-brand-accent hover:bg-brand-accent-dark text-white font-bold text-lg px-8 py-4 rounded-xl transition-colors duration-200 no-underline shadow-lg">
+        Find your perfect destination
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+      <p class="mt-4 text-white/50 text-sm">Takes 60 seconds &middot; Free personalized guide &middot; No spam</p>
+    </div>
+  </section>
+
+  <!-- Destination Grid -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+    <div class="text-center mb-10">
+      <h2 class="section-heading">Choose your destination</h2>
+      <p class="section-subheading">From the Caribbean to the Mediterranean — find everything you need for each location.</p>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      {destinations.map(dest => (
+        <a
+          href={`/destinations/${dest.slug}/`}
+          class="card group p-5 hover:shadow-md transition-shadow duration-200 no-underline"
+        >
+          <div class="text-3xl mb-2">{dest.emoji}</div>
+          <h3 class="font-bold text-gray-900 group-hover:text-brand transition-colors">{dest.name}</h3>
+          <p class="text-xs text-gray-500 mb-1">{dest.country}</p>
+          <p class="text-xs text-gray-600 leading-snug">{dest.tagline}</p>
+        </a>
+      ))}
+    </div>
+    <div class="text-center mt-6">
+      <a href="/destinations/" class="text-brand hover:underline text-sm font-medium no-underline">
+        View all destinations →
+      </a>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="bg-brand-light py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <h2 class="section-heading">How BeachBride works</h2>
+        <p class="section-subheading">From dream to destination in three simple steps.</p>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-8">
+        {[
+          {
+            step: '1',
+            title: 'Tell us your vision',
+            desc: 'Answer 3 quick questions about your dream destination and style. Takes under a minute.',
+          },
+          {
+            step: '2',
+            title: 'Get your personal guide',
+            desc: 'We instantly send you a custom destination guide — resort picks, cost breakdown, and planning timeline.',
+          },
+          {
+            step: '3',
+            title: 'Meet your vendors',
+            desc: 'When you\'re ready, we match you with vetted local planners, photographers, and more.',
+          },
+        ].map(item => (
+          <div class="text-center">
+            <div class="w-12 h-12 rounded-full bg-brand text-white font-bold text-lg flex items-center justify-center mx-auto mb-4">
+              {item.step}
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">{item.title}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a href="/quiz/" class="btn-primary">
+          Start planning — it's free
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social proof -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-16 text-center">
+    <div class="grid grid-cols-3 gap-8 mb-12">
+      {[
+        { stat: '40+', label: 'Destinations covered' },
+        { stat: '500+', label: 'Vetted vendors' },
+        { stat: '100%', label: 'Free to couples' },
+      ].map(item => (
+        <div>
+          <p class="text-3xl sm:text-4xl font-bold text-brand">{item.stat}</p>
+          <p class="text-sm text-gray-500 mt-1">{item.label}</p>
+        </div>
+      ))}
+    </div>
+    <blockquote class="max-w-2xl mx-auto text-lg text-gray-600 italic border-l-4 border-brand-accent pl-6 text-left">
+      "BeachBride made planning our Cancun wedding feel effortless. The destination guide they sent us covered everything — we didn't even know where to start before."
+      <footer class="mt-3 text-sm text-gray-400 not-italic">— Sarah & James, married in Cancun</footer>
+    </blockquote>
+  </section>
+
+  <!-- Vendor CTA strip -->
+  <section class="bg-gray-900 text-white py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div>
+        <p class="font-bold text-lg">Are you a wedding vendor?</p>
+        <p class="text-gray-400 text-sm mt-1">Join our network of vetted planners, photographers, florists, and more.</p>
+      </div>
+      <a href="/vendors/upgrade/" class="flex-shrink-0 border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200 no-underline">
+        List your business →
+      </a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,107 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/layout/Breadcrumb.astro';
+import TableOfContents from '../components/layout/TableOfContents.astro';
+import ArticleMeta from '../components/article/ArticleMeta.astro';
+import AuthorBio from '../components/article/AuthorBio.astro';
+import FaqSection from '../components/article/FaqSection.astro';
+import RelatedArticles from '../components/article/RelatedArticles.astro';
+import Disclaimer from '../components/article/Disclaimer.astro';
+import LeadCaptureInline from '../components/article/LeadCaptureInline.astro';
+import { readingTime } from '../lib/reading-time';
+import { existsSync } from 'fs';
+import { join } from 'path';
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+  ogImage?: string;
+  headings: Heading[];
+  frontmatter: {
+    publishDate: Date;
+    updatedDate?: Date;
+    author?: string;
+    reviewer?: string;
+    heroImage?: string;
+    faqs?: { question: string; answer: string }[];
+    related?: string[];
+    disclaimers?: ('financial' | 'professional' | 'referral' | 'ai')[];
+    affiliateDisclosure?: boolean;
+  };
+  slug: string;
+  rawContent: string;
+}
+
+const { title, description, canonical, schema, ogImage, headings, frontmatter, slug, rawContent } = Astro.props;
+const minutes = readingTime(rawContent);
+const showHero = frontmatter.heroImage && existsSync(join('public', frontmatter.heroImage));
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  schema={schema}
+  ogImage={ogImage}
+  type="article"
+>
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-10">
+    <Breadcrumb crumbs={[{ label: 'Guides', href: '/blog/' }, { label: title }]} />
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-4">{title}</h1>
+
+    <ArticleMeta
+      publishDate={frontmatter.publishDate}
+      updatedDate={frontmatter.updatedDate}
+      readingTime={minutes}
+    />
+
+    {showHero && (
+      <img
+        src={frontmatter.heroImage}
+        alt={title}
+        class="w-full rounded-xl mb-8 object-cover aspect-[16/7]"
+        loading="eager"
+      />
+    )}
+
+    {frontmatter.affiliateDisclosure && (
+      <p class="text-xs text-gray-400 bg-gray-50 rounded-lg px-4 py-2 mb-6 not-prose">
+        This article contains affiliate links. BeachBride may earn a commission on purchases made through these links, at no extra cost to you.
+      </p>
+    )}
+
+    <TableOfContents headings={headings} />
+
+    <article class="prose prose-lg prose-gray max-w-none prose-headings:font-bold prose-a:text-brand prose-a:no-underline hover:prose-a:underline">
+      <slot />
+    </article>
+
+    <LeadCaptureInline />
+
+    {frontmatter.faqs && frontmatter.faqs.length > 0 && (
+      <FaqSection faqs={frontmatter.faqs} />
+    )}
+
+    {frontmatter.disclaimers && frontmatter.disclaimers.map(type => (
+      <Disclaimer type={type} />
+    ))}
+
+    <AuthorBio
+      author={frontmatter.author}
+      reviewer={frontmatter.reviewer}
+    />
+
+    {frontmatter.related && frontmatter.related.length > 0 && (
+      <RelatedArticles slugs={frontmatter.related} currentSlug={slug} />
+    )}
+  </main>
+</BaseLayout>

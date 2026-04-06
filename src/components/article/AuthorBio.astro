@@ -1,0 +1,27 @@
+---
+interface Props {
+  author?: string;
+  reviewer?: string;
+}
+
+const { author = 'BeachBride Editorial Team', reviewer } = Astro.props;
+---
+
+<div class="mt-12 pt-8 border-t border-gray-200 not-prose">
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center flex-shrink-0">
+      <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+      </svg>
+    </div>
+    <div>
+      <p class="font-semibold text-gray-900">{author}</p>
+      <p class="text-sm text-gray-500 mt-0.5">
+        Our editorial team researches destination wedding requirements with input from local planners and couples who've married there.
+      </p>
+      {reviewer && (
+        <p class="text-xs text-gray-400 mt-1">Reviewed by {reviewer}</p>
+      )}
+    </div>
+  </div>
+</div>

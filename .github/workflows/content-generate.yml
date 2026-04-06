@@ -1,0 +1,72 @@
+name: Content Engine — Generate
+
+on:
+  schedule:
+    - cron: '0 4 * * 1'   # Monday 4am UTC (Sunday 11pm ET)
+  workflow_dispatch: {}     # Manual trigger
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Write GSC service account key
+        run: echo "$GSC_KEY" | base64 -d > /tmp/gsc-key.json
+        env:
+          GSC_KEY: ${{ secrets.GSC_SERVICE_ACCOUNT_KEY }}
+
+      - name: Discover topics
+        run: node scripts/content-engine/discover.js --limit 20
+        env:
+          GSC_KEY_PATH: /tmp/gsc-key.json
+          DATAFORSEO_LOGIN: ${{ secrets.DATAFORSEO_LOGIN }}
+          DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+
+      - name: Generate articles
+        run: node scripts/content-engine/generate.js --limit 5
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+          MAILGUN_DOMAIN: ${{ secrets.MAILGUN_DOMAIN }}
+          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
+        timeout-minutes: 20
+
+      - name: Commit generated content
+        run: |
+          git config user.name "BeachBride Bot"
+          git config user.email "bot@beachbride.com"
+          git add scripts/content-engine/pipeline.json content-queue/ || true
+          git diff --cached --quiet || git commit -m "Content engine: generate batch $(date +%Y-%m-%d)"
+          git push || true
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          curl -s --user "api:$MAILGUN_API_KEY" \
+            https://api.mailgun.net/v3/beachbride.com/messages \
+            -F from="BeachBride Content Engine <noreply@beachbride.com>" \
+            -F to="$NOTIFY_EMAIL" \
+            -F subject="Content Engine: Generate workflow FAILED" \
+            -F text="The content-generate workflow failed on $(date -u '+%Y-%m-%d %H:%M UTC').
+
+Check the run logs: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+        env:
+          MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}

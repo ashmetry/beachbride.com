@@ -1,0 +1,139 @@
+---
+// Vendor signup form — submits to /workers/form with type: 'vendor'
+// Only lead-eligible types are shown in the dropdown
+---
+
+<form id="vendor-form" class="space-y-5 max-w-lg" novalidate>
+  <!-- Honeypot -->
+  <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;">
+    <label for="vwebsite">Website (leave blank)</label>
+    <input type="text" id="vwebsite" name="vwebsite" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <div class="grid sm:grid-cols-2 gap-4">
+    <div>
+      <label for="v-name" class="block text-sm font-medium text-gray-700 mb-1">Your name *</label>
+      <input type="text" id="v-name" name="name" required
+        class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent" />
+    </div>
+    <div>
+      <label for="v-business" class="block text-sm font-medium text-gray-700 mb-1">Business name *</label>
+      <input type="text" id="v-business" name="businessName" required
+        class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent" />
+    </div>
+  </div>
+
+  <div>
+    <label for="v-type" class="block text-sm font-medium text-gray-700 mb-1">Vendor type *</label>
+    <select id="v-type" name="vendorType" required
+      class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent bg-white">
+      <option value="">Select your specialty</option>
+      <option value="planner">Wedding Planner / Coordinator</option>
+      <option value="photographer">Photographer / Videographer</option>
+      <option value="florist">Florist / Floral Designer</option>
+      <option value="caterer">Caterer / Private Chef</option>
+      <option value="dj">DJ / Entertainment</option>
+      <option value="officiant">Officiant / Celebrant</option>
+    </select>
+  </div>
+
+  <div class="grid sm:grid-cols-2 gap-4">
+    <div>
+      <label for="v-email" class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+      <input type="email" id="v-email" name="email" required
+        class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent" />
+    </div>
+    <div>
+      <label for="v-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
+      <input type="tel" id="v-phone" name="phone" required
+        class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent" />
+    </div>
+  </div>
+
+  <div>
+    <label for="v-website" class="block text-sm font-medium text-gray-700 mb-1">Website <span class="font-normal text-gray-400">(optional)</span></label>
+    <input type="url" id="v-website" name="website" placeholder="https://"
+      class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent" />
+  </div>
+
+  <div>
+    <label for="v-tier" class="block text-sm font-medium text-gray-700 mb-1">Listing tier</label>
+    <select id="v-tier" name="tier"
+      class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent bg-white">
+      <option value="free">Free — basic listing, 1 destination</option>
+      <option value="premium">Premium ($99/mo) — featured, 3 destinations, lead alerts</option>
+      <option value="pro">Pro ($199/mo) — all destinations, priority matching</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="v-notes" class="block text-sm font-medium text-gray-700 mb-1">Tell us about your business <span class="font-normal text-gray-400">(optional)</span></label>
+    <textarea id="v-notes" name="notes" rows="3"
+      class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent resize-none"
+      placeholder="Destinations you serve, years of experience, specialties..."></textarea>
+  </div>
+
+  <p id="vendor-error" class="hidden text-red-600 text-sm"></p>
+  <button type="submit" id="vendor-submit" class="btn-primary w-full">Submit my listing →</button>
+  <p class="text-xs text-gray-400 text-center">We review all applications and will follow up within 2 business days.</p>
+</form>
+
+<script>
+  const form = document.getElementById('vendor-form') as HTMLFormElement;
+  const errorEl = document.getElementById('vendor-error') as HTMLParagraphElement;
+  const submitBtn = document.getElementById('vendor-submit') as HTMLButtonElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorEl.classList.add('hidden');
+
+    const get = (name: string) =>
+      (form.elements.namedItem(name) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement)?.value?.trim() ?? '';
+
+    if (get('vwebsite')) { window.location.href = '/thank-you/'; return; } // honeypot
+
+    const name = get('name');
+    const businessName = get('businessName');
+    const email = get('email');
+    const phone = get('phone');
+    const vendorType = get('vendorType');
+
+    if (!name || !businessName || !email || !phone || !vendorType) {
+      errorEl.textContent = 'Please fill in all required fields.';
+      errorEl.classList.remove('hidden');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+
+    try {
+      const res = await fetch('/workers/form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'vendor',
+          name,
+          email,
+          phone,
+          businessName,
+          website: get('website') || undefined,
+          vendorType,
+          tier: get('tier') || 'free',
+          notes: get('notes') || undefined,
+        }),
+      });
+
+      if (res.ok) {
+        window.location.href = '/thank-you/';
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      errorEl.textContent = 'Something went wrong. Please try again.';
+      errorEl.classList.remove('hidden');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit my listing →';
+    }
+  });
+</script>

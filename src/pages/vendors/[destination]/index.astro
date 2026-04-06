@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/layout/Breadcrumb.astro';
+import vendors from '../../../data/vendors.json';
+import destinations from '../../../data/destinations.json';
+
+export async function getStaticPaths() {
+  return destinations.map(d => ({ params: { destination: d.slug } }));
+}
+
+const { destination: slug } = Astro.params;
+const dest = destinations.find(d => d.slug === slug)!;
+
+const LEAD_TYPES = ['planner', 'photographer', 'florist', 'caterer', 'dj', 'officiant'];
+const typeLabels: Record<string, string> = {
+  planner: 'Wedding Planner', photographer: 'Photographer', florist: 'Florist',
+  caterer: 'Caterer', dj: 'DJ / Entertainment', officiant: 'Officiant',
+};
+const typeIcons: Record<string, string> = {
+  planner: '📋', photographer: '📸', florist: '💐', caterer: '🍽️', dj: '🎵', officiant: '💍',
+};
+
+const localVendors = vendors.filter(
+  v => v.destinations.includes(slug) && LEAD_TYPES.includes(v.type)
+).sort((a, b) => {
+  const tierOrder = { pro: 0, premium: 1, free: 2 };
+  return (tierOrder[a.tier as keyof typeof tierOrder] ?? 2) - (tierOrder[b.tier as keyof typeof tierOrder] ?? 2);
+});
+---
+
+<BaseLayout
+  title={`${dest.name} Wedding Vendors — Planners, Photographers & More`}
+  description={`Vetted wedding vendors serving ${dest.name}, ${dest.country}. Find planners, photographers, florists, and more for your destination wedding.`}
+  canonical={`https://beachbride.com/vendors/${slug}/`}
+>
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+    <Breadcrumb crumbs={[
+      { label: 'Vendors', href: '/vendors/' },
+      { label: dest.name },
+    ]} />
+
+    <div class="flex items-center gap-3 mb-8">
+      <span class="text-4xl">{dest.emoji}</span>
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">{dest.name} Wedding Vendors</h1>
+        <p class="text-gray-500">{dest.country} &middot; <a href={`/destinations/${slug}/`} class="text-brand hover:underline no-underline">View destination guide →</a></p>
+      </div>
+    </div>
+
+    {localVendors.length === 0 ? (
+      <div class="text-center py-16">
+        <p class="text-gray-500 mb-4">No vendors listed for {dest.name} yet.</p>
+        <a href="/quiz/?stage=2" class="btn-primary">Get matched via quiz →</a>
+      </div>
+    ) : (
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {localVendors.map(v => (
+          <a href={`/vendors/${v.slug}/`} class="card p-5 hover:shadow-md transition-shadow no-underline group">
+            <div class="flex items-start gap-3">
+              <div class="w-11 h-11 rounded-xl bg-brand-light flex items-center justify-center text-xl flex-shrink-0">
+                {typeIcons[v.type] ?? '🏢'}
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5">
+                  <h2 class="font-bold text-gray-900 group-hover:text-brand transition-colors truncate text-sm">{v.name}</h2>
+                  {v.tier !== 'free' && (
+                    <span class="text-xs px-1.5 py-0.5 rounded bg-brand-accent/10 text-brand-accent font-semibold flex-shrink-0">★</span>
+                  )}
+                </div>
+                <p class="text-xs text-gray-400 mb-1">{typeLabels[v.type] ?? v.type}</p>
+                <p class="text-xs text-gray-500 line-clamp-2">{v.description}</p>
+                {v.rating && (
+                  <p class="text-xs text-gray-400 mt-1">★ {v.rating} ({v.reviewCount} reviews)</p>
+                )}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+
+    <div class="mt-12 lead-capture-box not-prose">
+      <h2 class="text-lg font-bold text-gray-900 mb-2">Want a personalized match?</h2>
+      <p class="text-sm text-gray-600 mb-4">Tell us about your wedding and we'll match you directly with the best vendors for your date, guest count, and budget.</p>
+      <a href="/quiz/?stage=2" class="btn-primary">Get matched →</a>
+    </div>
+  </main>
+</BaseLayout>

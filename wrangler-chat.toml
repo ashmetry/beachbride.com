@@ -1,0 +1,7 @@
+name = "beachbride-chat"
+main = "workers/chat-proxy.ts"
+compatibility_date = "2024-01-01"
+
+[[routes]]
+pattern = "beachbride.com/workers/chat"
+zone_name = "beachbride.com"

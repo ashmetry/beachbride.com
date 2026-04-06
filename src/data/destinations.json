@@ -1,0 +1,275 @@
+[
+  {
+    "slug": "cancun",
+    "name": "Cancun",
+    "country": "Mexico",
+    "region": "Caribbean",
+    "emoji": "🌊",
+    "tagline": "Turquoise water, white sand, all-inclusive luxury",
+    "heroImage": "/images/destinations/cancun.jpg",
+    "description": "Cancun is one of the world's most popular destination wedding locations — combining stunning Caribbean beaches with world-class all-inclusive resorts, easy international flights, and a well-established wedding industry. The Hotel Zone stretches 25 km along the coast, giving couples an enormous range of venue options from intimate boutique hotels to mega-resorts hosting hundreds of guests.",
+    "avgCostUSD": { "min": 15000, "max": 50000 },
+    "bestMonths": ["November", "December", "January", "February", "March", "April"],
+    "rainySeasonMonths": ["June", "July", "August", "September", "October"],
+    "legalNotes": "Mexico allows foreigners to legally marry — a civil ceremony is required and must be performed by a licensed judge. Most all-inclusive resorts handle the paperwork for you. You'll need valid passports, birth certificates, and proof of single status. Blood tests required within 15 days of the ceremony.",
+    "visaRequired": false,
+    "resortAffiliates": [
+      {
+        "name": "Sandals Royal Cancun",
+        "description": "Adults-only luxury resort with butler service and overwater bungalows. Perfect for intimate ceremonies.",
+        "url": "https://www.sandals.com/royal-cancun/",
+        "type": "all-inclusive"
+      },
+      {
+        "name": "Excellence Playa Mujeres",
+        "description": "Stunning adults-only resort on a private peninsula with dedicated wedding coordinators.",
+        "url": "https://www.excellenceresorts.com/excellence-playa-mujeres/",
+        "type": "all-inclusive"
+      },
+      {
+        "name": "Hyatt Zilara Cancun",
+        "description": "Sophisticated adults-only resort in the Hotel Zone with panoramic ocean views.",
+        "url": "https://www.hyatt.com/en-US/hotel/mexico/hyatt-zilara-cancun/cunsc",
+        "type": "all-inclusive"
+      }
+    ]
+  },
+  {
+    "slug": "punta-cana",
+    "name": "Punta Cana",
+    "country": "Dominican Republic",
+    "region": "Caribbean",
+    "emoji": "🌴",
+    "tagline": "Palm-fringed beaches and world-class resorts",
+    "heroImage": "/images/destinations/punta-cana.jpg",
+    "description": "Punta Cana sits at the easternmost tip of the Dominican Republic, boasting 48 km of white sand beaches and over 50 world-class resorts. It consistently ranks as one of the top Caribbean destination wedding locations for its combination of value, accessibility, and sheer beauty. The weather is exceptionally stable compared to other Caribbean destinations.",
+    "avgCostUSD": { "min": 12000, "max": 40000 },
+    "bestMonths": ["November", "December", "January", "February", "March", "April", "May"],
+    "rainySeasonMonths": ["August", "September", "October"],
+    "legalNotes": "The Dominican Republic allows foreigners to legally marry with civil ceremonies. Paperwork requirements include authenticated birth certificates and proof of single status, all translated to Spanish. Most resorts offer wedding packages that handle the coordination with local authorities.",
+    "visaRequired": false,
+    "resortAffiliates": [
+      {
+        "name": "Secrets Royal Beach Punta Cana",
+        "description": "Adults-only luxury resort with stunning beach ceremony locations and dedicated wedding teams.",
+        "url": "https://www.secretsresorts.com/en/resorts/dominican-republic/punta-cana/secrets-royal-beach-punta-cana",
+        "type": "all-inclusive"
+      },
+      {
+        "name": "Paradisus Palma Real",
+        "description": "AAA Five Diamond resort with a spectacular wedding gazebo right on the beach.",
+        "url": "https://www.melia.com/en/hotels/dominican-republic/punta-cana/paradisus-palma-real",
+        "type": "all-inclusive"
+      }
+    ]
+  },
+  {
+    "slug": "jamaica",
+    "name": "Jamaica",
+    "country": "Jamaica",
+    "region": "Caribbean",
+    "emoji": "🏝️",
+    "tagline": "Lush mountains meet crystal-clear sea",
+    "heroImage": "/images/destinations/jamaica.jpg",
+    "description": "Jamaica combines dramatic tropical landscapes with gorgeous beaches, offering one of the most scenic Caribbean wedding backdrops. From the cliffs of Negril to the lush gardens of Montego Bay, Jamaica's diversity of settings suits every couple's vision. The island has a long history of destination weddings and an excellent support infrastructure.",
+    "avgCostUSD": { "min": 10000, "max": 35000 },
+    "bestMonths": ["November", "December", "January", "February", "March", "April", "May"],
+    "rainySeasonMonths": ["September", "October"],
+    "legalNotes": "Jamaica makes it easy to legally marry — the process requires 24 hours in the country before the ceremony. You'll need a valid passport, proof of divorce or death of spouse if applicable, and an official birth certificate. The resort wedding coordinator typically handles all arrangements.",
+    "visaRequired": false,
+    "resortAffiliates": [
+      {
+        "name": "Sandals Negril",
+        "description": "Set on seven miles of the world-famous Seven Mile Beach with dedicated wedding butler service.",
+        "url": "https://www.sandals.com/negril/",
+        "type": "all-inclusive"
+      },
+      {
+        "name": "Couples Tower Isle",
+        "description": "Romantic couples-only resort on its own private island — accessible by boat.",
+        "url": "https://www.couples.com/resort/couples-tower-isle",
+        "type": "all-inclusive"
+      }
+    ]
+  },
+  {
+    "slug": "hawaii",
+    "name": "Hawaii",
+    "country": "USA",
+    "region": "Pacific",
+    "emoji": "🌺",
+    "tagline": "Volcanic drama and tropical paradise",
+    "heroImage": "/images/destinations/hawaii.jpg",
+    "description": "Hawaii combines the ease of a domestic destination (no passports for US couples, familiar legal system) with the otherworldly beauty of volcanic beaches, lush rainforests, and dramatic coastlines. Each island offers a distinct character: Maui for luxury and romance, Kauai for dramatic natural scenery, Oahu for cosmopolitan energy, and the Big Island for adventurous couples.",
+    "avgCostUSD": { "min": 20000, "max": 75000 },
+    "bestMonths": ["April", "May", "June", "September", "October"],
+    "rainySeasonMonths": ["November", "December", "January", "February"],
+    "legalNotes": "As a US state, Hawaii follows US marriage law. No waiting period, no residency requirement. Both parties must apply in person for a marriage license at a Hawaii State Department of Health office. The license costs $60 and is valid for 30 days.",
+    "visaRequired": false,
+    "resortAffiliates": [
+      {
+        "name": "Four Seasons Maui at Wailea",
+        "description": "The gold standard for Hawaiian luxury weddings — impeccable service on Maui's best beach.",
+        "url": "https://www.fourseasons.com/maui/",
+        "type": "luxury"
+      },
+      {
+        "name": "Grand Hyatt Kauai",
+        "description": "Set on Poipu Beach with dramatic cliffs and gardens — stunning ceremony locations.",
+        "url": "https://www.hyatt.com/en-US/hotel/hawaii/grand-hyatt-kauai-resort-and-spa/kauai",
+        "type": "luxury"
+      }
+    ]
+  },
+  {
+    "slug": "bali",
+    "name": "Bali",
+    "country": "Indonesia",
+    "region": "Southeast Asia",
+    "emoji": "🪷",
+    "tagline": "Spiritual beauty and exotic romance",
+    "heroImage": "/images/destinations/bali.jpg",
+    "description": "Bali is a dream destination for couples who want something extraordinary — ancient temples, terraced rice paddies, dramatic clifftop venues, and a deeply spiritual culture that infuses every ceremony with meaning. Ubud offers jungle villas and temple settings; Seminyak and Uluwatu provide clifftop oceanfront drama. Bali is also exceptional value — world-class venues and vendors at a fraction of Western prices.",
+    "avgCostUSD": { "min": 8000, "max": 30000 },
+    "bestMonths": ["April", "May", "June", "July", "August", "September", "October"],
+    "rainySeasonMonths": ["November", "December", "January", "February", "March"],
+    "legalNotes": "Important: Indonesia does not recognize foreign marriages performed in Bali unless the couple is legally married in their home country first. Most couples hold a symbolic ceremony in Bali and do their legal ceremony at home before or after. A local blessing ceremony can still be incredibly meaningful and visually stunning.",
+    "visaRequired": true,
+    "resortAffiliates": [
+      {
+        "name": "COMO Uma Ubud",
+        "description": "Intimate luxury resort in the jungle with a stunning clifftop ceremony location.",
+        "url": "https://www.comohotels.com/en/umaubud",
+        "type": "luxury"
+      },
+      {
+        "name": "The Mulia, Nusa Dua",
+        "description": "Sprawling beachfront resort with world-class wedding facilities — ideal for larger guest lists.",
+        "url": "https://www.themulia.com",
+        "type": "luxury"
+      }
+    ]
+  },
+  {
+    "slug": "santorini",
+    "name": "Santorini",
+    "country": "Greece",
+    "region": "Mediterranean",
+    "emoji": "🤍",
+    "tagline": "Iconic sunsets over the caldera",
+    "heroImage": "/images/destinations/santorini.jpg",
+    "description": "Santorini is perhaps the most iconic backdrop in the world — the blue-domed churches of Oia, the sheer white caldera cliffs, the dramatic sunsets over the Aegean Sea. It's a bucket-list destination for a reason, but it requires advance planning: top venues book 12-18 months out, and summer crowds (June-August) can feel overwhelming. Shoulder season (May, September, October) offers the best balance of weather, light, and atmosphere.",
+    "avgCostUSD": { "min": 25000, "max": 80000 },
+    "bestMonths": ["May", "June", "September", "October"],
+    "rainySeasonMonths": ["November", "December", "January", "February", "March"],
+    "legalNotes": "Civil ceremonies for non-EU couples require an appointment at the local municipality at least 30 days in advance. You'll need authenticated documents (birth certificates, passports, proof of single status) translated into Greek by a certified translator. Many couples opt for a symbolic ceremony and handle the legal marriage at home.",
+    "visaRequired": true,
+    "resortAffiliates": [
+      {
+        "name": "Andronis Luxury Suites",
+        "description": "Cliff-top suites with infinity pools and direct caldera views — intimate and incredibly romantic.",
+        "url": "https://www.andronisgroup.com/andronis-luxury-suites/",
+        "type": "boutique"
+      },
+      {
+        "name": "Grace Santorini",
+        "description": "Award-winning hotel with a spectacular infinity pool and the best caldera views on the island.",
+        "url": "https://gracehotels.com/santorini/",
+        "type": "boutique"
+      }
+    ]
+  },
+  {
+    "slug": "tulum",
+    "name": "Tulum",
+    "country": "Mexico",
+    "region": "Caribbean",
+    "emoji": "🌿",
+    "tagline": "Bohemian chic meets ancient Mayan coast",
+    "heroImage": "/images/destinations/tulum.jpg",
+    "description": "Tulum has exploded as a wedding destination for couples who want something beyond the traditional all-inclusive — think barefoot luxury on white sand cenotes, bohemian jungle villas, and a backdrop that blends ancient Mayan ruins with the turquoise Caribbean. It's the destination for free-spirited, design-conscious couples. Note: Tulum has fewer large resorts than Cancun, making it better suited for intimate weddings (under 50 guests).",
+    "avgCostUSD": { "min": 12000, "max": 45000 },
+    "bestMonths": ["November", "December", "January", "February", "March", "April"],
+    "rainySeasonMonths": ["June", "July", "August", "September", "October"],
+    "legalNotes": "Same legal requirements as Cancun — civil ceremony required, most Tulum wedding venues work with local civil judges to manage the paperwork. Blood tests required within 15 days of ceremony.",
+    "visaRequired": false,
+    "resortAffiliates": [
+      {
+        "name": "Azulik Tulum",
+        "description": "Adult-only eco-luxury resort suspended above the jungle canopy — utterly unique and Instagram-famous.",
+        "url": "https://www.azulik.com",
+        "type": "boutique"
+      },
+      {
+        "name": "Habitas Tulum",
+        "description": "Soulful boutique resort focused on wellness and community — beautiful for intimate ceremonies.",
+        "url": "https://ourhabitas.com/tulum/",
+        "type": "boutique"
+      }
+    ]
+  },
+  {
+    "slug": "key-west",
+    "name": "Key West",
+    "country": "United States",
+    "region": "Florida Keys",
+    "emoji": "🦩",
+    "tagline": "Barefoot elegance, sunset views, and Old Florida charm",
+    "heroImage": "/images/destinations/key-west.jpg",
+    "description": "Key West is America's most romantic domestic destination wedding location — a tiny island at the tip of Florida with a laid-back Caribbean vibe, extraordinary sunsets over the Gulf of Mexico, and a deep culture of celebration. The famous Duval Street energy gives way to quiet historic streets lined with Victorian mansions, private garden estates, and beachfront venues that feel worlds apart from the mainland. No passport required, easy to reach, and endlessly photogenic.",
+    "avgCostUSD": { "min": 12000, "max": 45000 },
+    "bestMonths": ["November", "December", "January", "February", "March", "April"],
+    "rainySeasonMonths": ["June", "July", "August", "September"],
+    "legalNotes": "Key West follows Florida state marriage law — couples need a valid government-issued photo ID and Social Security number. No waiting period and no blood test required. Marriage license is valid for 60 days from issue date. Florida residents must wait 3 days after issue (waivable with a premarital course), but non-residents can marry immediately.",
+    "visaRequired": false,
+    "resortAffiliates": [
+      {
+        "name": "Sunset Key Cottages",
+        "description": "Private island cottages accessible only by ferry — the most exclusive wedding venue in Key West with dramatic Gulf sunset views.",
+        "url": "https://www.sunsetkeyresort.com/",
+        "type": "luxury"
+      },
+      {
+        "name": "Casa Marina Key West",
+        "description": "Historic 1920s beachfront resort with Key West's largest private beach and grand ballroom — spectacular ceremony settings.",
+        "url": "https://www.casamarinaresort.com/",
+        "type": "luxury"
+      },
+      {
+        "name": "The Reach Key West",
+        "description": "Curio Collection resort directly on the beach with dedicated wedding coordinators and stunning sunset ceremony spots.",
+        "url": "https://www.reachresort.com/",
+        "type": "boutique"
+      }
+    ]
+  },
+  {
+    "slug": "costa-rica",
+    "name": "Costa Rica",
+    "country": "Costa Rica",
+    "region": "Central America",
+    "emoji": "🦜",
+    "tagline": "Rainforest, volcanoes, and Pacific beaches",
+    "heroImage": "/images/destinations/costa-rica.jpg",
+    "description": "Costa Rica is for adventurous couples who want a wedding surrounded by extraordinary natural beauty — howler monkeys, tropical birds, active volcanoes, and jungle waterfalls, all minutes from pristine Pacific beaches. The Guanacaste and Nicoya Peninsula region (dry season accessible) is the most popular for destination weddings, with excellent resort infrastructure and stunning sunset views.",
+    "avgCostUSD": { "min": 10000, "max": 35000 },
+    "bestMonths": ["November", "December", "January", "February", "March", "April"],
+    "rainySeasonMonths": ["May", "June", "July", "August", "September", "October"],
+    "legalNotes": "Costa Rica allows foreign nationals to legally marry — you'll need notarized copies of your birth certificates and, if previously married, proof of divorce. The ceremony must be performed by a licensed notary or religious celebrant. Most wedding planners handle all document requirements.",
+    "visaRequired": false,
+    "resortAffiliates": [
+      {
+        "name": "Four Seasons Peninsula Papagayo",
+        "description": "Spectacular resort on its own private peninsula — two beaches, marina, and exceptional wedding services.",
+        "url": "https://www.fourseasons.com/costarica/",
+        "type": "luxury"
+      },
+      {
+        "name": "Andaz Costa Rica Resort",
+        "description": "Hyatt's stunning clifftop resort with panoramic ocean views and a dedicated wedding team.",
+        "url": "https://www.hyatt.com/andaz/crpaz",
+        "type": "luxury"
+      }
+    ]
+  }
+]

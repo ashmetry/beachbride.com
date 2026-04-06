@@ -1,0 +1,35 @@
+name: Content Engine — Publish
+
+on:
+  schedule:
+    - cron: '0 14 * * 1,3,5'   # Mon/Wed/Fri 2pm UTC (9am ET)
+  workflow_dispatch: {}          # Manual trigger
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}   # PAT so push triggers deploy.yml
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Publish one article from queue
+        run: node scripts/content-engine/publish.js
+        env:
+          CI: true
+          MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+          MAILGUN_DOMAIN: ${{ secrets.MAILGUN_DOMAIN }}
+          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}

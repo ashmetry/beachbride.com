@@ -1,0 +1,50 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { getOrganizationSchema } from '../lib/schema/organization';
+---
+
+<PageLayout
+  title="About BeachBride"
+  description="BeachBride helps couples plan destination weddings at the world's most beautiful beach locations — connecting you with vetted vendors and expert guides."
+  canonical="https://beachbride.com/about/"
+  schema={getOrganizationSchema()}
+>
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">About BeachBride</h1>
+
+  <div class="prose prose-gray max-w-none">
+    <p class="lead text-lg text-gray-600">
+      BeachBride exists to make destination wedding planning feel as beautiful as the wedding itself — clear, joyful, and free of the overwhelm.
+    </p>
+
+    <h2>Our Mission</h2>
+    <p>
+      Planning a wedding across the world is genuinely complex. Couples face a maze of unfamiliar vendors, currency conversions, legal requirements, and logistical challenges — all while trying to stay inspired. BeachBride cuts through that noise with expert destination guides, a curated vendor network, and a matching process that connects the right couples with the right professionals.
+    </p>
+
+    <h2>How We're Different</h2>
+    <p>
+      We don't take commissions from vendors to rank them higher. Every vendor in our directory is vetted for responsiveness, portfolio quality, and real couple reviews. When we recommend a resort or a photographer, it's because they're genuinely great — not because they paid for placement.
+    </p>
+    <p>
+      We do earn affiliate commissions from some resort and travel partners, which is how we keep our planning tools free for couples. We disclose this clearly in relevant content.
+    </p>
+
+    <h2>Editorial Standards</h2>
+    <p>
+      Our destination guides are researched with input from local wedding planners and couples who've married there. We cover the practical details most sites skip: legal marriage requirements by country, permit processes, best seasons, and hidden costs. Content is updated annually or when local conditions change significantly.
+    </p>
+
+    <h2>For Vendors</h2>
+    <p>
+      BeachBride operates a lead referral network for wedding planners, photographers, florists, caterers, DJs, and officiants. If you're a professional serving destination wedding couples and want qualified leads, visit our <a href="/vendors/upgrade/">vendor listing page</a>.
+    </p>
+    <p>
+      Resorts and jewelers can list in our directory and reach engaged couples through our content — <a href="/contact/">reach out</a> to discuss partnership options.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions, corrections, or partnership inquiries: <a href="/contact/">contact us here</a> or email <a href="mailto:hello@beachbride.com">hello@beachbride.com</a>.
+    </p>
+  </div>
+</PageLayout>

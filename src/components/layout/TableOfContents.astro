@@ -1,0 +1,33 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+const h2s = headings.filter(h => h.depth === 2);
+---
+
+{h2s.length > 2 && (
+  <nav aria-label="Table of contents" class="bg-brand-light border border-brand/20 rounded-xl p-5 mb-8 not-prose">
+    <p class="text-sm font-semibold text-brand-dark uppercase tracking-wider mb-3">In This Guide</p>
+    <ol class="space-y-1.5">
+      {h2s.map((heading, i) => (
+        <li class="flex items-start gap-2">
+          <span class="text-brand-accent font-bold text-sm mt-0.5 min-w-[1.25rem]">{i + 1}.</span>
+          <a
+            href={`#${heading.slug}`}
+            class="text-sm text-gray-700 hover:text-brand no-underline leading-snug"
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}

@@ -1,0 +1,93 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="Contact BeachBride"
+  description="Get in touch with the BeachBride team — corrections, partnerships, or general questions."
+  canonical="https://beachbride.com/contact/"
+>
+  <h1 class="text-3xl font-bold text-gray-900 mb-4">Contact Us</h1>
+  <p class="text-gray-600 mb-8">Reach out for content corrections, vendor partnership inquiries, or general questions.</p>
+
+  <form id="contact-form" class="space-y-5 max-w-lg" novalidate>
+    <!-- Honeypot: hidden from real users, bots fill it -->
+    <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;">
+      <label for="website">Website (leave blank)</label>
+      <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <div>
+      <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+      <input type="text" id="name" name="name" required
+        class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent" />
+    </div>
+    <div>
+      <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+      <input type="email" id="email" name="email" required
+        class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent" />
+    </div>
+    <div>
+      <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+      <textarea id="message" name="message" rows="5" required
+        class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent resize-none"></textarea>
+    </div>
+    <p id="contact-error" class="hidden text-red-600 text-sm"></p>
+    <button type="submit" id="contact-submit" class="btn-primary">Send Message</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const errorEl = document.getElementById('contact-error') as HTMLParagraphElement;
+    const submitBtn = document.getElementById('contact-submit') as HTMLButtonElement;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorEl.classList.add('hidden');
+
+      const honeypot = (form.elements.namedItem('website') as HTMLInputElement).value;
+      const name = (form.elements.namedItem('name') as HTMLInputElement).value.trim();
+      const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim();
+      const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value.trim();
+
+      if (honeypot) {
+        window.location.href = '/thank-you/';
+        return;
+      }
+
+      if (!name || !email || !message) {
+        errorEl.textContent = 'Please fill in all fields.';
+        errorEl.classList.remove('hidden');
+        return;
+      }
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.classList.remove('hidden');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      try {
+        const res = await fetch('/workers/form', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ type: 'contact', name, email, message }),
+        });
+
+        if (res.ok) {
+          window.location.href = '/thank-you/';
+        } else {
+          throw new Error('Server error');
+        }
+      } catch {
+        errorEl.textContent = 'Something went wrong. Please try again.';
+        errorEl.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      }
+    });
+  </script>
+</PageLayout>

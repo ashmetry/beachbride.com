@@ -1,0 +1,67 @@
+---
+const navLinks = [
+  { href: '/destinations/', label: 'Destinations' },
+  { href: '/vendors/', label: 'Vendors' },
+  { href: '/blog/', label: 'Guides' },
+  { href: '/about/', label: 'About' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 no-underline flex-shrink-0">
+      <span class="text-xl font-bold text-brand">Beach<span class="text-brand-accent">Bride</span></span>
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden lg:flex items-center gap-6">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class={`text-sm font-medium no-underline transition-colors ${
+            currentPath.startsWith(link.href)
+              ? 'text-brand'
+              : 'text-gray-600 hover:text-brand'
+          }`}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <!-- Desktop CTA -->
+    <div class="hidden lg:flex items-center gap-3">
+      <a href="/vendors/upgrade/" class="text-sm font-medium text-gray-500 hover:text-brand no-underline transition-colors">
+        List Your Business
+      </a>
+      <a href="/quiz/" class="btn-primary text-sm py-2 px-5">
+        Plan My Wedding
+      </a>
+    </div>
+
+    <!-- Mobile menu (CSS-only disclosure) -->
+    <details class="lg:hidden">
+      <summary class="list-none cursor-pointer p-2 rounded-lg hover:bg-gray-100" aria-label="Menu">
+        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </summary>
+      <div class="absolute top-16 left-0 right-0 bg-white border-b border-gray-200 shadow-lg p-4 flex flex-col gap-3">
+        {navLinks.map(link => (
+          <a href={link.href} class="text-sm font-medium text-gray-700 hover:text-brand no-underline py-2.5">
+            {link.label}
+          </a>
+        ))}
+        <a href="/vendors/upgrade/" class="text-sm font-medium text-gray-500 hover:text-brand no-underline py-2">
+          List Your Business
+        </a>
+        <a href="/quiz/" class="btn-primary text-sm text-center mt-2">
+          Plan My Wedding
+        </a>
+      </div>
+    </details>
+  </nav>
+</header>

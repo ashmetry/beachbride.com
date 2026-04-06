@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const articles = (await getCollection('articles'))
+  .filter(a => !a.data.noIndex)
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+---
+
+<BaseLayout
+  title="Destination Wedding Guides"
+  description="Expert guides for planning your destination wedding — costs, legal requirements, vendor tips, and inspiration for every beach destination."
+  canonical="https://beachbride.com/blog/"
+>
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+    <h1 class="text-3xl font-bold text-gray-900 mb-3">Destination Wedding Guides</h1>
+    <p class="text-gray-600 mb-10">Everything you need to plan your perfect beach wedding.</p>
+
+    {articles.length === 0 ? (
+      <p class="text-gray-500">Guides coming soon — check back shortly.</p>
+    ) : (
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {articles.map(article => (
+          <a href={`/${article.slug}/`} class="card group hover:shadow-md transition-shadow no-underline">
+            {article.data.heroImage && (
+              <img
+                src={article.data.heroImage}
+                alt={article.data.title}
+                class="w-full object-cover aspect-video"
+                loading="lazy"
+              />
+            )}
+            <div class="p-5">
+              <p class="text-xs text-brand font-semibold uppercase tracking-wide mb-1">
+                {article.data.tags?.[0] ?? 'Guide'}
+              </p>
+              <h2 class="font-bold text-gray-900 group-hover:text-brand transition-colors leading-snug mb-2">
+                {article.data.title}
+              </h2>
+              <p class="text-sm text-gray-600 line-clamp-2">{article.data.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </main>
+</BaseLayout>
