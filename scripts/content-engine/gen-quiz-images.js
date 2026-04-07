@@ -59,7 +59,7 @@ const QUIZ_IMAGES = [
   },
   {
     key: 'season-spring',
-    prompt: 'Early spring beach wedding at soft morning light — a floral arch overflowing with blush peonies, white ranunculus and pale pink sweet peas, guests in light pastel dresses and linen suits, cool fresh air, the sea a calm pale grey-blue. Delicate, dewy, cool-toned editorial photography — nothing hot or tropical, just gentle and fresh.',
+    prompt: 'A single photograph of a beach wedding ceremony in soft spring morning light — one continuous scene, no split panels, no collage. A floral arch of blush peonies and white ranunculus frames the couple, guests seated on either side in pastel linen, the sea a calm pale grey-blue behind everything. Cool, dewy, gentle light — not hot or tropical. Editorial photography.',
   },
   {
     key: 'season-summer',
@@ -88,7 +88,7 @@ const QUIZ_IMAGES = [
   {
     key: 'guests-large',
     portrait: true,
-    prompt: 'Grand beachfront wedding reception with 100+ guests — long banquet tables on a manicured lawn, spectacular ocean resort in the background, towering floral arrangements, festive and celebratory. Editorial photography.',
+    prompt: 'A single wide-angle photograph of a grand beachfront wedding reception — one continuous scene, no split panels, no collage. Dozens of guests seated at long tables on a resort lawn, the ocean directly behind them, towering white floral arrangements, festive and celebratory atmosphere. Taken from a slightly elevated angle to show the scale. Editorial photography.',
   },
 
   // Budget options (portrait cards in the UI)
