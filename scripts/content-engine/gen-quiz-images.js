@@ -74,44 +74,50 @@ const QUIZ_IMAGES = [
     prompt: 'Overhead flat-lay of a wedding planning calendar surrounded by flowers from every season — spring blossoms, summer tropical leaves, autumn berries, winter pinecones — on warm linen. Aspirational editorial photography.',
   },
 
-  // Guest count options
+  // Guest count options (portrait cards in the UI)
   {
     key: 'guests-intimate',
+    portrait: true,
     prompt: 'Just-married couple walking barefoot hand-in-hand along an empty beach at sunset, only their two silhouettes, gentle waves beside them, golden sky. Intimate, cinematic editorial photography.',
   },
   {
     key: 'guests-medium',
+    portrait: true,
     prompt: 'Beach terrace wedding dinner for 40 guests — round tables draped in white linen, fairy lights strung overhead, guests laughing and toasting, calm ocean visible beyond. Warm candlelit editorial photography.',
   },
   {
     key: 'guests-large',
+    portrait: true,
     prompt: 'Grand beachfront wedding reception with 100+ guests — long banquet tables on a manicured lawn, spectacular ocean resort in the background, towering floral arrangements, festive and celebratory. Editorial photography.',
   },
 
-  // Budget options
+  // Budget options (portrait cards in the UI)
   {
     key: 'budget-budget',
+    portrait: true,
     prompt: 'Simple but stunning beach elopement — driftwood arch adorned with wildflowers, couple alone on a pristine beach, bright clear water. Proving that a small budget still creates a breathtaking wedding. Editorial photography.',
   },
   {
     key: 'budget-mid',
+    portrait: true,
     prompt: 'Well-appointed outdoor beach wedding reception — elegant white draped fabric, styled centerpieces with tropical flowers, glowing candles, guests in evening wear. Polished and beautiful without being over the top. Editorial photography.',
   },
   {
     key: 'budget-luxury',
+    portrait: true,
     prompt: 'Ultra-luxurious beach wedding — crystal chandeliers hanging over outdoor tables, towering white orchid arrangements, marble elements, a resort infinity pool visible beyond, impeccably dressed guests. Editorial luxury photography.',
   },
 ];
 
 // ── Image generation ──────────────────────────────────────────────────────────
 
-async function generateRaw(prompt) {
+async function generateRaw(prompt, aspectRatio = '4:3') {
   const url = `${BASE_URL}/${GEMINI_MODEL}:generateContent?key=${env.GEMINI_API_KEY}`;
   const body = {
     contents: [{ parts: [{ text: prompt }] }],
     generationConfig: {
       responseModalities: ['IMAGE', 'TEXT'],
-      imageConfig: { aspectRatio: '4:3' },
+      imageConfig: { aspectRatio },
     },
   };
 
@@ -148,9 +154,10 @@ async function generateRaw(prompt) {
   return null;
 }
 
-async function resizeForWeb(buffer, outputPath) {
+async function resizeForWeb(buffer, outputPath, portrait = false) {
+  const [w, h] = portrait ? [320, 480] : [480, 360];
   await sharp(buffer)
-    .resize(480, 360, { fit: 'cover', position: 'centre' })
+    .resize(w, h, { fit: 'cover', position: 'centre' })
     .jpeg({ quality: 82, mozjpeg: true })
     .toFile(outputPath);
   const { size } = (await import('fs')).statSync(outputPath);
@@ -190,8 +197,9 @@ for (const img of targets) {
     continue;
   }
 
-  console.log(`[${img.key}] generating...`);
-  const raw = await generateRaw(img.prompt);
+  const portrait = img.portrait ?? false;
+  console.log(`[${img.key}] generating... (${portrait ? 'portrait' : 'landscape'})`);
+  const raw = await generateRaw(img.prompt, portrait ? '3:4' : '4:3');
 
   if (!raw) {
     console.log(`  FAILED\n`);
@@ -199,7 +207,7 @@ for (const img of targets) {
     continue;
   }
 
-  const bytes = await resizeForWeb(raw, outputPath);
+  const bytes = await resizeForWeb(raw, outputPath, portrait);
   console.log(`  saved ${Math.round(bytes / 1024)}KB → ${outputPath}\n`);
   ok++;
 }

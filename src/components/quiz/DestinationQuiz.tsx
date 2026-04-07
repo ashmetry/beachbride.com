@@ -121,10 +121,15 @@ function getTopMatches(answers: Answers): DestData[] {
   return top;
 }
 
-function PhotoCard({ label, image, onClick }: { label: string; image: string; onClick: () => void }) {
+function PhotoCard({ label, image, onClick, portrait = false }: {
+  label: string;
+  image: string;
+  onClick: () => void;
+  portrait?: boolean;
+}) {
   return (
     <button
-      className="group relative overflow-hidden rounded-xl aspect-[4/3] w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+      className={`group relative overflow-hidden rounded-xl w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand ${portrait ? 'aspect-[2/3]' : 'aspect-[4/3]'}`}
       onClick={onClick}
     >
       <img
@@ -133,12 +138,10 @@ function PhotoCard({ label, image, onClick }: { label: string; image: string; on
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         loading="lazy"
         decoding="async"
-        width={480}
-        height={360}
+        width={portrait ? 320 : 480}
+        height={portrait ? 480 : 360}
       />
-      {/* gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent group-hover:from-black/80 transition-colors duration-200" />
-      {/* label */}
       <span className="absolute bottom-0 left-0 right-0 px-3 py-2.5 text-white font-semibold text-sm text-left leading-tight">
         {label}
       </span>
@@ -284,7 +287,7 @@ export default function DestinationQuiz() {
             What's your wedding vibe?
           </h2>
           <p className="text-sm text-gray-500 text-center mb-6">This helps us match you to destinations that fit your style.</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 gap-3">
             {VIBES.map(v => (
               <PhotoCard key={v.value} label={v.label} image={v.image} onClick={() => pick('vibe', v.value)} />
             ))}
@@ -299,7 +302,7 @@ export default function DestinationQuiz() {
             When are you thinking?
           </h2>
           <p className="text-sm text-gray-500 text-center mb-6">We'll match you to destinations with the best weather for your season.</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 gap-3">
             {SEASONS.map(s => (
               <PhotoCard key={s.value} label={s.label} image={s.image} onClick={() => pick('season', s.value)} />
             ))}
@@ -317,7 +320,7 @@ export default function DestinationQuiz() {
           <p className="text-sm text-gray-500 text-center mb-6">Some destinations are perfect for 20 guests, others handle 200.</p>
           <div className="grid grid-cols-3 gap-3">
             {GUEST_COUNTS.map(g => (
-              <PhotoCard key={g.value} label={g.label} image={g.image} onClick={() => pick('guestCount', g.value)} />
+              <PhotoCard key={g.value} label={g.label} image={g.image} onClick={() => pick('guestCount', g.value)} portrait />
             ))}
           </div>
           <button className="quiz-back-btn mt-4" onClick={() => setStep(1)}>← Back</button>
@@ -333,7 +336,7 @@ export default function DestinationQuiz() {
           <p className="text-sm text-gray-500 text-center mb-6">Including venue, vendors, and travel — not per guest.</p>
           <div className="grid grid-cols-3 gap-3">
             {BUDGETS.map(b => (
-              <PhotoCard key={b.value} label={b.label} image={b.image} onClick={() => pick('budget', b.value)} />
+              <PhotoCard key={b.value} label={b.label} image={b.image} onClick={() => pick('budget', b.value)} portrait />
             ))}
           </div>
           <button className="quiz-back-btn mt-4" onClick={() => setStep(2)}>← Back</button>
