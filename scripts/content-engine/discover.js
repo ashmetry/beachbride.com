@@ -7,6 +7,7 @@
  */
 
 import { readFileSync, existsSync } from 'fs';
+import { join } from 'path';
 import { google } from 'googleapis';
 import https from 'https';
 import {
@@ -14,6 +15,26 @@ import {
   getExistingArticles, cliFlags, MODEL_BRIEF,
 } from './lib/config.js';
 import { callModelJSON } from './lib/openrouter.js';
+
+// ── Article word count cache ───────────────────────────────────────────────────
+// Used to boost refresh scoring for thin articles
+function buildWordCountMap(existingArticles) {
+  const map = {};
+  for (const a of existingArticles) {
+    try {
+      const mdxPath = join(ARTICLES_DIR, `${a.slug}.mdx`);
+      const mdPath = join(ARTICLES_DIR, `${a.slug}.md`);
+      const filePath = existsSync(mdxPath) ? mdxPath : mdPath;
+      if (!existsSync(filePath)) continue;
+      const raw = readFileSync(filePath, 'utf8');
+      const body = raw.replace(/^---[\s\S]*?---\n/, '');
+      map[a.slug] = body.trim().split(/\s+/).length;
+    } catch {
+      // skip
+    }
+  }
+  return map;
+}
 
 const { dryRun, limit } = cliFlags();
 
@@ -27,6 +48,17 @@ async function main() {
   const existingArticles = getExistingArticles();
   const existingSlugs = new Set(existingArticles.map(a => a.slug));
   const pipelineKeywords = new Set(pipeline.topics.map(t => normalizeKeyword(t.keyword)));
+
+  // Build word count map for thin-content refresh boosting
+  const wordCountMap = buildWordCountMap(existingArticles);
+  const thinSlugs = new Set(
+    Object.entries(wordCountMap)
+      .filter(([, wc]) => wc < 1500)
+      .map(([slug]) => slug)
+  );
+  if (thinSlugs.size > 0) {
+    console.log(`  Thin articles detected (< 1500w): ${[...thinSlugs].join(', ')}`);
+  }
 
   let candidates = [];
 
@@ -72,7 +104,7 @@ async function main() {
       keyword: c.keyword,
       secondaryKeywords: [],
       status: 'discovered',
-      score: scoreTopic(c),
+      score: scoreTopic(c, isRefresh, wordCountMap),
       contentType: detectContentType(c.keyword),
       schemaType: detectSchemaType(c.keyword),
       isRefresh: isRefresh.refresh,
@@ -172,7 +204,7 @@ async function fetchGSCStrikeZone() {
   const startDate = new Date(Date.now() - 90 * 86400000).toISOString().slice(0, 10);
 
   const res = await sc.searchanalytics.query({
-    siteUrl: 'https://beachbride.com/',
+    siteUrl: 'sc-domain:beachbride.com',
     requestBody: {
       startDate,
       endDate,
@@ -261,7 +293,7 @@ async function fetchDataForSEOKeywords() {
 
 // ── Scoring ────────────────────────────────────────────────────────────────────
 
-function scoreTopic(candidate) {
+function scoreTopic(candidate, isRefresh = { refresh: false, slug: null }, wordCountMap = {}) {
   const volume = candidate.volume || 1;
   const difficulty = candidate.difficulty || 50;
   const intentMultiplier = getIntentMultiplier(candidate.keyword);
@@ -280,6 +312,15 @@ function scoreTopic(candidate) {
   // Bonus: high CPC = commercial intent
   if (candidate.cpc > 5) score += 10;
   else if (candidate.cpc > 2) score += 5;
+
+  // Bonus: refresh of a thin article — higher ROI than publishing something new
+  // because the existing page already has some authority, internal links, and indexing
+  if (isRefresh.refresh && isRefresh.slug) {
+    const wc = wordCountMap[isRefresh.slug] || 9999;
+    if (wc < 1000) score += 25;       // severely thin — top priority
+    else if (wc < 1500) score += 15;  // below minimum threshold
+    else if (wc < 2000) score += 8;   // could be improved
+  }
 
   return Math.min(score, 100);
 }
@@ -324,7 +365,9 @@ function checkCannibalization(candidate, existingSlugs) {
   if (!match) return { refresh: false, slug: null };
 
   const slug = match[1];
-  if (existingSlugs.has(slug) && candidate.position <= 50) {
+  // Refresh if ranking in strike zone OR if the article exists but is thin
+  // (thin articles get a score boost via scoreTopic regardless of current rank)
+  if (existingSlugs.has(slug)) {
     return { refresh: true, slug };
   }
   return { refresh: false, slug: null };
