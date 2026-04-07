@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/forms/ContactForm.astro';
+---
+
+<BaseLayout
+  title="Advertise on BeachBride — Reach Brides Planning Destination Weddings"
+  description="Get your venue, resort, or wedding business in front of thousands of brides actively planning destination weddings. Featured listings, lead matching, and sponsored content."
+  canonical="https://beachbride.com/advertise/"
+>
+  <!-- Hero -->
+  <section class="bg-brand-dark text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-20 sm:py-28 text-center">
+      <p class="text-brand-accent font-semibold tracking-widest uppercase text-sm mb-4">Partner With Us</p>
+      <h1 class="text-4xl sm:text-5xl font-bold mb-6">Put Your Business in Front of Brides Ready to Book</h1>
+      <p class="text-lg text-white/80 max-w-2xl mx-auto mb-8">
+        BeachBride connects couples with the best destination wedding vendors, resorts, and services. If you serve the destination wedding market, we want to work with you.
+      </p>
+      <a
+        href="#contact"
+        class="inline-block bg-brand-accent hover:bg-accent-dark text-white font-semibold px-8 py-3 rounded-lg transition-colors"
+      >
+        Get in Touch
+      </a>
+    </div>
+  </section>
+
+  <!-- Who We Work With -->
+  <section class="py-16 sm:py-20 bg-neutral">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl font-bold text-center text-brand-dark mb-12">Who We Work With</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[
+          { title: 'Resorts & Hotels', desc: 'All-inclusive resorts, boutique hotels, and beachfront venues looking for wedding group bookings.' },
+          { title: 'Wedding Planners', desc: 'Destination wedding coordinators who want a steady pipeline of qualified leads.' },
+          { title: 'Photographers & Videographers', desc: 'Creatives specializing in beach and destination wedding coverage.' },
+          { title: 'Florists & Decorators', desc: 'Local and destination floral designers serving wedding parties.' },
+          { title: 'Caterers & Bakeries', desc: 'Food and beverage providers for rehearsal dinners, receptions, and welcome parties.' },
+          { title: 'DJs, Bands & Entertainment', desc: 'Musicians and entertainers who make destination receptions unforgettable.' },
+        ].map((item) => (
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <h3 class="text-lg font-semibold text-brand-dark mb-2">{item.title}</h3>
+            <p class="text-gray-600 text-sm">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Ways to Advertise -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl font-bold text-center text-brand-dark mb-12">Ways to Advertise</h2>
+      <div class="space-y-10">
+        <div class="flex gap-6 items-start">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-brand text-white flex items-center justify-center font-bold text-lg">1</div>
+          <div>
+            <h3 class="text-xl font-semibold text-brand-dark mb-2">Featured Directory Listing</h3>
+            <p class="text-gray-600">Get a verified, premium profile in our vendor directory. Featured vendors appear first in search results and destination pages, with badges, multiple destination coverage, and direct inquiry buttons.</p>
+          </div>
+        </div>
+        <div class="flex gap-6 items-start">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-brand text-white flex items-center justify-center font-bold text-lg">2</div>
+          <div>
+            <h3 class="text-xl font-semibold text-brand-dark mb-2">Qualified Lead Matching</h3>
+            <p class="text-gray-600">Receive leads from brides who have told us their destination, budget, date, and what services they need. You only pay for leads that match your business — no wasted spend.</p>
+          </div>
+        </div>
+        <div class="flex gap-6 items-start">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-brand text-white flex items-center justify-center font-bold text-lg">3</div>
+          <div>
+            <h3 class="text-xl font-semibold text-brand-dark mb-2">Sponsored Content & Placement</h3>
+            <p class="text-gray-600">Feature your resort or venue in our destination guides, email newsletters, and planning articles. Reach brides at the moment they're researching your destination.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section id="contact" class="py-16 sm:py-20 bg-neutral">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl font-bold text-center text-brand-dark mb-3">Let's Talk</h2>
+      <p class="text-gray-600 text-center mb-10">
+        Tell us about your business and we'll put together a plan that fits. No commitment, no pressure.
+      </p>
+      <ContactForm source="advertise" buttonText="Send Inquiry" />
+    </div>
+  </section>
+</BaseLayout>

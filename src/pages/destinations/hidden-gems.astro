@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import destinations from '../../data/destinations.json';
+import { getOrganizationSchema } from '../../lib/schema/organization';
+
+const gems = destinations.filter(d => d.isHiddenGem);
+
+const comparisons: Record<string, string> = {
+  'holbox': 'Like Tulum 10 years ago',
+  'roatan': 'Like Cancun at half the price',
+  'kotor': 'Like Dubrovnik without the crowds',
+  'azores': 'Like Greece meets Iceland',
+  'koh-lanta': 'Like Bali, quieter and cheaper',
+};
+
+const budgetColors: Record<string, string> = {
+  'budget': 'bg-green-50 text-green-700',
+  'mid': 'bg-yellow-50 text-yellow-700',
+  'luxury': 'bg-purple-50 text-purple-700',
+};
+---
+
+<BaseLayout
+  title="Hidden Gem Wedding Destinations — BeachBride"
+  description="Discover stunning destination wedding locations before everyone else. Same beauty, lower costs, fewer crowds — these 5 destinations are about to blow up."
+  canonical="https://beachbride.com/destinations/hidden-gems/"
+  schema={getOrganizationSchema()}
+>
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+    <div class="text-center mb-12">
+      <span class="inline-block bg-brand-accent/10 text-brand-accent text-sm font-semibold px-4 py-1 rounded-full mb-4">
+        ✦ Curated Selection
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+        Hidden Gem Wedding Destinations
+      </h1>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        These destinations offer the same breathtaking beauty as their famous counterparts — at 40–60% lower cost, with fewer crowds and more authentic character. They're about to be discovered. Get there first.
+      </p>
+    </div>
+
+    <!-- Why hidden gems -->
+    <div class="grid sm:grid-cols-3 gap-6 mb-16">
+      <div class="text-center">
+        <div class="text-3xl mb-2">💰</div>
+        <h3 class="font-bold text-gray-900 mb-1">40–60% less</h3>
+        <p class="text-sm text-gray-600">Same caliber venues and vendors at a fraction of the price of saturated markets.</p>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl mb-2">📸</div>
+        <h3 class="font-bold text-gray-900 mb-1">Unique photos</h3>
+        <p class="text-sm text-gray-600">Your wedding album won't look like everyone else's. These backdrops are genuinely one-of-a-kind.</p>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl mb-2">🤫</div>
+        <h3 class="font-bold text-gray-900 mb-1">No crowds</h3>
+        <p class="text-sm text-gray-600">No fighting over venues, no tourist photobombs, no 18-month booking windows.</p>
+      </div>
+    </div>
+
+    <!-- Gem cards -->
+    <div class="space-y-8">
+      {gems.map(gem => {
+        const comparison = comparisons[gem.slug] || '';
+        return (
+          <a
+            href={`/destinations/${gem.slug}/`}
+            class="block card hover:shadow-lg transition-all duration-300 no-underline overflow-hidden group"
+          >
+            <div class="sm:flex">
+              <div class="sm:w-2/5 relative">
+                <div class="aspect-[16/9] sm:aspect-auto sm:h-full overflow-hidden">
+                  <img
+                    src={`/images/destinations/${gem.slug}.jpg`}
+                    alt={`${gem.name} destination wedding`}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                  />
+                  <div class="w-full h-full bg-brand-light items-center justify-center text-7xl" style="display:none">
+                    {gem.emoji}
+                  </div>
+                </div>
+                <span class="absolute top-3 left-3 bg-brand-accent/90 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  ✦ Hidden Gem
+                </span>
+              </div>
+              <div class="sm:w-3/5 p-6">
+                <div class="flex items-center gap-2 mb-1">
+                  <h2 class="text-xl font-bold text-gray-900 group-hover:text-brand transition-colors">{gem.name}</h2>
+                  <span class={`text-[10px] font-semibold px-2 py-0.5 rounded-full capitalize ${budgetColors[gem.budgetTier]}`}>
+                    {gem.budgetTier}
+                  </span>
+                </div>
+                {comparison && (
+                  <p class="text-brand-accent font-semibold text-sm mb-2">{comparison}</p>
+                )}
+                <p class="text-sm text-gray-500 mb-1">{gem.country} &middot; {gem.region}</p>
+                <p class="text-sm text-gray-600 mb-4">{gem.tagline}</p>
+                <div class="flex flex-wrap gap-4 text-xs text-gray-500">
+                  <span>From ${(gem.avgCostUSD.min/1000).toFixed(0)}k</span>
+                  <span>Guest score: {gem.guestBurden.score}/10</span>
+                  <span>{gem.bestMonths.slice(0, 3).join(', ')}</span>
+                </div>
+                <p class="text-brand font-semibold text-sm mt-4 group-hover:underline">View full guide →</p>
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-16 text-center bg-brand-light rounded-2xl p-10">
+      <p class="text-brand-accent font-semibold uppercase tracking-widest text-sm mb-2">Not sure which one?</p>
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">Take our 60-second quiz</h2>
+      <p class="text-gray-600 mb-6">Tell us your vibe, budget, and guest count — we'll match you to your perfect destination, including gems most couples never consider.</p>
+      <a href="/quiz/" class="btn-primary">Find my destination →</a>
+    </div>
+  </main>
+</BaseLayout>

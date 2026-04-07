@@ -1,5 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
+import { existsSync } from 'fs';
+import { join } from 'path';
 
 interface Props {
   slugs: string[];
@@ -13,28 +15,32 @@ const related = slugs
   .map(slug => allArticles.find(a => a.slug === slug))
   .filter(Boolean)
   .filter(a => a!.slug !== currentSlug)
-  .slice(0, 3);
+  .slice(0, 3)
+  .map(a => ({
+    ...a!,
+    hasImage: !!(a!.data.heroImage && existsSync(join('public', a!.data.heroImage))),
+  }));
 ---
 
 {related.length > 0 && (
   <section class="mt-12 not-prose">
     <h2 class="text-xl font-bold text-gray-900 mb-5">Related Guides</h2>
     <div class="grid sm:grid-cols-3 gap-4">
-      {related.map(article => (
+      {related.map((article) => (
         <a
-          href={`/${article!.slug}/`}
+          href={`/${article.slug}/`}
           class="card p-4 hover:shadow-md transition-shadow no-underline group"
         >
-          {article!.data.heroImage && (
+          {article.hasImage && (
             <img
-              src={article!.data.heroImage}
-              alt={article!.data.title}
+              src={article.data.heroImage}
+              alt={article.data.title}
               class="w-full rounded-lg mb-3 object-cover aspect-video"
               loading="lazy"
             />
           )}
           <p class="font-semibold text-gray-900 group-hover:text-brand transition-colors text-sm leading-snug">
-            {article!.data.title}
+            {article.data.title}
           </p>
         </a>
       ))}

@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import destinations from '../../data/destinations.json';
+import { getOrganizationSchema } from '../../lib/schema/organization';
+
+const legalDests = destinations.filter(d => d.legalCeremonyType === 'legal');
+const symbolicRecDests = destinations.filter(d => d.legalCeremonyType === 'symbolic-recommended');
+const symbolicOnlyDests = destinations.filter(d => d.legalCeremonyType === 'symbolic-only');
+---
+
+<BaseLayout
+  title="Symbolic vs. Legal Ceremony — The Guide Nobody Writes | BeachBride"
+  description="Should you get legally married at home and have a symbolic ceremony at your destination? This guide covers which destinations are legal-easy, which are symbolic-recommended, and how to plan both."
+  canonical="https://beachbride.com/guides/symbolic-ceremony/"
+  schema={getOrganizationSchema()}
+>
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+    <h1 class="text-4xl font-bold text-gray-900 mb-4">
+      Why Many Couples Get Legally Married at Home First
+    </h1>
+    <p class="text-lg text-gray-600 mb-8">
+      The destination wedding industry's best-kept (not so) secret: you don't need a legal ceremony at your destination. A symbolic ceremony can be just as beautiful, just as meaningful, and infinitely less stressful. Here's how it works.
+    </p>
+
+    <!-- What is a symbolic ceremony -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">What is a symbolic ceremony?</h2>
+      <p class="text-gray-600 mb-4">
+        A symbolic ceremony is your full wedding celebration — vows, rings, first kiss, bridal party, the works — without the legal paperwork. It looks, feels, and photographs exactly like a "real" wedding. The only difference? You handle the legal part separately, usually at your local courthouse for $50–$100 before or after your trip.
+      </p>
+      <p class="text-gray-600">
+        Your guests won't know the difference. Your photos won't know the difference. The only thing that changes is paperwork — and that paperwork gets dramatically simpler.
+      </p>
+    </section>
+
+    <!-- Why do it -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">Why do this?</h2>
+      <div class="space-y-3">
+        <div class="bg-white rounded-xl border border-gray-100 p-4">
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Unlocks restricted destinations</h3>
+          <p class="text-sm text-gray-600">Some countries (Bali, Maldives) simply don't allow foreigners to legally marry. Others (Italy, Greece, Croatia) make the process so complex that it takes 3–6 months of paperwork. A symbolic ceremony opens these destinations fully.</p>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 p-4">
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Total venue freedom</h3>
+          <p class="text-sm text-gray-600">Legal ceremonies often restrict where and when you can marry. In Aruba, the civil ceremony must happen at city hall. In Croatia, you need a court interpreter. Symbolic ceremonies let you choose any venue, any time, any officiant.</p>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 p-4">
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Less stress, fewer fees</h3>
+          <p class="text-sm text-gray-600">No apostilles, no translations, no blood tests, no embassy visits, no 30-day waiting periods. A courthouse ceremony at home costs $50–$100 and takes 15 minutes.</p>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 p-4">
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Choose your own officiant</h3>
+          <p class="text-sm text-gray-600">Want your best friend to marry you? A spiritual leader? A family member? Legal ceremonies often require a government-authorized officiant. Symbolic ceremonies let anyone do it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Destination table -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">Every destination, categorized</h2>
+      <p class="text-sm text-gray-500 mb-4">We've categorized every BeachBride destination by how easy the legal process is for US couples.</p>
+
+      <!-- Legal easy -->
+      <div class="mb-6">
+        <h3 class="font-bold text-green-700 text-sm uppercase tracking-wide mb-2 flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+          Legal ceremony is straightforward
+        </h3>
+        <div class="bg-green-50 rounded-xl border border-green-100 overflow-hidden">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-px bg-green-100">
+            {legalDests.map(d => (
+              <a href={`/destinations/${d.slug}/`} class="bg-green-50 p-3 hover:bg-green-100 transition-colors no-underline">
+                <span class="mr-1">{d.emoji}</span>
+                <span class="font-semibold text-sm text-green-900">{d.name}</span>
+                <span class="text-xs text-green-700 block">{d.country}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Symbolic recommended -->
+      <div class="mb-6">
+        <h3 class="font-bold text-amber-700 text-sm uppercase tracking-wide mb-2 flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+          Symbolic ceremony recommended
+        </h3>
+        <p class="text-xs text-gray-500 mb-2">Legal is possible but complex — most couples choose symbolic + legal at home.</p>
+        <div class="bg-amber-50 rounded-xl border border-amber-100 overflow-hidden">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-px bg-amber-100">
+            {symbolicRecDests.map(d => (
+              <a href={`/destinations/${d.slug}/`} class="bg-amber-50 p-3 hover:bg-amber-100 transition-colors no-underline">
+                <span class="mr-1">{d.emoji}</span>
+                <span class="font-semibold text-sm text-amber-900">{d.name}</span>
+                <span class="text-xs text-amber-700 block">{d.country}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Symbolic only -->
+      <div class="mb-6">
+        <h3 class="font-bold text-red-700 text-sm uppercase tracking-wide mb-2 flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+          Symbolic only — no legal option for foreigners
+        </h3>
+        <div class="bg-red-50 rounded-xl border border-red-100 overflow-hidden">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-px bg-red-100">
+            {symbolicOnlyDests.map(d => (
+              <a href={`/destinations/${d.slug}/`} class="bg-red-50 p-3 hover:bg-red-100 transition-colors no-underline">
+                <span class="mr-1">{d.emoji}</span>
+                <span class="font-semibold text-sm text-red-900">{d.name}</span>
+                <span class="text-xs text-red-700 block">{d.country}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">Sample timeline: legal at home + symbolic abroad</h2>
+      <div class="border-l-2 border-brand/30 pl-6 space-y-6">
+        <div class="relative">
+          <div class="absolute -left-[31px] w-4 h-4 rounded-full bg-brand border-2 border-white"></div>
+          <p class="font-bold text-gray-900 text-sm">2–4 weeks before your trip</p>
+          <p class="text-sm text-gray-600">Visit your local courthouse. Bring IDs, marriage license application, and ~$50–$100. The ceremony takes 10–15 minutes. You're legally married.</p>
+        </div>
+        <div class="relative">
+          <div class="absolute -left-[31px] w-4 h-4 rounded-full bg-brand border-2 border-white"></div>
+          <p class="font-bold text-gray-900 text-sm">Your wedding day abroad</p>
+          <p class="text-sm text-gray-600">Full ceremony with your chosen officiant, vows, rings, and celebration. The only person who knows this is symbolic is you (and now your planner).</p>
+        </div>
+        <div class="relative">
+          <div class="absolute -left-[31px] w-4 h-4 rounded-full bg-brand border-2 border-white"></div>
+          <p class="font-bold text-gray-900 text-sm">After you return</p>
+          <p class="text-sm text-gray-600">Update your name (if applicable), notify banks, and enjoy married life. No foreign document translations, no apostilles, no embassy visits needed.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Common questions</h2>
+      <div class="space-y-4">
+        <details class="bg-white rounded-xl border border-gray-100 overflow-hidden group">
+          <summary class="p-4 cursor-pointer font-semibold text-gray-900 text-sm hover:bg-gray-50 transition-colors">
+            Is a symbolic ceremony "real"?
+          </summary>
+          <div class="px-4 pb-4 text-sm text-gray-600">
+            Yes — emotionally, spiritually, and experientially. It's the same ceremony, the same vows, the same moment. The only thing that's different is paperwork, which you've already handled at home. Many couples find this actually more meaningful, because the destination ceremony is purely about the relationship, not about filing forms.
+          </div>
+        </details>
+        <details class="bg-white rounded-xl border border-gray-100 overflow-hidden group">
+          <summary class="p-4 cursor-pointer font-semibold text-gray-900 text-sm hover:bg-gray-50 transition-colors">
+            Will my guests know it's symbolic?
+          </summary>
+          <div class="px-4 pb-4 text-sm text-gray-600">
+            Not unless you tell them. The ceremony looks identical. There's no announcement, no visible difference. If you want, you can share the story of your courthouse moment as a sweet anecdote — many couples find it romantic.
+          </div>
+        </details>
+        <details class="bg-white rounded-xl border border-gray-100 overflow-hidden group">
+          <summary class="p-4 cursor-pointer font-semibold text-gray-900 text-sm hover:bg-gray-50 transition-colors">
+            Does my anniversary date change?
+          </summary>
+          <div class="px-4 pb-4 text-sm text-gray-600">
+            Legally, your marriage date is the courthouse date. But most couples celebrate the destination ceremony as their anniversary — it's your call. Some couples see the courthouse as a fun secret prologue.
+          </div>
+        </details>
+        <details class="bg-white rounded-xl border border-gray-100 overflow-hidden group">
+          <summary class="p-4 cursor-pointer font-semibold text-gray-900 text-sm hover:bg-gray-50 transition-colors">
+            Can I still do a legal ceremony at my destination if I want to?
+          </summary>
+          <div class="px-4 pb-4 text-sm text-gray-600">
+            Absolutely — for destinations marked "legal" in our guide, the process is straightforward. This guide is for destinations where legal is complex or impossible. Check the specific destination page for full requirements.
+          </div>
+        </details>
+        <details class="bg-white rounded-xl border border-gray-100 overflow-hidden group">
+          <summary class="p-4 cursor-pointer font-semibold text-gray-900 text-sm hover:bg-gray-50 transition-colors">
+            What about travel insurance and name changes?
+          </summary>
+          <div class="px-4 pb-4 text-sm text-gray-600">
+            Travel under your maiden name — it matches your passport and avoids confusion. Handle name changes after you return home. For travel insurance, purchase it under your current legal name at the time of travel.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="lead-capture-box not-prose text-center">
+      <h2 class="text-xl font-bold text-gray-900 mb-2">Ready to plan your destination wedding?</h2>
+      <p class="text-sm text-gray-600 mb-4">
+        Take our 60-second quiz to get matched with destinations that fit your style — whether you want a legal ceremony or symbolic.
+      </p>
+      <a href="/quiz/" class="btn-primary">Take the quiz →</a>
+    </div>
+  </main>
+</BaseLayout>

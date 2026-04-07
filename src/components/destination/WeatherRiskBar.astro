@@ -1,0 +1,66 @@
+---
+/**
+ * Weather Risk Visualization — replaces the simple best/rainy month grid
+ * with a 4-color 12-month bar showing rain days and hurricane risk.
+ */
+
+interface MonthWeather {
+  month: string;
+  rainDays: number;
+  hurricaneRisk: 'none' | 'low' | 'medium' | 'high';
+  avgTempF: { min: number; max: number };
+}
+
+interface Props {
+  monthlyWeather: MonthWeather[];
+  bestMonths: string[];
+  destinationName: string;
+}
+
+const { monthlyWeather, bestMonths, destinationName } = Astro.props;
+
+const SHORT_MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function getMonthColor(weather: MonthWeather, isBest: boolean): string {
+  if (weather.hurricaneRisk === 'high') return 'bg-red-500 text-white';
+  if (weather.hurricaneRisk === 'medium' || weather.rainDays >= 12) return 'bg-orange-400 text-white';
+  if (isBest && weather.rainDays <= 5) return 'bg-brand text-white';
+  if (isBest) return 'bg-brand/70 text-white';
+  if (weather.rainDays <= 5) return 'bg-yellow-100 text-yellow-800';
+  return 'bg-gray-100 text-gray-500';
+}
+---
+
+<div>
+  <div class="grid grid-cols-6 gap-1 sm:grid-cols-12">
+    {monthlyWeather.map((weather, i) => {
+      const isBest = bestMonths.includes(weather.month);
+      const colorClass = getMonthColor(weather, isBest);
+      return (
+        <div class={`rounded p-2 text-center text-xs font-medium relative group cursor-default ${colorClass}`}>
+          <span class="block">{SHORT_MONTHS[i]}</span>
+          <span class="block text-[10px] opacity-75 mt-0.5">{weather.rainDays}d rain</span>
+          {weather.hurricaneRisk !== 'none' && (
+            <span class="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-red-500 border border-white" title={`${weather.hurricaneRisk} hurricane risk`}></span>
+          )}
+          <!-- Tooltip -->
+          <div class="hidden group-hover:block absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-36 bg-gray-900 text-white text-xs rounded-lg p-2 z-10 pointer-events-none shadow-lg">
+            <p class="font-semibold">{weather.month}</p>
+            <p>{weather.avgTempF.min}°–{weather.avgTempF.max}°F</p>
+            <p>{weather.rainDays} rain days</p>
+            {weather.hurricaneRisk !== 'none' && (
+              <p class="text-orange-300">Hurricane risk: {weather.hurricaneRisk}</p>
+            )}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+  <div class="flex flex-wrap gap-3 mt-2 text-xs text-gray-500">
+    <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-brand inline-block"></span> Ideal</span>
+    <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-yellow-100 border border-yellow-200 inline-block"></span> Shoulder</span>
+    <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-orange-400 inline-block"></span> Caution</span>
+    <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-red-500 inline-block"></span> Avoid</span>
+    <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-red-500 border border-white inline-block"></span> Hurricane risk</span>
+  </div>
+</div>

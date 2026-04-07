@@ -80,14 +80,27 @@ npm run content:generate -- --topic "topic-id"       # Generate specific topic
 npm run content:publish -- --dry-run                 # Preview publish
 npm run content:publish                              # Publish oldest queued article
 npm run content:status                               # Pipeline status
+
+# WP migration audit
+npm run wp:audit                                     # Audit WordPress migration
+npm run wp:audit:dry                                 # Dry run audit
 ```
+
+No linter or test framework is configured. Validation happens via `npm run build` (Astro type-checks and catches broken references) and the content engine's quality gate.
 
 ## Architecture
 
+### CI/CD (GitHub Actions)
+- **`deploy.yml`** — triggers on push to `main` (production) or `develop` (preview). Runs `npm ci && npm run build`, deploys to Cloudflare Pages, then deploys form-handler Worker on `main` only.
+- **`content-generate.yml`** — runs content generation pipeline
+- **`content-publish.yml`** — runs content publish pipeline
+
 ### Three deployment targets
-1. **Cloudflare Pages** — static Astro site, auto-deploys on push to `main` (live) or `develop` (preview)
-2. **Form handler Worker** (`workers/form-handler.ts`) — handles lead/vendor/contact form POSTs, auto-deploys with Pages
+1. **Cloudflare Pages** — static Astro site, auto-deploys on push to `main` (live at beachbride.com) or `develop` (preview at develop.beachbride-site.pages.dev)
+2. **Form handler Worker** (`workers/form-handler.ts`) — handles lead/vendor/contact form POSTs at `/workers/form` and `/workers/contact`, auto-deploys with Pages on `main`
 3. **Chat proxy Worker** (`workers/chat-proxy.ts`) — optional, manual deploy only (`wrangler deploy --config wrangler-chat.toml`)
+
+Worker secrets (set via `wrangler secret put` or CF dashboard): `MAILGUN_API_KEY`, `MAILGUN_DOMAIN`, `SENDY_URL`, `SENDY_API_KEY`, `SENDY_LIST_ID`, `SENDY_NURTURE_LIST_ID`
 
 ### Content engine pipeline
 `discover.js` → `generate.js` → `publish.js`, driven by `pipeline.json` state file.

@@ -4,14 +4,14 @@ import { getOrganizationSchema, getWebSiteSchema } from '../lib/schema/organizat
 import { SITE_CONFIG } from '../lib/site-config';
 
 const destinations = [
-  { slug: 'cancun', name: 'Cancun', country: 'Mexico', emoji: '🌊', tagline: 'Turquoise water, white sand, all-inclusive luxury' },
-  { slug: 'punta-cana', name: 'Punta Cana', country: 'Dominican Republic', emoji: '🌴', tagline: 'Palm-fringed beaches and world-class resorts' },
-  { slug: 'jamaica', name: 'Jamaica', country: 'Jamaica', emoji: '🏝️', tagline: 'Lush mountains meet crystal-clear sea' },
-  { slug: 'hawaii', name: 'Hawaii', country: 'USA', emoji: '🌺', tagline: 'Volcanic drama and tropical paradise' },
-  { slug: 'bali', name: 'Bali', country: 'Indonesia', emoji: '🪷', tagline: 'Spiritual beauty and exotic romance' },
-  { slug: 'santorini', name: 'Santorini', country: 'Greece', emoji: '🤍', tagline: 'Iconic sunsets over the caldera' },
-  { slug: 'tulum', name: 'Tulum', country: 'Mexico', emoji: '🌿', tagline: 'Bohemian chic meets ancient Mayan coast' },
-  { slug: 'costa-rica', name: 'Costa Rica', country: 'Costa Rica', emoji: '🦜', tagline: 'Rainforest, volcanoes, and Pacific beaches' },
+  { slug: 'cancun', name: 'Cancun', country: 'Mexico', tagline: 'Turquoise water, white sand, all-inclusive luxury' },
+  { slug: 'punta-cana', name: 'Punta Cana', country: 'Dominican Republic', tagline: 'Palm-fringed beaches and world-class resorts' },
+  { slug: 'jamaica', name: 'Jamaica', country: 'Jamaica', tagline: 'Lush mountains meet crystal-clear sea' },
+  { slug: 'hawaii', name: 'Hawaii', country: 'USA', tagline: 'Volcanic drama and tropical paradise' },
+  { slug: 'bali', name: 'Bali', country: 'Indonesia', tagline: 'Spiritual beauty and exotic romance' },
+  { slug: 'santorini', name: 'Santorini', country: 'Greece', tagline: 'Iconic sunsets over the caldera' },
+  { slug: 'tulum', name: 'Tulum', country: 'Mexico', tagline: 'Bohemian chic meets ancient Mayan coast' },
+  { slug: 'costa-rica', name: 'Costa Rica', country: 'Costa Rica', tagline: 'Rainforest, volcanoes, and Pacific beaches' },
 ];
 
 const schemas = [getOrganizationSchema(), getWebSiteSchema()];
@@ -54,12 +54,21 @@ const schemas = [getOrganizationSchema(), getWebSiteSchema()];
       {destinations.map(dest => (
         <a
           href={`/destinations/${dest.slug}/`}
-          class="card group p-5 hover:shadow-md transition-shadow duration-200 no-underline"
+          class="card group hover:shadow-lg transition-all duration-300 no-underline overflow-hidden"
         >
-          <div class="text-3xl mb-2">{dest.emoji}</div>
-          <h3 class="font-bold text-gray-900 group-hover:text-brand transition-colors">{dest.name}</h3>
-          <p class="text-xs text-gray-500 mb-1">{dest.country}</p>
-          <p class="text-xs text-gray-600 leading-snug">{dest.tagline}</p>
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img
+              src={`/images/destinations/${dest.slug}.jpg`}
+              alt={`${dest.name} destination wedding`}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+            <div class="absolute bottom-0 left-0 right-0 p-3">
+              <h3 class="font-bold text-white text-sm leading-tight">{dest.name}</h3>
+              <p class="text-[11px] text-white/80">{dest.country}</p>
+            </div>
+          </div>
         </a>
       ))}
     </div>

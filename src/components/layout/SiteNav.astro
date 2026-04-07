@@ -9,11 +9,17 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-  <nav class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+<header class="sticky top-0 z-50 border-b border-gray-200 shadow-sm" style="background:#F9F5F0;">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-20 sm:h-24">
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-2 no-underline flex-shrink-0">
-      <span class="text-xl font-bold text-brand">Beach<span class="text-brand-accent">Bride</span></span>
+    <a href="/" class="flex items-center no-underline flex-shrink-0">
+      <img
+        src="/images/logo.svg"
+        alt="BeachBride — Luxury Weddings"
+        class="h-16 sm:h-20 w-auto object-contain"
+        width="1569"
+        height="633"
+      />
     </a>
 
     <!-- Desktop nav -->
@@ -49,7 +55,7 @@ const currentPath = Astro.url.pathname;
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </summary>
-      <div class="absolute top-16 left-0 right-0 bg-white border-b border-gray-200 shadow-lg p-4 flex flex-col gap-3">
+      <div class="absolute top-20 sm:top-24 left-0 right-0 border-b border-gray-200 shadow-lg p-4 flex flex-col gap-3" style="background:#F9F5F0;">
         {navLinks.map(link => (
           <a href={link.href} class="text-sm font-medium text-gray-700 hover:text-brand no-underline py-2.5">
             {link.label}

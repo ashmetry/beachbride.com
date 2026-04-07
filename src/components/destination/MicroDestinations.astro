@@ -1,0 +1,53 @@
+---
+/**
+ * Micro-Destinations — shows distinct areas within a destination.
+ * Only renders if the destination has microDestinations data.
+ */
+
+interface MicroDestination {
+  name: string;
+  description: string;
+  vibe: string;
+  bestFor: string;
+}
+
+interface Props {
+  microDestinations: MicroDestination[];
+  destinationName: string;
+}
+
+const { microDestinations, destinationName } = Astro.props;
+
+const vibeColors: Record<string, string> = {
+  luxury: 'bg-brand-accent/10 text-brand-accent',
+  romantic: 'bg-pink-50 text-pink-600',
+  boho: 'bg-green-50 text-green-600',
+  adventurous: 'bg-orange-50 text-orange-600',
+  tropical: 'bg-cyan-50 text-cyan-600',
+  mediterranean: 'bg-blue-50 text-blue-600',
+  rustic: 'bg-amber-50 text-amber-700',
+};
+---
+
+{microDestinations.length > 0 && (
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold text-gray-900 mb-2">Where in {destinationName}?</h2>
+    <p class="text-sm text-gray-500 mb-4">Each area has a distinct character — the right choice depends on your style and guest count.</p>
+    <div class="grid gap-4 sm:grid-cols-2">
+      {microDestinations.map(micro => (
+        <div class="bg-white rounded-xl border border-gray-100 p-4">
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="font-bold text-gray-900 text-sm">{micro.name}</h3>
+            <span class={`text-[10px] font-semibold px-2 py-0.5 rounded-full capitalize ${vibeColors[micro.vibe] || 'bg-gray-100 text-gray-600'}`}>
+              {micro.vibe}
+            </span>
+          </div>
+          <p class="text-sm text-gray-600 mb-2">{micro.description}</p>
+          <p class="text-xs text-gray-400">
+            <span class="font-medium text-gray-500">Best for:</span> {micro.bestFor}
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
+)}

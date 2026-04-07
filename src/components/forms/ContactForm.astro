@@ -1,0 +1,100 @@
+---
+interface Props {
+  /** Prefill the subject/context so we know where the form was submitted from */
+  source?: string;
+  /** Button label */
+  buttonText?: string;
+}
+
+const { source = 'contact', buttonText = 'Send Message' } = Astro.props;
+const formId = `contact-form-${source}`;
+---
+
+<form id={formId} class="space-y-5 max-w-lg" data-source={source} novalidate>
+  <!-- Honeypot -->
+  <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;">
+    <label for={`${formId}-hp`}>Website (leave blank)</label>
+    <input type="text" id={`${formId}-hp`} name="website" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <div class="grid sm:grid-cols-2 gap-4">
+    <div>
+      <label for={`${formId}-name`} class="block text-sm font-medium text-gray-700 mb-1">Name *</label>
+      <input type="text" id={`${formId}-name`} name="name" required
+        class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent" />
+    </div>
+    <div>
+      <label for={`${formId}-email`} class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+      <input type="email" id={`${formId}-email`} name="email" required
+        class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent" />
+    </div>
+  </div>
+
+  <div>
+    <label for={`${formId}-message`} class="block text-sm font-medium text-gray-700 mb-1">Message *</label>
+    <textarea id={`${formId}-message`} name="message" rows="4" required
+      class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent resize-none"
+      placeholder="Tell us about your business, the destinations you serve, and what you're looking for."></textarea>
+  </div>
+
+  <p class="form-error hidden text-red-600 text-sm"></p>
+  <button type="submit" class="form-submit btn-primary w-full">{buttonText}</button>
+  <p class="text-xs text-gray-400 text-center">We typically respond within 1 business day.</p>
+</form>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('[id^="contact-form-"]').forEach((form) => {
+    const errorEl = form.querySelector('.form-error') as HTMLParagraphElement;
+    const submitBtn = form.querySelector('.form-submit') as HTMLButtonElement;
+    const source = form.dataset.source || 'contact';
+    const originalText = submitBtn.textContent || 'Send Message';
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorEl.classList.add('hidden');
+
+      const get = (name: string) =>
+        (form.elements.namedItem(name) as HTMLInputElement | HTMLTextAreaElement)?.value?.trim() ?? '';
+
+      if (get('website')) { window.location.href = '/thank-you/'; return; }
+
+      const name = get('name');
+      const email = get('email');
+      const message = get('message');
+
+      if (!name || !email || !message) {
+        errorEl.textContent = 'Please fill in all fields.';
+        errorEl.classList.remove('hidden');
+        return;
+      }
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.classList.remove('hidden');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      try {
+        const res = await fetch('/workers/form', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ type: 'contact', name, email, message: `[${source}] ${message}` }),
+        });
+
+        if (res.ok) {
+          window.location.href = '/thank-you/';
+        } else {
+          throw new Error('Server error');
+        }
+      } catch {
+        errorEl.textContent = 'Something went wrong. Please try again.';
+        errorEl.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
+  });
+</script>

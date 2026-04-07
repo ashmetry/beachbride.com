@@ -7,6 +7,10 @@
     scroll-behavior: smooth;
   }
 
+  html {
+    font-size: 17px;
+  }
+
   body {
     @apply text-gray-800 bg-neutral;
   }

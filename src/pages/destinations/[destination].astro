@@ -1,6 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/layout/Breadcrumb.astro';
+import WeatherRiskBar from '../../components/destination/WeatherRiskBar.astro';
+import GuestBurdenScore from '../../components/destination/GuestBurdenScore.astro';
+import CeremonyTypeBadge from '../../components/destination/CeremonyTypeBadge.astro';
+import MicroDestinations from '../../components/destination/MicroDestinations.astro';
 import destinations from '../../data/destinations.json';
 import vendors from '../../data/vendors.json';
 import { getDestinationSchema } from '../../lib/schema/destination';
@@ -30,6 +34,14 @@ const destArticles = allArticles
 const heroExists = dest.heroImage && existsSync(join('public', dest.heroImage));
 const schema = getDestinationSchema(dest);
 const canonical = `https://beachbride.com/destinations/${slug}/`;
+
+// Guest burden score color
+const guestScoreColor = dest.guestBurden.score >= 8 ? 'text-green-600' : dest.guestBurden.score >= 5 ? 'text-yellow-600' : 'text-red-500';
+
+// Legal ceremony display
+const legalDisplay = dest.legalCeremonyType === 'legal' ? 'Yes — legal' :
+  dest.legalCeremonyType === 'symbolic-recommended' ? 'Symbolic rec.' :
+  'Symbolic only';
 ---
 
 <BaseLayout
@@ -46,15 +58,27 @@ const canonical = `https://beachbride.com/destinations/${slug}/`;
 
     <!-- Hero -->
     {heroExists ? (
-      <img
-        src={dest.heroImage}
-        alt={`${dest.name} destination wedding`}
-        class="w-full rounded-2xl object-cover aspect-[21/9] mb-8"
-        loading="eager"
-      />
+      <div class="relative mb-8">
+        <img
+          src={dest.heroImage}
+          alt={`${dest.name} destination wedding`}
+          class="w-full rounded-2xl object-cover aspect-[21/9]"
+          loading="eager"
+        />
+        {dest.isHiddenGem && (
+          <span class="absolute top-4 right-4 bg-brand-accent/90 text-white text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">
+            ✦ Hidden Gem
+          </span>
+        )}
+      </div>
     ) : (
-      <div class="w-full rounded-2xl bg-brand-light flex items-center justify-center aspect-[21/9] mb-8 text-8xl">
+      <div class="relative w-full rounded-2xl bg-brand-light flex items-center justify-center aspect-[21/9] mb-8 text-8xl">
         {dest.emoji}
+        {dest.isHiddenGem && (
+          <span class="absolute top-4 right-4 bg-brand-accent/90 text-white text-xs font-semibold px-3 py-1 rounded-full">
+            ✦ Hidden Gem
+          </span>
+        )}
       </div>
     )}
 
@@ -68,7 +92,7 @@ const canonical = `https://beachbride.com/destinations/${slug}/`;
     <p class="text-lg text-gray-600 mt-4 mb-8">{dest.description}</p>
 
     <!-- Quick stats -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+    <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-10">
       <div class="bg-white rounded-xl p-4 border border-gray-100 text-center">
         <p class="text-xs text-gray-400 uppercase tracking-wide mb-1">Avg Cost</p>
         <p class="font-bold text-gray-900">${(dest.avgCostUSD.min/1000).toFixed(0)}k–${(dest.avgCostUSD.max/1000).toFixed(0)}k</p>
@@ -83,43 +107,48 @@ const canonical = `https://beachbride.com/destinations/${slug}/`;
       </div>
       <div class="bg-white rounded-xl p-4 border border-gray-100 text-center">
         <p class="text-xs text-gray-400 uppercase tracking-wide mb-1">Legal Wedding</p>
-        <p class="font-bold text-gray-900">{dest.country === 'Indonesia' ? 'Symbolic only' : 'Yes'}</p>
+        <p class="font-bold text-gray-900">{legalDisplay}</p>
+      </div>
+      <div class="bg-white rounded-xl p-4 border border-gray-100 text-center">
+        <p class="text-xs text-gray-400 uppercase tracking-wide mb-1">Guest Score</p>
+        <p class={`font-bold ${guestScoreColor}`}>{dest.guestBurden.score}/10</p>
       </div>
     </div>
 
-    <!-- Best times -->
+    <!-- Weather Risk -->
     <section class="mb-10">
       <h2 class="text-2xl font-bold text-gray-900 mb-4">Best time to get married in {dest.name}</h2>
-      <div class="grid grid-cols-6 gap-1 sm:grid-cols-12">
-        {['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].map((m, i) => {
-          const fullMonth = ['January','February','March','April','May','June','July','August','September','October','November','December'][i];
-          const isBest = dest.bestMonths.includes(fullMonth);
-          const isRainy = dest.rainySeasonMonths.includes(fullMonth);
-          return (
-            <div class={`rounded p-2 text-center text-xs font-medium ${
-              isBest ? 'bg-brand text-white' :
-              isRainy ? 'bg-red-100 text-red-600' :
-              'bg-gray-100 text-gray-500'
-            }`}>
-              {m}
-            </div>
-          );
-        })}
-      </div>
-      <div class="flex gap-4 mt-2 text-xs text-gray-500">
-        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-brand inline-block"></span> Best season</span>
-        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-red-100 inline-block"></span> Rainy season</span>
-      </div>
+      <WeatherRiskBar
+        monthlyWeather={dest.monthlyWeather}
+        bestMonths={dest.bestMonths}
+        destinationName={dest.name}
+      />
     </section>
 
-    <!-- Legal requirements -->
+    <!-- Guest Burden Score -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What it costs your guests</h2>
+      <GuestBurdenScore
+        guestBurden={dest.guestBurden}
+        destinationName={dest.name}
+      />
+    </section>
+
+    <!-- Legal / Ceremony Type -->
     <section class="mb-10">
       <h2 class="text-2xl font-bold text-gray-900 mb-3">Legal requirements</h2>
-      <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-sm text-amber-900">
-        <p class="font-semibold mb-2">⚠️ Always verify with local authorities</p>
-        <p>{dest.legalNotes}</p>
-      </div>
+      <CeremonyTypeBadge
+        legalCeremonyType={dest.legalCeremonyType}
+        legalNotes={dest.legalNotes}
+        destinationName={dest.name}
+      />
     </section>
+
+    <!-- Micro-Destinations -->
+    <MicroDestinations
+      microDestinations={dest.microDestinations}
+      destinationName={dest.name}
+    />
 
     <!-- Featured Resorts (Affiliate) -->
     <section class="mb-10">

@@ -28,7 +28,7 @@ const schema = getOrganizationSchema();
         <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
           Where will you say<br />"I do"?
         </h1>
-        <p class="text-gray-500">3 quick questions &middot; Personalized guide delivered instantly &middot; No spam</p>
+        <p class="text-gray-500">4 quick questions &middot; Your top 3 matches delivered instantly &middot; No spam</p>
       </div>
     )}
 
@@ -145,5 +145,18 @@ const schema = getOrganizationSchema();
       cursor: pointer; padding: 0; display: block;
     }
     .quiz-back-btn:hover { color: #374151; }
+
+    .quiz-match-card {
+      position: relative;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 1.25rem 1rem;
+      border: 2px solid #e5e7eb; border-radius: 0.75rem;
+      background: white; text-decoration: none; text-align: center;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .quiz-match-card:hover {
+      border-color: #2A7F8F;
+      box-shadow: 0 4px 12px rgba(42,127,143,0.15);
+    }
   </style>
 </BaseLayout>

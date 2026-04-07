@@ -1,0 +1,93 @@
+---
+/**
+ * Guest Burden Score — shows how easy/expensive it is for guests to attend.
+ * Score 1-10 (10 = easiest for guests).
+ */
+
+interface GuestBurden {
+  avgFlightCostUSD: number;
+  avgHotelPerNightUSD: number;
+  visaComplexity: 'none' | 'easy' | 'complex';
+  physicalAccessibility: 'easy' | 'moderate' | 'difficult';
+  score: number;
+}
+
+interface Props {
+  guestBurden: GuestBurden;
+  destinationName: string;
+}
+
+const { guestBurden, destinationName } = Astro.props;
+
+const scoreColor = guestBurden.score >= 8
+  ? 'bg-green-500'
+  : guestBurden.score >= 5
+    ? 'bg-yellow-500'
+    : 'bg-red-500';
+
+const scoreLabel = guestBurden.score >= 8
+  ? 'Guest-friendly'
+  : guestBurden.score >= 5
+    ? 'Moderate'
+    : 'Challenging for guests';
+
+const visaLabels = {
+  'none': 'No visa needed',
+  'easy': 'Easy visa/visa-on-arrival',
+  'complex': 'Visa required (apply in advance)',
+};
+
+const accessLabels = {
+  'easy': 'Easy — flat terrain, modern infrastructure',
+  'moderate': 'Moderate — some hilly terrain or transfers',
+  'difficult': 'Challenging — steep terrain, limited accessibility',
+};
+
+// Estimate total per-guest cost (4 nights + flight)
+const estimatedGuestTotal = guestBurden.avgFlightCostUSD + (guestBurden.avgHotelPerNightUSD * 4);
+---
+
+<div class="bg-white rounded-xl border border-gray-100 p-5">
+  <div class="flex items-center justify-between mb-4">
+    <h3 class="font-bold text-gray-900">Guest-Friendly Score</h3>
+    <div class="flex items-center gap-2">
+      <div class={`w-8 h-8 rounded-full ${scoreColor} text-white flex items-center justify-center font-bold text-sm`}>
+        {guestBurden.score}
+      </div>
+      <span class="text-sm text-gray-500">/ 10</span>
+    </div>
+  </div>
+
+  <p class="text-sm text-gray-500 mb-4">
+    How easy and affordable it is for your guests to attend a wedding in {destinationName}.
+  </p>
+
+  <div class="space-y-3 text-sm">
+    <div class="flex items-center justify-between">
+      <span class="text-gray-600">Avg round-trip flight from US</span>
+      <span class="font-semibold text-gray-900">~${guestBurden.avgFlightCostUSD.toLocaleString()}</span>
+    </div>
+    <div class="flex items-center justify-between">
+      <span class="text-gray-600">Typical hotel per night</span>
+      <span class="font-semibold text-gray-900">~${guestBurden.avgHotelPerNightUSD.toLocaleString()}</span>
+    </div>
+    <div class="flex items-center justify-between">
+      <span class="text-gray-600">Visa requirement</span>
+      <span class="font-semibold text-gray-900">{visaLabels[guestBurden.visaComplexity]}</span>
+    </div>
+    <div class="flex items-center justify-between">
+      <span class="text-gray-600">Accessibility</span>
+      <span class="font-semibold text-gray-900">{accessLabels[guestBurden.physicalAccessibility]}</span>
+    </div>
+  </div>
+
+  <div class="mt-4 pt-4 border-t border-gray-100">
+    <p class="text-sm text-gray-600">
+      <strong>Estimated per-guest cost:</strong>{' '}
+      <span class="text-gray-900 font-semibold">
+        ~${estimatedGuestTotal.toLocaleString()}
+      </span>
+      <span class="text-gray-400"> (flight + 4 nights)</span>
+    </p>
+  </div>
+</div>

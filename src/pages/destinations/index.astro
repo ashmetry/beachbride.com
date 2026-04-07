@@ -2,11 +2,17 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import destinations from '../../data/destinations.json';
 import { getOrganizationSchema } from '../../lib/schema/organization';
+
+const gems = destinations.filter(d => d.isHiddenGem);
+const mainDests = destinations.filter(d => !d.isHiddenGem);
+
+// Group by region
+const regions = [...new Set(destinations.map(d => d.region))];
 ---
 
 <BaseLayout
   title="Destination Wedding Locations — BeachBride"
-  description="Explore the world's best destination wedding locations. Compare costs, legal requirements, best times to visit, and top venues for Cancun, Bali, Santorini, and more."
+  description="Explore 25 destination wedding locations worldwide. Compare costs, legal requirements, guest-friendly scores, best times to visit, and top venues."
   canonical="https://beachbride.com/destinations/"
   schema={getOrganizationSchema()}
 >
@@ -14,30 +20,105 @@ import { getOrganizationSchema } from '../../lib/schema/organization';
     <div class="text-center mb-12">
       <h1 class="text-4xl font-bold text-gray-900 mb-4">Choose your destination</h1>
       <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-        Each destination guide covers venues, vetted vendors, real costs, best seasons, and legal requirements — everything you need to decide and start planning.
+        25 destinations across 6 regions. Each guide covers venues, vetted vendors, real costs, guest burden scores, best seasons, and legal requirements.
       </p>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {destinations.map(dest => (
+    <!-- Hidden Gems spotlight -->
+    {gems.length > 0 && (
+      <section class="mb-12">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h2 class="text-xl font-bold text-gray-900">Hidden Gems</h2>
+            <p class="text-sm text-gray-500">Stunning destinations before everyone else discovers them</p>
+          </div>
+          <a href="/destinations/hidden-gems/" class="text-brand text-sm font-semibold hover:underline no-underline hidden sm:block">
+            View all gems →
+          </a>
+        </div>
+        <div class="grid sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          {gems.map(gem => (
+            <a
+              href={`/destinations/${gem.slug}/`}
+              class="card group hover:shadow-lg transition-all duration-300 no-underline overflow-hidden relative"
+            >
+              <div class="aspect-[4/3] overflow-hidden">
+                <img
+                  src={`/images/destinations/${gem.slug}.jpg`}
+                  alt={`${gem.name} destination wedding`}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+              <div class="p-3 relative">
+                <span class="absolute -top-3 right-3 bg-brand-accent/90 text-white text-[9px] font-semibold px-2 py-0.5 rounded-full">
+                  ✦ Gem
+                </span>
+                <h3 class="font-bold text-sm text-gray-900 group-hover:text-brand transition-colors">{gem.name}</h3>
+                <p class="text-xs text-gray-400">{gem.country}</p>
+                <p class="text-xs text-gray-500 mt-1">From ${(gem.avgCostUSD.min/1000).toFixed(0)}k</p>
+              </div>
+            </a>
+          ))}
+        </div>
+        <a href="/destinations/hidden-gems/" class="text-brand text-sm font-semibold hover:underline no-underline mt-3 inline-block sm:hidden">
+          View all gems →
+        </a>
+      </section>
+    )}
+
+    <!-- Region filter -->
+    <div class="flex flex-wrap gap-2 mb-8" id="region-filters">
+      <button class="region-filter-btn active" data-region="all">All</button>
+      {regions.map(region => (
+        <button class="region-filter-btn" data-region={region}>{region}</button>
+      ))}
+    </div>
+
+    <!-- All destinations grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="destinations-grid">
+      {mainDests.map(dest => (
         <a
           href={`/destinations/${dest.slug}/`}
-          class="card group hover:shadow-md transition-shadow no-underline"
+          class="card group hover:shadow-lg transition-all duration-300 no-underline overflow-hidden destination-card"
+          data-region={dest.region}
+          data-budget={dest.budgetTier}
         >
-          <div class="bg-brand-light aspect-[16/9] flex items-center justify-center text-6xl">
-            {dest.emoji}
-          </div>
-          <div class="p-5">
-            <div class="flex items-center justify-between mb-1">
-              <h2 class="text-lg font-bold text-gray-900 group-hover:text-brand transition-colors">{dest.name}</h2>
-              <span class="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">{dest.country}</span>
+          <div class="relative aspect-[16/9] overflow-hidden">
+            <img
+              src={`/images/destinations/${dest.slug}.jpg`}
+              alt={`${dest.name} destination wedding`}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+            />
+            <div class="w-full h-full bg-brand-light items-center justify-center text-6xl hidden absolute inset-0">
+              {dest.emoji}
             </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+            <div class="absolute bottom-0 left-0 right-0 p-4">
+              <div class="flex items-end justify-between">
+                <h2 class="text-xl font-bold text-white leading-tight">{dest.name}</h2>
+                <span class="text-xs text-white/80 bg-white/20 backdrop-blur-sm px-2 py-0.5 rounded-full">{dest.country}</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4">
             <p class="text-sm text-gray-500 mb-3">{dest.tagline}</p>
             <div class="flex items-center justify-between text-xs text-gray-400">
-              <span>
-                Avg: ${(dest.avgCostUSD.min / 1000).toFixed(0)}k–${(dest.avgCostUSD.max / 1000).toFixed(0)}k
-              </span>
-              <span class="text-brand font-semibold">View guide →</span>
+              <div class="flex items-center gap-3">
+                <span>
+                  ${(dest.avgCostUSD.min / 1000).toFixed(0)}k–${(dest.avgCostUSD.max / 1000).toFixed(0)}k
+                </span>
+                <span class={`font-semibold ${
+                  dest.guestBurden.score >= 8 ? 'text-green-600' :
+                  dest.guestBurden.score >= 5 ? 'text-yellow-600' :
+                  'text-red-500'
+                }`}>
+                  Guest: {dest.guestBurden.score}/10
+                </span>
+              </div>
+              <span class="text-brand font-semibold group-hover:underline">View guide →</span>
             </div>
           </div>
         </a>
@@ -53,3 +134,35 @@ import { getOrganizationSchema } from '../../lib/schema/organization';
     </div>
   </main>
 </BaseLayout>
+
+<style>
+  .region-filter-btn {
+    @apply px-4 py-1.5 text-sm font-medium rounded-full border border-gray-200 text-gray-600 bg-white hover:border-brand hover:text-brand transition-colors cursor-pointer;
+  }
+  .region-filter-btn.active {
+    @apply bg-brand text-white border-brand;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll<HTMLButtonElement>('.region-filter-btn');
+    const cards = document.querySelectorAll<HTMLElement>('.destination-card');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const region = btn.dataset.region;
+
+        cards.forEach(card => {
+          if (region === 'all' || card.dataset.region === region) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>

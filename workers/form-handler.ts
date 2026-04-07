@@ -31,7 +31,9 @@ interface EmailCapturePayload {
   destinationSlug?: string; // e.g. "cancun"
   vibe?: string; // e.g. "tropical", "bohemian", "luxe"
   season?: string; // e.g. "winter", "spring", "summer", "fall"
-  guestBucket?: string; // e.g. "intimate (under 20)", "medium (20-50)", "large (50+)"
+  guestCount?: string; // e.g. "intimate", "medium", "large"
+  budget?: string; // e.g. "budget", "mid", "luxury"
+  matchedDestinations?: string[]; // top 3 slugs from quiz scoring
   utm_source?: string;
   utm_medium?: string;
   utm_campaign?: string;
@@ -80,19 +82,28 @@ type Payload = EmailCapturePayload | LeadPayload | VendorPayload | ContactPayloa
 // ─── Email ─────────────────────────────────────────────────────────────────────
 
 async function sendMailgunEmail(env: Env, to: string, subject: string, text: string): Promise<void> {
-  const formData = new FormData();
-  formData.append('from', `BeachBride <noreply@${env.MAILGUN_DOMAIN}>`);
-  formData.append('to', to);
-  formData.append('subject', subject);
-  formData.append('text', text);
+  if (!env.MAILGUN_API_KEY || !env.MAILGUN_DOMAIN) {
+    console.error('Mailgun not configured — skipping email to', to);
+    return;
+  }
 
-  const res = await fetch(`https://api.mailgun.net/v3/${env.MAILGUN_DOMAIN}/messages`, {
-    method: 'POST',
-    headers: { Authorization: `Basic ${btoa(`api:${env.MAILGUN_API_KEY}`)}` },
-    body: formData,
-  });
+  try {
+    const formData = new FormData();
+    formData.append('from', `BeachBride <noreply@${env.MAILGUN_DOMAIN}>`);
+    formData.append('to', to);
+    formData.append('subject', subject);
+    formData.append('text', text);
 
-  if (!res.ok) console.error('Mailgun error:', await res.text());
+    const res = await fetch(`https://api.mailgun.net/v3/${env.MAILGUN_DOMAIN}/messages`, {
+      method: 'POST',
+      headers: { Authorization: `Basic ${btoa(`api:${env.MAILGUN_API_KEY}`)}` },
+      body: formData,
+    });
+
+    if (!res.ok) console.error('Mailgun error:', await res.text());
+  } catch (err) {
+    console.error('Mailgun send failed:', err);
+  }
 }
 
 // ─── Sendy ─────────────────────────────────────────────────────────────────────
@@ -104,6 +115,11 @@ async function subscribeToSendy(
   name: string,
   customFields: Record<string, string> = {}
 ): Promise<void> {
+  if (!env.SENDY_URL || !env.SENDY_API_KEY || !listId) {
+    console.error('Sendy not configured — skipping subscribe');
+    return;
+  }
+
   const params = new URLSearchParams({
     api_key: env.SENDY_API_KEY,
     list: listId,
@@ -116,13 +132,17 @@ async function subscribeToSendy(
     if (v) params.append(k, v);
   }
 
-  const res = await fetch(`${env.SENDY_URL}/subscribe`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: params.toString(),
-  });
+  try {
+    const res = await fetch(`${env.SENDY_URL}/subscribe`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params.toString(),
+    });
 
-  if (!res.ok) console.error('Sendy subscribe error:', res.status);
+    if (!res.ok) console.error('Sendy subscribe error:', res.status);
+  } catch (err) {
+    console.error('Sendy subscribe failed:', err);
+  }
 }
 
 // ─── Email Builders ───────────────────────────────────────────────────────────
@@ -140,7 +160,9 @@ function buildOwnerEmail(payload: Payload): { subject: string; text: string } {
           `Destination: ${payload.destination ?? 'not specified'}`,
           `Vibe:        ${payload.vibe ?? 'not specified'}`,
           `Season:      ${payload.season ?? 'not specified'}`,
-          `Guests:      ${payload.guestBucket ?? 'not specified'}`,
+          `Guests:      ${payload.guestCount ?? 'not specified'}`,
+          `Budget:      ${payload.budget ?? 'not specified'}`,
+          `Matches:     ${payload.matchedDestinations?.join(', ') ?? 'none'}`,
           ...(payload.utm_source ? [`\nSource:      ${payload.utm_source} / ${payload.utm_medium ?? 'none'}`] : []),
         ].join('\n'),
       };
@@ -272,58 +294,64 @@ export default {
     try {
       payload = (await request.json()) as Payload;
     } catch {
-      return new Response('Invalid JSON', { status: 400 });
+      return jsonResponse({ ok: false, error: 'Invalid JSON' }, 400);
     }
 
-    const { subject, text } = buildOwnerEmail(payload);
+    try {
+      const { subject, text } = buildOwnerEmail(payload);
 
-    // Always notify owner
-    await sendMailgunEmail(env, env.NOTIFY_EMAIL, subject, text);
+      // Always notify owner
+      await sendMailgunEmail(env, env.NOTIFY_EMAIL, subject, text);
 
-    if (payload.type === 'email-capture') {
-      // Stage 1: subscribe to nurture list, send confirmation
-      await subscribeToSendy(env, env.SENDY_NURTURE_LIST_ID, payload.email, payload.name ?? '', {
-        destination: payload.destination ?? '',
-        destination_slug: payload.destinationSlug ?? '',
-        vibe: payload.vibe ?? '',
-        season: payload.season ?? '',
-        guest_bucket: payload.guestBucket ?? '',
-        utm_source: payload.utm_source ?? '',
-        utm_medium: payload.utm_medium ?? '',
-        utm_campaign: payload.utm_campaign ?? '',
-      });
+      if (payload.type === 'email-capture') {
+        // Stage 1: subscribe to nurture list, send confirmation
+        await subscribeToSendy(env, env.SENDY_NURTURE_LIST_ID, payload.email, payload.name ?? '', {
+          destination: payload.destination ?? '',
+          destination_slug: payload.destinationSlug ?? '',
+          vibe: payload.vibe ?? '',
+          season: payload.season ?? '',
+          guest_count: payload.guestCount ?? '',
+          budget: payload.budget ?? '',
+          utm_source: payload.utm_source ?? '',
+          utm_medium: payload.utm_medium ?? '',
+          utm_campaign: payload.utm_campaign ?? '',
+        });
 
-      await sendMailgunEmail(
-        env,
-        payload.email,
-        `Your ${payload.destination ?? 'destination wedding'} guide is ready`,
-        buildEmailCaptureConfirmation(payload)
-      );
+        await sendMailgunEmail(
+          env,
+          payload.email,
+          `Your ${payload.destination ?? 'destination wedding'} guide is ready`,
+          buildEmailCaptureConfirmation(payload)
+        );
+      }
+
+      if (payload.type === 'lead') {
+        // Stage 2: confirmation to bride + subscribe to main list
+        await sendMailgunEmail(
+          env,
+          payload.email,
+          `You're matched — ${payload.destination} wedding vendors will be in touch`,
+          buildBrideConfirmation(payload)
+        );
+
+        await subscribeToSendy(env, env.SENDY_LIST_ID, payload.email, payload.name, {
+          destination: payload.destination,
+          destination_slug: payload.destinationSlug ?? '',
+          wedding_date: payload.weddingDate ?? '',
+          guest_count: payload.guestCount ?? '',
+          budget: payload.budget ?? '',
+          services: payload.servicesNeeded?.join(', ') ?? '',
+          phone: payload.phone,
+          utm_source: payload.utm_source ?? '',
+          utm_medium: payload.utm_medium ?? '',
+          utm_campaign: payload.utm_campaign ?? '',
+        });
+      }
+
+      return jsonResponse({ ok: true });
+    } catch (err) {
+      console.error('Form handler error:', err);
+      return jsonResponse({ ok: false, error: 'Internal error' }, 500);
     }
-
-    if (payload.type === 'lead') {
-      // Stage 2: confirmation to bride + subscribe to main list
-      await sendMailgunEmail(
-        env,
-        payload.email,
-        `You're matched — ${payload.destination} wedding vendors will be in touch`,
-        buildBrideConfirmation(payload)
-      );
-
-      await subscribeToSendy(env, env.SENDY_LIST_ID, payload.email, payload.name, {
-        destination: payload.destination,
-        destination_slug: payload.destinationSlug ?? '',
-        wedding_date: payload.weddingDate ?? '',
-        guest_count: payload.guestCount ?? '',
-        budget: payload.budget ?? '',
-        services: payload.servicesNeeded?.join(', ') ?? '',
-        phone: payload.phone,
-        utm_source: payload.utm_source ?? '',
-        utm_medium: payload.utm_medium ?? '',
-        utm_campaign: payload.utm_campaign ?? '',
-      });
-    }
-
-    return jsonResponse({ ok: true });
   },
 };
