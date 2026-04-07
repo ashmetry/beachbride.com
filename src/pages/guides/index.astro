@@ -1,47 +1,25 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { GUIDE_CATEGORIES, getCategoryForSlug } from '../../data/guide-categories';
 
 const allArticles = await getCollection('articles', a => !a.data.noIndex);
-allArticles.sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
 
-// Group by rough category based on tags
-const categories = [
-  {
-    label: 'Planning & Budgeting',
-    slugs: ['destination-wedding-guide', 'destination-wedding-cost', 'destination-wedding-budget-hacks-that-dont-sacrifice-luxury', 'destination-wedding-tips', 'is-it-really-possible-to-save-money-with-a-beach-destination-wedding', 'beach-wedding-checklist'],
-  },
-  {
-    label: 'Food & Drink',
-    slugs: ['seafood-menu', 'beach-wedding-menu-ideas', 'a-delicious-tropical-menu-for-a-beach-themed-bridal-shower', 'delicious-beach-style-wedding-punch-recipes', 'dessert-bar-menu-ideas-for-a-beach-wedding'],
-  },
-  {
-    label: 'Décor & Style',
-    slugs: ['beautiful-beach-wedding-color-schemes', 'beach-wedding-beautiful-and-easy-centerpiece-ideas', 'gorgeous-beach-themed-wedding-cakes', 'beach-wedding-tabletop-decor-ideas', 'beach-wedding-in-the-evening-lighting-decor-ideas', '7-ways-to-bring-the-beach-to-a-wedding-reception-indoors', 'unique-beach-wedding-ideas'],
-  },
-  {
-    label: 'Bride & Wedding Party',
-    slugs: ['bridal-bouquets', 'beautiful-light-accessories-for-a-beach-bride', '5-best-options-for-beach-bridal-shoes', '5-breathtaking-beach-wedding-looks', '5-great-beach-wedding-bridesmaids-gifts', 'edible-wedding-favors-beach-wedding'],
-  },
-  {
-    label: 'Destinations & Honeymoons',
-    slugs: ['key-west-beach-wedding-destination', 'tips-for-planning-your-palm-beaches-destination-beach-wedding', '4-awesome-beach-destinations-honeymoon', 'celebrity-beach-weddings'],
-  },
-];
+// Group articles by category and get the most recent 3 per category for preview
+const categorized = GUIDE_CATEGORIES.map(cat => {
+  const articles = allArticles
+    .filter(a => getCategoryForSlug(a.id.replace(/\.mdx?$/, '')).slug === cat.slug)
+    .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+  return { cat, articles, preview: articles.slice(0, 3) };
+});
 
-// Build lookup
-const articleMap = Object.fromEntries(allArticles.map(a => [a.id.replace(/\.mdx?$/, ''), a]));
-
-// Articles not in any category (catch-all)
-const categorizedSlugs = new Set(categories.flatMap(c => c.slugs));
-const uncategorized = allArticles.filter(a => !categorizedSlugs.has(a.id.replace(/\.mdx?$/, '')));
-
+const totalArticles = allArticles.length;
 const canonical = 'https://beachbride.com/guides/';
 ---
 
 <BaseLayout
   title="Beach & Destination Wedding Guides | BeachBride"
-  description="Expert guides on planning, budgeting, décor, food, and style for your dream beach or destination wedding."
+  description="Expert planning guides, décor ideas, food menus, bridal style, and destination deep-dives for your perfect beach wedding."
   canonical={canonical}
   ogImage="/images/logo.png"
 >
@@ -50,27 +28,41 @@ const canonical = 'https://beachbride.com/guides/';
     <header class="text-center mb-12">
       <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Wedding Guides</h1>
       <p class="text-gray-600 max-w-xl mx-auto">
-        Everything you need to plan a beach or destination wedding — from budget breakdowns to décor ideas and honeymoon picks.
+        {totalArticles} expert guides covering everything from budgeting to bridal style — all written for beach and destination weddings.
       </p>
     </header>
 
-    {categories.map(cat => {
-      const articles = cat.slugs
-        .map(s => articleMap[s])
-        .filter(Boolean);
-      if (articles.length === 0) return null;
-      return (
-        <section class="mb-12">
-          <h2 class="text-lg font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">{cat.label}</h2>
+    <!-- Category sections -->
+    {categorized.map(({ cat, articles, preview }) => (
+      <section class="mb-14">
+
+        <!-- Category header -->
+        <div class="flex items-center justify-between mb-5">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">{cat.heroEmoji}</span>
+            <div>
+              <h2 class="text-xl font-bold text-gray-900">{cat.label}</h2>
+              <p class="text-sm text-gray-500">{articles.length} {articles.length === 1 ? 'guide' : 'guides'}</p>
+            </div>
+          </div>
+          {articles.length > 3 && (
+            <a href={`/guides/${cat.slug}/`} class="text-sm font-medium text-brand hover:text-brand-dark no-underline">
+              See all {articles.length} →
+            </a>
+          )}
+        </div>
+
+        <!-- Preview cards -->
+        {preview.length > 0 ? (
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {articles.map(article => {
+            {preview.map(article => {
               const slug = article.id.replace(/\.mdx?$/, '');
               return (
                 <a
                   href={`/${slug}/`}
                   class="group block rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white"
                 >
-                  {article.data.heroImage && (
+                  {article.data.heroImage ? (
                     <div class="aspect-[16/9] overflow-hidden bg-gray-100">
                       <img
                         src={article.data.heroImage}
@@ -79,54 +71,41 @@ const canonical = 'https://beachbride.com/guides/';
                         loading="lazy"
                       />
                     </div>
+                  ) : (
+                    <div class="aspect-[16/9] bg-brand-light flex items-center justify-center">
+                      <span class="text-4xl">{cat.heroEmoji}</span>
+                    </div>
                   )}
                   <div class="p-4">
                     <h3 class="font-semibold text-gray-900 text-sm leading-snug group-hover:text-brand transition-colors line-clamp-2">
                       {article.data.title}
                     </h3>
-                    <p class="text-xs text-gray-500 mt-1 line-clamp-2">{article.data.description}</p>
+                    <p class="text-xs text-gray-500 mt-1.5 line-clamp-2">{article.data.description}</p>
                   </div>
                 </a>
               );
             })}
-          </div>
-        </section>
-      );
-    })}
 
-    {uncategorized.length > 0 && (
-      <section class="mb-12">
-        <h2 class="text-lg font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">More Guides</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {uncategorized.map(article => {
-            const slug = article.id.replace(/\.mdx?$/, '');
-            return (
+            {/* "See all" card if more than 3 */}
+            {articles.length > 3 && (
               <a
-                href={`/${slug}/`}
-                class="group block rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white"
+                href={`/guides/${cat.slug}/`}
+                class="group flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-200 hover:border-brand hover:bg-brand-light transition-colors p-6 text-center min-h-[180px]"
               >
-                {article.data.heroImage && (
-                  <div class="aspect-[16/9] overflow-hidden bg-gray-100">
-                    <img
-                      src={article.data.heroImage}
-                      alt={article.data.title}
-                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
-                    />
-                  </div>
-                )}
-                <div class="p-4">
-                  <h3 class="font-semibold text-gray-900 text-sm leading-snug group-hover:text-brand transition-colors line-clamp-2">
-                    {article.data.title}
-                  </h3>
-                  <p class="text-xs text-gray-500 mt-1 line-clamp-2">{article.data.description}</p>
-                </div>
+                <span class="text-3xl mb-2">{cat.heroEmoji}</span>
+                <span class="text-sm font-semibold text-gray-600 group-hover:text-brand">
+                  +{articles.length - 3} more {cat.label} guides
+                </span>
+                <span class="text-xs text-gray-400 mt-1">See all →</span>
               </a>
-            );
-          })}
-        </div>
+            )}
+          </div>
+        ) : (
+          <p class="text-sm text-gray-400 italic">Coming soon.</p>
+        )}
+
       </section>
-    )}
+    ))}
 
     <!-- CTA -->
     <div class="bg-brand-light border border-brand/20 rounded-xl p-8 text-center">
