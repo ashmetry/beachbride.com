@@ -3,7 +3,7 @@ name: Content Engine — Generate
 on:
   schedule:
     - cron: '0 4 * * 1'   # Monday 4am UTC (Sunday 11pm ET)
-  workflow_dispatch: {}     # Manual trigger
+  workflow_dispatch:
 
 jobs:
   generate:
@@ -59,14 +59,13 @@ jobs:
       - name: Notify on failure
         if: failure()
         run: |
+          MSG="The content-generate workflow failed on $(date -u '+%Y-%m-%d %H:%M UTC'). Check the run logs: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           curl -s --user "api:$MAILGUN_API_KEY" \
             https://api.mailgun.net/v3/beachbride.com/messages \
             -F from="BeachBride Content Engine <noreply@beachbride.com>" \
             -F to="$NOTIFY_EMAIL" \
             -F subject="Content Engine: Generate workflow FAILED" \
-            -F text="The content-generate workflow failed on $(date -u '+%Y-%m-%d %H:%M UTC').
-
-Check the run logs: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            -F text="$MSG"
         env:
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
           NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
