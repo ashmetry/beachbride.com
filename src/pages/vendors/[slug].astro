@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/layout/Breadcrumb.astro';
+import VendorTypeIcon from '../../components/vendors/VendorTypeIcon.astro';
 import vendors from '../../data/vendors.json';
 import destinations from '../../data/destinations.json';
 import { getVendorSchema } from '../../lib/schema/localBusiness';
@@ -18,10 +19,6 @@ const typeLabels: Record<string, string> = {
   planner: 'Wedding Planner', photographer: 'Photographer', florist: 'Florist',
   caterer: 'Caterer', dj: 'DJ / Entertainment', officiant: 'Officiant',
   resort: 'Resort', jeweler: 'Jeweler',
-};
-const typeIcons: Record<string, string> = {
-  planner: '📋', photographer: '📸', florist: '💐', caterer: '🍽️',
-  dj: '🎵', officiant: '💍', resort: '🏨', jeweler: '💎',
 };
 
 const vendorDestinations = destinations.filter(d => vendor.destinations.includes(d.slug));
@@ -52,8 +49,8 @@ const schema = getVendorSchema({
 
     <div class="card p-6 sm:p-8 mb-8">
       <div class="flex items-start gap-4">
-        <div class="w-16 h-16 rounded-2xl bg-brand-light flex items-center justify-center text-3xl flex-shrink-0">
-          {typeIcons[vendor.type] ?? '🏢'}
+        <div class="w-16 h-16 rounded-2xl bg-brand-light flex items-center justify-center flex-shrink-0 text-brand/70">
+          <VendorTypeIcon type={vendor.type} size={28} />
         </div>
         <div class="flex-1">
           <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -80,10 +77,9 @@ const schema = getVendorSchema({
         {vendorDestinations.map(d => (
           <a
             href={`/destinations/${d.slug}/`}
-            class="flex items-center gap-1.5 px-3 py-1.5 bg-brand-light rounded-full text-sm text-brand font-medium no-underline hover:bg-brand hover:text-white transition-colors"
+            class="px-3 py-1.5 bg-brand-light rounded-full text-sm text-brand font-medium no-underline hover:bg-brand hover:text-white transition-colors"
           >
-            <span>{d.emoji}</span>
-            <span>{d.name}</span>
+            {d.name}
           </a>
         ))}
       </div>
@@ -130,8 +126,8 @@ const schema = getVendorSchema({
           .slice(0, 4)
           .map(v => (
             <a href={`/vendors/${v.slug}/`} class="card p-4 hover:shadow-md transition-shadow no-underline group flex items-center gap-3">
-              <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center text-lg flex-shrink-0">
-                {typeIcons[v.type] ?? '🏢'}
+              <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center flex-shrink-0 text-brand/70">
+                <VendorTypeIcon type={v.type} size={20} />
               </div>
               <div>
                 <p class="font-semibold text-sm text-gray-900 group-hover:text-brand transition-colors">{v.name}</p>

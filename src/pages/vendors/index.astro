@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import VendorTypeIcon from '../../components/vendors/VendorTypeIcon.astro';
 import vendors from '../../data/vendors.json';
 import destinations from '../../data/destinations.json';
 
@@ -12,11 +13,7 @@ const typeLabels: Record<string, string> = {
   dj: 'DJ / Entertainment',
   officiant: 'Officiant',
 };
-const typeIcons: Record<string, string> = {
-  planner: '📋', photographer: '📸', florist: '💐', caterer: '🍽️', dj: '🎵', officiant: '💍',
-};
 
-// Featured vendors first (premium/pro tier)
 const sorted = [...vendors].sort((a, b) => {
   const tierOrder = { pro: 0, premium: 1, free: 2 };
   return (tierOrder[a.tier as keyof typeof tierOrder] ?? 2) - (tierOrder[b.tier as keyof typeof tierOrder] ?? 2);
@@ -44,10 +41,9 @@ const sorted = [...vendors].sort((a, b) => {
         {destinations.map(d => (
           <a
             href={`/vendors/${d.slug}/`}
-            class="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-full text-sm font-medium text-gray-700 hover:border-brand hover:text-brand transition-colors no-underline"
+            class="px-4 py-2 border border-gray-200 rounded-full text-sm font-medium text-gray-700 hover:border-brand hover:text-brand transition-colors no-underline"
           >
-            <span>{d.emoji}</span>
-            <span>{d.name}</span>
+            {d.name}
           </a>
         ))}
       </div>
@@ -58,8 +54,10 @@ const sorted = [...vendors].sort((a, b) => {
       <h2 class="text-lg font-bold text-gray-900 mb-4">Browse by vendor type</h2>
       <div class="grid grid-cols-3 sm:grid-cols-6 gap-3">
         {LEAD_TYPES.map(type => (
-          <div class="card p-3 text-center cursor-default">
-            <div class="text-2xl mb-1">{typeIcons[type]}</div>
+          <div class="card p-4 text-center cursor-default flex flex-col items-center gap-2">
+            <div class="text-brand/70">
+              <VendorTypeIcon type={type} size={24} />
+            </div>
             <p class="text-xs font-medium text-gray-700">{typeLabels[type]}</p>
           </div>
         ))}
@@ -73,8 +71,8 @@ const sorted = [...vendors].sort((a, b) => {
         {sorted.filter(v => LEAD_TYPES.includes(v.type)).map(v => (
           <a href={`/vendors/${v.slug}/`} class="card p-5 hover:shadow-md transition-shadow no-underline group">
             <div class="flex items-start gap-3">
-              <div class="w-11 h-11 rounded-xl bg-brand-light flex items-center justify-center text-xl flex-shrink-0">
-                {typeIcons[v.type] ?? '🏢'}
+              <div class="w-11 h-11 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0 text-brand/70">
+                <VendorTypeIcon type={v.type} size={22} />
               </div>
               <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-2 mb-0.5">
