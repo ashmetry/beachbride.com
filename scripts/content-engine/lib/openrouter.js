@@ -114,13 +114,34 @@ export async function callModelJSON(model, systemPrompt, userPrompt, options = {
   // Strip markdown code fences
   let cleaned = text.replace(/^```(?:json)?\s*\n?/m, '').replace(/\n?```\s*$/m, '').trim();
 
-  // If the model wrapped JSON in prose, extract the first {...} or [...] block
-  if (!cleaned.startsWith('{') && !cleaned.startsWith('[')) {
-    const match = cleaned.match(/(\{[\s\S]*\}|\[[\s\S]*\])/);
-    if (match) cleaned = match[1];
+  // Try parsing as-is first
+  try { return JSON.parse(cleaned); } catch { /* fall through */ }
+
+  // Extract balanced JSON object or array — handles prose before/after JSON
+  const start = cleaned.search(/[{[]/);
+  if (start !== -1) {
+    const opener = cleaned[start];
+    const closer = opener === '{' ? '}' : ']';
+    let depth = 0;
+    let inString = false;
+    let escape = false;
+    for (let i = start; i < cleaned.length; i++) {
+      const ch = cleaned[i];
+      if (escape) { escape = false; continue; }
+      if (ch === '\\' && inString) { escape = true; continue; }
+      if (ch === '"') { inString = !inString; continue; }
+      if (inString) continue;
+      if (ch === opener) depth++;
+      else if (ch === closer) {
+        depth--;
+        if (depth === 0) {
+          return JSON.parse(cleaned.slice(start, i + 1));
+        }
+      }
+    }
   }
 
-  return JSON.parse(cleaned);
+  throw new Error(`Could not extract JSON from model response: ${cleaned.slice(0, 200)}`);
 }
 
 function backoff(attempt) {

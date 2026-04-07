@@ -2,8 +2,14 @@ name: Content Engine — Generate
 
 on:
   schedule:
-    - cron: '0 4 * * 1'   # Monday 4am UTC (Sunday 11pm ET)
+    - cron: '0 4 * * 1'   # Monday 4am UTC — discover + generate
+    - cron: '0 4 * * 4'   # Thursday 4am UTC — top up queue if low
   workflow_dispatch:
+    inputs:
+      topic:
+        description: 'Specific topic ID to generate (optional)'
+        required: false
+        default: ''
 
 jobs:
   generate:
@@ -34,12 +40,18 @@ jobs:
         run: node scripts/content-engine/discover.js --limit 20
         env:
           GSC_KEY_PATH: /tmp/gsc-key.json
+          GSC_SERVICE_ACCOUNT_KEY: ${{ secrets.GSC_SERVICE_ACCOUNT_KEY }}
           DATAFORSEO_LOGIN: ${{ secrets.DATAFORSEO_LOGIN }}
           DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
 
       - name: Generate articles
-        run: node scripts/content-engine/generate.js --limit 3
+        run: |
+          if [ -n "${{ github.event.inputs.topic }}" ]; then
+            node scripts/content-engine/generate.js --topic "${{ github.event.inputs.topic }}"
+          else
+            node scripts/content-engine/generate.js --limit 3
+          fi
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
