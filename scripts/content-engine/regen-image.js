@@ -2,8 +2,9 @@
  * Regenerate hero image(s) for existing articles.
  *
  * Usage:
- *   node scripts/content-engine/regen-image.js peacock-wedding-cake-ideas beach-wedding-nails-for-bride
- *   node scripts/content-engine/regen-image.js --all   (regenerates every article)
+ *   node scripts/content-engine/regen-image.js <slug> [slug2 ...]
+ *   node scripts/content-engine/regen-image.js --all              (regenerates every article)
+ *   node scripts/content-engine/regen-image.js --all --skip-existing  (skips articles that already have an image)
  *
  * Reads article frontmatter + H2 headings, generates a new image via the
  * same Haiku → Gemini pipeline used during content generation, overwrites
@@ -16,23 +17,26 @@ import { ARTICLES_DIR, IMAGES_DIR, parseFrontmatter } from './lib/config.js';
 import { generateHeroImage } from './lib/gemini-image.js';
 
 const args = process.argv.slice(2);
-if (args.length === 0) {
-  console.error('Usage: node regen-image.js <slug> [slug2 ...] | --all');
+const skipExisting = args.includes('--skip-existing');
+const filteredArgs = args.filter(a => a !== '--skip-existing');
+
+if (filteredArgs.length === 0) {
+  console.error('Usage: node regen-image.js <slug> [slug2 ...] | --all [--skip-existing]');
   process.exit(1);
 }
 
 // Resolve target slugs
 let slugs;
-if (args[0] === '--all') {
+if (filteredArgs[0] === '--all') {
   const { readdirSync } = await import('fs');
   slugs = readdirSync(ARTICLES_DIR)
     .filter(f => f.endsWith('.md') || f.endsWith('.mdx'))
     .map(f => f.replace(/\.(mdx|md)$/, ''));
 } else {
-  slugs = args;
+  slugs = filteredArgs;
 }
 
-console.log(`Regenerating images for ${slugs.length} article(s)...\n`);
+console.log(`Regenerating images for ${slugs.length} article(s)${skipExisting ? ' (skipping existing)' : ''}...\n`);
 
 for (const slug of slugs) {
   const mdxPath = join(ARTICLES_DIR, `${slug}.mdx`);
@@ -54,6 +58,12 @@ for (const slug of slugs) {
   const h2Outline = [...body.matchAll(/^##\s+(.+)$/gm)].map(m => m[1].trim()).slice(0, 6);
 
   const topic = fm.tags?.[0] || slug.replace(/-/g, ' ');
+
+  const imagePath = join(IMAGES_DIR, `${slug}.jpg`);
+  if (skipExisting && existsSync(imagePath)) {
+    console.log(`[${slug}] skipped (image exists)\n`);
+    continue;
+  }
 
   console.log(`[${slug}]`);
   console.log(`  Title: ${title}`);
