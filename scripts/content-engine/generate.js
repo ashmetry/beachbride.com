@@ -638,6 +638,7 @@ async function generateImages(topic) {
     topic.brief.title,
     topic.keyword,
     QUEUE_IMAGES_DIR,
+    topic.brief?.h2Outline || [],
   );
 
   if (result) {
