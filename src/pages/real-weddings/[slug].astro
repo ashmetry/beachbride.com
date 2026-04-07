@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import destinations from '../../data/destinations.json';
+
+export async function getStaticPaths() {
+  const weddings = await getCollection('realWeddings');
+  return weddings.map(w => ({ params: { slug: w.id }, props: { wedding: w } }));
+}
+
+const { wedding } = Astro.props;
+const { Content } = await render(wedding);
+const { title, description, publishDate, location, photographer, heroImage, images, tags, destination } = wedding.data;
+
+const destData = destination ? destinations.find(d => d.slug === destination) : null;
+
+const canonical = `https://beachbride.com/real-weddings/${wedding.id}/`;
+const ogImage = heroImage || '/images/logo.png';
+---
+
+<BaseLayout title={`${title} — BeachBride Real Weddings`} description={description} canonical={canonical} ogImage={ogImage} type="article">
+  <main class="max-w-4xl mx-auto px-4 py-10">
+
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-gray-500 mb-6">
+      <a href="/" class="hover:text-brand">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/real-weddings/" class="hover:text-brand">Real Weddings</a>
+      <span class="mx-2">›</span>
+      <span class="text-gray-700">{title}</span>
+    </nav>
+
+    <!-- Header -->
+    <header class="mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{title}</h1>
+      <div class="flex flex-wrap gap-4 text-sm text-gray-500">
+        {location && <span>📍 {location}</span>}
+        {photographer && <span>📷 {photographer}</span>}
+        <span>{publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</span>
+      </div>
+      {tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mt-3">
+          {tags.map(tag => (
+            <span class="bg-brand-light text-brand text-xs px-2 py-1 rounded-full">{tag}</span>
+          ))}
+        </div>
+      )}
+    </header>
+
+    <!-- Hero image -->
+    {heroImage && (
+      <div class="mb-8 rounded-xl overflow-hidden">
+        <img
+          src={heroImage}
+          alt={title}
+          class="w-full object-cover max-h-[520px]"
+          loading="eager"
+        />
+      </div>
+    )}
+
+    <!-- Description text -->
+    <div class="prose prose-lg max-w-none mb-10 text-gray-700">
+      <Content />
+    </div>
+
+    <!-- Photo gallery -->
+    {images.length > 0 && (
+      <section class="mb-12">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Gallery</h2>
+        <div class="columns-1 sm:columns-2 lg:columns-3 gap-3 space-y-3">
+          {images.map((src, i) => (
+            <div class="break-inside-avoid rounded-lg overflow-hidden">
+              <img
+                src={src}
+                alt={`${title} — photo ${i + 1}`}
+                class="w-full object-cover hover:opacity-95 transition-opacity"
+                loading={i < 6 ? 'eager' : 'lazy'}
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- CTA strip -->
+    <div class="bg-brand-light border border-brand/20 rounded-xl p-6 text-center">
+      <p class="text-lg font-semibold text-gray-800 mb-1">Planning your own beach wedding?</p>
+      <p class="text-gray-600 text-sm mb-4">
+        Answer 3 quick questions and get a free personalized destination guide.
+      </p>
+      <a
+        href="/quiz/"
+        class="inline-block bg-brand text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand-dark transition-colors"
+      >
+        Get My Free Guide →
+      </a>
+      {destData && (
+        <p class="text-sm text-gray-500 mt-3">
+          Interested in {destData.name}?
+          <a href={`/destinations/${destData.slug}/`} class="text-brand hover:underline ml-1">
+            See our {destData.name} wedding guide →
+          </a>
+        </p>
+      )}
+    </div>
+
+  </main>
+</BaseLayout>

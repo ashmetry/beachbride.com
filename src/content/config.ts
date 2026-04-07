@@ -28,4 +28,20 @@ const articles = defineCollection({
   }),
 });
 
-export const collections = { articles };
+const realWeddings = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    publishDate: z.date(),
+    location: z.string().optional(),
+    photographer: z.string().optional(),
+    heroImage: z.string().optional(),
+    images: z.array(z.string()).default([]),
+    tags: z.array(z.string()).default([]),
+    destination: z.string().optional(), // links to destination hub slug
+    noIndex: z.boolean().default(false),
+  }),
+});
+
+export const collections = { articles, realWeddings };

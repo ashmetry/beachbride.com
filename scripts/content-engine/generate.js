@@ -67,7 +67,10 @@ async function main() {
       if (topic.status === 'discovered') {
         console.log('\n  Step 1: Generating brief...');
         topic.brief = await generateBrief(topic, existingArticles);
-        topic.articleSlug = topic.brief.slug;
+        // Normalize schemaType to lowercase to match Zod enum
+        if (topic.brief.schemaType) topic.brief.schemaType = topic.brief.schemaType.toLowerCase();
+        // Respect pre-seeded slug (e.g. WP migration) over brief's generated slug
+        topic.articleSlug = topic._forcedSlug || topic.brief.slug;
         topic.status = 'briefed';
         savePipeline(pipeline);
         console.log(`  Brief complete: "${topic.brief.title}"`);
@@ -160,6 +163,7 @@ Writing voice: warm, aspirational, and expert. Like a trusted friend who has pla
 Content type: ${topic.contentType}
 Schema type: ${topic.schemaType}
 ${topic.isRefresh ? `This is a REFRESH of existing article: /${topic.existingSlug}/` : 'This is a NEW article.'}
+${topic._wpContext ? `\nOriginal article context (improve and expand on this):\n${topic._wpContext}\n` : ''}
 
 Outline structure for this content type:
 ${outlineGuide}
