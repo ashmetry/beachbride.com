@@ -135,9 +135,9 @@ async function main() {
     exec(`git add "${mod.path}"`);
   }
   exec(`git add "${join(ROOT, 'scripts', 'content-engine', 'pipeline.json')}"`);
-  // Stage removal of queue file
-  exec(`git add "${srcArticle}"`);
-  if (hasImage) exec(`git add "${srcImage}"`);
+  // Stage removal of queue files (use git rm --cached in case already deleted from disk)
+  exec(`git rm --cached --ignore-unmatch "${srcArticle}"`);
+  if (hasImage) exec(`git rm --cached --ignore-unmatch "${srcImage}"`);
 
   const commitMsg = `Publish: ${title}\n\nContent Engine automated publish.\nSlug: ${slug}`;
   exec(`git commit -m "${commitMsg.replace(/"/g, '\\"')}"`);
