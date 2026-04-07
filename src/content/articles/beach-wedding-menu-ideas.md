@@ -114,7 +114,7 @@ For couples weighing their overall spending, our [destination wedding cost](/des
 
 ## Seafood-Forward Menus: The Ultimate Beach Wedding Move
 
-A seafood-focused menu feels like the most natural choice for a celebration by the water, and your guests will agree. According to [The Knot](https://www.theknot.com/content/seafood-menu-ideas), six distinct seafood menu concepts are recommended specifically for beach weddings, from fresh oysters on ice to outdoor clambakes.
+A seafood-focused menu feels like the most natural choice for a celebration by the water, and your guests will agree. According to [The Knot](https://www.theknot.com/content/seafood-menu-ideas), six distinct [seafood menu](/seafood-menu/) concepts are recommended specifically for beach weddings, from fresh oysters on ice to outdoor clambakes.
 
 And here's something that surprises many couples: seafood doesn't have to blow your budget. According to [BeachBride](https://www.beachbride.com/seafood-menu//), shrimp cocktail is described as cost-efficient and easy to order in bulk, holding well on ice for outdoor service.
 
