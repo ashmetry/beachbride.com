@@ -41,6 +41,7 @@ const realWeddings = defineCollection({
     tags: z.array(z.string()).default([]),
     destination: z.string().optional(), // links to destination hub slug
     noIndex: z.boolean().default(false),
+    vendors: z.array(z.object({ role: z.string(), name: z.string() })).optional(),
   }),
 });
 

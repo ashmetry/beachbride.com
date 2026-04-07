@@ -5,16 +5,16 @@ import destinations from '../../data/destinations.json';
 
 export async function getStaticPaths() {
   const weddings = await getCollection('realWeddings');
-  return weddings.map(w => ({ params: { slug: w.id }, props: { wedding: w } }));
+  return weddings.map(w => ({ params: { slug: w.id.replace(/\.mdx?$/, '') }, props: { wedding: w } }));
 }
 
 const { wedding } = Astro.props;
 const { Content } = await render(wedding);
-const { title, description, publishDate, location, photographer, heroImage, images, tags, destination } = wedding.data;
+const { title, description, publishDate, location, photographer, heroImage, images, tags, destination, vendors } = wedding.data;
 
 const destData = destination ? destinations.find(d => d.slug === destination) : null;
-
-const canonical = `https://beachbride.com/real-weddings/${wedding.id}/`;
+const cleanSlug = wedding.id.replace(/\.mdx?$/, '');
+const canonical = `https://beachbride.com/real-weddings/${cleanSlug}/`;
 const ogImage = heroImage || '/images/logo.png';
 ---
 
@@ -80,6 +80,21 @@ const ogImage = heroImage || '/images/logo.png';
             </div>
           ))}
         </div>
+      </section>
+    )}
+
+    <!-- Vendor credits -->
+    {vendors && vendors.length > 0 && (
+      <section class="mb-10 border-t border-gray-100 pt-8">
+        <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Wedding Credits</h2>
+        <dl class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
+          {vendors.map(v => (
+            <div class="flex gap-2 text-sm">
+              <dt class="text-gray-400 shrink-0 min-w-[120px]">{v.role}</dt>
+              <dd class="text-gray-700 font-medium">{v.name}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
     )}
 
