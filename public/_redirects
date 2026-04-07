@@ -1,3 +1,6 @@
+# www → non-www
+https://www.beachbride.com/* https://beachbride.com/:splat 301
+
 /nighttime-garden-wedding/ /destination-wedding-guide/ 301
 /2017/06/nighttime-garden-wedding/ /destination-wedding-guide/ 301
 /fun-gothic-wedding-dress-ideas/ /destination-wedding-guide/ 301
