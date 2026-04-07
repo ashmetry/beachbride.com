@@ -37,7 +37,7 @@ const QUIZ_IMAGES = [
   },
   {
     key: 'vibe-boho',
-    prompt: 'Boho beach ceremony setup — macramé arch wrapped in dried pampas grass and wildflowers in earthy tones, barefoot bride in flowing dress, golden dunes behind. Relaxed, sun-drenched editorial photography.',
+    prompt: 'A barefoot bride sitting alone on bleached driftwood, wearing a loose undone linen dress and wildflower crown, surrounded by terracotta pots of dried pampas grass, raw linen ribbons tied to branches, no shoes, unkempt natural beauty. Desert-meets-coast setting, warm dusty light. Earthy, unfiltered, free-spirited editorial photography — the opposite of formal.',
   },
   {
     key: 'vibe-adventurous',
@@ -59,7 +59,7 @@ const QUIZ_IMAGES = [
   },
   {
     key: 'season-spring',
-    prompt: 'Spring beach wedding in soft pastel light — couple on a petal-strewn path to the sea, surrounded by white and blush tropical blooms and breezy light fabrics, pale blue sky. Dreamy, fresh editorial photography.',
+    prompt: 'Early spring beach wedding at soft morning light — a floral arch overflowing with blush peonies, white ranunculus and pale pink sweet peas, guests in light pastel dresses and linen suits, cool fresh air, the sea a calm pale grey-blue. Delicate, dewy, cool-toned editorial photography — nothing hot or tropical, just gentle and fresh.',
   },
   {
     key: 'season-summer',
@@ -100,12 +100,12 @@ const QUIZ_IMAGES = [
   {
     key: 'budget-mid',
     portrait: true,
-    prompt: 'Well-appointed outdoor beach wedding reception — elegant white draped fabric, styled centerpieces with tropical flowers, glowing candles, guests in evening wear. Polished and beautiful without being over the top. Editorial photography.',
+    prompt: 'An intimate beach wedding dinner for 25 guests on a simple wooden deck — mismatched candles in glass holders, garden roses in small bud vases, string lights above, guests in summer dresses and chinos, relaxed and personal. Warmly lit, unpretentious but genuinely beautiful. Editorial photography — the feeling of a really nice dinner party, not a gala.',
   },
   {
     key: 'budget-luxury',
     portrait: true,
-    prompt: 'Ultra-luxurious beach wedding — crystal chandeliers hanging over outdoor tables, towering white orchid arrangements, marble elements, a resort infinity pool visible beyond, impeccably dressed guests. Editorial luxury photography.',
+    prompt: 'An over-the-top luxury beach wedding at a five-star resort — 80 black-tie guests at a long white-marble table, three-meter-tall floral towers of white orchids and garden roses, real crystal chandeliers suspended between palm trees, an illuminated infinity pool behind, everything immaculate. Cinematic, opulent, jaw-dropping editorial photography — unmistakably expensive.',
   },
 ];
 
