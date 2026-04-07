@@ -117,21 +117,42 @@ Pipeline is **resume-safe**: each topic checks its status before sub-steps and s
 - `/vendors/` — directory landing
 - `/vendors/[slug]` — individual vendor profile (LocalBusiness JSON-LD)
 - `/vendors/[destination]/[slug]` — vendor within destination
-- `/[slug]/` — articles (content collection)
+- `/[slug]/` — articles (content collection `articles`)
+- `/guides/` — articles index, grouped by category (3 preview cards + "see all" per category)
+- `/guides/[category]/` — category sub-pages: `planning`, `food-drink`, `decor-style`, `bride`, `destinations`
+- `/real-weddings/` — gallery listing (62 migrated WP posts with real photos)
+- `/real-weddings/[slug]/` — individual gallery page (hero + text + masonry photo grid + quiz CTA)
 - `/quiz/` — Stage 1 quiz (email capture) and Stage 2 (full lead form)
 - `/lp/` — paid traffic landing pages (LandingPageLayout, minimal nav)
 
 ### Layout hierarchy
 `BaseLayout.astro` (head/nav/footer/JSON-LD) → `ArticleLayout.astro` (TOC/breadcrumbs/FAQs/related) | `PageLayout.astro` (static pages) | `LandingPageLayout.astro` (paid traffic)
 
+### Content collections
+- `articles` — editorial content. Schema in `src/content/config.ts`. Files in `src/content/articles/`. Served at `/[slug]/`.
+- `realWeddings` — photo gallery posts migrated from WP. Files in `src/content/realWeddings/`. Served at `/real-weddings/[slug]/`. Images in `public/images/real-weddings/[slug]/`.
+
+### Guide category auto-assignment
+Articles are auto-assigned to a guide category by `getCategoryForSlug()` in `src/data/guide-categories.ts`. It matches the article **slug** against keyword patterns. The 5 categories are:
+- `planning` — planning, budget, tips, checklist, cost, transportation, bachelorette, honeymoon, destination-wedding-*
+- `food-drink` — menu, seafood, cake, dessert, candy, bridal-shower, edible, punch
+- `decor-style` — decor, centerpiece, color-scheme, lighting, tabletop, indoor, sea-glass, diy-
+- `bride` — accessories, shoes, looks, bouquet, bridesmaid, favors, dress, jewelry
+- `destinations` — key-west, palm-beach, cancun, hawaii, bali, santorini, celebrity-beach-wedding
+
+**When seeding new topics:** choose a slug that includes one of the above patterns so the article auto-categorizes correctly. If no pattern matches, the article falls back to `planning`. Update `guide-categories.ts` if you need a new category or pattern.
+
 ### Key files
 - `src/lib/site-config.ts` — single source of truth for site constants
-- `src/content/config.ts` — Zod schema for article collection
+- `src/content/config.ts` — Zod schemas for `articles` and `realWeddings` collections
 - `src/data/destinations.json` — canonical destination list (used by hub pages, vendor directory, quiz)
 - `src/data/vendors.json` — vendor data with `tier` field (free/premium/pro)
+- `src/data/guide-categories.ts` — guide category definitions + `getCategoryForSlug()` auto-assignment
 - `scripts/content-engine/lib/config.js` — all content engine config (models, thresholds, paths, `LINK_TARGETS`)
 - `scripts/content-engine/lib/openrouter.js` — OpenRouter client with rate limiting, retry, 429/500 handling
 - `scripts/content-engine/pipeline.json` — pipeline state (committed)
+- `scripts/seed-editorial-topics.js` — manually seed WP-migrated topics into pipeline bypassing discovery
+- `scripts/migrate-real-weddings.js` — one-time WP gallery migration script (already run)
 
 ### Vendor data model
 ```json
@@ -179,3 +200,7 @@ Resort and jeweler `type` entries exist in the directory but are **not** enrolle
 - `GH_PAT` secret is required because `GITHUB_TOKEN` can't trigger other workflows (publish push needs to trigger deploy).
 - www redirect is handled in Cloudflare DNS, not in code.
 - Destination hub pages (`/destinations/[slug]/`) must be generated from `src/data/destinations.json` — do not hardcode individual destination pages.
+- `schemaType` in article frontmatter must be lowercase: `article`, `howto`, `review`, `hub`. The content engine brief sometimes returns `"Article"` or `"HowTo"` — `generate.js` normalizes this with `.toLowerCase()` after brief generation.
+- `realWeddings` collection MDX files must use `tags: []` (not bare `tags:`) and `images: []` when empty, otherwise Astro reads them as null and fails schema validation.
+- GSC property for beachbride.com is `sc-domain:beachbride.com` (not `https://beachbride.com/`). Service account has access to the domain property only.
+- The local dev server may conflict with other projects on port 4321. Run `npm run dev -- --port 4324` for beachbride if needed.
