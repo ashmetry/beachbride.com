@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import destinations from '../data/destinations.json';
+import { getCollection } from 'astro:content';
+
+// Show a curated handful of destinations and recent articles
+const topDestinations = destinations.filter(d =>
+  ['cancun', 'punta-cana', 'jamaica', 'hawaii', 'bali', 'santorini'].includes(d.slug)
+);
+
+const articles = await getCollection('articles', a => !a.data.noIndex);
+const recentArticles = articles
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+  .slice(0, 4);
+---
+
+<BaseLayout
+  title="Page Not Found — BeachBride"
+  description="This page doesn't exist, but your dream beach wedding does. Find destination guides, vendor recommendations, and planning tools at BeachBride.com."
+  canonical="https://beachbride.com/404/"
+  noIndex={true}
+>
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-16 text-center">
+
+    <!-- Status -->
+    <div class="mb-10">
+      <p class="text-7xl font-black text-brand/20 tracking-tight mb-4">404</p>
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">This page washed out to sea.</h1>
+      <p class="text-gray-500 max-w-md mx-auto">
+        It may have moved, been deleted, or never existed. Try one of the destinations below, or head back home.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center mt-6">
+        <a href="/" class="btn-primary px-8 py-3">Back to home</a>
+        <a href="/destinations/" class="btn-outline px-8 py-3">Browse destinations</a>
+      </div>
+    </div>
+
+    <!-- Destinations -->
+    <section class="mb-12 text-left">
+      <h2 class="text-sm font-bold uppercase tracking-widest text-gray-400 mb-4 text-center">Popular destinations</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        {topDestinations.map(d => (
+          <a
+            href={`/destinations/${d.slug}/`}
+            class="card p-4 hover:shadow-md transition-shadow no-underline group flex items-center gap-3"
+          >
+            <span class="text-2xl">{d.emoji}</span>
+            <div>
+              <p class="font-semibold text-sm text-gray-900 group-hover:text-brand transition-colors">{d.name}</p>
+              <p class="text-xs text-gray-400">{d.country}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Recent articles -->
+    {recentArticles.length > 0 && (
+      <section class="mb-12 text-left">
+        <h2 class="text-sm font-bold uppercase tracking-widest text-gray-400 mb-4 text-center">Recent guides</h2>
+        <div class="grid sm:grid-cols-2 gap-3">
+          {recentArticles.map(a => {
+            const slug = a.id.replace(/\.mdx?$/, '');
+            return (
+              <a
+                href={`/${slug}/`}
+                class="card p-4 hover:shadow-md transition-shadow no-underline group"
+              >
+                <p class="font-semibold text-sm text-gray-900 group-hover:text-brand transition-colors leading-snug">
+                  {a.data.title}
+                </p>
+                <p class="text-xs text-gray-400 mt-1 line-clamp-2">{a.data.description}</p>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    )}
+
+    <!-- Quiz CTA -->
+    <div class="bg-brand-light border border-brand/20 rounded-2xl p-8">
+      <p class="text-lg font-bold text-gray-900 mb-1">Not sure where to start?</p>
+      <p class="text-gray-500 text-sm mb-5">Answer 3 quick questions and get a free personalized destination guide.</p>
+      <a href="/quiz/" class="btn-primary px-8 py-3">Get my free guide →</a>
+    </div>
+
+  </main>
+</BaseLayout>

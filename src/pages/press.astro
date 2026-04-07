@@ -1,0 +1,181 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BadgePreview from '../components/press/BadgePreview';
+import vendors from '../data/vendors.json';
+import destinations from '../data/destinations.json';
+
+const slug = Astro.url.searchParams.get('vendor') ?? '';
+
+const typeIcons: Record<string, string> = {
+  planner: '📋', photographer: '📸', florist: '💐', caterer: '🍽️',
+  dj: '🎵', officiant: '💍', resort: '🏨', jeweler: '💎',
+};
+
+const featuredVendors = vendors.filter(v => v.tier === 'pro' || v.tier === 'premium');
+
+const vendorData = vendors.map(v => ({
+  slug: v.slug, name: v.name, type: v.type, tier: v.tier,
+  destinations: v.destinations, rating: v.rating, reviewCount: v.reviewCount,
+}));
+const destData = destinations.map(d => ({ slug: d.slug, name: d.name }));
+---
+
+<BaseLayout
+  title="Vendor Badge & Press Kit — BeachBride.com"
+  description="Show couples you're a trusted BeachBride vendor. Embed your personalized badge on your website and link back to your listing where brides are already searching."
+  canonical="https://beachbride.com/press/"
+>
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <span class="inline-block text-xs font-bold tracking-widest uppercase text-accent bg-accent/10 px-3 py-1 rounded-full mb-4">Vendor Badge Program</span>
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Put a badge on your site.<br class="hidden sm:block"> Get couples from ours.</h1>
+      <p class="text-lg text-gray-500 max-w-xl mx-auto">
+        A one-line embed that links your website back to your BeachBride listing — where brides are already searching for vendors like you.
+      </p>
+    </div>
+
+    <!-- === BADGE SHOWCASE — shown before any interaction === -->
+    <section class="mb-16">
+      <h2 class="text-center text-sm font-bold uppercase tracking-widest text-gray-400 mb-8">Three badge tiers</h2>
+
+      <div class="grid sm:grid-cols-3 gap-4">
+
+        <!-- Free -->
+        <div class="card p-6 flex flex-col items-center text-center gap-4">
+          <span class="text-xs font-bold uppercase tracking-widest text-gray-400">Free listing</span>
+          <!-- Badge: Free -->
+          <div style="display:inline-flex;align-items:center;gap:12px;background:#fff;border:1.5px solid #d1d5db;border-radius:12px;padding:10px 16px;font-family:system-ui,sans-serif;box-shadow:0 1px 4px rgba(0,0,0,0.08);text-decoration:none">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#2A7F8F 0%,#1A5F6F 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:15px;letter-spacing:-.02em;flex-shrink:0">BB</div>
+            <div>
+              <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#6b7280;margin-bottom:1px">Featured on</div>
+              <div style="font-size:15px;font-weight:800;color:#1a5f6f;line-height:1.1">BeachBride.com</div>
+            </div>
+          </div>
+          <ul class="text-sm text-gray-600 text-left space-y-1 w-full">
+            <li class="flex gap-2"><span class="text-brand">✓</span> "Featured on" label</li>
+            <li class="flex gap-2"><span class="text-brand">✓</span> Links to your listing</li>
+          </ul>
+        </div>
+
+        <!-- Premium -->
+        <div class="card p-6 flex flex-col items-center text-center gap-4 border-accent/30 bg-amber-50/20">
+          <span class="text-xs font-bold uppercase tracking-widest text-accent">Premium — $99/mo</span>
+          <!-- Badge: Premium -->
+          <div style="display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,#fff 0%,#fdf8f0 100%);border:1.5px solid #e8c98a;border-radius:12px;padding:10px 16px;font-family:system-ui,sans-serif;box-shadow:0 2px 10px rgba(201,151,74,0.18);text-decoration:none">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#C9974A 0%,#A67A35 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:15px;letter-spacing:-.02em;flex-shrink:0">BB</div>
+            <div>
+              <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#A67A35;margin-bottom:1px">Featured Vendor</div>
+              <div style="font-size:15px;font-weight:800;color:#1a5f6f;line-height:1.1">BeachBride.com</div>
+              <div style="font-size:12px;color:#374151;font-weight:500;margin-top:2px">Your Business Name</div>
+            </div>
+          </div>
+          <ul class="text-sm text-gray-600 text-left space-y-1 w-full">
+            <li class="flex gap-2"><span class="text-accent">✓</span> Gold "Featured Vendor" design</li>
+            <li class="flex gap-2"><span class="text-accent">✓</span> Your business name on badge</li>
+            <li class="flex gap-2"><span class="text-accent">✓</span> Links to your profile</li>
+          </ul>
+        </div>
+
+        <!-- Pro -->
+        <div class="card p-6 flex flex-col items-center text-center gap-4" style="border-color:#C9974A;background:linear-gradient(135deg,#fff 0%,#fdf8f0 100%)">
+          <span class="text-xs font-bold uppercase tracking-widest text-white bg-accent px-2 py-0.5 rounded-full">Pro — $199/mo</span>
+          <!-- Badge: Pro -->
+          <div style="display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,#fff 0%,#fdf8f0 100%);border:1.5px solid #C9974A;border-radius:12px;padding:10px 16px;font-family:system-ui,sans-serif;box-shadow:0 2px 10px rgba(201,151,74,0.18);text-decoration:none">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#C9974A 0%,#A67A35 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:15px;letter-spacing:-.02em;flex-shrink:0">BB</div>
+            <div>
+              <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#A67A35;margin-bottom:1px">✓ Verified Pro</div>
+              <div style="font-size:15px;font-weight:800;color:#1a5f6f;line-height:1.1">BeachBride.com</div>
+              <div style="font-size:12px;color:#374151;font-weight:500;margin-top:2px">Your Business Name</div>
+              <div style="font-size:10px;color:#6b7280;margin-top:3px">Cancun &nbsp;<span style="color:#C9974A;font-weight:700">★ 4.9</span></div>
+            </div>
+          </div>
+          <ul class="text-sm text-gray-600 text-left space-y-1 w-full">
+            <li class="flex gap-2"><span class="text-accent">✓</span> "✓ Verified Pro" label</li>
+            <li class="flex gap-2"><span class="text-accent">✓</span> Destination + star rating</li>
+            <li class="flex gap-2"><span class="text-accent">✓</span> Priority in directory + leads</li>
+          </ul>
+          <a href="/vendors/upgrade/" class="w-full text-center text-sm font-semibold text-white bg-accent hover:bg-accent-dark transition-colors rounded-lg py-2 mt-auto">
+            Upgrade to Pro →
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- === BADGE BUILDER === -->
+    <section class="card p-6 sm:p-10 mb-16">
+      <div class="mb-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-1">Get your badge</h2>
+        <p class="text-gray-500 text-sm">Select your listing to generate a personalized embed code.</p>
+      </div>
+      <BadgePreview
+        client:load
+        vendors={vendorData}
+        destinations={destData}
+        initialSlug={slug}
+      />
+    </section>
+
+    <!-- Why it matters -->
+    <section class="mb-16">
+      <h2 class="text-xl font-bold text-gray-900 mb-6 text-center">Why vendors use the badge</h2>
+      <div class="grid sm:grid-cols-3 gap-6 text-center">
+        <div class="bg-brand-light rounded-xl p-6">
+          <div class="text-3xl mb-3">🔗</div>
+          <h3 class="font-bold text-gray-900 mb-1">SEO backlink</h3>
+          <p class="text-sm text-gray-600">A link from a niche authority site helps your rankings for destination wedding searches.</p>
+        </div>
+        <div class="bg-brand-light rounded-xl p-6">
+          <div class="text-3xl mb-3">💍</div>
+          <h3 class="font-bold text-gray-900 mb-1">Social proof</h3>
+          <p class="text-sm text-gray-600">Couples trust vendors vetted and listed on specialist sites. The badge signals credibility.</p>
+        </div>
+        <div class="bg-brand-light rounded-xl p-6">
+          <div class="text-3xl mb-3">📍</div>
+          <h3 class="font-bold text-gray-900 mb-1">Double discovery</h3>
+          <p class="text-sm text-gray-600">Badge clicks land on your BeachBride profile — a second chance to convert visitors who found your site first.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured vendors -->
+    {featuredVendors.length > 0 && (
+      <section class="mb-16">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Vendors already in the network</h2>
+        <p class="text-sm text-gray-500 mb-5">These businesses display the badge — and couples find them here every day.</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+          {featuredVendors.map(v => {
+            const destNames = destinations
+              .filter(d => v.destinations.includes(d.slug))
+              .map(d => d.name).join(', ');
+            return (
+              <a href={`/vendors/${v.slug}/`} class="card p-4 hover:shadow-md transition-shadow no-underline group">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-lg">{typeIcons[v.type] ?? '🏢'}</span>
+                  <span class={`text-xs px-2 py-0.5 rounded-full font-semibold ${v.tier === 'pro' ? 'bg-accent/10 text-accent' : 'bg-brand-light text-brand'}`}>
+                    {v.tier === 'pro' ? 'Pro' : 'Featured'}
+                  </span>
+                </div>
+                <p class="font-semibold text-sm text-gray-900 group-hover:text-brand transition-colors leading-tight">{v.name}</p>
+                <p class="text-xs text-gray-400 mt-0.5">{destNames}</p>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    )}
+
+    <!-- Bottom CTA -->
+    <div class="text-center border-t border-gray-100 pt-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">Not listed yet?</h2>
+      <p class="text-gray-500 mb-6 max-w-sm mx-auto">Free listings take 2 minutes. Get your badge and start appearing in destination wedding searches.</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/advertise/" class="btn-primary px-8 py-3">List your business free →</a>
+        <a href="/vendors/upgrade/" class="btn-outline px-8 py-3">See premium tiers</a>
+      </div>
+    </div>
+
+  </main>
+</BaseLayout>

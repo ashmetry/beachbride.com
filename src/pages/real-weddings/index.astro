@@ -27,7 +27,7 @@ const canonical = 'https://beachbride.com/real-weddings/';
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {weddings.map(w => (
         <a
-          href={`/real-weddings/${w.id}/`}
+          href={`/real-weddings/${w.id.replace(/\.mdx?$/, '')}/`}
           class="group block rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white"
         >
           {w.data.heroImage ? (

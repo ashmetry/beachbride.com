@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+
+# Block utility/conversion pages from indexing
+Disallow: /thank-you
+Disallow: /vendors/upgrade/
+
+# Sitemap
+Sitemap: https://beachbride.com/sitemap-index.xml
+
+# AI search engine bots — explicitly allowed for GEO visibility
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
