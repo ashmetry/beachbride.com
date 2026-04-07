@@ -34,32 +34,32 @@ interface DestData {
 const allDestinations: DestData[] = destinationsData as DestData[];
 
 const VIBES = [
-  { value: 'luxury', label: 'Luxe & romantic', icon: '🥂' },
-  { value: 'tropical', label: 'Tropical & relaxed', icon: '🌺' },
-  { value: 'boho', label: 'Bohemian & free-spirited', icon: '🌿' },
-  { value: 'adventurous', label: 'Adventurous & unique', icon: '🏔️' },
-  { value: 'mediterranean', label: 'Mediterranean elegance', icon: '🍷' },
-  { value: 'rustic', label: 'Rustic & vineyard', icon: '🍇' },
+  { value: 'luxury', label: 'Luxe & romantic', image: '/images/quiz/vibe-luxury.jpg' },
+  { value: 'tropical', label: 'Tropical & relaxed', image: '/images/quiz/vibe-tropical.jpg' },
+  { value: 'boho', label: 'Bohemian & free-spirited', image: '/images/quiz/vibe-boho.jpg' },
+  { value: 'adventurous', label: 'Adventurous & unique', image: '/images/quiz/vibe-adventurous.jpg' },
+  { value: 'mediterranean', label: 'Mediterranean elegance', image: '/images/quiz/vibe-mediterranean.jpg' },
+  { value: 'rustic', label: 'Rustic & vineyard', image: '/images/quiz/vibe-rustic.jpg' },
 ];
 
 const SEASONS = [
-  { value: 'winter', label: 'Winter (Dec–Feb)', icon: '❄️', months: ['December', 'January', 'February'] },
-  { value: 'spring', label: 'Spring (Mar–May)', icon: '🌸', months: ['March', 'April', 'May'] },
-  { value: 'summer', label: 'Summer (Jun–Aug)', icon: '☀️', months: ['June', 'July', 'August'] },
-  { value: 'fall', label: 'Fall (Sep–Nov)', icon: '🍂', months: ['September', 'October', 'November'] },
-  { value: 'flexible', label: "I'm flexible", icon: '📅', months: [] },
+  { value: 'winter', label: 'Winter (Dec–Feb)', image: '/images/quiz/season-winter.jpg', months: ['December', 'January', 'February'] },
+  { value: 'spring', label: 'Spring (Mar–May)', image: '/images/quiz/season-spring.jpg', months: ['March', 'April', 'May'] },
+  { value: 'summer', label: 'Summer (Jun–Aug)', image: '/images/quiz/season-summer.jpg', months: ['June', 'July', 'August'] },
+  { value: 'fall', label: 'Fall (Sep–Nov)', image: '/images/quiz/season-fall.jpg', months: ['September', 'October', 'November'] },
+  { value: 'flexible', label: "I'm flexible", image: '/images/quiz/season-flexible.jpg', months: [] },
 ];
 
 const GUEST_COUNTS = [
-  { value: 'intimate', label: 'Under 30 guests', icon: '💕' },
-  { value: 'medium', label: '30–80 guests', icon: '👫' },
-  { value: 'large', label: '80+ guests', icon: '🎉' },
+  { value: 'intimate', label: 'Under 30 guests', image: '/images/quiz/guests-intimate.jpg' },
+  { value: 'medium', label: '30–80 guests', image: '/images/quiz/guests-medium.jpg' },
+  { value: 'large', label: '80+ guests', image: '/images/quiz/guests-large.jpg' },
 ];
 
 const BUDGETS = [
-  { value: 'budget', label: 'Under $15K total', icon: '💰' },
-  { value: 'mid', label: '$15K–$40K', icon: '💎' },
-  { value: 'luxury', label: '$40K+', icon: '👑' },
+  { value: 'budget', label: 'Under $15K total', image: '/images/quiz/budget-budget.jpg' },
+  { value: 'mid', label: '$15K–$40K', image: '/images/quiz/budget-mid.jpg' },
+  { value: 'luxury', label: '$40K+', image: '/images/quiz/budget-luxury.jpg' },
 ];
 
 interface Answers {
@@ -119,6 +119,31 @@ function getTopMatches(answers: Answers): DestData[] {
   // Return top 3, ensuring at least some variety
   const top = scored.slice(0, 3).map(s => s.dest);
   return top;
+}
+
+function PhotoCard({ label, image, onClick }: { label: string; image: string; onClick: () => void }) {
+  return (
+    <button
+      className="group relative overflow-hidden rounded-xl aspect-[4/3] w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+      onClick={onClick}
+    >
+      <img
+        src={image}
+        alt={label}
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        loading="lazy"
+        decoding="async"
+        width={480}
+        height={360}
+      />
+      {/* gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent group-hover:from-black/80 transition-colors duration-200" />
+      {/* label */}
+      <span className="absolute bottom-0 left-0 right-0 px-3 py-2.5 text-white font-semibold text-sm text-left leading-tight">
+        {label}
+      </span>
+    </button>
+  );
 }
 
 export default function DestinationQuiz() {
@@ -184,7 +209,9 @@ export default function DestinationQuiz() {
   if (submitted) {
     return (
       <div className="text-center py-4">
-        <div className="text-5xl mb-4">🌊</div>
+        <div className="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center mx-auto mb-4">
+          <svg className="w-6 h-6 text-brand" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+        </div>
         <h2 className="text-2xl font-bold text-gray-900 mb-3">Your top 3 matches!</h2>
         <p className="text-gray-600 mb-6">
           Based on your answers, these destinations are your best fit. We've also sent a personalized guide to your inbox.
@@ -206,7 +233,6 @@ export default function DestinationQuiz() {
                   ✦ Gem
                 </span>
               )}
-              <span className="text-3xl mb-2 block">{dest.emoji}</span>
               <span className="font-bold text-sm text-gray-900 group-hover:text-brand transition-colors">{dest.name}</span>
               <span className="text-xs text-gray-400 block">{dest.country}</span>
               <span className="text-xs text-gray-500 block mt-1">
@@ -260,14 +286,7 @@ export default function DestinationQuiz() {
           <p className="text-sm text-gray-500 text-center mb-6">This helps us match you to destinations that fit your style.</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             {VIBES.map(v => (
-              <button
-                key={v.value}
-                className="quiz-option-card py-5"
-                onClick={() => pick('vibe', v.value)}
-              >
-                <span className="text-3xl mb-2">{v.icon}</span>
-                <span className="font-semibold text-sm text-gray-900">{v.label}</span>
-              </button>
+              <PhotoCard key={v.value} label={v.label} image={v.image} onClick={() => pick('vibe', v.value)} />
             ))}
           </div>
         </div>
@@ -282,14 +301,7 @@ export default function DestinationQuiz() {
           <p className="text-sm text-gray-500 text-center mb-6">We'll match you to destinations with the best weather for your season.</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             {SEASONS.map(s => (
-              <button
-                key={s.value}
-                className="quiz-option-card py-4"
-                onClick={() => pick('season', s.value)}
-              >
-                <span className="text-2xl mb-1">{s.icon}</span>
-                <span className="font-semibold text-sm text-gray-900">{s.label}</span>
-              </button>
+              <PhotoCard key={s.value} label={s.label} image={s.image} onClick={() => pick('season', s.value)} />
             ))}
           </div>
           <button className="quiz-back-btn mt-4" onClick={() => setStep(0)}>← Back</button>
@@ -305,14 +317,7 @@ export default function DestinationQuiz() {
           <p className="text-sm text-gray-500 text-center mb-6">Some destinations are perfect for 20 guests, others handle 200.</p>
           <div className="grid grid-cols-3 gap-3">
             {GUEST_COUNTS.map(g => (
-              <button
-                key={g.value}
-                className="quiz-option-card py-5"
-                onClick={() => pick('guestCount', g.value)}
-              >
-                <span className="text-3xl mb-2">{g.icon}</span>
-                <span className="font-semibold text-sm text-gray-900">{g.label}</span>
-              </button>
+              <PhotoCard key={g.value} label={g.label} image={g.image} onClick={() => pick('guestCount', g.value)} />
             ))}
           </div>
           <button className="quiz-back-btn mt-4" onClick={() => setStep(1)}>← Back</button>
@@ -328,14 +333,7 @@ export default function DestinationQuiz() {
           <p className="text-sm text-gray-500 text-center mb-6">Including venue, vendors, and travel — not per guest.</p>
           <div className="grid grid-cols-3 gap-3">
             {BUDGETS.map(b => (
-              <button
-                key={b.value}
-                className="quiz-option-card py-5"
-                onClick={() => pick('budget', b.value)}
-              >
-                <span className="text-3xl mb-2">{b.icon}</span>
-                <span className="font-semibold text-sm text-gray-900">{b.label}</span>
-              </button>
+              <PhotoCard key={b.value} label={b.label} image={b.image} onClick={() => pick('budget', b.value)} />
             ))}
           </div>
           <button className="quiz-back-btn mt-4" onClick={() => setStep(2)}>← Back</button>
