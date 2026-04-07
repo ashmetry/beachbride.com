@@ -1,37 +1,42 @@
 ---
 title: "Peacock Wedding Cake Ideas: 20 Stunning Designs for Your Destination Wedding"
-description: "Dreaming of a peacock wedding cake? Discover 20 breathtaking designs, real costs, and expert tips for pulling off this showstopper at your destination wedding."
+description: Dreaming of a peacock wedding cake? Discover 20 breathtaking designs, real costs, and expert tips for pulling off this showstopper at your destination wedding.
 publishDate: 2026-04-07
-author: "BeachBride Editorial Team"
-tags: [peacock wedding cake, destination wedding cake, wedding cake ideas, beach wedding desserts, jewel tone wedding, peacock theme wedding]
-schemaType: "article"
-
+author: BeachBride Editorial Team
+tags:
+  - peacock wedding cake
+  - destination wedding cake
+  - wedding cake ideas
+  - beach wedding desserts
+  - jewel tone wedding
+  - peacock theme wedding
+schemaType: article
 affiliateDisclosure: true
 faqs:
-  - question: "What flavors pair well with a peacock-themed wedding cake?"
-    answer: "Vanilla, chocolate, lemon, red velvet, and matcha all work beautifully with vibrant peacock designs. The bold visual palette gives you freedom to choose any flavor you love, so pick based on taste rather than trying to match the colors."
-  - question: "Can I get a peacock wedding cake at an all-inclusive resort in Cancun or Punta Cana?"
-    answer: "Most all-inclusive resorts offer a basic wedding cake in their packages, but a custom peacock design typically requires an upgrade fee or an outside vendor. Ask your resort's wedding coordinator about their preferred baker list and whether outside cakes are permitted."
-  - question: "How far in advance should I book a custom peacock cake for a destination wedding?"
-    answer: "Book your baker at least six months before your wedding date. This gives you time for consultations, tastings (even by mail), and any design revisions, which is especially important when working with a baker in another country."
-  - question: "Are peacock cakes only for formal or black-tie weddings, or do they work for beach settings too?"
-    answer: "Peacock cakes work in nearly any setting. For a beach wedding, opt for buttercream over fondant to handle humidity better, and consider a two-tier design that's easier to transport and display outdoors."
-  - question: "What's the difference between a painted peacock cake and one with sugar feather decorations?"
-    answer: "A painted cake uses edible paint or airbrushing directly on fondant for a flat, artistic look. Sugar feather cakes feature three-dimensional fondant or gum paste feathers, which add texture and drama but require more labor and cost more."
-  - question: "How do I transport or store a peacock wedding cake in a hot, humid destination?"
-    answer: "Temperature-controlled delivery is essential. Ask your baker about refrigerated transport, and plan for the cake to arrive no more than two hours before the reception. Buttercream holds up better than fondant in humidity above 80%."
-  - question: "Can a peacock cake design be adapted for a smaller wedding or elopement?"
-    answer: "Absolutely. A single-tier cake with hand-painted feather details or a set of peacock-themed cupcakes makes a stunning statement for intimate celebrations. You can also use a peacock cake topper on a simple frosted cake for under $15."
+  - question: What flavors pair well with a peacock-themed wedding cake?
+    answer: Vanilla, chocolate, lemon, red velvet, and matcha all work beautifully with vibrant peacock designs. The bold visual palette gives you freedom to choose any flavor you love, so pick based on taste rather than trying to match the colors.
+  - question: Can I get a peacock wedding cake at an all-inclusive resort in Cancun or Punta Cana?
+    answer: Most all-inclusive resorts offer a basic wedding cake in their packages, but a custom peacock design typically requires an upgrade fee or an outside vendor. Ask your resort's wedding coordinator about their preferred baker list and whether outside cakes are permitted.
+  - question: How far in advance should I book a custom peacock cake for a destination wedding?
+    answer: Book your baker at least six months before your wedding date. This gives you time for consultations, tastings (even by mail), and any design revisions, which is especially important when working with a baker in another country.
+  - question: Are peacock cakes only for formal or black-tie weddings, or do they work for beach settings too?
+    answer: Peacock cakes work in nearly any setting. For a beach wedding, opt for buttercream over fondant to handle humidity better, and consider a two-tier design that's easier to transport and display outdoors.
+  - question: What's the difference between a painted peacock cake and one with sugar feather decorations?
+    answer: A painted cake uses edible paint or airbrushing directly on fondant for a flat, artistic look. Sugar feather cakes feature three-dimensional fondant or gum paste feathers, which add texture and drama but require more labor and cost more.
+  - question: How do I transport or store a peacock wedding cake in a hot, humid destination?
+    answer: Temperature-controlled delivery is essential. Ask your baker about refrigerated transport, and plan for the cake to arrive no more than two hours before the reception. Buttercream holds up better than fondant in humidity above 80%.
+  - question: Can a peacock cake design be adapted for a smaller wedding or elopement?
+    answer: Absolutely. A single-tier cake with hand-painted feather details or a set of peacock-themed cupcakes makes a stunning statement for intimate celebrations. You can also use a peacock cake topper on a simple frosted cake for under $15.
 related:
-  - "gorgeous-beach-themed-wedding-cakes"
-  - "dessert-bar-menu-ideas-for-a-beach-wedding"
-  - "beautiful-beach-wedding-color-schemes"
-  - "beach-wedding-tabletop-decor-ideas"
-  - "destination-wedding-cost"
+  - gorgeous-beach-themed-wedding-cakes
+  - dessert-bar-menu-ideas-for-a-beach-wedding
+  - beautiful-beach-wedding-color-schemes
+  - beach-wedding-tabletop-decor-ideas
+  - destination-wedding-cost
 disclaimers:
-  - "financial"
-  - "referral"
-heroImage: "/images/peacock-wedding-cake.jpg"
+  - financial
+  - referral
+heroImage: /images/peacock-wedding-cake.jpg
 ---
 
 A peacock wedding cake does something few other dessert designs can pull off: it brings together jewel-toned blues, emerald greens, shimmering golds, and deep purples into a single showpiece that feels both exotic and elegant. If you're planning a destination celebration, this kind of cake doesn't just sit on a table. It becomes part of the scenery, echoing the lush landscapes and vibrant colors you chose your venue for in the first place.
