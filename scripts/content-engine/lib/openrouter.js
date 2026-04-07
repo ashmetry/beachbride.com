@@ -110,7 +110,16 @@ export async function callModel(model, systemPrompt, userPrompt, options = {}) {
  */
 export async function callModelJSON(model, systemPrompt, userPrompt, options = {}) {
   const { text } = await callModel(model, systemPrompt, userPrompt, options);
-  const cleaned = text.replace(/^```(?:json)?\s*\n?/m, '').replace(/\n?```\s*$/m, '').trim();
+
+  // Strip markdown code fences
+  let cleaned = text.replace(/^```(?:json)?\s*\n?/m, '').replace(/\n?```\s*$/m, '').trim();
+
+  // If the model wrapped JSON in prose, extract the first {...} or [...] block
+  if (!cleaned.startsWith('{') && !cleaned.startsWith('[')) {
+    const match = cleaned.match(/(\{[\s\S]*\}|\[[\s\S]*\])/);
+    if (match) cleaned = match[1];
+  }
+
   return JSON.parse(cleaned);
 }
 
