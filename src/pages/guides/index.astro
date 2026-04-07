@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('articles', a => !a.data.noIndex);
+allArticles.sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+
+// Group by rough category based on tags
+const categories = [
+  {
+    label: 'Planning & Budgeting',
+    slugs: ['destination-wedding-guide', 'destination-wedding-cost', 'destination-wedding-budget-hacks-that-dont-sacrifice-luxury', 'destination-wedding-tips', 'is-it-really-possible-to-save-money-with-a-beach-destination-wedding', 'beach-wedding-checklist'],
+  },
+  {
+    label: 'Food & Drink',
+    slugs: ['seafood-menu', 'beach-wedding-menu-ideas', 'a-delicious-tropical-menu-for-a-beach-themed-bridal-shower', 'delicious-beach-style-wedding-punch-recipes', 'dessert-bar-menu-ideas-for-a-beach-wedding'],
+  },
+  {
+    label: 'Décor & Style',
+    slugs: ['beautiful-beach-wedding-color-schemes', 'beach-wedding-beautiful-and-easy-centerpiece-ideas', 'gorgeous-beach-themed-wedding-cakes', 'beach-wedding-tabletop-decor-ideas', 'beach-wedding-in-the-evening-lighting-decor-ideas', '7-ways-to-bring-the-beach-to-a-wedding-reception-indoors', 'unique-beach-wedding-ideas'],
+  },
+  {
+    label: 'Bride & Wedding Party',
+    slugs: ['bridal-bouquets', 'beautiful-light-accessories-for-a-beach-bride', '5-best-options-for-beach-bridal-shoes', '5-breathtaking-beach-wedding-looks', '5-great-beach-wedding-bridesmaids-gifts', 'edible-wedding-favors-beach-wedding'],
+  },
+  {
+    label: 'Destinations & Honeymoons',
+    slugs: ['key-west-beach-wedding-destination', 'tips-for-planning-your-palm-beaches-destination-beach-wedding', '4-awesome-beach-destinations-honeymoon', 'celebrity-beach-weddings'],
+  },
+];
+
+// Build lookup
+const articleMap = Object.fromEntries(allArticles.map(a => [a.id.replace(/\.mdx?$/, ''), a]));
+
+// Articles not in any category (catch-all)
+const categorizedSlugs = new Set(categories.flatMap(c => c.slugs));
+const uncategorized = allArticles.filter(a => !categorizedSlugs.has(a.id.replace(/\.mdx?$/, '')));
+
+const canonical = 'https://beachbride.com/guides/';
+---
+
+<BaseLayout
+  title="Beach & Destination Wedding Guides | BeachBride"
+  description="Expert guides on planning, budgeting, décor, food, and style for your dream beach or destination wedding."
+  canonical={canonical}
+  ogImage="/images/logo.png"
+>
+  <main class="max-w-6xl mx-auto px-4 py-10">
+
+    <header class="text-center mb-12">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Wedding Guides</h1>
+      <p class="text-gray-600 max-w-xl mx-auto">
+        Everything you need to plan a beach or destination wedding — from budget breakdowns to décor ideas and honeymoon picks.
+      </p>
+    </header>
+
+    {categories.map(cat => {
+      const articles = cat.slugs
+        .map(s => articleMap[s])
+        .filter(Boolean);
+      if (articles.length === 0) return null;
+      return (
+        <section class="mb-12">
+          <h2 class="text-lg font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">{cat.label}</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {articles.map(article => {
+              const slug = article.id.replace(/\.mdx?$/, '');
+              return (
+                <a
+                  href={`/${slug}/`}
+                  class="group block rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white"
+                >
+                  {article.data.heroImage && (
+                    <div class="aspect-[16/9] overflow-hidden bg-gray-100">
+                      <img
+                        src={article.data.heroImage}
+                        alt={article.data.title}
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+                  <div class="p-4">
+                    <h3 class="font-semibold text-gray-900 text-sm leading-snug group-hover:text-brand transition-colors line-clamp-2">
+                      {article.data.title}
+                    </h3>
+                    <p class="text-xs text-gray-500 mt-1 line-clamp-2">{article.data.description}</p>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </section>
+      );
+    })}
+
+    {uncategorized.length > 0 && (
+      <section class="mb-12">
+        <h2 class="text-lg font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">More Guides</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {uncategorized.map(article => {
+            const slug = article.id.replace(/\.mdx?$/, '');
+            return (
+              <a
+                href={`/${slug}/`}
+                class="group block rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white"
+              >
+                {article.data.heroImage && (
+                  <div class="aspect-[16/9] overflow-hidden bg-gray-100">
+                    <img
+                      src={article.data.heroImage}
+                      alt={article.data.title}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+                <div class="p-4">
+                  <h3 class="font-semibold text-gray-900 text-sm leading-snug group-hover:text-brand transition-colors line-clamp-2">
+                    {article.data.title}
+                  </h3>
+                  <p class="text-xs text-gray-500 mt-1 line-clamp-2">{article.data.description}</p>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    )}
+
+    <!-- CTA -->
+    <div class="bg-brand-light border border-brand/20 rounded-xl p-8 text-center">
+      <p class="text-xl font-semibold text-gray-800 mb-2">Ready to start planning?</p>
+      <p class="text-gray-600 mb-5">Answer 3 quick questions and get a free personalized destination guide.</p>
+      <a href="/quiz/" class="inline-block bg-brand text-white font-semibold px-8 py-3 rounded-lg hover:bg-brand-dark transition-colors">
+        Get My Free Guide →
+      </a>
+    </div>
+
+  </main>
+</BaseLayout>
