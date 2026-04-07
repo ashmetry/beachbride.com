@@ -39,7 +39,7 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
 
       - name: Generate articles
-        run: node scripts/content-engine/generate.js --limit 5
+        run: node scripts/content-engine/generate.js --limit 3
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}

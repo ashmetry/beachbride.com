@@ -10,7 +10,8 @@
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { loadPipeline, savePipeline, getExistingArticles } from './content-engine/lib/config.js';
+import { loadPipeline, savePipeline, getExistingArticles, MODEL_ALT } from './content-engine/lib/config.js';
+import { callModelJSON } from './content-engine/lib/openrouter.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -45,6 +46,136 @@ function parseCSV(text) {
 
 // Map WP slugs → target keyword + content type + schema
 const EDITORIAL_TOPICS = [
+  // ── Tier 1: GSC-indexed pages with strong position signals ──────────────────
+  {
+    wpSlug: 'find-the-perfect-transportation-for-your-beach-wedding',
+    keyword: 'beach wedding transportation ideas',
+    secondaryKeywords: ['wedding transportation for beach wedding', 'how to arrive at beach wedding', 'beach wedding getaway car ideas'],
+    contentType: 'listicle',
+    schemaType: 'Article',
+    score: 88,
+  },
+  {
+    wpSlug: 'diy-beach-wedding-shoe-valet',
+    keyword: 'beach wedding shoe valet',
+    secondaryKeywords: ['diy shoe valet beach wedding', 'beach wedding shoes station', 'barefoot wedding shoe basket'],
+    contentType: 'listicle',
+    schemaType: 'HowTo',
+    score: 82,
+  },
+  {
+    wpSlug: 'seafood-menu',
+    keyword: 'seafood menu ideas for beach wedding',
+    secondaryKeywords: ['beach wedding seafood reception menu', 'coastal seafood wedding catering', 'seafood dishes beach wedding'],
+    contentType: 'listicle',
+    schemaType: 'Article',
+    score: 87,
+  },
+  {
+    wpSlug: 'edible-wedding-favors-beach-wedding',
+    keyword: 'edible beach wedding favors',
+    secondaryKeywords: ['food wedding favors beach theme', 'beach wedding edible gifts', 'unique edible wedding favors'],
+    contentType: 'listicle',
+    schemaType: 'Article',
+    score: 83,
+  },
+  {
+    wpSlug: 'celebrity-beach-weddings',
+    keyword: 'celebrity beach weddings',
+    secondaryKeywords: ['famous beach weddings celebrities', 'celebrity destination weddings beach', 'stars who got married on beach'],
+    contentType: 'listicle',
+    schemaType: 'Article',
+    score: 79,
+  },
+  {
+    wpSlug: 'beach-wedding-tabletop-decor-ideas',
+    keyword: 'beach wedding table decor ideas',
+    secondaryKeywords: ['beach wedding tablescape ideas', 'coastal wedding table decorations', 'beach reception table decor'],
+    contentType: 'listicle',
+    schemaType: 'Article',
+    score: 84,
+  },
+  {
+    wpSlug: 'dessert-bar-menu-ideas-for-a-beach-wedding',
+    keyword: 'beach wedding dessert bar ideas',
+    secondaryKeywords: ['candy bar beach wedding', 'dessert table ideas beach wedding', 'beach wedding sweet table'],
+    contentType: 'listicle',
+    schemaType: 'Article',
+    score: 80,
+  },
+  {
+    wpSlug: '5-great-beach-wedding-bridesmaids-gifts',
+    keyword: 'beach wedding bridesmaid gifts',
+    secondaryKeywords: ['gifts for bridesmaids beach wedding', 'beach themed bridesmaid thank you gifts', 'coastal bridesmaid gifts'],
+    contentType: 'listicle',
+    schemaType: 'Article',
+    score: 77,
+  },
+  {
+    wpSlug: 'beach-wedding-in-the-evening-lighting-decor-ideas',
+    keyword: 'evening beach wedding lighting ideas',
+    secondaryKeywords: ['beach wedding at night lighting', 'sunset beach wedding lights', 'beach wedding lighting decor'],
+    contentType: 'listicle',
+    schemaType: 'Article',
+    score: 86,
+  },
+  {
+    wpSlug: 'beach-wedding-menu-ideas',
+    keyword: 'beach wedding menu ideas',
+    secondaryKeywords: ['beach wedding reception food ideas', 'coastal wedding catering menu', 'tropical wedding food ideas'],
+    contentType: 'listicle',
+    schemaType: 'Article',
+    score: 85,
+  },
+  {
+    wpSlug: 'message-bottle-beach-proposal',
+    keyword: 'message in a bottle beach proposal',
+    secondaryKeywords: ['beach proposal ideas romantic', 'message bottle engagement idea', 'unique beach proposal'],
+    contentType: 'listicle',
+    schemaType: 'Article',
+    score: 76,
+  },
+  // ── Tier 2: Good keyword targets with affiliate potential ───────────────────
+  {
+    wpSlug: 'sea-glass-vases',
+    keyword: 'diy sea glass vase wedding',
+    secondaryKeywords: ['how to make sea glass vase', 'sea glass wedding centerpiece diy', 'beach wedding diy decor'],
+    contentType: 'listicle',
+    schemaType: 'HowTo',
+    score: 73,
+  },
+  {
+    wpSlug: '5-breathtaking-beach-wedding-looks',
+    keyword: 'beach wedding dress styles',
+    secondaryKeywords: ['beach wedding gown ideas', 'what to wear beach wedding bride', 'best dresses for beach wedding'],
+    contentType: 'listicle',
+    schemaType: 'Article',
+    score: 75,
+  },
+  {
+    wpSlug: '7-elevated-trip-ideas-for-your-beach-bride',
+    keyword: 'bachelorette trip ideas beach bride',
+    secondaryKeywords: ['beach bachelorette party destinations', 'bachelorette weekend ideas beach', 'beach bride trip ideas'],
+    contentType: 'listicle',
+    schemaType: 'Article',
+    score: 72,
+  },
+  {
+    wpSlug: 'considering-having-a-beach-wedding-think-about-these-pros-and-cons-first',
+    keyword: 'pros and cons of a beach wedding',
+    secondaryKeywords: ['beach wedding advantages disadvantages', 'is a beach wedding right for me', 'beach wedding considerations'],
+    contentType: 'editorial',
+    schemaType: 'Article',
+    score: 78,
+  },
+  {
+    wpSlug: '4-awesome-beach-destinations-honeymoon',
+    keyword: 'best beach destinations for honeymoon',
+    secondaryKeywords: ['top honeymoon beach destinations', 'beach honeymoon destination ideas', 'romantic beach honeymoon spots'],
+    contentType: 'listicle',
+    schemaType: 'Article',
+    score: 82,
+  },
   {
     wpSlug: 'destination-wedding-tips',
     keyword: 'destination wedding tips',
@@ -202,14 +333,72 @@ async function main() {
 
   console.log(`\n  Topics to add: ${toAdd.length}`);
 
-  if (!dryRun && toAdd.length > 0) {
-    pipeline.topics.push(...toAdd);
+  // Intent overlap check — catch duplicates before they enter the pipeline
+  let approved = toAdd;
+  if (toAdd.length > 0) {
+    approved = await filterIntentOverlap(toAdd, existingArticles, pipeline);
+  }
+
+  if (!dryRun && approved.length > 0) {
+    pipeline.topics.push(...approved);
     savePipeline(pipeline);
-    console.log(`  Saved to pipeline.json`);
-    console.log(`\n  Next step: npm run content:generate -- --limit ${toAdd.length}`);
+    console.log(`  Saved ${approved.length} topics to pipeline.json`);
+    console.log(`\n  Next step: npm run content:generate -- --limit ${approved.length}`);
   } else if (dryRun) {
     console.log('  [DRY RUN] No changes written');
   }
+}
+
+// ── Intent Overlap Filter ──────────────────────────────────────────────────────
+
+async function filterIntentOverlap(candidates, existingArticles, pipeline) {
+  const existingContent = existingArticles
+    .map(a => `- /${a.slug}/ — "${a.title}"`)
+    .join('\n');
+
+  const pipelineContent = pipeline.topics
+    .filter(t => ['discovered', 'briefed', 'researched', 'written', 'passed', 'staged', 'published'].includes(t.status))
+    .map(t => `- "${t.keyword}" → /${t.articleSlug || t.id}/`)
+    .join('\n');
+
+  const candidateList = candidates
+    .map((t, i) => `${i}: "${t.keyword}" (${t.contentType}${t.isRefresh ? `, refresh of /${t.existingSlug}/` : ''})`)
+    .join('\n');
+
+  console.log(`\n  Checking intent overlap for ${candidates.length} topics...`);
+
+  const result = await callModelJSON(
+    MODEL_ALT,
+    `You are an SEO content strategist for beachbride.com, a destination wedding planning website. Prevent duplicate content by catching topics that target the same search intent as existing articles, even with different phrasing.`,
+    `Review these candidate topics. Remove any whose intent is already covered by an existing article or pipeline topic — meaning a bride searching for it would be equally satisfied by the existing content.
+
+KEEP topics with genuinely different intent: different destination, planning stage, question, or audience segment.
+KEEP refresh candidates (marked as refresh) — they improve existing articles, not create new ones.
+REMOVE topics where existing content already satisfies the same searcher need.
+
+EXISTING PUBLISHED ARTICLES:
+${existingContent}
+
+ALREADY IN PIPELINE:
+${pipelineContent || '(none)'}
+
+CANDIDATE TOPICS:
+${candidateList}
+
+Return JSON: { "keep": [0, 2, ...], "remove": [{ "index": 1, "conflicts_with": "/slug/", "reason": "..." }] }`,
+    { temperature: 0 }
+  );
+
+  if (result.remove?.length) {
+    for (const r of result.remove) {
+      const t = candidates[r.index];
+      if (t) console.log(`    Skipping "${t.keyword}": conflicts with ${r.conflicts_with} — ${r.reason}`);
+    }
+  }
+
+  const kept = (result.keep || []).map(i => candidates[i]).filter(Boolean);
+  console.log(`    Kept ${kept.length} / ${candidates.length} (removed ${candidates.length - kept.length})`);
+  return kept;
 }
 
 main().catch(err => {
