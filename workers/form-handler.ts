@@ -145,32 +145,6 @@ async function subscribeToSendy(
   }
 }
 
-// ─── Destination Data (inline — Worker can't import src/data at runtime) ──────
-
-// Top resort per destination: [resortName, affiliateUrl]
-// Replace affiliate URLs with your tracked links once programmes are activated.
-const DESTINATION_RESORTS: Record<string, [string, string]> = {
-  cancun:         ['Sandals Royal Cancun',           'https://www.sandals.com/royal-cancun/'],
-  'punta-cana':   ['Secrets Cap Cana Resort & Spa',  'https://www.secretsresorts.com/en/resorts/dominican-republic/cap-cana'],
-  jamaica:        ['Sandals Montego Bay',             'https://www.sandals.com/montego-bay/'],
-  hawaii:         ['Four Seasons Resort Maui',        'https://www.fourseasons.com/maui/'],
-  bali:           ['AYANA Resort Bali',               'https://www.ayana.com/bali/ayana-resort-and-spa'],
-  santorini:      ['Canaves Oia Suites',              'https://www.canavesthe.com/'],
-  tulum:          ['Azulik Tulum',                   'https://www.azulik.com/'],
-  'costa-rica':   ['Andaz Costa Rica Resort',         'https://www.hyatt.com/andaz/cosar'],
-  'key-west':     ['Sunset Key Cottages',             'https://www.sunsetkeywestcottages.com/'],
-  'los-cabos':    ['Chileno Bay Resort & Residences', 'https://www.aubergeresorts.com/chilenobay/'],
-  'st-lucia':     ['Sandals Grande St. Lucian',       'https://www.sandals.com/grande-st-lucian/'],
-  'riviera-maya': ['Secrets Maroma Beach',            'https://www.secretsresorts.com/en/resorts/mexico/maroma-beach'],
-  maldives:       ['Soneva Fushi',                    'https://www.soneva.com/soneva-fushi/'],
-  aruba:          ['Manchebo Beach Resort',           'https://www.manchebo.com/'],
-  fiji:           ['Kokomo Private Island',           'https://www.kokomofiji.com/'],
-};
-
-// InsureMyTrip affiliate link — replace with your tracked URL after signup at
-// https://www.insuremytrip.com/affiliate-program/
-const INSURANCE_URL = 'https://www.insuremytrip.com/?utm_source=beachbride&utm_medium=email';
-
 // ─── Email Builders ───────────────────────────────────────────────────────────
 
 function buildOwnerEmail(payload: Payload): { subject: string; text: string } {
@@ -261,80 +235,6 @@ function buildBrideConfirmation(payload: LeadPayload): string {
   ].join('\n');
 }
 
-function buildEmailCaptureConfirmation(payload: EmailCapturePayload): string {
-  const firstName = payload.name ? payload.name.split(' ')[0] : null;
-  const greeting = firstName ? `Hi ${firstName}` : 'Hi';
-  const dest = payload.destination ?? 'your destination';
-  const destSlug = payload.destinationSlug ?? '';
-  const guideUrl = destSlug
-    ? `https://beachbride.com/destinations/${destSlug}/`
-    : 'https://beachbride.com/destinations/';
-
-  const resort = destSlug ? DESTINATION_RESORTS[destSlug] : null;
-  const resortBlock = resort
-    ? [
-        '─────────────────────────────────',
-        `TOP RESORT PICK FOR ${dest.toUpperCase()}`,
-        '',
-        `${resort[0]}`,
-        `${resort[1]}`,
-        '',
-        'Booking through this link costs you nothing extra — and it helps us',
-        'keep guides like this one free.',
-        '─────────────────────────────────',
-      ].join('\n')
-    : null;
-
-  const lines = [
-    `${greeting}!`,
-    '',
-    `Your ${dest} wedding guide is ready — I've put together everything below`,
-    'to help you start planning with confidence.',
-    '',
-    `>>> OPEN YOUR FULL GUIDE`,
-    guideUrl,
-    '',
-    "Here's what's inside:",
-    '  • Best months to get married (weather + crowds)',
-    '  • Realistic cost breakdown for your guest count',
-    '  • Legal requirements and what paperwork you actually need',
-    '  • Top resorts and venues with honest pros/cons',
-    '  • Your 12-month planning timeline',
-    '',
-  ];
-
-  if (resortBlock) {
-    lines.push(resortBlock, '');
-  }
-
-  lines.push(
-    '─────────────────────────────────',
-    'ONE MORE THING: PROTECT YOUR WEDDING',
-    '',
-    'Most destination couples skip travel insurance — and regret it.',
-    'A single cancelled flight or tropical storm can cost thousands.',
-    '',
-    'Compare plans from top-rated insurers (takes 2 minutes):',
-    INSURANCE_URL,
-    '─────────────────────────────────',
-    '',
-    "Over the next two weeks I'll send you a few more resources:",
-    '  Day 3  — Beach-ready engagement rings and wedding bands (the styles',
-    '           that actually photograph well in the sun)',
-    '  Day 7  — The complete destination wedding checklist + legal tips',
-    '  Day 14 — Ready to talk to a local planner? I\'ll introduce you.',
-    '',
-    'Reply to this email any time — I read every one.',
-    '',
-    '— The BeachBride Team',
-    'https://beachbride.com',
-    '',
-    'To unsubscribe, click the link in any email we send.',
-  );
-
-  return lines.join('\n');
-}
-
 // ─── CORS ─────────────────────────────────────────────────────────────────────
 
 const CORS_HEADERS = {
@@ -387,13 +287,7 @@ export default {
           utm_medium: payload.utm_medium ?? '',
           utm_campaign: payload.utm_campaign ?? '',
         });
-
-        await sendMailgunEmail(
-          env,
-          payload.email,
-          `Your ${payload.destination ?? 'destination wedding'} guide is ready`,
-          buildEmailCaptureConfirmation(payload)
-        );
+        // Email 1 is sent by Sendy autoresponder (day 0) — no Mailgun send needed here.
       }
 
       if (payload.type === 'lead') {
