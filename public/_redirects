@@ -204,6 +204,8 @@
 /wedding-dress-3/ /guides/bride/ 301
 /wedding-dress-4/ /guides/bride/ 301
 
+/blog/ /guides/ 301
+
 # --- Wildcard redirects for old WordPress taxonomy/listing URLs ---
 /vendors/listings/* /vendors/ 301
 /photographers/listings/* /vendors/ 301
