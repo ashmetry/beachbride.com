@@ -76,6 +76,25 @@ async function main() {
         console.log(`  Brief complete: "${topic.brief.title}"`);
       }
 
+      // A2. Intent gate — runs after brief, before expensive research/writing.
+      // Compares the brief's H2 outline + FAQs against every existing article's
+      // actual sections and FAQ questions. Catches intent overlap that discovery
+      // missed because we now have much richer signal (full outline vs. just keyword).
+      if (topic.status === 'briefed' && !topic.isRefresh) {
+        console.log('\n  Step 1b: Intent overlap check...');
+        const overlap = await checkIntentOverlap(topic, existingArticles, pipeline);
+        if (overlap) {
+          console.log(`  BLOCKED: intent overlaps with /${overlap.slug}/ — "${overlap.reason}"`);
+          topic.status = 'skipped-intent-overlap';
+          topic.failReason = `Intent overlap with /${overlap.slug}/: ${overlap.reason}`;
+          savePipeline(pipeline);
+          stats.failed++;
+          stats.failures.push({ id: topic.id, reason: topic.failReason });
+          continue;
+        }
+        console.log('  Intent check: PASSED (unique angle confirmed)');
+      }
+
       // B. Research
       if (topic.status === 'briefed') {
         console.log('\n  Step 2: Researching...');
@@ -229,6 +248,80 @@ function getOutlineGuide(contentType) {
 7. FAQ section`,
   };
   return guides[contentType] || guides.informational;
+}
+
+// ── A2. Intent Overlap Gate ───────────────────────────────────────────────
+// Runs after brief generation (cheap — one Sonnet call) but before research
+// (expensive — 10+ Perplexity calls) and writing (expensive — one Opus call).
+// The brief gives us the full H2 outline, FAQ topics, and unique angle,
+// which is 10x more signal than the keyword alone had at discovery time.
+
+async function checkIntentOverlap(topic, existingArticles, pipeline) {
+  const brief = topic.brief;
+  if (!brief) return null;
+
+  // Build rich inventory of what already exists
+  const existingContent = existingArticles
+    .map(a => {
+      let entry = `/${a.slug}/ — "${a.title}"`;
+      if (a.description) entry += `\n  Description: ${a.description}`;
+      if (a.h2s?.length) entry += `\n  H2 sections: ${a.h2s.join(' | ')}`;
+      if (a.faqQuestions?.length) entry += `\n  FAQs: ${a.faqQuestions.join(' | ')}`;
+      return entry;
+    })
+    .join('\n\n');
+
+  // Also check articles already in the queue (staged/passed) that haven't published yet
+  const queuedContent = pipeline.topics
+    .filter(t => ['briefed', 'researched', 'written', 'passed', 'staged'].includes(t.status) && t.id !== topic.id)
+    .map(t => {
+      let entry = `"${t.keyword}" (${t.status})`;
+      if (t.brief?.title) entry += ` — "${t.brief.title}"`;
+      if (t.brief?.h2Outline?.length) entry += `\n  H2 sections: ${t.brief.h2Outline.join(' | ')}`;
+      if (t.brief?.faqTopics?.length) entry += `\n  FAQs: ${t.brief.faqTopics.join(' | ')}`;
+      return entry;
+    })
+    .join('\n\n');
+
+  // The candidate brief
+  const candidateBrief = `Keyword: "${topic.keyword}"
+Title: "${brief.title}"
+Unique angle: ${brief.uniqueAngle || 'none specified'}
+H2 outline: ${(brief.h2Outline || []).join(' | ')}
+FAQ topics: ${(brief.faqTopics || []).join(' | ')}`;
+
+  const result = await callModelJSON(MODEL_BRIEF,
+    `You are an SEO cannibalization detector for beachbride.com, a destination wedding site. You prevent wasted content creation by catching intent overlap BEFORE expensive research and writing steps.
+
+Your test: "If a searcher googled this candidate's keyword and landed on any existing article, would that article fully satisfy their query?" If yes, the candidate is redundant — the existing article already serves that intent, even if the keyword is worded differently.
+
+Be strict. The cost of a false negative (wasted $5-$10 in API calls for a redundant article) is much higher than a false positive (skipping a marginally unique topic that can be re-evaluated later).`,
+    `Does this candidate article overlap in search intent with any existing content?
+
+CANDIDATE BRIEF:
+${candidateBrief}
+
+EXISTING PUBLISHED ARTICLES:
+${existingContent}
+
+${queuedContent ? `ARTICLES IN QUEUE (not yet published):
+${queuedContent}` : ''}
+
+Rules:
+- If the candidate's H2 outline covers substantially the same ground as an existing article's H2 sections (>60% topical overlap), it's a duplicate intent.
+- If the candidate's FAQs are already answered in an existing article's FAQs or body sections, it's a duplicate intent.
+- A candidate with a genuinely distinct angle (different destination, different vendor type, different audience segment) is NOT overlap even if the broad topic is similar.
+
+Return JSON:
+- If NO overlap: { "overlaps": false }
+- If overlap found: { "overlaps": true, "slug": "existing-article-slug", "reason": "specific explanation of the overlap" }`,
+    { temperature: 0 }
+  );
+
+  if (result.overlaps) {
+    return { slug: result.slug, reason: result.reason };
+  }
+  return null;
 }
 
 // ── B. Research ────────────────────────────────────────────────────────────────

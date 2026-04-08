@@ -125,8 +125,11 @@ export const AFFILIATE_TARGETS = [
 // ── Existing Articles Inventory ────────────────────────────────────────────────
 
 /**
- * Read all articles from src/content/articles/, parse frontmatter.
- * Returns [{ slug, title, tags, schemaType, related, disclaimers }]
+ * Read all articles from src/content/articles/, parse frontmatter + body signals.
+ * Returns [{ slug, title, tags, schemaType, related, disclaimers, description, h2s, faqQuestions }]
+ *
+ * The h2s and faqQuestions fields give dedup checks real signal about what
+ * search intent each article serves — not just its title and slug.
  */
 export function getExistingArticles() {
   if (!existsSync(ARTICLES_DIR)) return [];
@@ -135,14 +138,28 @@ export function getExistingArticles() {
     const slug = f.replace(/\.(mdx|md)$/, '');
     const raw = readFileSync(join(ARTICLES_DIR, f), 'utf8');
     const fm = parseFrontmatter(raw);
+
+    // Extract H2 headings from body (intent signal)
+    const bodyMatch = raw.match(/^---[\s\S]*?---\n([\s\S]*)$/);
+    const body = bodyMatch ? bodyMatch[1] : '';
+    const h2s = (body.match(/^## .+/gm) || []).map(h => h.replace(/^## /, ''));
+
+    // Extract FAQ questions from frontmatter (intent signal)
+    const faqQuestions = [];
+    const faqMatches = raw.matchAll(/- question:\s*["']?(.+?)["']?\s*$/gm);
+    for (const m of faqMatches) faqQuestions.push(m[1]);
+
     return {
       slug,
       title: fm.title || slug,
+      description: fm.description || '',
       tags: fm.tags || [],
       schemaType: fm.schemaType || 'article',
       related: fm.related || [],
       disclaimers: fm.disclaimers || [],
       destination: fm.destination || null,
+      h2s,
+      faqQuestions,
     };
   });
 }

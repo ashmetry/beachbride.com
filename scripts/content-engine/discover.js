@@ -390,14 +390,28 @@ function checkCannibalization(candidate, existingSlugs) {
 async function filterSemanticOverlap(candidates, existingArticles, pipelineTopics) {
   if (candidates.length === 0) return candidates;
 
-  // Build context: existing articles + already-queued pipeline topics
+  // Build rich context: existing articles with H2s and FAQs so the LLM can
+  // judge search intent, not just titles. A searcher who wants "how much does
+  // a beach wedding cost in Cancun" might be fully served by an article titled
+  // "Destination Wedding Cost Breakdown" if its H2s cover per-destination pricing.
   const existingContent = existingArticles
-    .map(a => `- /${a.slug}/ — "${a.title}" [tags: ${a.tags.join(', ')}]`)
+    .map(a => {
+      let entry = `- /${a.slug}/ — "${a.title}"`;
+      if (a.description) entry += `\n    Description: ${a.description}`;
+      if (a.h2s?.length) entry += `\n    Sections: ${a.h2s.join(' | ')}`;
+      if (a.faqQuestions?.length) entry += `\n    FAQs: ${a.faqQuestions.join(' | ')}`;
+      return entry;
+    })
     .join('\n');
 
   const pipelineContent = pipelineTopics
-    .filter(t => ['briefed', 'researched', 'written', 'passed', 'staged', 'published'].includes(t.status))
-    .map(t => `- ${t.keyword} (${t.status})`)
+    .filter(t => ['discovered', 'briefed', 'researched', 'written', 'passed', 'staged', 'published', 'skipped-intent-overlap'].includes(t.status))
+    .map(t => {
+      let entry = `- "${t.keyword}" (${t.status})`;
+      if (t.brief?.title) entry += ` — "${t.brief.title}"`;
+      if (t.brief?.h2Outline?.length) entry += `\n    Sections: ${t.brief.h2Outline.join(' | ')}`;
+      return entry;
+    })
     .join('\n');
 
   const candidateList = candidates
@@ -405,23 +419,35 @@ async function filterSemanticOverlap(candidates, existingArticles, pipelineTopic
     .join('\n');
 
   const result = await callModelJSON(MODEL_BRIEF,
-    `You are an SEO content strategist. Your job is to prevent topic cannibalization on a destination wedding planning website (beachbride.com).`,
-    `Review these candidate topics against existing content. Remove any candidate that would substantially overlap with an existing article or pipeline topic — i.e., a searcher looking for one would be equally satisfied by the other.
+    `You are an SEO content strategist. Your job is to prevent search intent cannibalization on beachbride.com, a destination wedding planning website.
 
+Two articles cannibalize each other when a searcher would be equally satisfied by either one. The test is: "If someone googled this keyword and landed on the existing article, would they bounce back to Google unsatisfied?" If the existing article already answers the query — even if the keyword is worded differently — it's a duplicate intent.
+
+Examples of SAME intent (should be removed):
+- "how much does a destination wedding cost" vs existing article covering destination wedding costs by location
+- "beach wedding planning tips" vs existing comprehensive beach wedding checklist
+- "best beach wedding photographer" vs existing article on finding destination wedding vendors
+
+Examples of DIFFERENT intent (should be kept):
+- "destination wedding cost in Cancun specifically" vs a general cost overview (location-specific angle)
+- "beach wedding checklist" vs "beach wedding decoration ideas" (planning vs. inspiration)
+- "how to find a wedding planner in Bali" vs "destination wedding planning guide" (vendor hiring vs. general planning)`,
+    `Review these candidate topics against existing content. The existing article data includes their H2 section headings and FAQ questions — use these to judge whether the candidate's search intent is already served.
+
+REMOVE if: a searcher looking for the candidate keyword would be fully satisfied by an existing article's content (based on its sections and FAQs).
+KEEP if: the candidate targets a genuinely distinct angle, destination-specific detail, or user need not covered by existing content.
 KEEP refresh candidates (they improve existing articles, not create new ones).
-KEEP topics that are related but target genuinely different search intent.
-REMOVE topics that would compete with existing content for the same queries.
 
-EXISTING ARTICLES:
+EXISTING ARTICLES (with section outlines):
 ${existingContent}
 
-ALREADY IN PIPELINE:
+ALREADY IN PIPELINE (with briefs where available):
 ${pipelineContent || '(none)'}
 
 CANDIDATE TOPICS:
 ${candidateList}
 
-Return JSON: { "keep": [0, 2, 5, ...], "removed": [{"index": 1, "reason": "overlaps with /existing-slug/"}] }
+Return JSON: { "keep": [0, 2, 5, ...], "removed": [{"index": 1, "reason": "same intent as /existing-slug/ which covers [specific overlap]"}] }
 Only include index numbers. The "removed" array is for logging.`,
     { temperature: 0 }
   );
