@@ -43,6 +43,13 @@ async function main() {
   const destImage = join(IMAGES_DIR, `${slug}.jpg`);
   const hasImage = existsSync(srcImage);
 
+  // Collect section images (slug-2.jpg, slug-3.jpg, ...) generated for visual-intent articles
+  const sectionImages = [];
+  for (let i = 2; i <= 5; i++) {
+    const src = join(QUEUE_IMAGES_DIR, `${slug}-${i}.jpg`);
+    if (existsSync(src)) sectionImages.push({ src, dest: join(IMAGES_DIR, `${slug}-${i}.jpg`) });
+  }
+
   console.log(`  Publishing: ${slug}`);
 
   let articleContent = readFileSync(srcArticle, 'utf8');
@@ -65,6 +72,7 @@ async function main() {
     console.log(`\n  [DRY RUN] Would:`);
     console.log(`    - Move ${srcArticle} → ${destArticle}`);
     if (hasImage) console.log(`    - Move ${srcImage} → ${destImage}`);
+    if (sectionImages.length) console.log(`    - Move ${sectionImages.length} section image(s): ${sectionImages.map(i => basename(i.src)).join(', ')}`);
     console.log(`    - Add inbound links + update related arrays in existing articles`);
     console.log(`    - Commit and push to main`);
     console.log(`    - Send email notification`);
@@ -82,6 +90,7 @@ async function main() {
   // 3. Move files to their final locations
   writeFileSync(destArticle, articleContent);
   if (hasImage) copyFileSync(srcImage, destImage);
+  for (const { src, dest } of sectionImages) copyFileSync(src, dest);
 
   // 4. Build verification — CRITICAL safety check
   //    Use stdio:'inherit' to stream output directly to CI log without buffering
@@ -95,6 +104,7 @@ async function main() {
     console.error(`  Exit code: ${err.status}, signal: ${err.signal}`);
     if (existsSync(destArticle)) unlinkSync(destArticle);
     if (hasImage && existsSync(destImage)) unlinkSync(destImage);
+    for (const { dest } of sectionImages) { if (existsSync(dest)) unlinkSync(dest); }
 
     // Revert any modified existing articles
     for (const mod of modifiedFiles) {
@@ -120,6 +130,7 @@ async function main() {
   // 5. Clean up queue
   unlinkSync(srcArticle);
   if (hasImage && existsSync(srcImage)) unlinkSync(srcImage);
+  for (const { src } of sectionImages) { if (existsSync(src)) unlinkSync(src); }
 
   // 6. Git commit + push
   console.log('\n  Committing...');
@@ -131,6 +142,7 @@ async function main() {
 
   exec(`git add "${destArticle}"`);
   if (hasImage) exec(`git add "${destImage}"`);
+  for (const { dest } of sectionImages) exec(`git add "${dest}"`);
   for (const mod of modifiedFiles) {
     exec(`git add "${mod.path}"`);
   }
@@ -138,6 +150,7 @@ async function main() {
   // Stage removal of queue files (use git rm --cached in case already deleted from disk)
   exec(`git rm --cached --ignore-unmatch "${srcArticle}"`);
   if (hasImage) exec(`git rm --cached --ignore-unmatch "${srcImage}"`);
+  for (const { src } of sectionImages) exec(`git rm --cached --ignore-unmatch "${src}"`);
 
   const commitMsg = `Publish: ${title}\n\nContent Engine automated publish.\nSlug: ${slug}`;
   exec(`git commit -m "${commitMsg.replace(/"/g, '\\"')}"`);

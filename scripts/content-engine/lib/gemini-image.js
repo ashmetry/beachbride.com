@@ -189,6 +189,83 @@ function buildHeroPromptStatic(title, topic) {
   return 'A couple exchanging vows on a sun-drenched tropical beach, soft golden hour light, white florals and driftwood arch, turquoise ocean in the distance. Editorial wedding photography, warm and cinematic.';
 }
 
+// ── Section Images ─────────────────────────────────────────────────────────────
+
+/**
+ * Generate contextual images for specific H2 sections of a visual-intent article.
+ * Selects H2s evenly distributed across the article outline, generates one image
+ * per selected section using a section-specific prompt from Claude Haiku.
+ *
+ * @param {string} slug - Article slug (used for filenames: slug-2.jpg, slug-3.jpg...)
+ * @param {string} title - Article title (for context)
+ * @param {string[]} h2Outline - Full H2 outline from the brief
+ * @param {string} outputDir - Directory to write images to
+ * @param {number} count - Number of section images to generate (2–4)
+ * @returns {Array<{imageIndex, h2, path}>} Generated section image metadata
+ */
+export async function generateSectionImages(slug, title, h2Outline, outputDir, count) {
+  if (!h2Outline?.length || count < 1) return [];
+
+  // Select H2s evenly distributed across the outline (skip first and last —
+  // those positions are awkward for inline images; keep the meaty middle)
+  const usable = h2Outline.slice(1, -1).length > 0 ? h2Outline.slice(1, -1) : h2Outline;
+  const step = Math.max(1, Math.floor(usable.length / count));
+  const selectedH2s = Array.from({ length: count }, (_, i) => usable[Math.min(i * step, usable.length - 1)]).filter(Boolean);
+
+  const results = [];
+  for (let i = 0; i < selectedH2s.length; i++) {
+    const h2 = selectedH2s[i];
+    const imageIndex = i + 2; // hero is index 1, sections start at 2
+    const outputPath = `${outputDir}/${slug}-${imageIndex}.jpg`;
+
+    console.log(`  Generating section image ${imageIndex} for: "${h2}"`);
+    let prompt;
+    try {
+      prompt = await buildSectionPromptAI(title, h2);
+    } catch (err) {
+      console.log(`    Section prompt failed (${err.message}), skipping`);
+      continue;
+    }
+
+    const ok = await generateImage(prompt, outputPath, '16:9');
+    if (ok) {
+      results.push({ imageIndex, h2, path: outputPath, altText: h2 });
+    } else {
+      console.log(`    Section image ${imageIndex} failed — skipping`);
+    }
+
+    // Small pause between Gemini calls to avoid rate limiting
+    if (i < selectedH2s.length - 1) await sleep(2000);
+  }
+
+  return results;
+}
+
+/**
+ * Ask Claude Haiku to write a section-specific image prompt.
+ * Uses the article title for context and the H2 heading as the primary subject.
+ */
+async function buildSectionPromptAI(articleTitle, h2Heading) {
+  const system = `You write image generation prompts for a destination wedding website. Your prompts produce editorial-quality photographs that are visually specific to the exact subject described. Never produce generic beach ceremony shots.`;
+
+  const user = `Write a Gemini image generation prompt for an inline section image.
+
+Article: "${articleTitle}"
+Section heading: "${h2Heading}"
+
+Rules:
+- The image must illustrate the SPECIFIC subject of the section heading, not the article in general.
+- Style: editorial photography, natural light, warm tones, aspirational but not stock-photo. No text, no logos, no watermarks.
+- If the heading describes a color palette, show a real styled scene (table, florals, fabric) in those exact colors.
+- If it's a specific cake type, show that cake. Specific floral style — show those flowers. Specific destination — show that place.
+- Length: 1-2 sentences. Concrete and visual only. Do NOT include the word "prompt" or any meta-commentary.`;
+
+  const { text } = await callModel(MODEL_ALT, system, user, { temperature: 0.7, max_tokens: 150 });
+  const prompt = text.trim().replace(/^["']|["']$/g, '');
+  if (!prompt || prompt.length < 20) throw new Error('Empty prompt');
+  return prompt;
+}
+
 function buildAltText(title, topic) {
   // Use title for specificity rather than generic topic
   const short = title.length > 80 ? title.slice(0, 77) + '...' : title;

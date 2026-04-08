@@ -17,7 +17,7 @@ import {
   MIN_WORD_COUNT, MAX_WORD_COUNT,
 } from './lib/config.js';
 import { callModel, callModelJSON } from './lib/openrouter.js';
-import { generateHeroImage } from './lib/gemini-image.js';
+import { generateHeroImage, generateSectionImages } from './lib/gemini-image.js';
 import { notifyFailed } from './lib/email.js';
 
 const { dryRun, limit, topicId } = cliFlags();
@@ -735,7 +735,10 @@ function formatFailReason(report) {
 // ── E. Image Generation ────────────────────────────────────────────────────────
 
 async function generateImages(topic) {
-  const result = await generateHeroImage(
+  const articlePath = join(QUEUE_DIR, `${topic.articleSlug}.md`);
+
+  // Hero image (always)
+  const heroResult = await generateHeroImage(
     topic.articleSlug,
     topic.brief.title,
     topic.keyword,
@@ -743,23 +746,97 @@ async function generateImages(topic) {
     topic.brief?.h2Outline || [],
   );
 
-  if (result) {
-    // Update article frontmatter with heroImage
-    const articlePath = join(QUEUE_DIR, `${topic.articleSlug}.md`);
+  if (heroResult) {
     if (existsSync(articlePath)) {
       let content = readFileSync(articlePath, 'utf8');
       if (!content.includes('heroImage:')) {
-        const insertPoint = content.indexOf('\n---', 3); // Find closing ---
+        const insertPoint = content.indexOf('\n---', 3);
         if (insertPoint > 0) {
           content = content.slice(0, insertPoint) + `\nheroImage: "/images/${topic.articleSlug}.jpg"` + content.slice(insertPoint);
+          writeFileSync(articlePath, content);
         }
-        writeFileSync(articlePath, content);
       }
     }
-    console.log(`    Hero image ready. Alt: ${result.altText}`);
+    console.log(`    Hero image ready. Alt: ${heroResult.altText}`);
   } else {
-    console.log('    Image generation failed — article will publish without hero image');
+    console.log('    Hero image failed — article will publish without hero image');
   }
+
+  // Section images for visual-intent topics (colors, cakes, decor, florals, etc.)
+  const isVisual = detectVisualIntent(topic.keyword);
+  if (isVisual) {
+    const imageCount = getSectionImageCount(topic.keyword);
+    console.log(`    Visual-intent topic — generating ${imageCount} section images...`);
+    const sectionResults = await generateSectionImages(
+      topic.articleSlug,
+      topic.brief.title,
+      topic.brief?.h2Outline || [],
+      QUEUE_IMAGES_DIR,
+      imageCount,
+    );
+    if (sectionResults.length > 0 && existsSync(articlePath)) {
+      insertSectionImagesIntoArticle(articlePath, sectionResults, topic.articleSlug);
+      console.log(`    Inserted ${sectionResults.length} section image(s) into article body`);
+    }
+  }
+}
+
+// ── Visual Intent Detection ────────────────────────────────────────────────────
+// Topics where users expect to see multiple images, not just one hero shot.
+// Color palettes, cakes, florals, decor, nails, attire — all inspiration-driven.
+
+const VISUAL_INTENT_PATTERNS = [
+  /color[s]?|colour[s]?|palette[s]?/,
+  /cake[s]?/,
+  /bouquet[s]?|floral|flower[s]?/,
+  /nail[s]?/,
+  /decor|decoration[s]?|centerpiece[s]?/,
+  /dress|gown|attire/,
+  /shoe[s]?|sandal[s]?|heel[s]?/,
+  /table[s]?cape|tablescape[s]?/,
+  /invitation[s]?|stationery/,
+  /favor[s]?/,
+  /boutonniere[s]?/,
+  /lighting|lantern[s]?/,
+  /arch|arbor/,
+  /hair|updo/,
+];
+
+function detectVisualIntent(keyword) {
+  const kw = keyword.toLowerCase();
+  return VISUAL_INTENT_PATTERNS.some(p => p.test(kw));
+}
+
+function getSectionImageCount(keyword) {
+  const kw = keyword.toLowerCase();
+  // Color palette articles warrant more — each palette deserves a visual
+  if (/color[s]?|colour[s]?|palette[s]?/.test(kw)) return 3;
+  return 2;
+}
+
+/**
+ * Insert section image tags into article body at appropriate H2 positions.
+ * Finds the matching H2 in the article and inserts the image immediately after it,
+ * before the first line of body content for that section.
+ */
+function insertSectionImagesIntoArticle(articlePath, sectionResults, slug) {
+  if (!sectionResults.length) return;
+  let content = readFileSync(articlePath, 'utf8');
+
+  // Work bottom-to-top so earlier insertions don't shift positions of later ones
+  const reversed = [...sectionResults].reverse();
+
+  for (const { h2, imageIndex, altText } of reversed) {
+    // Escape special regex chars in the H2 heading text
+    const escaped = h2.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const h2Regex = new RegExp(`(^## ${escaped}[^\n]*\n)`, 'm');
+    const imgTag = `\n![${altText || h2}](/images/${slug}-${imageIndex}.jpg)\n`;
+    if (h2Regex.test(content)) {
+      content = content.replace(h2Regex, `$1${imgTag}`);
+    }
+  }
+
+  writeFileSync(articlePath, content);
 }
 
 // ── Run ────────────────────────────────────────────────────────────────────────
