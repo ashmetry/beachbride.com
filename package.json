@@ -37,6 +37,7 @@
     "dotenv": "^17.4.0",
     "googleapis": "^171.4.0",
     "sharp": "^0.34.5",
+    "to-ico": "^1.1.5",
     "typescript": "^5.0.0",
     "wrangler": "^4.0.0",
     "yaml": "^2.8.3"
