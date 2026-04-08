@@ -205,7 +205,7 @@ export function parseFrontmatter(content) {
 
 // ── Pipeline State ─────────────────────────────────────────────────────────────
 
-const EMPTY_PIPELINE = { topics: [], lastDiscoveryRun: null, lastGenerationRun: null };
+const EMPTY_PIPELINE = { topics: [], rejectedKeywords: [], lastDiscoveryRun: null, lastGenerationRun: null };
 
 export function loadPipeline() {
   if (!existsSync(PIPELINE_PATH)) return structuredClone(EMPTY_PIPELINE);

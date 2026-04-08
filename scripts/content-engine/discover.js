@@ -40,6 +40,10 @@ const { dryRun, limit } = cliFlags();
 
 // ── Main ───────────────────────────────────────────────────────────────────────
 
+// How many undiscovered topics to keep in reserve before skipping fetch.
+// At 3 articles/week generated, 20 = ~7 weeks runway.
+const DISCOVERY_QUEUE_THRESHOLD = 20;
+
 async function main() {
   console.log(`\n=== Content Engine: Discover Topics ===`);
   console.log(`  dry-run: ${dryRun}  limit: ${limit === Infinity ? 'none' : limit}\n`);
@@ -50,6 +54,10 @@ async function main() {
   const pipelineKeywords = new Set(pipeline.topics.filter(t => t.keyword).map(t => normalizeKeyword(t.keyword)));
   // Build a set of pipeline IDs so slug-based dedup catches what keyword-normalization misses
   const pipelineIds = new Set(pipeline.topics.map(t => t.id));
+  // Persistent blacklist: keywords previously rejected by the semantic overlap LLM.
+  // Checked before any LLM call so we never re-evaluate the same keyword twice.
+  if (!pipeline.rejectedKeywords) pipeline.rejectedKeywords = [];
+  const rejectedKeywords = new Set(pipeline.rejectedKeywords);
 
   // Build word count map for thin-content refresh boosting
   const wordCountMap = buildWordCountMap(existingArticles);
@@ -61,6 +69,17 @@ async function main() {
   if (thinSlugs.size > 0) {
     console.log(`  Thin articles detected (< 1500w): ${[...thinSlugs].join(', ')}`);
   }
+
+  // Skip expensive fetches if we already have enough topics queued.
+  // The LLM semantic filter still runs to classify any candidates that made it
+  // through previous dedup checks but haven't been evaluated yet.
+  const discoveredCount = pipeline.topics.filter(t => t.status === 'discovered').length;
+  if (discoveredCount >= DISCOVERY_QUEUE_THRESHOLD && !dryRun) {
+    console.log(`  Queue has ${discoveredCount} discovered topics (threshold: ${DISCOVERY_QUEUE_THRESHOLD}) — skipping fetch.\n`);
+    console.log('  Nothing to do.');
+    return;
+  }
+  console.log(`  Queue depth: ${discoveredCount} discovered topics — fetching new candidates.\n`);
 
   let candidates = [];
 
@@ -101,7 +120,7 @@ async function main() {
     if (newTopics.length >= limit) break;
 
     const normalized = normalizeKeyword(c.keyword);
-    if (seen.has(normalized) || pipelineKeywords.has(normalized)) {
+    if (seen.has(normalized) || pipelineKeywords.has(normalized) || rejectedKeywords.has(normalized)) {
       skipped++;
       continue;
     }
@@ -158,11 +177,15 @@ async function main() {
   // Sort by score descending
   newTopics.sort((a, b) => b.score - a.score);
 
-  // 4. Semantic overlap check — catch topics that are different keywords but same intent
+  // 4. Semantic overlap check — catch topics that are different keywords but same intent.
+  // Returns both the kept topics and the normalized keywords of rejected ones.
+  // Rejected keywords are persisted to pipeline.rejectedKeywords so future runs skip
+  // them deterministically without re-calling the LLM.
   let filtered = newTopics;
+  let newlyRejectedKeywords = [];
   if (newTopics.length > 0) {
     console.log(`\n  Checking semantic overlap...`);
-    filtered = await filterSemanticOverlap(newTopics, existingArticles, pipeline.topics);
+    ({ filtered, rejectedNormalized: newlyRejectedKeywords } = await filterSemanticOverlap(newTopics, existingArticles, pipeline.topics));
     const removed = newTopics.length - filtered.length;
     if (removed > 0) {
       console.log(`    Removed ${removed} topics that overlap with existing content`);
@@ -171,8 +194,9 @@ async function main() {
 
   console.log(`\n  Results:`);
   console.log(`    New topics: ${filtered.length}`);
-  console.log(`    Skipped (keyword duplicates): ${skipped}`);
+  console.log(`    Skipped (keyword duplicates or blacklist): ${skipped}`);
   console.log(`    Skipped (semantic overlap): ${newTopics.length - filtered.length}`);
+  console.log(`    Blacklist size: ${rejectedKeywords.size + newlyRejectedKeywords.length} keywords`);
   console.log(`    Refresh candidates: ${refreshes}`);
 
   if (filtered.length > 0) {
@@ -184,13 +208,22 @@ async function main() {
     }
   }
 
-  if (!dryRun && filtered.length > 0) {
-    pipeline.topics.push(...filtered);
-    pipeline.lastDiscoveryRun = new Date().toISOString();
-    savePipeline(pipeline);
-    console.log(`\n  Saved ${filtered.length} topics to pipeline.json`);
-  } else if (dryRun) {
-    console.log(`\n  [DRY RUN] Would save ${filtered.length} topics`);
+  if (!dryRun) {
+    if (filtered.length > 0) pipeline.topics.push(...filtered);
+    // Persist newly rejected keywords to blacklist — dedupe against existing entries
+    if (newlyRejectedKeywords.length > 0) {
+      const existing = new Set(pipeline.rejectedKeywords);
+      for (const kw of newlyRejectedKeywords) {
+        if (!existing.has(kw)) pipeline.rejectedKeywords.push(kw);
+      }
+    }
+    if (filtered.length > 0 || newlyRejectedKeywords.length > 0) {
+      pipeline.lastDiscoveryRun = new Date().toISOString();
+      savePipeline(pipeline);
+      console.log(`\n  Saved ${filtered.length} topics, ${newlyRejectedKeywords.length} new blacklist entries`);
+    }
+  } else {
+    console.log(`\n  [DRY RUN] Would save ${filtered.length} topics, ${newlyRejectedKeywords.length} blacklist entries`);
   }
 }
 
@@ -606,14 +639,20 @@ Only include index numbers. The "removed" array is for logging.`,
     { temperature: 0 }
   );
 
+  // Collect normalized keywords of removed candidates to persist in blacklist
+  const rejectedNormalized = [];
   if (result.removed?.length) {
     for (const r of result.removed) {
-      console.log(`    Removed "${candidates[r.index]?.keyword}": ${r.reason}`);
+      const candidate = candidates[r.index];
+      if (candidate) {
+        console.log(`    Removed "${candidate.keyword}": ${r.reason}`);
+        rejectedNormalized.push(normalizeKeyword(candidate.keyword));
+      }
     }
   }
 
   const kept = (result.keep || []).map(i => candidates[i]).filter(Boolean);
-  return kept;
+  return { filtered: kept, rejectedNormalized };
 }
 
 // ── Helpers ────────────────────────────────────────────────────────────────────
