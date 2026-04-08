@@ -47,7 +47,7 @@ async function main() {
   const pipeline = loadPipeline();
   const existingArticles = getExistingArticles();
   const existingSlugs = new Set(existingArticles.map(a => a.slug));
-  const pipelineKeywords = new Set(pipeline.topics.map(t => normalizeKeyword(t.keyword)));
+  const pipelineKeywords = new Set(pipeline.topics.filter(t => t.keyword).map(t => normalizeKeyword(t.keyword)));
   // Build a set of pipeline IDs so slug-based dedup catches what keyword-normalization misses
   const pipelineIds = new Set(pipeline.topics.map(t => t.id));
 
@@ -405,7 +405,7 @@ async function filterSemanticOverlap(candidates, existingArticles, pipelineTopic
     .join('\n');
 
   const pipelineContent = pipelineTopics
-    .filter(t => ['discovered', 'briefed', 'researched', 'written', 'passed', 'staged', 'published', 'skipped-intent-overlap'].includes(t.status))
+    .filter(t => t.keyword && ['discovered', 'briefed', 'researched', 'written', 'passed', 'staged', 'published', 'skipped-intent-overlap'].includes(t.status))
     .map(t => {
       let entry = `- "${t.keyword}" (${t.status})`;
       if (t.brief?.title) entry += ` — "${t.brief.title}"`;
