@@ -73,13 +73,22 @@ async function main() {
     console.log(`  GSC error: ${err.message}`);
   }
 
-  // 2. DataForSEO ranked keywords
+  // 2. DataForSEO ranked keywords (our own site)
   try {
     const dfsTopics = await fetchDataForSEOKeywords();
     console.log(`  DataForSEO: ${dfsTopics.length} ranked keywords found`);
     candidates.push(...dfsTopics);
   } catch (err) {
     console.log(`  DataForSEO error: ${err.message}`);
+  }
+
+  // 3. Competitor keyword gap — keywords top competitors rank for that we don't
+  try {
+    const gapTopics = await fetchCompetitorKeywordGap();
+    console.log(`  Competitor gap: ${gapTopics.length} new keyword opportunities found`);
+    candidates.push(...gapTopics);
+  } catch (err) {
+    console.log(`  Competitor gap error: ${err.message}`);
   }
 
   // 3. Deduplicate + score + classify
@@ -169,7 +178,9 @@ async function main() {
   if (filtered.length > 0) {
     console.log(`\n  Top topics:`);
     for (const t of filtered.slice(0, 10)) {
-      console.log(`    [${t.score.toFixed(0)}] ${t.keyword} (${t.contentType}${t.isRefresh ? ', REFRESH' : ''})`);
+      const src = t._source?.source || '';
+      const srcLabel = src.startsWith('gap:') ? ` via ${src.replace('gap:', '')}` : src === 'gsc' ? ' [GSC]' : '';
+      console.log(`    [${t.score.toFixed(0)}] ${t.keyword} (${t.contentType}${t.isRefresh ? ', REFRESH' : ''}${srcLabel})`);
     }
   }
 
@@ -303,6 +314,143 @@ async function fetchDataForSEOKeywords() {
     }));
 }
 
+// ── Competitor Keyword Gap ─────────────────────────────────────────────────────
+// Finds keywords that top destination wedding competitors rank for but
+// beachbride.com does not — the core of proactive topic discovery.
+//
+// Competitors chosen for maximum signal/noise ratio:
+//   - destinationweddingdetails.com — #1 destination wedding content site, pure niche
+//   - destify.com — exact same model (lead gen + content), high-intent keywords
+//   - junebugweddings.com — large library, strong destination wedding section
+//   - destinationido.com — similar audience + vendor directory model
+//   - destinationweddings.com — commercial-intent destination wedding planning
+//
+// We use DataForSEO's keyword_intersection endpoint: for each competitor, fetch
+// keywords they rank for in positions 1-30 that beachbride.com does NOT rank
+// for at all. Filter to destination/beach wedding relevance before returning.
+
+const COMPETITORS = [
+  'destinationweddingdetails.com',
+  'destify.com',
+  'junebugweddings.com',
+  'destinationido.com',
+  'destinationweddings.com',
+];
+
+// Keywords containing these terms are almost certainly irrelevant to beachbride.com
+// (vendor-side content, local wedding content, fashion, registry, etc.)
+const GAP_EXCLUDE_PATTERNS = [
+  /\bphotographer\b.*\b(tips|business|clients|portfolio|pricing|career|marketing)\b/i,
+  /\bvendor\b.*\b(business|marketing|tips|get clients)\b/i,
+  /\bwedding dress\b|\bbridal gown\b|\bbridesmaids dress\b/i,
+  /\bwedding cake\b.*\b(recipe|bake|make)\b/i,
+  /\bwedding registry\b/i,
+  /\bengagement party\b|\bbridal shower\b(?!.*beach)/i,
+  /\bwedding invitation\b.*\b(design|template|wording)\b/i,
+  /\blocal wedding\b|\bhometown wedding\b/i,
+];
+
+// Must contain at least one of these to be considered destination/beach relevant
+const GAP_REQUIRE_PATTERNS = [
+  /destination wedding/i,
+  /beach wedding/i,
+  /\b(cancun|bali|santorini|hawaii|jamaica|punta cana|tulum|costa rica|los cabos|cabo|maldives|fiji|amalfi|tuscany|mexico|caribbean|bahamas|barbados|aruba|st lucia|turks|riviera maya)\b/i,
+  /\b(elope|elopement)\b/i,
+  /wedding abroad|marry abroad|married abroad|getting married in/i,
+  /all.inclusive wedding|resort wedding|villa wedding/i,
+  /outdoor wedding|tropical wedding|intimate wedding/i,
+];
+
+async function fetchCompetitorKeywordGap() {
+  if (!env.DATAFORSEO_LOGIN || !env.DATAFORSEO_PASSWORD) {
+    throw new Error('DataForSEO credentials not set');
+  }
+
+  const authStr = Buffer.from(`${env.DATAFORSEO_LOGIN}:${env.DATAFORSEO_PASSWORD}`).toString('base64');
+
+  // Batch all competitors in a single request — DataForSEO supports up to 100 tasks
+  // Each task: get ranked keywords for one competitor (positions 1-30, limit 200)
+  const tasks = COMPETITORS.map(competitor => ({
+    target: competitor,
+    location_code: 2840, // US
+    language_code: 'en',
+    limit: 200,
+    filters: [
+      ['ranked_serp_element.serp_item.rank_absolute', '<=', 30],
+    ],
+  }));
+
+  const data = await new Promise((resolve, reject) => {
+    const body = JSON.stringify(tasks);
+    const req = https.request({
+      hostname: 'api.dataforseo.com',
+      path: '/v3/dataforseo_labs/google/ranked_keywords/live',
+      method: 'POST',
+      headers: {
+        'Authorization': `Basic ${authStr}`,
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(body),
+      },
+    }, res => {
+      let raw = '';
+      res.on('data', d => raw += d);
+      res.on('end', () => {
+        try { resolve(JSON.parse(raw)); }
+        catch (e) { reject(e); }
+      });
+    });
+    req.on('error', reject);
+    req.write(body);
+    req.end();
+  });
+
+  // Collect all keywords across competitors, dedupe by keyword text
+  const keywordMap = new Map();
+
+  for (let i = 0; i < COMPETITORS.length; i++) {
+    const items = data.tasks?.[i]?.result?.[0]?.items || [];
+    const competitor = COMPETITORS[i];
+
+    for (const item of items) {
+      const kw = item.keyword_data?.keyword;
+      if (!kw) continue;
+
+      // Relevance filter — must match at least one require pattern, none of the exclude patterns
+      const relevant = GAP_REQUIRE_PATTERNS.some(p => p.test(kw));
+      const excluded = GAP_EXCLUDE_PATTERNS.some(p => p.test(kw));
+      if (!relevant || excluded) continue;
+
+      // Keep the entry with the highest search volume if seen from multiple competitors
+      const volume = item.keyword_data.keyword_info?.search_volume || 0;
+      const existing = keywordMap.get(kw);
+      if (!existing || volume > existing.volume) {
+        keywordMap.set(kw, {
+          keyword: kw,
+          volume,
+          position: item.ranked_serp_element?.serp_item?.rank_absolute || 30,
+          cpc: item.keyword_data.keyword_info?.cpc || 0,
+          difficulty: item.keyword_data.keyword_info?.competition_level === 'HIGH' ? 70
+            : item.keyword_data.keyword_info?.competition_level === 'MEDIUM' ? 50 : 30,
+          competitor,
+        });
+      }
+    }
+  }
+
+  // Convert to candidate format — no currentPageUrl since beachbride doesn't rank for these
+  return [...keywordMap.values()].map(k => ({
+    keyword: k.keyword,
+    currentPageUrl: null, // we don't rank for these — that's the point
+    impressions: 0,
+    clicks: 0,
+    position: 999, // signals "not ranking" for scoring purposes
+    volume: k.volume,
+    cpc: k.cpc,
+    difficulty: k.difficulty,
+    source: `gap:${k.competitor}`,
+  }));
+}
+
 // ── Scoring ────────────────────────────────────────────────────────────────────
 
 function scoreTopic(candidate, isRefresh = { refresh: false, slug: null }, wordCountMap = {}) {
@@ -319,6 +467,12 @@ function scoreTopic(candidate, isRefresh = { refresh: false, slug: null }, wordC
   // Bonus: already ranking (strike zone) — easier to push up
   if (candidate.position > 0 && candidate.position <= 50) {
     score += 15;
+  }
+
+  // Bonus: competitor gap keyword — validated demand (competitor ranks for it),
+  // no existing competition from our own pages, pure net-new opportunity
+  if (candidate.source?.startsWith('gap:')) {
+    score += 10;
   }
 
   // Bonus: high CPC = commercial intent
