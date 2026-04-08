@@ -18,4 +18,7 @@ export const SITE_CONFIG = {
   },
   // Lead-eligible vendor types (NOT resorts or jewelers)
   leadVendorTypes: ['planner', 'photographer', 'florist', 'caterer', 'dj', 'officiant'],
+  // Cloudflare Turnstile — get keys from CF dashboard > Turnstile
+  // Leave empty to disable (honeypot still active). Set TURNSTILE_SECRET on Worker too.
+  turnstileSiteKey: '0x4AAAAAAC2NprEpuGpSGV_9',
 } as const;

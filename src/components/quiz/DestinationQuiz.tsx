@@ -4,12 +4,16 @@
  * No phone, no full lead form. Low friction, high aspiration.
  */
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import destinationsData from '../../data/destinations.json';
 
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
+    turnstile?: {
+      render: (el: HTMLElement, opts: Record<string, unknown>) => string;
+      remove: (id: string) => void;
+    };
   }
 }
 
@@ -149,14 +153,55 @@ function PhotoCard({ label, image, onClick, portrait = false }: {
   );
 }
 
-export default function DestinationQuiz() {
+interface Props {
+  turnstileSiteKey?: string;
+}
+
+export default function DestinationQuiz({ turnstileSiteKey }: Props) {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [honeypot, setHoneypot] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const turnstileRef = useRef<HTMLDivElement>(null);
+  const turnstileWidgetRef = useRef<string | null>(null);
+
+  // Render Turnstile widget when email step is visible
+  useEffect(() => {
+    if (step !== 4 || !turnstileSiteKey || !turnstileRef.current) return;
+
+    let intervalId: ReturnType<typeof setInterval> | null = null;
+
+    const render = () => {
+      if (!window.turnstile || !turnstileRef.current) return false;
+      turnstileWidgetRef.current = window.turnstile.render(turnstileRef.current, {
+        sitekey: turnstileSiteKey,
+        callback: (token: string) => setTurnstileToken(token),
+        'expired-callback': () => setTurnstileToken(''),
+        theme: 'light',
+        size: 'flexible',
+      });
+      return true;
+    };
+
+    if (!render()) {
+      intervalId = setInterval(() => {
+        if (render() && intervalId) clearInterval(intervalId);
+      }, 200);
+    }
+
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+      if (turnstileWidgetRef.current && window.turnstile) {
+        window.turnstile.remove(turnstileWidgetRef.current);
+        turnstileWidgetRef.current = null;
+      }
+    };
+  }, [step, turnstileSiteKey]);
 
   const matches = submitted ? getTopMatches(answers) : [];
 
@@ -169,6 +214,8 @@ export default function DestinationQuiz() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    // Honeypot — silently fake success for bots
+    if (honeypot) { setSubmitted(true); return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setError('Please enter a valid email address.');
       return;
@@ -196,6 +243,7 @@ export default function DestinationQuiz() {
           utm_source: sessionStorage.getItem('utm_source') || undefined,
           utm_medium: sessionStorage.getItem('utm_medium') || undefined,
           utm_campaign: sessionStorage.getItem('utm_campaign') || undefined,
+          'cf-turnstile-response': turnstileToken || undefined,
         }),
       });
 
@@ -353,6 +401,11 @@ export default function DestinationQuiz() {
             We'll send your top 3 destination matches with a personalized planning guide — free.
           </p>
           <form onSubmit={handleSubmit} className="space-y-3">
+            {/* Honeypot */}
+            <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+              <label htmlFor="q-website">Website</label>
+              <input id="q-website" type="text" value={honeypot} onChange={e => setHoneypot(e.target.value)} tabIndex={-1} autoComplete="off" />
+            </div>
             <div>
               <label htmlFor="q-name" className="quiz-label">Your first name <span className="text-gray-400 font-normal">(optional)</span></label>
               <input
@@ -376,6 +429,7 @@ export default function DestinationQuiz() {
                 className="quiz-input"
               />
             </div>
+            {turnstileSiteKey && <div ref={turnstileRef} className="flex justify-center" />}
             {error && <p className="text-red-600 text-sm">{error}</p>}
             <button type="submit" disabled={submitting} className="quiz-submit-btn">
               {submitting ? 'Matching…' : 'Show my matches →'}

@@ -5,11 +5,15 @@
  * Routes only to lead-eligible vendor types (NOT resorts or jewelers).
  */
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
+    turnstile?: {
+      render: (el: HTMLElement, opts: Record<string, unknown>) => string;
+      remove: (id: string) => void;
+    };
   }
 }
 
@@ -97,7 +101,11 @@ function formatPhone(value: string): string {
 
 const STEPS = ['Destination', 'Details', 'Services', 'Your info'];
 
-export default function LeadQuiz() {
+interface Props {
+  turnstileSiteKey?: string;
+}
+
+export default function LeadQuiz({ turnstileSiteKey }: Props) {
   const [step, setStep] = useState(0);
   const [form, setForm] = useState<FormData>({
     destination: '',
@@ -110,9 +118,46 @@ export default function LeadQuiz() {
     phone: '',
     consent: false,
   });
+  const [honeypot, setHoneypot] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const turnstileRef = useRef<HTMLDivElement>(null);
+  const turnstileWidgetRef = useRef<string | null>(null);
+
+  // Render Turnstile widget when contact step is visible
+  useEffect(() => {
+    if (step !== 3 || !turnstileSiteKey || !turnstileRef.current) return;
+
+    let intervalId: ReturnType<typeof setInterval> | null = null;
+
+    const render = () => {
+      if (!window.turnstile || !turnstileRef.current) return false;
+      turnstileWidgetRef.current = window.turnstile.render(turnstileRef.current, {
+        sitekey: turnstileSiteKey,
+        callback: (token: string) => setTurnstileToken(token),
+        'expired-callback': () => setTurnstileToken(''),
+        theme: 'light',
+        size: 'flexible',
+      });
+      return true;
+    };
+
+    if (!render()) {
+      intervalId = setInterval(() => {
+        if (render() && intervalId) clearInterval(intervalId);
+      }, 200);
+    }
+
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+      if (turnstileWidgetRef.current && window.turnstile) {
+        window.turnstile.remove(turnstileWidgetRef.current);
+        turnstileWidgetRef.current = null;
+      }
+    };
+  }, [step, turnstileSiteKey]);
 
   function toggleService(val: string) {
     setForm(f => ({
@@ -125,6 +170,8 @@ export default function LeadQuiz() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    // Honeypot — silently fake success for bots
+    if (honeypot) { setSubmitted(true); return; }
     if (!form.consent) { setError('Please confirm your consent to continue.'); return; }
     const phoneDigits = form.phone.replace(/\D/g, '');
     if (phoneDigits.length !== 10) { setError('Please enter a valid 10-digit phone number.'); return; }
@@ -154,6 +201,7 @@ export default function LeadQuiz() {
           utm_campaign: sessionStorage.getItem('utm_campaign') || undefined,
           utm_term: sessionStorage.getItem('utm_term') || undefined,
           utm_content: sessionStorage.getItem('utm_content') || undefined,
+          'cf-turnstile-response': turnstileToken || undefined,
         }),
       });
 
@@ -325,6 +373,11 @@ export default function LeadQuiz() {
             Vendors will reach out within 24–48 hours with availability and pricing.
           </p>
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Honeypot */}
+            <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+              <label htmlFor="l-website">Website</label>
+              <input id="l-website" type="text" value={honeypot} onChange={e => setHoneypot(e.target.value)} tabIndex={-1} autoComplete="off" />
+            </div>
             <div>
               <label htmlFor="l-name" className="quiz-label">Full name *</label>
               <input
@@ -374,6 +427,7 @@ export default function LeadQuiz() {
                 I agree to be contacted by BeachBride and matched vendors about my destination wedding. No spam — just relevant help.
               </label>
             </div>
+            {turnstileSiteKey && <div ref={turnstileRef} className="flex justify-center" />}
             {error && <p className="text-red-600 text-sm">{error}</p>}
             <button type="submit" disabled={submitting} className="quiz-submit-btn">
               {submitting ? 'Sending…' : 'Get matched with vendors →'}

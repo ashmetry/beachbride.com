@@ -3,10 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import DestinationQuiz from '../components/quiz/DestinationQuiz';
 import LeadQuiz from '../components/quiz/LeadQuiz';
 import { getOrganizationSchema } from '../lib/schema/organization';
+import { SITE_CONFIG } from '../lib/site-config';
 
 // ?stage=2 renders the full lead capture quiz
 const stage = Astro.url.searchParams.get('stage') ?? '1';
 const isStage2 = stage === '2';
+const turnstileKey = SITE_CONFIG.turnstileSiteKey;
 
 const schema = getOrganizationSchema();
 ---
@@ -44,8 +46,8 @@ const schema = getOrganizationSchema();
 
     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
       {!isStage2
-        ? <DestinationQuiz client:load />
-        : <LeadQuiz client:load />
+        ? <DestinationQuiz client:load turnstileSiteKey={turnstileKey} />
+        : <LeadQuiz client:load turnstileSiteKey={turnstileKey} />
       }
     </div>
 
@@ -64,6 +66,8 @@ const schema = getOrganizationSchema();
       </div>
     </div>
   </main>
+
+  {turnstileKey && <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
 
   <style is:global>
     /* Quiz shared styles — used by both DestinationQuiz and LeadQuiz */

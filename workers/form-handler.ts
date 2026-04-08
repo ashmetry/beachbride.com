@@ -19,6 +19,7 @@ export interface Env {
   SENDY_API_KEY: string;
   SENDY_LIST_ID: string;
   SENDY_NURTURE_LIST_ID: string; // Stage 1 email-capture list (triggers nurture sequence)
+  TURNSTILE_SECRET?: string; // Cloudflare Turnstile — set via wrangler secret put TURNSTILE_SECRET
 }
 
 // ─── Payload Types ────────────────────────────────────────────────────────────
@@ -235,6 +236,23 @@ function buildBrideConfirmation(payload: LeadPayload): string {
   ].join('\n');
 }
 
+// ─── Turnstile ────────────────────────────────────────────────────────────────
+
+async function verifyTurnstile(secret: string, token: string, ip: string): Promise<boolean> {
+  try {
+    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ secret, response: token, remoteip: ip }),
+    });
+    const data = (await res.json()) as { success: boolean };
+    return data.success;
+  } catch {
+    console.error('Turnstile verification failed');
+    return false;
+  }
+}
+
 // ─── CORS ─────────────────────────────────────────────────────────────────────
 
 const CORS_HEADERS = {
@@ -262,12 +280,29 @@ export default {
       return new Response('Method not allowed', { status: 405 });
     }
 
-    let payload: Payload;
+    let raw: Record<string, unknown>;
     try {
-      payload = (await request.json()) as Payload;
+      raw = (await request.json()) as Record<string, unknown>;
     } catch {
       return jsonResponse({ ok: false, error: 'Invalid JSON' }, 400);
     }
+
+    // Honeypot — if filled, silently return success (trick the bot)
+    if (raw._hp) {
+      return jsonResponse({ ok: true });
+    }
+
+    // Turnstile — enforce for quiz forms when secret is configured
+    const requiresTurnstile = (raw.type === 'email-capture' || raw.type === 'lead') && env.TURNSTILE_SECRET;
+    if (requiresTurnstile) {
+      const token = (raw['cf-turnstile-response'] as string) || '';
+      const ip = request.headers.get('CF-Connecting-IP') || '';
+      if (!await verifyTurnstile(env.TURNSTILE_SECRET!, token, ip)) {
+        return jsonResponse({ ok: false, error: 'Verification failed' }, 403);
+      }
+    }
+
+    const payload = raw as unknown as Payload;
 
     try {
       const { subject, text } = buildOwnerEmail(payload);
