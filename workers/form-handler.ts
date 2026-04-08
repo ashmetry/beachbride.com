@@ -306,7 +306,6 @@ export default {
       if (payload.type === 'email-capture') {
         // Stage 1: subscribe to nurture list, send confirmation
         await subscribeToSendy(env, env.SENDY_NURTURE_LIST_ID, payload.email, payload.name ?? '', {
-          destination: payload.destination ?? '',
           destination_slug: payload.destinationSlug ?? '',
           vibe: payload.vibe ?? '',
           season: payload.season ?? '',
@@ -335,7 +334,6 @@ export default {
         );
 
         await subscribeToSendy(env, env.SENDY_LIST_ID, payload.email, payload.name, {
-          destination: payload.destination,
           destination_slug: payload.destinationSlug ?? '',
           wedding_date: payload.weddingDate ?? '',
           guest_count: payload.guestCount ?? '',

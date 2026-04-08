@@ -15,12 +15,15 @@ const { author = 'BeachBride Editorial Team', reviewer } = Astro.props;
       </svg>
     </div>
     <div>
-      <p class="font-semibold text-gray-900">{author}</p>
-      <p class="text-sm text-gray-500 mt-0.5">
-        Our editorial team researches destination wedding requirements with input from local planners and couples who've married there.
+      <p class="font-semibold text-gray-900">
+        <a href="/experts/" class="hover:text-brand transition-colors">{author}</a>
+      </p>
+      <p class="text-sm text-gray-600 mt-0.5 leading-relaxed">
+        Our guides are researched and written by BeachBride's in-house team, informed by a network of active wedding photographers and planners working in these destinations.
+        <a href="/experts/" class="text-brand hover:text-brand-dark text-xs ml-1 font-medium">Meet our experts →</a>
       </p>
       {reviewer && (
-        <p class="text-xs text-gray-400 mt-1">Reviewed by {reviewer}</p>
+        <p class="text-xs text-gray-400 mt-1.5">Reviewed by {reviewer}</p>
       )}
     </div>
   </div>

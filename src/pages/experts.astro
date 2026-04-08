@@ -1,0 +1,170 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const contributors = [
+  {
+    name: 'Anna Kim',
+    slug: 'anna-kim',
+    title: 'Destination Wedding Photographer',
+    location: 'Maui, Hawaii',
+    website: 'https://www.annakimphotography.com',
+    bio: 'Anna has photographed hundreds of destination weddings across the Hawaiian Islands and Pacific Rim. She contributes expert perspective on Maui, Oahu, and Kauai venue selection, permit logistics, and what couples should realistically expect shooting a beach ceremony in tropical light.',
+    credentials: ['Hawaii destination specialist', 'Fine art documentary style'],
+    region: 'Hawaii',
+  },
+  {
+    name: 'Jenna Lee Mauro',
+    slug: 'jenna-lee',
+    title: 'Wedding Photographer',
+    location: 'Honolulu, Hawaii',
+    website: 'https://www.jennaleepictures.com',
+    bio: 'Based in Honolulu with over a decade shooting weddings on Oahu, Jenna has worked with couples from every state and a dozen countries. Her work has been published in The Knot and Style Me Pretty. She advises on permit requirements, beach access, and sunrise vs. sunset ceremony timing across Oahu\'s most-sought venues.',
+    credentials: ['The Knot', 'Style Me Pretty'],
+    region: 'Hawaii',
+  },
+  {
+    name: 'Miriam Salgado',
+    slug: 'mir-salgado',
+    title: 'Wedding Photographer',
+    location: 'Tampa, Florida',
+    website: 'https://www.mirsalgado.com',
+    bio: 'Miriam has photographed over 500 weddings across 12 years in the industry, spanning Florida\'s Gulf Coast beaches, Caribbean destinations, and international venues. She contributes to our Florida Keys and Dominican Republic coverage with first-hand knowledge of resort protocols and local vendor relationships.',
+    credentials: ['500+ weddings', '12 years experience'],
+    region: 'Caribbean & Florida',
+  },
+  {
+    name: 'Kyle Goldie',
+    slug: 'kyle-goldie',
+    title: 'Destination Wedding Photographer',
+    location: 'International',
+    website: 'https://www.lumaweddings.com',
+    bio: 'Kyle and the Luma team have photographed destination weddings across Mexico, the Caribbean, Europe, and Southeast Asia. Published in Harper\'s Bazaar, Martha Stewart Weddings, and Brides, Kyle brings editorial-level expertise to our destination coverage and vendor recommendations for luxury destination markets.',
+    credentials: ["Harper's Bazaar", 'Martha Stewart Weddings', 'Brides'],
+    region: 'Mexico & Caribbean',
+  },
+  {
+    name: 'Rupert Rogers',
+    slug: 'rupert-rogers',
+    title: 'Luxury Wedding Photographer',
+    location: 'New York, NY',
+    website: 'https://www.4eyesphotography.com',
+    bio: 'Rupert specializes in high-end destination weddings across Europe and the Caribbean, with over 15 years photographing at landmark venues. Named one of Grace Ormonde\'s top six wedding photographers, he contributes expert guidance on Santorini, Amalfi Coast, and luxury resort weddings.',
+    credentials: ['Grace Ormonde Top 6', 'Luxury destination specialist'],
+    region: 'Europe & Caribbean',
+  },
+  {
+    name: 'Kimberly Phipps',
+    slug: 'kimberly-phipps',
+    title: 'Wedding Photographer',
+    location: 'Florida',
+    website: 'https://www.dkphipps.com',
+    bio: 'Kimberly has built a career photographing Florida\'s beach weddings, from the Panhandle to the Keys. She contributes practical guidance on Florida\'s public beach permit process, best ceremony timing by season, and what to look for when evaluating a resort\'s wedding package.',
+    credentials: ['Florida beach specialist', 'Resort wedding expert'],
+    region: 'Florida',
+  },
+  {
+    name: 'Gail Johnson',
+    slug: 'gail-johnson',
+    title: 'Master Wedding Planner',
+    location: 'Atlanta, Georgia',
+    website: 'https://www.gailjohnsonweddings.com',
+    bio: 'With over 25 years in the industry, Gail is one of the most credentialed wedding planners in the Southeast. A published author, industry speaker, and former Brides magazine ambassador, she contributes strategic planning guidance — vendor contracts, realistic budget frameworks, and how to navigate destination logistics from a planner\'s perspective.',
+    credentials: ['25+ years experience', 'Brides Ambassador', 'Published author'],
+    region: 'Southeast & Destination',
+  },
+  {
+    name: 'Mollie Tobias',
+    slug: 'mollie-tobias',
+    title: 'Wedding Photographer',
+    location: 'Virginia',
+    website: 'https://www.mollietobiasphotography.com',
+    bio: 'Mollie photographs intimate and destination weddings across the Mid-Atlantic and Caribbean. Her work has appeared in HuffPost, The Knot, WeddingWire, and Hill City Bride. She contributes to our planning guides with an emphasis on what couples from the East Coast should know when planning a destination wedding.',
+    credentials: ['HuffPost', 'The Knot', 'WeddingWire'],
+    region: 'East Coast & Caribbean',
+  },
+  {
+    name: 'Julieta Amezcua',
+    slug: 'julieta-amezcua',
+    title: 'Destination Wedding Photographer',
+    location: 'Los Cabos, Mexico',
+    website: 'https://www.byjulieta.com',
+    bio: 'Julieta is based in Los Cabos and photographs destination weddings across Mexico\'s Baja Peninsula. She contributes first-hand expertise on Cabo San Lucas and San José del Cabo venues, resort protocols, permit requirements, and the practical realities couples face when planning a Mexican beach wedding.',
+    credentials: ['Los Cabos specialist', 'Mexico destination expert'],
+    region: 'Mexico & Baja',
+  },
+  {
+    name: 'Brandy Angel',
+    slug: 'brandy-angel',
+    title: 'Wedding Photographer',
+    location: 'Madison, Georgia',
+    website: 'https://www.brandyangelphotography.com',
+    bio: 'Brandy has spent over a decade photographing weddings throughout the South, contributing editorial work published in Style Me Pretty, HuffPost, PopSugar, and CBS. She brings a storytelling perspective to our coverage of outdoor and coastal weddings, and advises on what couples should realistically expect when choosing a scenic natural setting.',
+    credentials: ['Style Me Pretty', 'HuffPost', 'PopSugar'],
+    region: 'Southeast',
+  },
+];
+---
+
+<PageLayout
+  title="Our Experts — BeachBride"
+  description="Meet the destination wedding photographers and planners whose real-world experience informs BeachBride's destination guides and planning resources."
+  canonical="https://beachbride.com/experts/"
+>
+  <h1 class="text-3xl font-bold text-gray-900 mb-4">Our Experts</h1>
+  <p class="text-gray-600 mb-10 max-w-2xl">
+    We're proud to be connected to some of the most talented wedding professionals in the industry.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {contributors.map((c) => (
+      <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+        <div class="bg-brand-light h-40 flex items-center justify-center">
+          <img
+            src={`/images/experts/${c.slug}.jpg`}
+            alt={`${c.name} — ${c.title}`}
+            class="w-24 h-24 rounded-full object-cover border-4 border-white shadow"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div
+            class="w-24 h-24 rounded-full bg-brand/20 border-4 border-white shadow items-center justify-center text-brand text-2xl font-bold"
+            style="display: none;"
+          >
+            {c.name.split(' ').map(n => n[0]).join('')}
+          </div>
+        </div>
+
+        <div class="p-5">
+          <div class="mb-3">
+            <h2 class="text-lg font-semibold text-gray-900 mb-0.5">{c.name}</h2>
+            <p class="text-sm text-brand font-medium">{c.title}</p>
+            <p class="text-xs text-gray-500 mt-0.5">{c.location}</p>
+          </div>
+
+          <p class="text-sm text-gray-600 leading-relaxed mb-4">{c.bio}</p>
+
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            {c.credentials.map((cred) => (
+              <span class="text-xs bg-brand-light text-brand-dark px-2.5 py-1 rounded-full font-medium border border-brand/20">{cred}</span>
+            ))}
+          </div>
+
+          <a
+            href={c.website}
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+            class="text-xs text-gray-400 hover:text-brand transition-colors no-underline"
+          >
+            {c.website.replace('https://www.', '')} →
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="mt-16 pt-10 border-t border-gray-200">
+    <h2 class="text-xl font-semibold text-gray-900 mb-3">Editorial Standards</h2>
+    <p class="text-gray-600 max-w-2xl">
+      All BeachBride content is written and fact-checked by our in-house team against official government sources. Corrections or editorial questions? <a href="/contact/" class="text-brand hover:text-brand-dark">Contact us</a>.
+    </p>
+  </div>
+</PageLayout>
