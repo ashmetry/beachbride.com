@@ -46,6 +46,16 @@ export default defineConfig({
           return { ...item, changefreq: 'monthly', priority: 0.8 };
         }
 
+        // Vendor type+destination pSEO pages (high commercial intent)
+        if (/\/vendors\/(planner|photographer|florist|caterer|dj|officiant|resort|venue)\/[^/]+\/$/.test(url)) {
+          return { ...item, changefreq: 'weekly', priority: 0.8 };
+        }
+
+        // Vendor type hub pages
+        if (/\/vendors\/(planner|photographer|florist|caterer|dj|officiant|resort|venue)\/$/.test(url)) {
+          return { ...item, changefreq: 'weekly', priority: 0.7 };
+        }
+
         // Vendor destination pages
         if (/\/vendors\/[^/]+\/$/.test(url) && !url.endsWith('/vendors/')) {
           return { ...item, changefreq: 'weekly', priority: 0.7 };

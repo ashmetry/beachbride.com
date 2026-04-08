@@ -1,0 +1,234 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/layout/Breadcrumb.astro';
+import VendorTypeIcon from '../../../components/vendors/VendorTypeIcon.astro';
+import vendors from '../../../data/vendors.json';
+import destinations from '../../../data/destinations.json';
+import {
+  VENDOR_TYPES, typeLabels, typePluralLabels, typeSEOLabels, sortByTier,
+  type VendorType,
+} from '../../../lib/vendors';
+import { getVendorTypeDestinationSchema } from '../../../lib/schema/vendorTypeDestination';
+
+export async function getStaticPaths() {
+  const paths: Array<{ params: { type: string; destination: string } }> = [];
+  for (const type of VENDOR_TYPES) {
+    for (const dest of destinations) {
+      const hasVendors = (vendors as any[]).some(
+        (v: any) => v.type === type && v.destinations.includes(dest.slug)
+      );
+      if (hasVendors) {
+        paths.push({ params: { type, destination: dest.slug } });
+      }
+    }
+  }
+  return paths;
+}
+
+const { type, destination: destSlug } = Astro.params;
+const vType = type as VendorType;
+const dest = destinations.find((d: any) => d.slug === destSlug)!;
+
+const localVendors = (vendors as any[])
+  .filter((v: any) => v.type === type && v.destinations.includes(destSlug))
+  .sort(sortByTier);
+
+const seoLabel = typeSEOLabels[vType];
+const pluralLabel = typePluralLabels[vType];
+const singularLabel = typeLabels[vType];
+const canonical = `https://beachbride.com/vendors/${type}/${destSlug}/`;
+const currentYear = new Date().getFullYear();
+
+// Related vendor types in this destination (for cross-linking)
+const relatedTypes = VENDOR_TYPES.filter(t =>
+  t !== type && (vendors as any[]).some((v: any) => v.type === t && v.destinations.includes(destSlug))
+);
+
+// Schema
+const schema = getVendorTypeDestinationSchema({
+  typeName: seoLabel,
+  destinationName: dest.name,
+  country: dest.country,
+  vendors: localVendors.map((v: any) => ({
+    name: v.name,
+    slug: v.slug,
+    rating: v.rating,
+    reviewCount: v.reviewCount,
+  })),
+  url: canonical,
+});
+
+// Legal ceremony display
+const legalDisplay = dest.legalCeremonyType === 'legal' ? 'Legal ceremonies available'
+  : dest.legalCeremonyType === 'symbolic-recommended' ? 'Symbolic recommended'
+  : 'Symbolic only';
+
+// Type-specific editorial copy
+const editorialCopy: Record<string, { heading: string; body: string }> = {
+  planner: {
+    heading: `Why hire a wedding planner for your ${dest.name} wedding?`,
+    body: `Planning a destination wedding in ${dest.name} means coordinating across time zones, navigating ${dest.country}'s legal requirements, and managing vendors you can't visit in person. A local planner handles venue logistics, legal paperwork, and vendor relationships on the ground — often saving you more than their fee in avoided mistakes and negotiated rates. They know which venues photograph best at which time of day, which caterers are reliable during peak season, and how to handle weather contingencies that guests never see.`,
+  },
+  photographer: {
+    heading: `Why book a local photographer in ${dest.name}?`,
+    body: `A ${dest.name}-based photographer knows the best golden hour spots, understands natural light at local venues, and has working relationships with the planners and coordinators who keep your timeline on track. They also know which permits are required for popular photo locations and can scout backup spots if weather changes. For destination weddings, a local photographer eliminates the risk and cost of flying someone in — and their familiarity with ${dest.name}'s landscape means they'll find angles a visiting photographer would miss.`,
+  },
+  florist: {
+    heading: `Finding the right florist in ${dest.name}`,
+    body: `Tropical and destination floral design is different from what most US-based florists handle. A ${dest.name} florist sources locally available blooms that hold up in the climate, knows which flowers are in season for your wedding date, and avoids costly imports that wilt in heat or humidity. They can work with native tropical flowers to create arrangements that feel organic to the setting rather than fighting it — and they understand the logistics of transporting arrangements to outdoor ceremonies.`,
+  },
+  caterer: {
+    heading: `Catering for a ${dest.name} destination wedding`,
+    body: `Food is one of the strongest memories your guests will carry home. A ${dest.name}-based caterer works with local ingredients, understands the climate challenges of outdoor dining, and can design menus that showcase ${dest.country}'s culinary identity. Whether you're hosting a plated dinner for 80 or a cocktail reception for 25, a local caterer navigates import restrictions, seasonal availability, and the timing challenges of beach or outdoor service that visiting caterers can't anticipate.`,
+  },
+  dj: {
+    heading: `Entertainment for your ${dest.name} wedding`,
+    body: `Music sets the tone for every moment of your wedding — from ceremony to last dance. A DJ based in ${dest.name} understands local sound regulations, has backup equipment on hand, and knows how to work with the acoustics of popular venue types. For beach and outdoor weddings, they manage wind, power supply, and speaker placement challenges that indoor DJs rarely encounter. They can also blend local musical traditions with your personal playlist for something guests haven't heard at every other wedding.`,
+  },
+  officiant: {
+    heading: `Choosing an officiant in ${dest.name}`,
+    body: `Your officiant handles one of the most personal parts of your wedding. In ${dest.name}, you may need someone who understands both ${dest.country}'s legal ceremony requirements and your personal preferences for the ritual itself. A local officiant knows the documentation process, coordinates with government offices when needed, and can perform ceremonies in multiple languages if your guest list is international. Many also offer both legal and symbolic ceremony options depending on your paperwork situation.`,
+  },
+  resort: {
+    heading: `Wedding resorts in ${dest.name}`,
+    body: `All-inclusive resorts simplify destination wedding logistics: venue, catering, accommodation, and often a dedicated coordinator all under one roof. ${dest.name} has resorts ranging from intimate boutique properties to large-scale luxury brands, each with different wedding packages and guest capacity. The right resort depends on your guest count, budget, and whether you want an adults-only atmosphere or family-friendly setting. Comparing options in one place helps you find the best fit without requesting quotes from a dozen properties individually.`,
+  },
+  venue: {
+    heading: `Wedding venues in ${dest.name}`,
+    body: `Beyond resorts, ${dest.name} offers standalone venues — private villas, gardens, historic estates, and beachfront properties — that give you more creative control over your wedding day. Independent venues let you choose your own caterer, photographer, and other vendors rather than working within a resort's preferred vendor list. This flexibility can mean a more personalized wedding, though it requires more coordination. A local planner is especially valuable when working with independent ${dest.name} venues.`,
+  },
+};
+
+const editorial = editorialCopy[type] ?? editorialCopy['planner'];
+---
+
+<BaseLayout
+  title={`${localVendors.length} Best ${seoLabel} in ${dest.name} (${currentYear})`}
+  description={`Compare ${localVendors.length} vetted ${pluralLabel.toLowerCase()} in ${dest.name}, ${dest.country}. Ratings, specialties, and direct contact for your destination wedding.`}
+  canonical={canonical}
+  schema={schema}
+>
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+    <Breadcrumb crumbs={[
+      { label: 'Vendors', href: '/vendors/' },
+      { label: pluralLabel, href: `/vendors/${type}/` },
+      { label: dest.name },
+    ]} />
+
+    <!-- Header -->
+    <div class="mb-8">
+      <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">{seoLabel} in {dest.name}</h1>
+      <p class="text-gray-500 mt-1">
+        {dest.country} &middot; {localVendors.length} vetted {pluralLabel.toLowerCase()} &middot;
+        <a href={`/vendors/${destSlug}/`} class="text-brand hover:underline no-underline">All {dest.name} vendors →</a>
+      </p>
+    </div>
+
+    <!-- Quick destination stats -->
+    <div class="grid grid-cols-3 gap-3 mb-8">
+      <div class="bg-white rounded-xl p-3 border border-gray-100 text-center">
+        <p class="text-xs text-gray-400 uppercase tracking-wide mb-0.5">Avg Cost</p>
+        <p class="font-bold text-gray-900 text-sm">${(dest.avgCostUSD.min / 1000).toFixed(0)}k–${(dest.avgCostUSD.max / 1000).toFixed(0)}k</p>
+      </div>
+      <div class="bg-white rounded-xl p-3 border border-gray-100 text-center">
+        <p class="text-xs text-gray-400 uppercase tracking-wide mb-0.5">Best Season</p>
+        <p class="font-bold text-gray-900 text-sm">{dest.bestMonths.slice(0, 2).join(' – ')}</p>
+      </div>
+      <div class="bg-white rounded-xl p-3 border border-gray-100 text-center">
+        <p class="text-xs text-gray-400 uppercase tracking-wide mb-0.5">Legal Wedding</p>
+        <p class="font-bold text-gray-900 text-sm">{legalDisplay}</p>
+      </div>
+    </div>
+
+    <!-- Vendor grid -->
+    <section class="mb-10">
+      <div class="grid sm:grid-cols-2 gap-5">
+        {localVendors.map((v: any) => (
+          <a
+            href={`/vendors/${v.slug}/`}
+            class="card p-5 hover:shadow-md transition-shadow no-underline group"
+          >
+            <div class="flex items-start gap-3">
+              <div class="w-11 h-11 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0 text-brand/70">
+                <VendorTypeIcon type={v.type} size={22} />
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5">
+                  <h2 class="font-bold text-gray-900 group-hover:text-brand transition-colors truncate text-sm">{v.name}</h2>
+                  {v.claimed && v.tier !== 'free' && (
+                    <span class="text-xs px-1.5 py-0.5 rounded bg-brand-accent/10 text-brand-accent font-semibold flex-shrink-0">
+                      {v.tier === 'pro' ? 'Pro' : '★'}
+                    </span>
+                  )}
+                </div>
+                <p class="text-xs text-gray-400 mb-1">{singularLabel} &middot; {dest.name}</p>
+                <p class="text-xs text-gray-500 line-clamp-2">{v.description}</p>
+                {v.claimed && v.rating && (
+                  <p class="text-xs text-gray-400 mt-1">★ {v.rating} ({v.reviewCount} reviews)</p>
+                )}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Editorial section -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-3">{editorial.heading}</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">{editorial.body}</p>
+      <p class="text-sm text-gray-500 mt-3">
+        Read the full <a href={`/destinations/${destSlug}/`} class="text-brand hover:underline no-underline">{dest.name} destination wedding guide</a> for costs, weather, legal requirements, and resort options.
+      </p>
+    </section>
+
+    <!-- Related vendor types in this destination -->
+    {relatedTypes.length > 0 && (
+      <section class="mb-10">
+        <h2 class="text-lg font-bold text-gray-900 mb-3">Other vendors in {dest.name}</h2>
+        <div class="flex flex-wrap gap-2">
+          {relatedTypes.map(t => {
+            const count = (vendors as any[]).filter((v: any) => v.type === t && v.destinations.includes(destSlug)).length;
+            return (
+              <a
+                href={`/vendors/${t}/${destSlug}/`}
+                class="flex items-center gap-1.5 px-3 py-1.5 border border-gray-200 rounded-full text-xs font-medium text-gray-600 hover:border-brand hover:text-brand transition-colors no-underline"
+              >
+                <span class="w-3.5 h-3.5 text-current flex-shrink-0">
+                  <VendorTypeIcon type={t} size={14} />
+                </span>
+                {typePluralLabels[t as VendorType]}
+                <span class="text-gray-400">({count})</span>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    )}
+
+    <!-- Destination guide callout -->
+    <a href={`/destinations/${destSlug}/`} class="block card p-6 hover:shadow-md transition-shadow no-underline group mb-10">
+      <div class="flex items-center gap-4">
+        <span class="text-3xl flex-shrink-0">{dest.emoji}</span>
+        <div>
+          <h3 class="font-bold text-gray-900 group-hover:text-brand transition-colors">{dest.name} Destination Wedding Guide</h3>
+          <p class="text-xs text-gray-500 mt-0.5">
+            Costs, weather, legal requirements, top resorts, and more for your {dest.name} wedding.
+          </p>
+        </div>
+      </div>
+    </a>
+
+    <!-- Lead capture CTA -->
+    <div class="lead-capture-box not-prose">
+      <h2 class="text-lg font-bold text-gray-900 mb-2">Want us to match you with the right {singularLabel.toLowerCase()}?</h2>
+      <p class="text-sm text-gray-600 mb-4">
+        Tell us about your {dest.name} wedding and we'll connect you with {pluralLabel.toLowerCase()} who fit your date, guest count, and budget.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="/quiz/?stage=2" class="btn-primary">Get matched →</a>
+        <a href={`/vendors/${destSlug}/`} class="btn-outline">Browse all {dest.name} vendors</a>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

@@ -1,0 +1,3644 @@
+{
+  "timestamp": "2026-04-08T13:05:32.617Z",
+  "playbooks": {
+    "vendor_destination": {
+      "description": "wedding [type] in [destination] — e.g. /vendors/photographer/cancun/",
+      "totalKeywordsResearched": 36,
+      "results": [
+        {
+          "keyword": "wedding planner in hawaii",
+          "volume": 1300,
+          "cpc": 2.92,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0.95,
+          "highBid": 3.33
+        },
+        {
+          "keyword": "wedding officiant in hawaii",
+          "volume": 880,
+          "cpc": 3.16,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0.93,
+          "highBid": 2.7
+        },
+        {
+          "keyword": "wedding photographer in hawaii",
+          "volume": 720,
+          "cpc": 3.03,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 1.18,
+          "highBid": 3.21
+        },
+        {
+          "keyword": "wedding planner in jamaica",
+          "volume": 320,
+          "cpc": 7.89,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 1.77,
+          "highBid": 8.42
+        },
+        {
+          "keyword": "wedding planner in bali",
+          "volume": 320,
+          "cpc": 5.18,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0.66,
+          "highBid": 4.03
+        },
+        {
+          "keyword": "wedding planner in cancun",
+          "volume": 210,
+          "cpc": 6.39,
+          "competition": "MEDIUM",
+          "competitionLevel": "N/A",
+          "lowBid": 2.27,
+          "highBid": 7.1
+        },
+        {
+          "keyword": "wedding planner in santorini",
+          "volume": 210,
+          "cpc": 12.44,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 4.38,
+          "highBid": 12.67
+        },
+        {
+          "keyword": "wedding photographer in cancun",
+          "volume": 170,
+          "cpc": 13.05,
+          "competition": "MEDIUM",
+          "competitionLevel": "N/A",
+          "lowBid": 3.38,
+          "highBid": 11.46
+        },
+        {
+          "keyword": "wedding photographer in jamaica",
+          "volume": 140,
+          "cpc": 2.53,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 1.13,
+          "highBid": 4.72
+        },
+        {
+          "keyword": "wedding photographer in punta cana",
+          "volume": 110,
+          "cpc": 5.99,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 1.6,
+          "highBid": 6.34
+        },
+        {
+          "keyword": "wedding photographer in santorini",
+          "volume": 90,
+          "cpc": 4.26,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 1.16,
+          "highBid": 4.95
+        },
+        {
+          "keyword": "wedding planner in punta cana",
+          "volume": 70,
+          "cpc": 5.64,
+          "competition": "MEDIUM",
+          "competitionLevel": "N/A",
+          "lowBid": 2.65,
+          "highBid": 6.76
+        },
+        {
+          "keyword": "wedding photographer in bali",
+          "volume": 50,
+          "cpc": 2.03,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 1.48,
+          "highBid": 4.88
+        },
+        {
+          "keyword": "wedding dj in hawaii",
+          "volume": 40,
+          "cpc": 3.09,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0.43,
+          "highBid": 2.17
+        },
+        {
+          "keyword": "wedding florist in hawaii",
+          "volume": 30,
+          "cpc": 0.86,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0.42,
+          "highBid": 1.52
+        },
+        {
+          "keyword": "wedding dj in cancun",
+          "volume": 10,
+          "cpc": 8.75,
+          "competition": "MEDIUM",
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding dj in jamaica",
+          "volume": 10,
+          "cpc": 1.35,
+          "competition": "MEDIUM",
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding dj in bali",
+          "volume": 10,
+          "cpc": 0,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding florist in cancun",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding florist in punta cana",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding florist in jamaica",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding florist in bali",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding florist in santorini",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding caterer in cancun",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding caterer in punta cana",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding caterer in jamaica",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding caterer in hawaii",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding caterer in bali",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding caterer in santorini",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding dj in punta cana",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding dj in santorini",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding officiant in cancun",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding officiant in punta cana",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding officiant in jamaica",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding officiant in bali",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "wedding officiant in santorini",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        }
+      ]
+    },
+    "destination_cost": {
+      "description": "wedding cost / budget in [destination] — e.g. /destinations/cancun/cost/",
+      "totalKeywordsResearched": 72,
+      "results": [
+        {
+          "keyword": "hawaii wedding budget",
+          "volume": 90,
+          "cpc": 2.45,
+          "competition": "MEDIUM",
+          "competitionLevel": "N/A",
+          "lowBid": 0.7,
+          "highBid": 2.09
+        },
+        {
+          "keyword": "cancun wedding packages prices",
+          "volume": 70,
+          "cpc": 3.66,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 1.21,
+          "highBid": 4.15
+        },
+        {
+          "keyword": "destination wedding cost jamaica",
+          "volume": 70,
+          "cpc": 5.93,
+          "competition": "MEDIUM",
+          "competitionLevel": "N/A",
+          "lowBid": 1.34,
+          "highBid": 9.06
+        },
+        {
+          "keyword": "destination wedding cost hawaii",
+          "volume": 70,
+          "cpc": 2.06,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0.54,
+          "highBid": 2
+        },
+        {
+          "keyword": "how much does a wedding in hawaii cost",
+          "volume": 70,
+          "cpc": 1.68,
+          "competition": "MEDIUM",
+          "competitionLevel": "N/A",
+          "lowBid": 0.51,
+          "highBid": 1.58
+        },
+        {
+          "keyword": "costa rica wedding packages prices",
+          "volume": 40,
+          "cpc": 3.78,
+          "competition": "MEDIUM",
+          "competitionLevel": "N/A",
+          "lowBid": 0.61,
+          "highBid": 4.98
+        },
+        {
+          "keyword": "aruba wedding packages prices",
+          "volume": 40,
+          "cpc": 3.43,
+          "competition": "MEDIUM",
+          "competitionLevel": "N/A",
+          "lowBid": 1.09,
+          "highBid": 3.7
+        },
+        {
+          "keyword": "how much does a wedding in cancun cost",
+          "volume": 30,
+          "cpc": 6.26,
+          "competition": "MEDIUM",
+          "competitionLevel": "N/A",
+          "lowBid": 1.19,
+          "highBid": 2.99
+        },
+        {
+          "keyword": "punta cana wedding packages prices",
+          "volume": 30,
+          "cpc": 3.58,
+          "competition": "MEDIUM",
+          "competitionLevel": "N/A",
+          "lowBid": 1.78,
+          "highBid": 4.66
+        },
+        {
+          "keyword": "how much does a wedding in bali cost",
+          "volume": 20,
+          "cpc": 0.67,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "st lucia wedding packages prices",
+          "volume": 20,
+          "cpc": 3.11,
+          "competition": "MEDIUM",
+          "competitionLevel": "N/A",
+          "lowBid": 0.8,
+          "highBid": 2.43
+        },
+        {
+          "keyword": "how much does a wedding in jamaica cost",
+          "volume": 10,
+          "cpc": 4.42,
+          "competition": "MEDIUM",
+          "competitionLevel": "N/A",
+          "lowBid": 0.9,
+          "highBid": 6.6
+        },
+        {
+          "keyword": "jamaica wedding packages prices",
+          "volume": 10,
+          "cpc": 5.7,
+          "competition": "HIGH",
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "hawaii wedding packages prices",
+          "volume": 10,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "bali wedding budget",
+          "volume": 10,
+          "cpc": 0.79,
+          "competition": "MEDIUM",
+          "competitionLevel": "N/A",
+          "lowBid": 0.29,
+          "highBid": 2.33
+        },
+        {
+          "keyword": "bali wedding packages prices",
+          "volume": 10,
+          "cpc": 2.98,
+          "competition": "MEDIUM",
+          "competitionLevel": "N/A",
+          "lowBid": 0.48,
+          "highBid": 2.4
+        },
+        {
+          "keyword": "how much does a wedding in santorini cost",
+          "volume": 10,
+          "cpc": 0.75,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "santorini wedding packages prices",
+          "volume": 10,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "how much does a wedding in tulum cost",
+          "volume": 10,
+          "cpc": 0,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "how much does a wedding in costa rica cost",
+          "volume": 10,
+          "cpc": 2.93,
+          "competition": "MEDIUM",
+          "competitionLevel": "N/A",
+          "lowBid": 1.12,
+          "highBid": 2.42
+        },
+        {
+          "keyword": "how much does a wedding in st lucia cost",
+          "volume": 10,
+          "cpc": 1.95,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "how much does a wedding in amalfi coast cost",
+          "volume": 10,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "how much does a wedding in tuscany cost",
+          "volume": 10,
+          "cpc": 0,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "tuscany wedding packages prices",
+          "volume": 10,
+          "cpc": 0,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "how much does a wedding in maldives cost",
+          "volume": 10,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "maldives wedding packages prices",
+          "volume": 10,
+          "cpc": 0.14,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "how much does a wedding in fiji cost",
+          "volume": 10,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "fiji wedding packages prices",
+          "volume": 10,
+          "cpc": 0,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding cost cancun",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "cancun wedding budget",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding cost punta cana",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "how much does a wedding in punta cana cost",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "punta cana wedding budget",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "jamaica wedding budget",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding cost bali",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding cost santorini",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "santorini wedding budget",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding cost tulum",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "tulum wedding budget",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "tulum wedding packages prices",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding cost key west",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "how much does a wedding in key west cost",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "key west wedding budget",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "key west wedding packages prices",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding cost costa rica",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "costa rica wedding budget",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding cost los cabos",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "how much does a wedding in los cabos cost",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "los cabos wedding budget",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "los cabos wedding packages prices",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding cost st lucia",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "st lucia wedding budget",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding cost riviera maya",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "how much does a wedding in riviera maya cost",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "riviera maya wedding budget",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "riviera maya wedding packages prices",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding cost turks and caicos",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "how much does a wedding in turks and caicos cost",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "turks and caicos wedding budget",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "turks and caicos wedding packages prices",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding cost aruba",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "how much does a wedding in aruba cost",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "aruba wedding budget",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding cost amalfi coast",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "amalfi coast wedding budget",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "amalfi coast wedding packages prices",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding cost tuscany",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "tuscany wedding budget",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding cost maldives",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "maldives wedding budget",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding cost fiji",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "fiji wedding budget",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        }
+      ]
+    },
+    "legal_requirements": {
+      "description": "legal requirements for wedding in [destination]",
+      "totalKeywordsResearched": 54,
+      "results": [
+        {
+          "keyword": "getting married in hawaii requirements",
+          "volume": 50,
+          "cpc": 1.19,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0.08,
+          "highBid": 1.24
+        },
+        {
+          "keyword": "getting married in jamaica requirements",
+          "volume": 20,
+          "cpc": 0.07,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "getting married in cancun requirements",
+          "volume": 10,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "getting married in punta cana requirements",
+          "volume": 10,
+          "cpc": 0,
+          "competition": "MEDIUM",
+          "competitionLevel": "N/A",
+          "lowBid": 1.46,
+          "highBid": 5.93
+        },
+        {
+          "keyword": "getting married in key west requirements",
+          "volume": 10,
+          "cpc": 3.05,
+          "competition": "MEDIUM",
+          "competitionLevel": "N/A",
+          "lowBid": 0.34,
+          "highBid": 1.4
+        },
+        {
+          "keyword": "getting married in costa rica requirements",
+          "volume": 10,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "getting married in st lucia requirements",
+          "volume": 10,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "st lucia wedding legal requirements",
+          "volume": 10,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "getting married in aruba requirements",
+          "volume": 10,
+          "cpc": 13.72,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "getting married in maldives requirements",
+          "volume": 10,
+          "cpc": 0,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "getting married in fiji requirements",
+          "volume": 10,
+          "cpc": 0,
+          "competition": "LOW",
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "fiji wedding legal requirements",
+          "volume": 10,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "cancun wedding legal requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding cancun documents needed",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "punta cana wedding legal requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding punta cana documents needed",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "jamaica wedding legal requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding jamaica documents needed",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "hawaii wedding legal requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding hawaii documents needed",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "getting married in bali requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "bali wedding legal requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding bali documents needed",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "getting married in santorini requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "santorini wedding legal requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding santorini documents needed",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "getting married in tulum requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "tulum wedding legal requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding tulum documents needed",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "key west wedding legal requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding key west documents needed",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "costa rica wedding legal requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding costa rica documents needed",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "getting married in los cabos requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "los cabos wedding legal requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding los cabos documents needed",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding st lucia documents needed",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "getting married in riviera maya requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "riviera maya wedding legal requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding riviera maya documents needed",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "getting married in turks and caicos requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "turks and caicos wedding legal requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding turks and caicos documents needed",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "aruba wedding legal requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding aruba documents needed",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "getting married in amalfi coast requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "amalfi coast wedding legal requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding amalfi coast documents needed",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "getting married in tuscany requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "tuscany wedding legal requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding tuscany documents needed",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "maldives wedding legal requirements",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding maldives documents needed",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "destination wedding fiji documents needed",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        }
+      ]
+    },
+    "best_month_weather": {
+      "description": "best time for wedding in [destination]",
+      "totalKeywordsResearched": 54,
+      "results": [
+        {
+          "keyword": "best month for wedding in jamaica",
+          "volume": 10,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best month for wedding in cancun",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "cancun wedding weather",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best time of year for cancun wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best month for wedding in punta cana",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "punta cana wedding weather",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best time of year for punta cana wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "jamaica wedding weather",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best time of year for jamaica wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best month for wedding in hawaii",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "hawaii wedding weather",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best time of year for hawaii wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best month for wedding in bali",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "bali wedding weather",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best time of year for bali wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best month for wedding in santorini",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "santorini wedding weather",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best time of year for santorini wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best month for wedding in tulum",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "tulum wedding weather",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best time of year for tulum wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best month for wedding in key west",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "key west wedding weather",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best time of year for key west wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best month for wedding in costa rica",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "costa rica wedding weather",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best time of year for costa rica wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best month for wedding in los cabos",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "los cabos wedding weather",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best time of year for los cabos wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best month for wedding in st lucia",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "st lucia wedding weather",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best time of year for st lucia wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best month for wedding in riviera maya",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "riviera maya wedding weather",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best time of year for riviera maya wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best month for wedding in turks and caicos",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "turks and caicos wedding weather",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best time of year for turks and caicos wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best month for wedding in aruba",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "aruba wedding weather",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best time of year for aruba wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best month for wedding in amalfi coast",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "amalfi coast wedding weather",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best time of year for amalfi coast wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best month for wedding in tuscany",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "tuscany wedding weather",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best time of year for tuscany wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best month for wedding in maldives",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "maldives wedding weather",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best time of year for maldives wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best month for wedding in fiji",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "fiji wedding weather",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "best time of year for fiji wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        }
+      ]
+    },
+    "comparisons": {
+      "description": "[destination A] vs [destination B] wedding",
+      "totalKeywordsResearched": 15,
+      "results": [
+        {
+          "keyword": "cancun vs punta cana wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "cancun vs tulum wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "hawaii vs cancun wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "jamaica vs cancun wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "bali vs santorini wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "costa rica vs jamaica wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "st lucia vs jamaica wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "aruba vs cancun wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "los cabos vs cancun wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "turks and caicos vs bahamas wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "maldives vs bali wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "tulum vs costa rica wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "key west vs hawaii wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "riviera maya vs cancun wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        },
+        {
+          "keyword": "santorini vs amalfi coast wedding",
+          "volume": 0,
+          "cpc": 0,
+          "competition": 0,
+          "competitionLevel": "N/A",
+          "lowBid": 0,
+          "highBid": 0
+        }
+      ]
+    },
+    "related_discovery": {
+      "description": "Related keyword suggestions from seed terms",
+      "seeds": [
+        {
+          "seed": "destination wedding planner",
+          "suggestions": [
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            }
+          ]
+        },
+        {
+          "seed": "beach wedding cost",
+          "suggestions": [
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            }
+          ]
+        },
+        {
+          "seed": "getting married abroad",
+          "suggestions": [
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            }
+          ]
+        },
+        {
+          "seed": "destination wedding packages",
+          "suggestions": [
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            }
+          ]
+        },
+        {
+          "seed": "beach wedding venues",
+          "suggestions": [
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            },
+            {
+              "volume": 0,
+              "cpc": 0,
+              "competition": "N/A",
+              "difficulty": 0
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -5,6 +5,9 @@ import VendorTypeIcon from '../../components/vendors/VendorTypeIcon.astro';
 import vendors from '../../data/vendors.json';
 import destinations from '../../data/destinations.json';
 import { getVendorSchema } from '../../lib/schema/localBusiness';
+import {
+  LEAD_TYPES, typeLabels, typePluralLabels, type VendorType,
+} from '../../lib/vendors';
 
 export async function getStaticPaths() {
   return vendors.map(v => ({ params: { slug: v.slug }, props: { vendor: v } }));
@@ -12,15 +15,8 @@ export async function getStaticPaths() {
 
 const { vendor } = Astro.props;
 
-const LEAD_TYPES = ['planner', 'photographer', 'florist', 'caterer', 'dj', 'officiant'];
-const isLeadVendor = LEAD_TYPES.includes(vendor.type);
+const isLeadVendor = LEAD_TYPES.includes(vendor.type as VendorType);
 const isClaimed = vendor.claimed === true;
-
-const typeLabels: Record<string, string> = {
-  planner: 'Wedding Planner', photographer: 'Photographer', florist: 'Florist',
-  caterer: 'Caterer', dj: 'DJ / Entertainment', officiant: 'Officiant',
-  resort: 'Resort', jeweler: 'Jeweler',
-};
 
 const vendorDestinations = destinations.filter(d => vendor.destinations.includes(d.slug));
 const schema = getVendorSchema({
@@ -47,6 +43,7 @@ const claimUrl = `/vendors/upgrade/?claim=${vendor.slug}`;
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
     <Breadcrumb crumbs={[
       { label: 'Vendors', href: '/vendors/' },
+      { label: typePluralLabels[vendor.type as VendorType] ?? vendor.type, href: `/vendors/${vendor.type}/` },
       { label: vendor.name },
     ]} />
 
@@ -149,6 +146,18 @@ const claimUrl = `/vendors/upgrade/?claim=${vendor.slug}`;
           ))
         }
       </div>
+      {vendorDestinations.length > 0 && (
+        <div class="mt-4 flex flex-wrap gap-x-4 gap-y-1">
+          {vendorDestinations.slice(0, 2).map((d: any) => (
+            <a
+              href={`/vendors/${vendor.type}/${d.slug}/`}
+              class="text-brand text-sm font-medium hover:underline no-underline"
+            >
+              All {typePluralLabels[vendor.type as VendorType]?.toLowerCase() ?? vendor.type} in {d.name} →
+            </a>
+          ))}
+        </div>
+      )}
     </div>
   </main>
 </BaseLayout>

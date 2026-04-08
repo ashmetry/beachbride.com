@@ -8,6 +8,7 @@ import MicroDestinations from '../../components/destination/MicroDestinations.as
 import destinations from '../../data/destinations.json';
 import vendors from '../../data/vendors.json';
 import { getDestinationSchema } from '../../lib/schema/destination';
+import { VENDOR_TYPES, typePluralLabels, type VendorType } from '../../lib/vendors';
 import { getCollection } from 'astro:content';
 import { existsSync } from 'fs';
 import { join } from 'path';
@@ -240,6 +241,33 @@ const legalDisplay = dest.legalCeremonyType === 'legal' ? 'Yes — legal' :
         </div>
       </section>
     )}
+
+    <!-- Find vendors by type -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Find {dest.name} wedding vendors</h2>
+      <div class="flex flex-wrap gap-2">
+        {(['planner', 'photographer', 'florist', 'caterer', 'dj', 'officiant'] as const).filter(t =>
+          vendors.some((v: any) => v.type === t && v.destinations.includes(slug))
+        ).map(t => {
+          const count = vendors.filter((v: any) => v.type === t && v.destinations.includes(slug)).length;
+          return (
+            <a
+              href={`/vendors/${t}/${slug}/`}
+              class="flex items-center gap-1.5 px-4 py-2 border border-gray-200 rounded-full text-sm font-medium text-gray-700 hover:border-brand hover:text-brand transition-colors no-underline"
+            >
+              {typePluralLabels[t as VendorType]}
+              <span class="text-xs text-gray-400">({count})</span>
+            </a>
+          );
+        })}
+        <a
+          href={`/vendors/${slug}/`}
+          class="px-4 py-2 border border-gray-200 rounded-full text-sm font-medium text-gray-700 hover:border-brand hover:text-brand transition-colors no-underline"
+        >
+          All vendors →
+        </a>
+      </div>
+    </section>
 
     <!-- Related articles -->
     {destArticles.length > 0 && (

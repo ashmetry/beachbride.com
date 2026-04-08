@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/layout/Breadcrumb.astro';
+import VendorTypeIcon from '../../../components/vendors/VendorTypeIcon.astro';
+import vendors from '../../../data/vendors.json';
+import destinations from '../../../data/destinations.json';
+import {
+  VENDOR_TYPES, typeLabels, typePluralLabels, typeSEOLabels, sortByTier,
+  type VendorType,
+} from '../../../lib/vendors';
+
+export async function getStaticPaths() {
+  // Safety: assert no type slug collides with a destination slug
+  const destSlugs = new Set(destinations.map((d: any) => d.slug));
+  for (const t of VENDOR_TYPES) {
+    if (destSlugs.has(t)) throw new Error(`Vendor type "${t}" collides with a destination slug`);
+  }
+  return VENDOR_TYPES.map(type => ({ params: { type } }));
+}
+
+const { type } = Astro.params;
+const vType = type as VendorType;
+
+const allOfType = vendors
+  .filter((v: any) => v.type === type)
+  .sort(sortByTier);
+
+// Destinations that have at least one vendor of this type
+const destsWithVendors = destinations.filter((d: any) =>
+  vendors.some((v: any) => v.type === type && v.destinations.includes(d.slug))
+);
+
+const seoLabel = typeSEOLabels[vType];
+const pluralLabel = typePluralLabels[vType];
+const canonical = `https://beachbride.com/vendors/${type}/`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: `Destination ${seoLabel}`,
+  description: `${allOfType.length} destination ${pluralLabel.toLowerCase()} across ${destsWithVendors.length} locations worldwide`,
+  url: canonical,
+  numberOfItems: allOfType.length,
+  itemListElement: allOfType.slice(0, 50).map((v: any, i: number) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `https://beachbride.com/vendors/${v.slug}/`,
+    name: v.name,
+  })),
+};
+---
+
+<BaseLayout
+  title={`Destination ${seoLabel} — Find ${pluralLabel} Worldwide`}
+  description={`Browse ${allOfType.length} destination ${pluralLabel.toLowerCase()} across ${destsWithVendors.length} locations. Find the right ${typeLabels[vType].toLowerCase()} for your beach or destination wedding.`}
+  canonical={canonical}
+  schema={schema}
+>
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <Breadcrumb crumbs={[
+      { label: 'Vendors', href: '/vendors/' },
+      { label: pluralLabel },
+    ]} />
+
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">Destination {seoLabel}</h1>
+      <p class="text-gray-500">
+        {allOfType.length} vetted {pluralLabel.toLowerCase()} across {destsWithVendors.length} destinations.
+        <a href="/quiz/?stage=2" class="text-brand hover:underline no-underline">Get a personalized match →</a>
+      </p>
+    </div>
+
+    <!-- Browse by destination -->
+    <section class="mb-12">
+      <h2 class="text-lg font-bold text-gray-900 mb-4">Browse {pluralLabel.toLowerCase()} by destination</h2>
+      <div class="flex flex-wrap gap-2">
+        {destsWithVendors.map((d: any) => {
+          const count = vendors.filter((v: any) => v.type === type && v.destinations.includes(d.slug)).length;
+          return (
+            <a
+              href={`/vendors/${type}/${d.slug}/`}
+              class="flex items-center gap-1.5 px-4 py-2 border border-gray-200 rounded-full text-sm font-medium text-gray-700 hover:border-brand hover:text-brand transition-colors no-underline"
+            >
+              {d.name}
+              <span class="text-xs text-gray-400">({count})</span>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- All vendors of this type -->
+    <section>
+      <h2 class="text-lg font-bold text-gray-900 mb-4">All {pluralLabel.toLowerCase()}</h2>
+      <p class="text-sm text-gray-400 mb-4">{allOfType.length} vendors</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {allOfType.map((v: any) => (
+          <a
+            href={`/vendors/${v.slug}/`}
+            class="card p-5 hover:shadow-md transition-shadow no-underline group"
+          >
+            <div class="flex items-start gap-3">
+              <div class="w-11 h-11 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0 text-brand/70">
+                <VendorTypeIcon type={v.type} size={22} />
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5">
+                  <h3 class="font-bold text-gray-900 group-hover:text-brand transition-colors truncate text-sm">{v.name}</h3>
+                  {v.claimed && v.tier !== 'free' && (
+                    <span class="text-xs px-1.5 py-0.5 rounded bg-brand-accent/10 text-brand-accent font-semibold flex-shrink-0">
+                      {v.tier === 'pro' ? 'Pro' : '★'}
+                    </span>
+                  )}
+                </div>
+                <p class="text-xs text-gray-400 mb-1">
+                  {v.destinations.map((ds: string) => {
+                    const d = destinations.find((dd: any) => dd.slug === ds);
+                    return d ? d.name : ds;
+                  }).join(', ')}
+                </p>
+                <p class="text-xs text-gray-500 line-clamp-2">{v.description}</p>
+                {v.claimed && v.rating && (
+                  <p class="text-xs text-gray-400 mt-1">★ {v.rating} ({v.reviewCount} reviews)</p>
+                )}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Lead capture CTA -->
+    <div class="mt-12 lead-capture-box not-prose">
+      <h2 class="text-lg font-bold text-gray-900 mb-2">Want a personalized match?</h2>
+      <p class="text-sm text-gray-600 mb-4">
+        Tell us about your wedding and we'll match you with the best {pluralLabel.toLowerCase()} for your date, budget, and destination.
+      </p>
+      <a href="/quiz/?stage=2" class="btn-primary">Get matched →</a>
+    </div>
+
+    <!-- Vendor CTA -->
+    <div class="mt-8 bg-gray-900 text-white rounded-2xl p-8 text-center">
+      <h2 class="text-xl font-bold mb-2">Are you a {typeLabels[vType].toLowerCase()}?</h2>
+      <p class="text-gray-400 mb-2 text-sm">
+        Your business may already be listed. Claim your free profile to add photos,
+        control your description, and start receiving inquiries.
+      </p>
+      <p class="text-gray-500 text-xs mb-6">No monthly fee to get started.</p>
+      <a href="/vendors/upgrade/" class="btn-primary">Claim or list your business →</a>
+    </div>
+  </main>
+</BaseLayout>

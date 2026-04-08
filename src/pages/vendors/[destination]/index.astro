@@ -4,6 +4,10 @@ import Breadcrumb from '../../../components/layout/Breadcrumb.astro';
 import VendorTypeIcon from '../../../components/vendors/VendorTypeIcon.astro';
 import vendors from '../../../data/vendors.json';
 import destinations from '../../../data/destinations.json';
+import {
+  VENDOR_TYPES, LEAD_TYPES, VENUE_TYPES, typeLabels, typePluralLabels,
+  type VendorType,
+} from '../../../lib/vendors';
 
 export async function getStaticPaths() {
   return destinations.map(d => ({ params: { destination: d.slug } }));
@@ -12,13 +16,10 @@ export async function getStaticPaths() {
 const { destination: slug } = Astro.params;
 const dest = destinations.find(d => d.slug === slug)!;
 
-const LEAD_TYPES = ['planner', 'photographer', 'florist', 'caterer', 'dj', 'officiant'];
-const VENUE_TYPES = ['resort', 'venue'];
-const typeLabels: Record<string, string> = {
-  planner: 'Wedding Planner', photographer: 'Photographer', florist: 'Florist',
-  caterer: 'Caterer', dj: 'DJ / Entertainment', officiant: 'Officiant',
-  resort: 'Resort', venue: 'Venue',
-};
+// Types that have at least one vendor in this destination (for type pills)
+const typesInDest = VENDOR_TYPES.filter(t =>
+  vendors.some((v: any) => v.type === t && v.destinations.includes(slug))
+);
 
 const byTier = (a: typeof vendors[0], b: typeof vendors[0]) => {
   const tierOrder = { pro: 0, premium: 1, free: 2 };
@@ -45,9 +46,28 @@ const localVenues = vendors.filter(
       { label: dest.name },
     ]} />
 
-    <div class="mb-8">
+    <div class="mb-6">
       <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">{dest.name} Wedding Vendors</h1>
       <p class="text-gray-500 mt-1">{dest.country} &middot; <a href={`/destinations/${slug}/`} class="text-brand hover:underline no-underline">View destination guide →</a></p>
+    </div>
+
+    <!-- Browse by type -->
+    <div class="flex flex-wrap gap-2 mb-8">
+      {typesInDest.map(t => {
+        const count = vendors.filter((v: any) => v.type === t && v.destinations.includes(slug)).length;
+        return (
+          <a
+            href={`/vendors/${t}/${slug}/`}
+            class="flex items-center gap-1.5 px-3 py-1.5 border border-gray-200 rounded-full text-xs font-medium text-gray-600 hover:border-brand hover:text-brand transition-colors no-underline"
+          >
+            <span class="w-3.5 h-3.5 text-current flex-shrink-0">
+              <VendorTypeIcon type={t} size={14} />
+            </span>
+            {typePluralLabels[t as VendorType]}
+            <span class="text-gray-400">({count})</span>
+          </a>
+        );
+      })}
     </div>
 
     {/* Resorts & Venues */}
