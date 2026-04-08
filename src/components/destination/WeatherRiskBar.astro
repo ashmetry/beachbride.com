@@ -7,6 +7,7 @@
 interface MonthWeather {
   month: string;
   rainDays: number;
+  precipitationInches?: number;
   hurricaneRisk: 'none' | 'low' | 'medium' | 'high';
   avgTempF: { min: number; max: number };
 }
@@ -47,7 +48,7 @@ function getMonthColor(weather: MonthWeather, isBest: boolean): string {
           <div class="hidden group-hover:block absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-36 bg-gray-900 text-white text-xs rounded-lg p-2 z-10 pointer-events-none shadow-lg">
             <p class="font-semibold">{weather.month}</p>
             <p>{weather.avgTempF.min}°–{weather.avgTempF.max}°F</p>
-            <p>{weather.rainDays} rain days</p>
+            <p>{weather.rainDays} rain days{weather.precipitationInches != null ? ` (${weather.precipitationInches}")` : ''}</p>
             {weather.hurricaneRisk !== 'none' && (
               <p class="text-orange-300">Hurricane risk: {weather.hurricaneRisk}</p>
             )}

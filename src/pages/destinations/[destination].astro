@@ -123,6 +123,12 @@ const legalDisplay = dest.legalCeremonyType === 'legal' ? 'Yes — legal' :
         bestMonths={dest.bestMonths}
         destinationName={dest.name}
       />
+      {dest.climateDataSource && (
+        <p class="text-xs text-gray-400 mt-2">
+          Weather data: {dest.climateDataSource}. Hurricane risk: NOAA historical data.
+          {dest.climateDataUpdated && ` Last updated: ${dest.climateDataUpdated}.`}
+        </p>
+      )}
     </section>
 
     <!-- Guest Burden Score -->

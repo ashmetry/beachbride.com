@@ -11,7 +11,10 @@
     "content:publish": "node scripts/content-engine/publish.js",
     "content:status": "node scripts/content-engine/status.js",
     "wp:audit": "node scripts/wp-migration/audit.js",
-    "wp:audit:dry": "node scripts/wp-migration/audit.js --dry-run"
+    "wp:audit:dry": "node scripts/wp-migration/audit.js --dry-run",
+    "fetch-climate": "node scripts/fetch-destination-climate.js",
+    "fetch-climate:force": "node scripts/fetch-destination-climate.js --force",
+    "fetch-climate:validate": "node scripts/fetch-destination-climate.js --validate"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.0",
