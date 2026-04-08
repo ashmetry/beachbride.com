@@ -100,12 +100,37 @@ Topics that fail get status `skipped-intent-overlap` — they stay in `pipeline.
 ### Queue Threshold (`DISCOVERY_QUEUE_THRESHOLD = 20`)
 Discovery skips all API fetches when ≥20 topics are already `discovered` in
 the pipeline. At 3 articles/week generated, 20 topics = ~7 weeks runway.
-Saves ~$0.07/run on unnecessary fetches. Override by running manually with `--dry-run`.
+Saves ~$0.07/run on unnecessary fetches.
+
+**Observed behavior (2026-04-08):** With 86 topics in queue, every generate run
+that day skipped discovery entirely. This is correct. The queue refills when it
+drops below 20 — no manual intervention needed.
 
 ### Persistent Blacklist
 `pipeline.rejectedKeywords[]` — normalized strings of every keyword the semantic
 overlap LLM has ever rejected. Checked before any LLM call in the dedup loop.
 Grows over time so the LLM progressively sees only genuinely novel candidates.
+
+**Why this matters:** Without it, each discovery run re-evaluates the same bad
+keywords, burning ~$0.001 per keyword per run. At hundreds of candidates, this
+compounds significantly over weeks.
+
+**Important:** The blacklist is populated by the semantic filter in `discover.js`.
+The intent gate in `generate.js` does NOT add to the blacklist — it marks topics
+`skipped-intent-overlap` in pipeline.json instead (which prevents re-discovery
+via the pipeline ID check). Two different mechanisms for two different layers.
+
+### Intent Gate Self-Correction
+Topics blocked by the intent gate get status `skipped-intent-overlap` and stay
+in `pipeline.json`. This means:
+1. They never burn credits again (status check before any processing)
+2. Future discover runs don't re-add them (pipeline ID dedup)
+3. The next-highest-scoring valid topic automatically gets picked up
+
+**Observed (2026-04-08 run):** Hawaii cost + Punta Cana cost blocked → pipeline
+skipped to `destination-wedding-announcement` (score 70) → perfect article
+generated (SEO 100%, AI Detection 0%). The system self-corrects without manual
+intervention.
 
 ---
 
@@ -195,6 +220,24 @@ Expected: 5/6 pass (the Bali cost case is intentionally blocked by the strict
 | Writing | `claude-opus-4-6` | Best quality for long-form content |
 | Image prompts | `claude-haiku-4-5` | Cheap, fast, prompt generation only |
 | Images | `gemini-3-pro-image-preview` | Native portrait ratio, atmosphere anchors |
+
+---
+
+## How to Keep This Document Current
+
+**Standing rule (in CLAUDE.md):** Any commit touching `scripts/content-engine/`
+must update this file in the same commit. This prevents session-to-session drift
+where the same architectural question gets re-solved from scratch.
+
+What to capture here:
+- What changed and in which function
+- The problem it solved (with a concrete example if possible)
+- Cost/efficiency implications
+- New gotchas or edge cases discovered
+
+This is the primary input for any new session working on the content engine.
+The goal is that CONTENT-PLAN.md + `lib/config.js` together answer every
+"how does this work and why" question without reading all 600+ lines of the scripts.
 
 ---
 

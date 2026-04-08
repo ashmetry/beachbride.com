@@ -204,3 +204,13 @@ Resort and jeweler `type` entries exist in the directory but are **not** enrolle
 - `realWeddings` collection MDX files must use `tags: []` (not bare `tags:`) and `images: []` when empty, otherwise Astro reads them as null and fails schema validation.
 - GSC property for beachbride.com is `sc-domain:beachbride.com` (not `https://beachbride.com/`). Service account has access to the domain property only.
 - The local dev server may conflict with other projects on port 4321. Run `npm run dev -- --port 4324` for beachbride if needed.
+
+## Content Engine — Standing Rule
+
+**Any time you modify a file in `scripts/content-engine/`, update `scripts/content-engine/CONTENT-PLAN.md` in the same commit** to reflect what changed and why. This is the living architecture doc for the pipeline — it must stay current across sessions. Specifically capture:
+- What changed (which file, which function, what behavior)
+- Why it changed (the problem it solved, the lesson learned)
+- Any cost/efficiency implications
+- Any new gotchas discovered
+
+This applies to all scripts: `discover.js`, `generate.js`, `publish.js`, `lib/config.js`, `lib/openrouter.js`, workflow YAMLs, and any new scripts added.
