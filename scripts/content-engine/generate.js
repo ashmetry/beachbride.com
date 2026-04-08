@@ -220,6 +220,13 @@ function getOutlineGuide(contentType) {
 3. Comparison table (data-driven with real numbers)
 4. Our recommendation (with caveats and context)
 5. FAQ section`,
+    destination_vendor_guide: `1. Why hiring a local [vendor type] in [destination] matters (what goes wrong without one)
+2. What to look for when vetting [vendor type]s in [destination] specifically (local expertise, legal knowledge, resort relationships)
+3. Questions to ask before hiring — as a comparison table (question + why it matters + red flags)
+4. How much does a [vendor type] cost in [destination]? (real price ranges by tier/service level, data table)
+5. How to find vetted [vendor type]s in [destination] — link prominently to /vendors/[type]/[destination]/ directory page
+6. Red flags: how to spot inexperienced or unreliable [vendor type]s
+7. FAQ section`,
   };
   return guides[contentType] || guides.informational;
 }

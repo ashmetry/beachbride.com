@@ -10,6 +10,7 @@
     "content:generate": "node scripts/content-engine/generate.js",
     "content:publish": "node scripts/content-engine/publish.js",
     "content:status": "node scripts/content-engine/status.js",
+    "content:enrich-pseo": "node scripts/content-engine/enrich-pseo-pages.js",
     "wp:audit": "node scripts/wp-migration/audit.js",
     "wp:audit:dry": "node scripts/wp-migration/audit.js --dry-run",
     "fetch-climate": "node scripts/fetch-destination-climate.js",

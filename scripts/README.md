@@ -86,6 +86,21 @@ Shows pipeline state summary.
 npm run content:status
 ```
 
+### `enrich-pseo-pages.js`
+
+Generates destination-specific editorial copy for vendor type+destination pSEO pages. Output goes to `src/data/pseo-editorial.json`, keyed by `"type-destination"` (e.g. `"planner-hawaii"`). The Astro template reads this file and falls back to hardcoded generic templates when a key is absent.
+
+Targets the top 20 highest-volume type+destination combos (Hawaii planner, Cancun planner, Bali photographer, etc.) to prevent thin-content penalties and differentiate pages beyond just swapping vendor names.
+
+```bash
+npm run content:enrich-pseo -- --dry-run                    # preview without writing
+npm run content:enrich-pseo                                  # enrich all priority combos
+npm run content:enrich-pseo -- --skip-existing              # only add missing entries
+npm run content:enrich-pseo -- --type planner --destination hawaii   # single combo
+```
+
+**Run `--skip-existing` for routine updates.** Never use plain `--all` after targeted runs — it overwrites copy that was manually improved.
+
 ### `lib/`
 
 Shared utilities for the content engine:
@@ -108,6 +123,19 @@ node scripts/seed-editorial-topics.js
 ```
 
 Edit the `TOPICS` array at the top of the file before running.
+
+### `seed-vendor-guide-topics.js`
+
+Seeds 10 high-intent "how to find a [vendor type] in [destination]" topics into `pipeline.json`. These articles target queries like "how to find a wedding planner in hawaii" and link back to the pSEO directory pages (`/vendors/planner/hawaii/`), creating editorial content that feeds and reinforces the directory pages.
+
+Uses the `destination_vendor_guide` content type (defined in `generate.js`) which structures content around: why local expertise matters, vetting criteria, questions to ask, price ranges, and where to find vendors.
+
+```bash
+node scripts/seed-vendor-guide-topics.js --dry-run   # preview
+node scripts/seed-vendor-guide-topics.js             # seed into pipeline
+```
+
+After seeding: `npm run content:generate -- --limit 10` to generate the articles.
 
 ### `migrate-real-weddings.js`
 

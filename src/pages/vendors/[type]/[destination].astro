@@ -4,6 +4,7 @@ import Breadcrumb from '../../../components/layout/Breadcrumb.astro';
 import VendorTypeIcon from '../../../components/vendors/VendorTypeIcon.astro';
 import vendors from '../../../data/vendors.json';
 import destinations from '../../../data/destinations.json';
+import pseoEditorial from '../../../data/pseo-editorial.json';
 import {
   VENDOR_TYPES, typeLabels, typePluralLabels, typeSEOLabels, sortByTier,
   type VendorType,
@@ -99,7 +100,11 @@ const editorialCopy: Record<string, { heading: string; body: string }> = {
   },
 };
 
-const editorial = editorialCopy[type] ?? editorialCopy['planner'];
+// Prefer enriched copy from pseo-editorial.json, fall back to hardcoded templates
+const enrichedKey = `${type}-${destSlug}` as keyof typeof pseoEditorial;
+const editorial = (pseoEditorial as any)[enrichedKey]
+  ? { heading: (pseoEditorial as any)[enrichedKey].heading, body: (pseoEditorial as any)[enrichedKey].body }
+  : (editorialCopy[type] ?? editorialCopy['planner']);
 ---
 
 <BaseLayout
