@@ -132,7 +132,16 @@ async function main() {
   if (hasImage && existsSync(srcImage)) unlinkSync(srcImage);
   for (const { src } of sectionImages) { if (existsSync(src)) unlinkSync(src); }
 
-  // 6. Git commit + push
+  // 6. Update pipeline status BEFORE git add so the write is on disk when staged
+  const pipeline = loadPipeline();
+  const topic = pipeline.topics.find(t => t.articleSlug === slug);
+  if (topic) {
+    topic.status = 'published';
+    topic.publishedAt = new Date().toISOString();
+    savePipeline(pipeline);
+  }
+
+  // 7. Git commit + push
   console.log('\n  Committing...');
 
   if (process.env.CI) {
@@ -156,15 +165,6 @@ async function main() {
   exec(`git commit -m "${commitMsg.replace(/"/g, '\\"')}"`);
   exec('git push origin main');
   console.log('  Pushed to main');
-
-  // 7. Update pipeline
-  const pipeline = loadPipeline();
-  const topic = pipeline.topics.find(t => t.articleSlug === slug);
-  if (topic) {
-    topic.status = 'published';
-    topic.publishedAt = new Date().toISOString();
-    savePipeline(pipeline);
-  }
 
   // 8. Email notification
   await notifyPublished(title, slug);

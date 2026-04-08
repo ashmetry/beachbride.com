@@ -385,6 +385,12 @@ niche-agnostic.
   intra-batch dedup (Layer 2b) addresses this at source, but the threshold
   number alone doesn't guarantee queue quality.
 
+- **`savePipeline()` must run before `git add pipeline.json`.** If the status
+  write happens after staging, git sees no diff and silently drops the file
+  from the commit — the `published` status and `publishedAt` timestamp are
+  then missing from the repo copy of `pipeline.json`. Fixed: step 6 is now
+  `savePipeline()` and step 7 is `git add / commit / push`.
+
 ---
 
 ## Part 2 — beachbride.com Configuration
