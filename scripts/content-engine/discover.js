@@ -177,19 +177,38 @@ async function main() {
   // Sort by score descending
   newTopics.sort((a, b) => b.score - a.score);
 
-  // 4. Semantic overlap check — catch topics that are different keywords but same intent.
+  // 4a. Semantic overlap check — filter candidates against existing published articles.
   // Returns both the kept topics and the normalized keywords of rejected ones.
   // Rejected keywords are persisted to pipeline.rejectedKeywords so future runs skip
   // them deterministically without re-calling the LLM.
   let filtered = newTopics;
   let newlyRejectedKeywords = [];
   if (newTopics.length > 0) {
-    console.log(`\n  Checking semantic overlap...`);
+    console.log(`\n  Checking semantic overlap vs. existing articles...`);
     ({ filtered, rejectedNormalized: newlyRejectedKeywords } = await filterSemanticOverlap(newTopics, existingArticles, pipeline.topics));
     const removed = newTopics.length - filtered.length;
     if (removed > 0) {
       console.log(`    Removed ${removed} topics that overlap with existing content`);
     }
+  }
+
+  // 4b. Intra-batch dedup — remove candidates that serve the same search intent as
+  // OTHER candidates in this same batch. This prevents intent clusters from polluting
+  // the pipeline queue (e.g. 5 "beach wedding songs" variants all passing step 4a
+  // because none overlap with published articles, only to waste generate runs later).
+  // Keeps the highest-scored representative from each intent cluster.
+  if (filtered.length > 1) {
+    console.log(`\n  Deduplicating within batch (${filtered.length} candidates)...`);
+    const { deduped, intraBatchRejected } = await filterIntraBatchDuplicates(filtered);
+    const intraBatchRemoved = filtered.length - deduped.length;
+    if (intraBatchRemoved > 0) {
+      console.log(`    Removed ${intraBatchRemoved} intra-batch duplicates`);
+      // Add intra-batch rejected keywords to blacklist so future discovery skips them
+      for (const kw of intraBatchRejected) {
+        if (!newlyRejectedKeywords.includes(kw)) newlyRejectedKeywords.push(kw);
+      }
+    }
+    filtered = deduped;
   }
 
   console.log(`\n  Results:`);
@@ -653,6 +672,77 @@ Only include index numbers. The "removed" array is for logging.`,
 
   const kept = (result.keep || []).map(i => candidates[i]).filter(Boolean);
   return { filtered: kept, rejectedNormalized };
+}
+
+// ── Intra-Batch Duplicate Filter ───────────────────────────────────────────────
+// After filtering against existing articles, check the surviving candidates
+// against EACH OTHER. Catches intent clusters within a single discovery batch
+// (e.g. DataForSEO returning 5 "beach wedding songs" variants at once).
+//
+// Keeps the highest-scored representative from each cluster. Rejected candidates
+// are added to pipeline.rejectedKeywords so they're never re-evaluated.
+
+async function filterIntraBatchDuplicates(candidates) {
+  if (candidates.length <= 1) return { deduped: candidates, intraBatchRejected: [] };
+
+  const candidateList = candidates
+    .map((c, i) => `${i} [score:${c.score.toFixed(0)}]: "${c.keyword}"`)
+    .join('\n');
+
+  const result = await callModelJSON(MODEL_BRIEF,
+    `You are an SEO content strategist for beachbride.com, a destination wedding website. Your job is to prevent wasted content by catching keywords that serve identical search intent — even when worded differently.
+
+Two keywords are the SAME intent if a reader searching for one would be equally satisfied by an article written for the other.
+
+Same intent examples:
+- "beach wedding songs" / "music for beach wedding" / "beach wedding song" → all want a song list
+- "destination wedding invitation wording" / "destination wedding invitation text" / "destination wedding invite wording" → all want sample wording text
+- "beach wedding nail ideas" / "beach wedding nails" → both want nail inspiration
+
+Different intent examples:
+- "destination wedding invitation etiquette" vs "destination wedding invitation wording" → rules vs. text samples (distinct needs)
+- "save the date wording" vs "invitation wording" → different documents
+- "destination wedding welcome bags" vs "destination wedding party favors" → arrival gifts vs. ceremony takeaways`,
+
+    `These candidates have already passed overlap checks against published articles. Now identify any that serve the same search intent as each other.
+
+For each group of near-duplicate intents, keep ONE — the highest-scored candidate (shown as [score:N]). If scores are equal, keep the most broadly useful keyword.
+
+CANDIDATES:
+${candidateList}
+
+Return JSON:
+{
+  "keep": [list of indices to keep],
+  "clusters": [
+    { "keep": 5, "skip": [0, 3], "reason": "all serve the same 'beach wedding music/songs' intent" }
+  ]
+}
+Return ALL indices that have no duplicates in the "keep" array. Only omit indices that are duplicated by a kept index.`,
+    { temperature: 0 }
+  );
+
+  const keepIndices = new Set(result.keep || []);
+
+  // Log clusters for visibility
+  if (result.clusters?.length) {
+    for (const cluster of result.clusters) {
+      const keepKw = candidates[cluster.keep]?.keyword;
+      const skipKws = (cluster.skip || []).map(i => `"${candidates[i]?.keyword}"`).join(', ');
+      console.log(`    Cluster: keeping "${keepKw}", dropping ${skipKws} — ${cluster.reason}`);
+    }
+  }
+
+  // Collect rejected normalized keywords for blacklist
+  const intraBatchRejected = [];
+  for (let i = 0; i < candidates.length; i++) {
+    if (!keepIndices.has(i)) {
+      intraBatchRejected.push(normalizeKeyword(candidates[i].keyword));
+    }
+  }
+
+  const deduped = candidates.filter((_, i) => keepIndices.has(i));
+  return { deduped, intraBatchRejected };
 }
 
 // ── Helpers ────────────────────────────────────────────────────────────────────

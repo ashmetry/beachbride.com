@@ -319,7 +319,9 @@ Return JSON:
   );
 
   if (result.overlaps) {
-    return { slug: result.slug, reason: result.reason };
+    // Strip any leading/trailing slashes the LLM may include in the slug
+    const slug = (result.slug || '').replace(/^\/+|\/+$/g, '');
+    return { slug, reason: result.reason };
   }
   return null;
 }

@@ -65,7 +65,9 @@ intent waste ~$5–10 in research + writing credits per duplicate article.
 - **Pipeline ID match** — checked against all existing `pipeline.topics[].id`
 - **Persistent blacklist** — `pipeline.rejectedKeywords[]` stores normalized keywords previously rejected by the LLM; free Set lookup prevents re-evaluating the same keyword twice across runs
 
-### Layer 2: LLM semantic filter at discovery (one Sonnet call per batch)
+### Layer 2: LLM semantic filter at discovery (two Sonnet calls per batch)
+
+**Pass A — Candidates vs. existing articles** (was the only pass before 2026-04-08)
 Compares ALL candidate keywords as a batch against existing articles with their
 H2 headings and FAQ questions — not just title/slug. Passes the rich context:
 
@@ -79,9 +81,28 @@ H2 headings and FAQ questions — not just title/slug. Passes the rich context:
 Rejected keywords are added to `pipeline.rejectedKeywords` so the LLM never
 sees them again on future runs.
 
+**Pass B — Candidates vs. each other (intra-batch dedup)** ← added 2026-04-08
+After Pass A filters against existing articles, a second call compares the
+surviving candidates against each other. This catches cases like DataForSEO
+returning 5 "beach wedding songs" variants in one batch — all pass Pass A
+because none overlap with published articles, but only 1 should enter the queue.
+
+**Why this matters:** Without Pass B, intent clusters contaminate the queue.
+Each cluster produces 1 real article and N-1 blocked runs (brief wasted per
+block, ~$0.01 each). With 83 topics before cleanup, 58 were in clusters — 31
+extra generate runs would have wasted slots producing 0 articles.
+
+**Cost:** Pass B adds one Sonnet call per discovery run (~$0.05). Saves multiple
+wasted brief generations ($0.01 each) and ~15 unproductive generate runs.
+
 ### Layer 3: LLM intent gate at generate time (one Sonnet call per topic)
 Runs **after brief generation, before research**. The brief's full H2 outline +
 FAQ topics + unique angle give 10× more signal than the keyword alone.
+
+Checks against:
+1. All published articles (with H2s + FAQs from disk)
+2. All in-queue topics with status `briefed/researched/written/passed/staged`
+   (prevents publishing two articles on the same intent before either is live)
 
 Cost comparison:
 - Intent gate: ~$0.005 (one Sonnet call)
@@ -92,6 +113,10 @@ updating existing content, not creating competing content.
 
 Topics that fail get status `skipped-intent-overlap` — they stay in `pipeline.json`
 (preventing re-discovery via keyword/ID dedup) but never burn credits again.
+
+**The failReason field** stores `Intent overlap with /slug/: explanation`. The slug
+is stripped of any leading/trailing slashes to prevent `//double-slash//` formatting
+from LLM responses that include slashes in the slug value.
 
 ---
 
@@ -220,6 +245,28 @@ Expected: 5/6 pass (the Bali cost case is intentionally blocked by the strict
 | Writing | `claude-opus-4-6` | Best quality for long-form content |
 | Image prompts | `claude-haiku-4-5` | Cheap, fast, prompt generation only |
 | Images | `gemini-3-pro-image-preview` | Native portrait ratio, atmosphere anchors |
+
+---
+
+## Queue Health
+
+**State after 2026-04-08 cleanup:**
+- 52 unique discovered topics (down from 83 before intra-batch dedup was added)
+- 31 marked `skipped-intent-overlap` (26 via cleanup-queue.js, 4 fixed manually)
+- 5 already `staged` (in content-queue, ready to publish)
+- 33 published
+
+**Healthy queue range:** 20–60 discovered topics. Below 20, discovery runs to
+refill. Above 60, discovery is skipped (DISCOVERY_QUEUE_THRESHOLD = 20 triggers
+the skip check; the current ~52 discovered puts us comfortably above threshold
+for ~8+ weeks at publish rate of 5/week).
+
+**`scripts/content-engine/cleanup-queue.js`** — one-time queue cleanup script.
+Runs LLM over all discovered topics in batches of 40, clusters near-duplicate
+intents, keeps the highest-scored representative, marks the rest
+`skipped-intent-overlap`. Run this anytime a large batch of topics is imported
+without going through the intra-batch dedup (e.g., bulk seeding from a new
+competitor analysis). Cost: ~$0.10-0.15 per run.
 
 ---
 
