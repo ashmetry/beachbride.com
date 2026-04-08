@@ -207,7 +207,10 @@ export default function DestinationQuiz({ turnstileSiteKey }: Props) {
   const matches = submitted ? getTopMatches(answers) : [];
 
   function scrollToTop() {
-    quizRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (!quizRef.current) return;
+    const rect = quizRef.current.getBoundingClientRect();
+    const navHeight = (document.querySelector('header') as HTMLElement)?.offsetHeight ?? 80;
+    window.scrollTo({ top: rect.top + window.scrollY - navHeight - 16, behavior: 'smooth' });
   }
 
   function pick(key: keyof Answers, value: string) {
