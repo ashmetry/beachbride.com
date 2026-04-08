@@ -55,6 +55,8 @@ Think of your beach as a sixth color in your palette. You can't control it, so y
 
 ## What Factors Should Influence Your Beach Wedding Color Palette?
 
+![What Factors Should Influence Your Beach Wedding Color Palette?](/images/beach-wedding-colors-2.jpg)
+
 Your destination, season, time of day, and personal style should all shape your palette before you ever open Pinterest.
 
 Start with your venue's natural environment. According to [Dream Bay Resort](https://dreambayresort.com/news/bzv52kl0sam8xytip0n92qyuh7lvw9), your color palette should complement the aesthetics of your venue and reflect the colors of the ocean, coral reefs, sand, and sunsets at that specific location. A white-sand beach in the Caribbean calls for a completely different approach than a volcanic black-sand beach in Hawaii.
@@ -90,6 +92,8 @@ For a deeper look at how these schemes play out in real weddings, check out our 
 
 ## Which Colors Work Best at Each Destination?
 
+![Which Colors Work Best at Each Destination?](/images/beach-wedding-colors-3.jpg)
+
 The same palette can look completely different depending on where you're getting married. Here's how to match your colors to your destination.
 
 **Santorini and the Mediterranean.** The whitewashed architecture and deep blue Aegean water create a naturally high-contrast backdrop. Dusty blues, soft lavenders, and blush pinks shine here because they complement without competing. A [Santorini [wedding photographer](/vendors/photographer/)](/vendors/photographer/santorini/) will tell you that bold tropicals tend to look out of place against those iconic white walls.
@@ -119,6 +123,8 @@ Your palette isn't just for the mood board. It needs to work across every physic
 The key to making it all work? Share a single mood board with every vendor. According to [Arizona Bride Magazine](https://azbridemag.com/spotlight-how-create-cohesive-wedding-vision), sharing a visual reference across all vendors ensures every detail aligns, from florals to lighting to linens.
 
 ## What Colors Should You Avoid at a Beach Wedding?
+
+![What Colors Should You Avoid at a Beach Wedding?](/images/beach-wedding-colors-4.jpg)
 
 Stark white, all-black palettes, and overly neon schemes are the most common regrets for beach weddings.
 
