@@ -335,7 +335,7 @@ export default function DestinationQuiz({ turnstileSiteKey }: Props) {
             What's your wedding vibe?
           </h2>
           <p className="text-sm text-gray-500 text-center mb-6">This helps us match you to destinations that fit your style.</p>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {VIBES.map(v => (
               <PhotoCard key={v.value} label={v.label} image={v.image} onClick={() => pick('vibe', v.value)} />
             ))}
@@ -350,7 +350,7 @@ export default function DestinationQuiz({ turnstileSiteKey }: Props) {
             When are you thinking?
           </h2>
           <p className="text-sm text-gray-500 text-center mb-6">We'll match you to destinations with the best weather for your season.</p>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {SEASONS.map(s => (
               <PhotoCard key={s.value} label={s.label} image={s.image} onClick={() => pick('season', s.value)} />
             ))}
