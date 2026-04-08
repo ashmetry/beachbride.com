@@ -279,7 +279,7 @@ export default {
         // Stage 1: subscribe to nurture list, send confirmation
         await subscribeToSendy(env, env.SENDY_NURTURE_LIST_ID, payload.email, payload.name ?? '', {
           destination_slug: payload.destinationSlug ?? '',
-          destination_name: payload.destination ?? '',
+          destination: payload.destination ?? '',
           vibe: payload.vibe ?? '',
           season: payload.season ?? '',
           guest_count: payload.guestCount ?? '',

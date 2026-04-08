@@ -13,14 +13,14 @@
 
 ## Email 1 — Send: Immediately (Day 0)
 
-**Subject:** Your [destination_name] wedding guide is ready
+**Subject:** Your [destination,fallback=] wedding guide is ready
 **Preview text:** Everything you need to start planning with confidence.
 
 ---
 
 Hi [Name],
 
-Your [destination_name] wedding guide is ready — here's everything you need to start planning with confidence.
+Your [destination,fallback=] wedding guide is ready — here's everything you need to start planning with confidence.
 
 **[Open your full destination guide →](https://beachbride.com/destinations/[destination_slug]/)**
 
