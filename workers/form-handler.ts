@@ -278,15 +278,15 @@ export default {
       if (payload.type === 'email-capture') {
         // Stage 1: subscribe to nurture list, send confirmation
         await subscribeToSendy(env, env.SENDY_NURTURE_LIST_ID, payload.email, payload.name ?? '', {
-          destination_slug: payload.destinationSlug ?? '',
+          destinationslug: payload.destinationSlug ?? '',
           destination: payload.destination ?? '',
           vibe: payload.vibe ?? '',
           season: payload.season ?? '',
-          guest_count: payload.guestCount ?? '',
+          guestcount: payload.guestCount ?? '',
           budget: payload.budget ?? '',
-          utm_source: payload.utm_source ?? '',
-          utm_medium: payload.utm_medium ?? '',
-          utm_campaign: payload.utm_campaign ?? '',
+          utmsource: payload.utm_source ?? '',
+          utmmedium: payload.utm_medium ?? '',
+          utmcampaign: payload.utm_campaign ?? '',
         });
         // Email 1 is sent by Sendy autoresponder (day 0) — no Mailgun send needed here.
       }
@@ -301,9 +301,9 @@ export default {
         );
 
         await subscribeToSendy(env, env.SENDY_LIST_ID, payload.email, payload.name, {
-          destination_slug: payload.destinationSlug ?? '',
-          wedding_date: payload.weddingDate ?? '',
-          guest_count: payload.guestCount ?? '',
+          destinationslug: payload.destinationSlug ?? '',
+          weddingdate: payload.weddingDate ?? '',
+          guestcount: payload.guestCount ?? '',
           budget: payload.budget ?? '',
           services: payload.servicesNeeded?.join(', ') ?? '',
           phone: payload.phone,
