@@ -455,6 +455,42 @@ discovery time.
 
 ---
 
+### Section Images for Visual-Intent Articles ← added 2026-04-08
+
+Articles on visual-intent topics (colors, cakes, florals, decor, nails, attire,
+invitations, etc.) generate 2–3 contextual section images in addition to the
+hero image. Each image is specific to an H2 heading, not a generic repeat of
+the hero.
+
+**How it works:**
+1. `detectVisualIntent(keyword)` checks the keyword against pattern list
+2. `getSectionImageCount(keyword)` returns 3 for color/palette topics, 2 for others
+3. After hero generation, `generateSectionImages()` selects H2s evenly distributed
+   across the outline (skipping first and last — those positions are awkward)
+4. Claude Haiku writes a section-specific prompt per H2, Gemini generates the image
+5. `insertSectionImagesIntoArticle()` inserts `![alt](/images/slug-N.jpg)` tags
+   immediately after each selected H2, before the section body — deterministic
+   placement, not LLM-placed
+
+**Cost:** ~$0.15 extra per visual article (3 Haiku prompt calls + 3 Gemini images)
+
+**Naming:** `{slug}.jpg` (hero), `{slug}-2.jpg`, `{slug}-3.jpg`, `{slug}-4.jpg`
+
+**publish.js** moves all `slug-N.jpg` files (checks indices 2–5), handles revert,
+git add, and git rm alongside the hero image.
+
+**Testing on existing articles:** `scripts/content-engine/test-section-images.js`
+generates section images for an already-published article without re-running the
+full pipeline. Writes directly to `public/images/` and updates the article body.
+Cost: ~$0.15–0.20 per run.
+
+**Visual intent patterns** (in `generate.js`):
+colors/palettes, cakes, bouquets/florals, nails, decor/centerpieces, dress/attire,
+shoes/sandals, tablescapes, invitations/stationery, favors, boutonnieres, lighting,
+arches/arbors, hair/updo.
+
+---
+
 ### Intent Gate Test
 
 Run `node scripts/content-engine/test-intent-gate.js` to validate the intent
