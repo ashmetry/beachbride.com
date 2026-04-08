@@ -1,209 +1,427 @@
-# Content Engine — Architecture & Lessons Learned
+# Content Engine — Architecture, Lessons & Configuration
 
-This document captures design decisions, gotchas, and hard-won lessons from
-running the content pipeline in production. Update it whenever the architecture
-changes so future runs don't repeat the same mistakes.
+This document is the single source of truth for the content pipeline. It is
+structured in two parts:
+
+1. **Universal architecture** — the system design, dedup layers, and lessons
+   that apply to any niche. Copy this knowledge when porting to a new project.
+2. **Project configuration** — beachbride.com-specific settings, competitors,
+   filters, and current queue state.
+
+**Standing rule:** Any commit touching `scripts/content-engine/` must update
+this file in the same commit. This prevents cross-session drift where the same
+architectural problems get re-solved from scratch.
 
 ---
 
-## Pipeline Overview
+## Part 1 — Universal Architecture
+
+### Pipeline Overview
 
 ```
 discover.js  →  generate.js  →  publish.js
-   ↓                ↓               ↓
+     ↓               ↓               ↓
 pipeline.json   content-queue/  src/content/articles/
 ```
 
-**discover.js** — finds keyword opportunities, deduplicates, scores, saves to `pipeline.json` (status: `discovered`)
-**generate.js** — brief → intent gate → research → write → quality gate → image (status: `staged`)
-**publish.js** — picks oldest staged article, adds internal links, commits + pushes (status: `published`)
+**discover.js** — fetches keyword candidates from 2–3 sources, scores them,
+runs deduplication, saves to `pipeline.json` (status: `discovered`)
 
-Pipeline is **resume-safe**: every sub-step checks status before running and skips completed stages.
+**generate.js** — brief → intent gate → research → write → quality gate →
+image (status: `staged`)
 
----
+**publish.js** — picks oldest staged article, adds internal links, commits +
+pushes to repo (status: `published`)
 
-## Discovery Sources
-
-### 1. GSC Strike Zone
-Keywords beachbride.com already ranks for in positions 8–50 with ≥10 impressions.
-These are the easiest wins — existing authority, just needs better content.
-
-### 2. DataForSEO Ranked Keywords
-Our own site's full ranked keyword set (top 100). Overlaps heavily with GSC but
-catches commercial queries not in the strike zone.
-
-### 3. Competitor Keyword Gap ← added 2026-04-08
-Keywords the top 5 destination wedding competitors rank for (positions 1–30)
-that beachbride.com does NOT rank for at all. This is the primary source of
-net-new topic discovery — the other two sources are reactive (our own data),
-this one is proactive.
-
-**Competitors in priority order:**
-1. `destinationweddingdetails.com` — #1 destination wedding content site, pure niche, highest signal
-2. `destify.com` — exact same model (lead gen + content), high commercial intent keywords
-3. `junebugweddings.com` — large library, strong destination wedding section
-4. `destinationido.com` — similar audience + vendor directory model
-5. `destinationweddings.com` — commercial-intent planning content
-
-**Why NOT:** The Knot, WeddingWire, Brides.com — too broad, thousands of irrelevant
-local wedding keywords would pollute the gap analysis.
-
-**Relevance filters applied:**
-- Must match: destination/beach wedding, location name, elopement, resort/villa/outdoor wedding
-- Must exclude: vendor business advice, dress/gown queries, registry, local wedding, photographer career content
+Pipeline is **resume-safe**: every sub-step checks `topic.status` before
+running and skips already-completed stages. A run can be interrupted and
+restarted safely.
 
 ---
 
-## Deduplication — Three Layers
+### Deduplication — Four Layers
 
-Intent overlap is the real enemy. Two different keywords serving identical search
-intent waste ~$5–10 in research + writing credits per duplicate article.
+Intent overlap is the real enemy. Two articles serving identical search intent
+waste ~$5–10 in research + writing credits and damage SEO by splitting
+authority across pages. The system catches duplicates as early and cheaply as
+possible.
 
-### Layer 1: Deterministic (free, instant)
-- **Keyword normalization** — strips stopwords, catches "destination wedding cost" = "cost of a destination wedding"
-- **Slug collision** — `slugify(keyword)` checked against actual files in `src/content/articles/` (catches manually-created articles the pipeline doesn't know about)
-- **Pipeline ID match** — checked against all existing `pipeline.topics[].id`
-- **Persistent blacklist** — `pipeline.rejectedKeywords[]` stores normalized keywords previously rejected by the LLM; free Set lookup prevents re-evaluating the same keyword twice across runs
+```
+Layer 1: Deterministic    → free, instant, runs on every candidate
+Layer 2a: LLM vs. articles → one Sonnet call per batch (~$0.05)
+Layer 2b: LLM vs. itself  → one Sonnet call per batch (~$0.05)
+Layer 3: LLM intent gate  → one Sonnet call per topic (~$0.005)
+```
 
-### Layer 2: LLM semantic filter at discovery (two Sonnet calls per batch)
+#### Layer 1 — Deterministic (free, instant)
 
-**Pass A — Candidates vs. existing articles** (was the only pass before 2026-04-08)
-Compares ALL candidate keywords as a batch against existing articles with their
-H2 headings and FAQ questions — not just title/slug. Passes the rich context:
+Four checks, in order. Any match skips the candidate immediately:
+
+1. **Keyword normalization** — strips stopwords, lowercases. Catches
+   `"destination wedding cost"` = `"cost of a destination wedding"`. Checked
+   against `pipelineKeywords` Set built from all existing `pipeline.topics`.
+
+2. **Persistent blacklist** — `pipeline.rejectedKeywords[]` stores normalized
+   form of every keyword ever rejected by Layers 2a/2b. A free Set lookup
+   means the LLM never re-evaluates the same bad keyword across runs. Grows
+   over time; never shrinks (articles are never deleted in practice).
+
+3. **Slug collision** — `slugify(keyword)` checked against actual article
+   files on disk (`existingSlugs`). Catches articles created outside the
+   pipeline (manual writes, CMS migrations) that have no pipeline entry.
+
+4. **Pipeline ID match** — `slugify(keyword)` checked against all existing
+   `pipeline.topics[].id`. Catches topics in any status, including
+   `skipped-intent-overlap` — prevents a previously-rejected topic from
+   re-entering if worded slightly differently.
+
+**Critical gotcha:** Articles created outside the pipeline (manual writing,
+CMS migration, direct file creation) are invisible to the pipeline until
+registered. The slug check handles this automatically for keyword-matched
+candidates, but the article must also be registered in `pipeline.json` as a
+published entry to prevent it from being re-discovered:
+
+```json
+{ "id": "article-slug", "status": "published", "source": "manual", "addedAt": "YYYY-MM-DD" }
+```
+
+Guard all pipeline topic loops with `t.keyword &&` — manually-registered
+entries have no keyword field.
+
+#### Layer 2a — LLM semantic filter: candidates vs. existing articles
+
+One Sonnet call per batch. Compares all surviving candidates against the full
+inventory of existing articles, passing rich context — not just titles:
 
 ```
 /slug/ — "Title"
-  Description: meta description text
-  H2 sections: Section 1 | Section 2 | Section 3
+  Description: meta description
+  Sections: H2 heading 1 | H2 heading 2 | H2 heading 3
   FAQs: Question 1? | Question 2?
 ```
 
-Rejected keywords are added to `pipeline.rejectedKeywords` so the LLM never
-sees them again on future runs.
+The H2s and FAQs are what make this useful. An article titled "Destination
+Wedding Cost" that has H2s covering every major destination will correctly
+block a candidate keyword like "how much does a Cancun destination wedding
+cost" — even though the titles don't match.
 
-**Pass B — Candidates vs. each other (intra-batch dedup)** ← added 2026-04-08
-After Pass A filters against existing articles, a second call compares the
-surviving candidates against each other. This catches cases like DataForSEO
-returning 5 "beach wedding songs" variants in one batch — all pass Pass A
-because none overlap with published articles, but only 1 should enter the queue.
+Rejected keywords are added to `pipeline.rejectedKeywords` (the blacklist) so
+they're never evaluated again. The blacklist only grows when discovery actually
+runs — it stays empty when the queue threshold prevents discovery from firing.
 
-**Why this matters:** Without Pass B, intent clusters contaminate the queue.
-Each cluster produces 1 real article and N-1 blocked runs (brief wasted per
-block, ~$0.01 each). With 83 topics before cleanup, 58 were in clusters — 31
-extra generate runs would have wasted slots producing 0 articles.
+Also checks `skipped-intent-overlap` pipeline topics (with their briefs where
+available) so the filter is aware of topics that were already rejected.
 
-**Cost:** Pass B adds one Sonnet call per discovery run (~$0.05). Saves multiple
-wasted brief generations ($0.01 each) and ~15 unproductive generate runs.
+#### Layer 2b — LLM semantic filter: candidates vs. each other (intra-batch dedup)
 
-### Layer 3: LLM intent gate at generate time (one Sonnet call per topic)
-Runs **after brief generation, before research**. The brief's full H2 outline +
-FAQ topics + unique angle give 10× more signal than the keyword alone.
+One Sonnet call per batch, runs after Layer 2a. Compares the surviving
+candidates against each other.
 
-Checks against:
-1. All published articles (with H2s + FAQs from disk)
+**Why this is necessary:** Layer 2a checks candidates against existing
+articles. But when a keyword source (DataForSEO, competitor gap) returns
+multiple variants of the same intent in one batch — e.g., 5 "beach wedding
+songs" variants or 9 "destination wedding invitation wording" variants — all
+of them pass Layer 2a because none overlap with any published article. They
+all enter the queue as separate topics.
+
+Without this layer, those clusters contaminate the queue. The pipeline would:
+1. Generate article A from the cluster (passes intent gate — nothing published yet)
+2. Try topic B next run → brief generated ($0.01) → intent gate blocks it
+3. Same for C, D, E — each wasting a brief and a generate run slot
+
+**Cost:** ~$0.05 per discovery run. Prevents dozens of wasted brief
+generations and unproductive generate runs over weeks.
+
+Rejected keywords from this pass are also added to `pipeline.rejectedKeywords`.
+
+**Batching note:** The cleanup runs in batches of 40 topics. Topics at the
+boundary between batches are not cross-compared. Any cross-batch duplicates
+will be caught by the Layer 3 intent gate when generating. Run
+`scripts/content-engine/cleanup-queue.js` after any large bulk import to
+catch cross-batch stragglers via a dedicated LLM pass over the full queue.
+
+#### Layer 3 — LLM intent gate at generate time
+
+One Sonnet call per topic. Runs after brief generation, before research and
+writing. This is the final safety net.
+
+**Why after the brief?** The keyword alone has weak signal. The brief's full
+H2 outline + FAQ topics + unique angle give 10× more context to judge true
+intent overlap. A keyword like "destination wedding checklist" looks different
+from "beach wedding checklist" — but if the brief's H2s are identical, it's
+the same article.
+
+**What it checks against:**
+1. All published articles (with H2s and FAQs read from disk)
 2. All in-queue topics with status `briefed/researched/written/passed/staged`
-   (prevents publishing two articles on the same intent before either is live)
+   — prevents two articles on the same intent from both being staged before
+   either is published
 
-Cost comparison:
+**Cost comparison:**
 - Intent gate: ~$0.005 (one Sonnet call)
-- Research + writing avoided: ~$5–10 (Perplexity + Opus)
+- Research + writing it prevents: ~$5–10 (Perplexity + Opus)
 
-Refresh articles (`isRefresh: true`) skip the intent gate — they're intentionally
-updating existing content, not creating competing content.
+**Refresh articles (`isRefresh: true`) skip the intent gate** — they're
+improving an existing page, not creating a competing one. The brief's slug
+is forced to match the existing article's slug.
 
-Topics that fail get status `skipped-intent-overlap` — they stay in `pipeline.json`
-(preventing re-discovery via keyword/ID dedup) but never burn credits again.
+**On failure:** Topic gets status `skipped-intent-overlap`. It stays in
+`pipeline.json` permanently (preventing re-discovery via Layer 1 pipeline ID
+check) but is never processed again. The pipeline automatically picks the
+next-highest-scoring valid topic.
 
-**The failReason field** stores `Intent overlap with /slug/: explanation`. The slug
-is stripped of any leading/trailing slashes to prevent `//double-slash//` formatting
-from LLM responses that include slashes in the slug value.
-
----
-
-## Efficiency Controls
-
-### Queue Threshold (`DISCOVERY_QUEUE_THRESHOLD = 20`)
-Discovery skips all API fetches when ≥20 topics are already `discovered` in
-the pipeline. At 3 articles/week generated, 20 topics = ~7 weeks runway.
-Saves ~$0.07/run on unnecessary fetches.
-
-**Observed behavior (2026-04-08):** With 86 topics in queue, every generate run
-that day skipped discovery entirely. This is correct. The queue refills when it
-drops below 20 — no manual intervention needed.
-
-### Persistent Blacklist
-`pipeline.rejectedKeywords[]` — normalized strings of every keyword the semantic
-overlap LLM has ever rejected. Checked before any LLM call in the dedup loop.
-Grows over time so the LLM progressively sees only genuinely novel candidates.
-
-**Why this matters:** Without it, each discovery run re-evaluates the same bad
-keywords, burning ~$0.001 per keyword per run. At hundreds of candidates, this
-compounds significantly over weeks.
-
-**Important:** The blacklist is populated by the semantic filter in `discover.js`.
-The intent gate in `generate.js` does NOT add to the blacklist — it marks topics
-`skipped-intent-overlap` in pipeline.json instead (which prevents re-discovery
-via the pipeline ID check). Two different mechanisms for two different layers.
-
-### Intent Gate Self-Correction
-Topics blocked by the intent gate get status `skipped-intent-overlap` and stay
-in `pipeline.json`. This means:
-1. They never burn credits again (status check before any processing)
-2. Future discover runs don't re-add them (pipeline ID dedup)
-3. The next-highest-scoring valid topic automatically gets picked up
-
-**Observed (2026-04-08 run):** Hawaii cost + Punta Cana cost blocked → pipeline
-skipped to `destination-wedding-announcement` (score 70) → perfect article
-generated (SEO 100%, AI Detection 0%). The system self-corrects without manual
-intervention.
+**failReason format:** `Intent overlap with /slug/: explanation`. Strip
+leading/trailing slashes from the LLM-returned slug — models sometimes return
+`/slug/` with slashes, producing `//slug//` without the strip.
 
 ---
 
-## Articles Outside the Pipeline — Critical Lesson
+### Efficiency Controls
 
-**Problem (encountered 2026-04-08):** Articles created manually or migrated from
-WordPress have no `pipeline.json` entry. The discover step was blind to them — it
-would re-discover them as fresh keyword opportunities and generate duplicate content.
+#### Queue Threshold
 
-**Root cause:** `pipelineKeywords` dedup only catches exact keyword matches.
-DataForSEO candidates have no `currentPageUrl` so `checkCannibalization()` doesn't
-fire. The slug check didn't exist.
+`DISCOVERY_QUEUE_THRESHOLD` (default: 20) — discovery exits immediately when
+the number of `discovered` topics in the pipeline meets or exceeds this value.
+No fetches, no LLM calls, nothing added.
 
-**Fix applied:**
-1. `topicId = slugify(keyword)` computed before pushing to pipeline; checked against
-   `existingSlugs` (actual files) and `pipelineIds` (pipeline entries)
-2. 8 orphan articles manually registered in `pipeline.json` as `status: published`
-   with no `keyword` field — guarded everywhere with `t.keyword &&`
+**How the queue self-regulates:**
+- Queue ≥ threshold: discovery is a no-op every scheduled run
+- Queue < threshold: discovery runs, refills with new deduplicated topics
+- The queue naturally drains as generate runs consume discovered topics
 
-**Rule going forward:** Any article added outside the pipeline (manual writing,
-WP migration, direct file creation) must be registered in `pipeline.json`:
-```json
-{ "id": "article-slug", "status": "published", "source": "manual", "addedAt": "2026-04-08" }
-```
+**Setting the threshold:** ~6–8 weeks of generate runway. At 3 articles/run ×
+2 runs/week = 6/week generated, threshold of 20 = ~3 weeks minimum runway.
+Err on the side of a larger buffer (30–40) to absorb the weeks where the
+intent gate blocks some topics and effective throughput drops.
+
+**The queue does not grow unboundedly.** Discovery is a timer-triggered
+job but the threshold makes it a no-op when the queue is healthy. It only
+fires when the queue actually needs refilling.
+
+#### Persistent Blacklist
+
+`pipeline.rejectedKeywords[]` in `pipeline.json`. Normalized keyword strings
+of every candidate ever rejected by Layers 2a or 2b. Checked in Layer 1
+before any LLM call — free Set lookup, zero cost.
+
+Compounds over time: after a few discovery cycles, most bad candidates (vendor
+career content, generic non-niche keywords, low-quality variants) are already
+blacklisted and never reach the LLM.
+
+**Two separate rejection mechanisms:**
+- Layer 2a/2b rejections → added to `pipeline.rejectedKeywords` (permanent blacklist)
+- Layer 3 rejections → topic marked `skipped-intent-overlap` in pipeline (permanent skip via ID dedup)
+
+These serve different purposes. The blacklist prevents re-discovery of rejected
+keywords. The pipeline ID check prevents re-queueing of topics that were
+structurally unique enough to pass discovery but failed the deeper intent check
+at generate time.
 
 ---
 
-## Cost Per Run (Estimated)
+### Scoring
+
+Each candidate is scored 0–100 before entering the queue. Higher score = gets
+generated first.
+
+**Scoring factors (in order of impact):**
+1. Search volume × intent multiplier × win probability (base score)
+2. +15 if already ranking in strike zone (positions 8–50) — easier to push up
+3. +10 if from competitor gap source — validated demand, net-new opportunity
+4. +10/+5 if CPC > $5/$2 — commercial intent signal
+5. +8–25 for refresh of thin article (word count < 2000) — existing authority
+
+**Intent multiplier:**
+- Commercial keywords (cost, price, book, hire, best, luxury): 1.5×
+- Transactional keywords (plan, guide, checklist, how to): 1.3×
+- Informational: 1.0×
+
+**Log normalization:** Raw score is passed through `log10 * 20` to compress
+the range. Without this, high-volume keywords (100K+ searches) score 1000×
+higher than mid-volume keywords (1K searches), burying the long-tail.
+
+---
+
+### Quality Gate
+
+All generated articles must pass before staging:
+
+| Check | Threshold |
+|---|---|
+| SEO score | ≥ 80/100 |
+| AI detection | ≤ 25% |
+| Factual check | PASS (disclaimers present, no unverified superlatives) |
+| Word count | 1500–2500 |
+| Max rewrites before fail | 2 |
+
+Failed articles get status `failed` and trigger an email notification.
+The pipeline moves on to the next topic — a quality failure does not block
+the run.
+
+---
+
+### Content Rules (enforced by quality gate)
+
+These are enforced by the quality gate heuristic and should be reflected in
+the writing prompt for any niche:
+
+- No H1 in article body (layout renders the title from frontmatter)
+- ≥50% of H2s phrased as questions
+- Question H2s start with a 15–30 word direct answer
+- Every factual claim cites a research source
+- At least 1 data/comparison table per article
+- FAQs only in frontmatter (not repeated as body H2s)
+- Banned patterns: em-dashes, "game-changer", "seamlessly", "cutting-edge",
+  "robust", "comprehensive", "In conclusion", "delve", "leverage", "foster",
+  "navigate", "empower"
+
+---
+
+### Models
+
+| Role | Model | Why |
+|---|---|---|
+| Brief, semantic filter, intent gate, cleanup | `claude-sonnet-4-6` | Fast, cheap, sufficient for structured JSON |
+| Research | `perplexity/sonar-pro` | Live web access + citation annotations |
+| Writing | `claude-opus-4-6` | Best quality for long-form content |
+| Image prompts | `claude-haiku-4-5` | Cheap, fast, prompt generation only |
+| Images | `gemini-3-pro-image-preview` | Native portrait ratio, atmosphere anchors |
+
+Perplexity citations come back as `annotations` on the message object, not in
+the text body. Parse them from `message.annotations`, not from the response
+text.
+
+---
+
+### Cost Per Generate Run (Estimated)
+
+Assumes queue threshold is not active (discovery runs) and 3 articles generated:
 
 | Step | Cost |
 |---|---|
 | GSC fetch | free |
 | DataForSEO own site (100 keywords) | ~$0.02 |
-| DataForSEO competitor gap (5 × 200 keywords) | ~$0.05 |
-| Semantic overlap filter (1 Sonnet call, ~20K tokens) | ~$0.10 |
+| DataForSEO competitor gap (N competitors × 200 keywords) | ~$0.05–0.15 |
+| Semantic filter — Pass A (1 Sonnet call, ~20K tokens) | ~$0.10 |
+| Semantic filter — Pass B, intra-batch (1 Sonnet call) | ~$0.05 |
 | Brief × 3 (Sonnet) | ~$0.09 |
 | Intent gate × 3 (Sonnet) | ~$0.05 |
 | Research × 3 (Perplexity Sonar Pro, 10 sections each) | ~$0.36 |
 | Writing × 3 (Opus, ~18K in / 5K out each) | ~$1.95 |
 | Images × 3 (Gemini) | ~$0.15 |
-| **Total per generate run** | **~$2.90** |
+| **Total per generate run** | **~$2.90–3.00** |
 
-Discovery is skipped when queue has ≥20 topics, saving ~$0.17 on those runs.
+Discovery is skipped when queue ≥ threshold, saving ~$0.22 on those runs.
 The blacklist compounds: each rejected keyword saves ~$0.001 on every future run.
 
 ---
 
-## Schedule
+### Porting to a New Niche — What to Change
+
+When copying this pipeline to a new project, these are the only things that
+need to change. The dedup logic, quality gate, and efficiency controls are
+niche-agnostic.
+
+**In `lib/config.js`:**
+- `ARTICLES_DIR`, `IMAGES_DIR`, `QUEUE_DIR` — point to new project's paths
+- `LINK_TARGETS` — internal link patterns for the new site's key pages
+- `AFFILIATE_TARGETS` — affiliate URL patterns for the new niche
+
+**In `discover.js`:**
+- `COMPETITORS` — the 3–5 closest niche competitors for keyword gap analysis.
+  Choose sites with: same audience, similar content model, established
+  keyword ranking. Avoid broad aggregators (too much noise).
+- `GAP_REQUIRE_PATTERNS` — regex patterns that a competitor keyword must match
+  to be considered relevant. Be specific: 1 false negative (missed opportunity)
+  costs nothing; 1 false positive (irrelevant topic) pollutes the queue.
+- `GAP_EXCLUDE_PATTERNS` — regex patterns that immediately disqualify a keyword
+  (vendor business advice, irrelevant product categories, out-of-niche content).
+- `getIntentMultiplier()` — update the commercial/transactional keyword lists
+  to match your niche's high-value query patterns.
+
+**In `generate.js`:**
+- System prompt in `generateBrief()` — site description, destinations/topics,
+  revenue model, brand voice.
+- `getOutlineGuide()` — H2 structure templates per content type. Add
+  niche-specific content types as needed.
+- Writing system prompt — brand voice, content rules, banned patterns.
+
+**In `pipeline.json`:**
+- Start fresh with `{ "topics": [], "rejectedKeywords": [], "lastDiscoveryRun": null, "lastGenerationRun": null }`
+- Register any articles that exist before the pipeline is first run as
+  `{ "id": "slug", "status": "published", "source": "manual", "addedAt": "..." }`
+
+**In `lib/config.js` quality thresholds:**
+- `SEO_THRESHOLD`, `AI_DETECTION_THRESHOLD`, `MIN_WORD_COUNT`, `MAX_WORD_COUNT`
+  — adjust to niche content norms (some niches need shorter, punchier content)
+
+---
+
+### Known Limitations
+
+- **Discovery is partially reactive.** GSC and own-site DataForSEO only surface
+  keywords you already rank for. Competitor gap is proactive but only finds
+  what competitors have already validated. Truly novel trends require a separate
+  input (e.g., Reddit/forum topic mining, Google Trends API) not yet implemented.
+
+- **Blacklist has no expiry.** If an article is deleted, its rejected variants
+  stay blacklisted. Acceptable in practice since articles are never deleted.
+
+- **Refresh articles skip the intent gate.** Intentional, but a refresh brief
+  could theoretically produce a second article on the same topic if the brief's
+  generated slug differs from `existingSlug`. Not seen in practice — the forced
+  `_forcedSlug` field prevents this when seeding explicitly.
+
+- **`getExistingArticles()` reads from disk, not the live site.** If an article
+  exists live but not in the repo, it's invisible to the pipeline. In practice
+  this can't happen since `publish.js` commits everything before pushing.
+
+- **Intra-batch dedup batches of 40 don't cross-compare.** Topics at batch
+  boundaries can slip through as duplicates. The intent gate catches them at
+  generate time. Run `cleanup-queue.js` after any large bulk import.
+
+- **`DISCOVERY_QUEUE_THRESHOLD` is topic count, not coverage quality.** A queue
+  of 20 high-quality unique topics is healthier than 60 with clusters. The
+  intra-batch dedup (Layer 2b) addresses this at source, but the threshold
+  number alone doesn't guarantee queue quality.
+
+---
+
+## Part 2 — beachbride.com Configuration
+
+### Discovery Sources
+
+**Source 1 — GSC Strike Zone**
+Keywords beachbride.com already ranks for in positions 8–50 with ≥10 impressions.
+Reactive (our own data). Easiest wins — existing authority, just needs better
+content.
+
+**Source 2 — DataForSEO Own Site**
+Full ranked keyword set, top 100. Reactive. Overlaps with GSC but catches
+commercial queries not in the strike zone.
+
+**Source 3 — Competitor Keyword Gap**
+Keywords the top 5 destination wedding competitors rank for (positions 1–30)
+that beachbride.com does NOT rank for at all. Proactive — the primary source
+of net-new topic ideas.
+
+Competitors in priority order:
+1. `destinationweddingdetails.com` — #1 destination wedding content site, pure niche
+2. `destify.com` — same lead-gen + content model as us, high commercial intent
+3. `junebugweddings.com` — large library, strong destination wedding section
+4. `destinationido.com` — similar vendor directory model
+5. `destinationweddings.com` — commercial-intent planning content
+
+**Why NOT** The Knot, WeddingWire, Brides.com — too broad, thousands of
+irrelevant local wedding keywords would pollute the gap analysis.
+
+**Relevance filters:**
+- Must match: destination/beach wedding, location name, elopement, resort/villa/outdoor wedding, tropical/intimate wedding
+- Must exclude: vendor business advice, dress/gown queries, registry, local wedding, photographer career content
+
+---
+
+### Schedule
 
 | Workflow | Schedule | What it does |
 |---|---|---|
@@ -211,97 +429,41 @@ The blacklist compounds: each rejected keyword saves ~$0.001 on every future run
 | `content-publish.yml` | Mon–Fri 2pm UTC (9am ET) | Publish 1 article from queue |
 
 **Publish rate:** 5/week. **Generate rate:** 3 per run × 2 runs/week = up to 6/week.
-Queue should stay healthy. Monitor with `npm run content:status`.
 
 ---
 
-## Quality Gate Thresholds
+### Current Queue State
 
-- SEO score: ≥80/100 (10 checks × 10 points each)
-- AI detection: ≤25% (banned patterns + sentence uniformity)
-- Factual: PASS (disclaimers present, no unverified superlatives)
-- Word count: 1500–2500
-- Max rewrites before fail: 2
+*Update this section whenever the pipeline state changes significantly.*
+
+**As of 2026-04-08:**
+- Published: 33
+- Staged (ready to publish): 5
+- Discovered (unique, clean): 52
+- Skipped (intent overlap): 36 total
+
+Queue runway at current rates: ~8–9 weeks before discovery needs to run again.
+
+**How we got to 52 from 83:**
+The intra-batch dedup (Layer 2b) was added after discovery had already run and
+populated the queue without it. `cleanup-queue.js` was run to retroactively
+cluster the 83 topics by intent and remove 27 duplicates. 4 additional
+cross-batch stragglers were removed manually (peacock cake × 2, nails × 2,
+checklist × 2, packing list × 2). This is a one-time correction — future
+discovery runs will never accumulate clusters because Layer 2b runs at
+discovery time.
 
 ---
 
-## Intent Gate Test
+### Intent Gate Test
 
 Run `node scripts/content-engine/test-intent-gate.js` to validate the intent
 overlap logic against 6 synthetic test cases (~$0.03). Run this whenever the
 `checkIntentOverlap` prompt or `getExistingArticles()` enrichment changes.
 
-Expected: 5/6 pass (the Bali cost case is intentionally blocked by the strict
-"existing article covers this destination" logic — this is correct behavior).
-
----
-
-## Models Used
-
-| Role | Model | Why |
-|---|---|---|
-| Brief, semantic filter, intent gate | `claude-sonnet-4-6` | Fast, cheap, sufficient for structured JSON tasks |
-| Research | `perplexity/sonar-pro` | Live web access + citation annotations |
-| Writing | `claude-opus-4-6` | Best quality for long-form content |
-| Image prompts | `claude-haiku-4-5` | Cheap, fast, prompt generation only |
-| Images | `gemini-3-pro-image-preview` | Native portrait ratio, atmosphere anchors |
-
----
-
-## Queue Health
-
-**State after 2026-04-08 cleanup:**
-- 52 unique discovered topics (down from 83 before intra-batch dedup was added)
-- 31 marked `skipped-intent-overlap` (26 via cleanup-queue.js, 4 fixed manually)
-- 5 already `staged` (in content-queue, ready to publish)
-- 33 published
-
-**Healthy queue range:** 20–60 discovered topics. Below 20, discovery runs to
-refill. Above 60, discovery is skipped (DISCOVERY_QUEUE_THRESHOLD = 20 triggers
-the skip check; the current ~52 discovered puts us comfortably above threshold
-for ~8+ weeks at publish rate of 5/week).
-
-**`scripts/content-engine/cleanup-queue.js`** — one-time queue cleanup script.
-Runs LLM over all discovered topics in batches of 40, clusters near-duplicate
-intents, keeps the highest-scored representative, marks the rest
-`skipped-intent-overlap`. Run this anytime a large batch of topics is imported
-without going through the intra-batch dedup (e.g., bulk seeding from a new
-competitor analysis). Cost: ~$0.10-0.15 per run.
-
----
-
-## How to Keep This Document Current
-
-**Standing rule (in CLAUDE.md):** Any commit touching `scripts/content-engine/`
-must update this file in the same commit. This prevents session-to-session drift
-where the same architectural question gets re-solved from scratch.
-
-What to capture here:
-- What changed and in which function
-- The problem it solved (with a concrete example if possible)
-- Cost/efficiency implications
-- New gotchas or edge cases discovered
-
-This is the primary input for any new session working on the content engine.
-The goal is that CONTENT-PLAN.md + `lib/config.js` together answer every
-"how does this work and why" question without reading all 600+ lines of the scripts.
-
----
-
-## Known Limitations / Future Work
-
-- **Discovery is still partially reactive** — GSC and DataForSEO own-site sources
-  only return keywords we already rank for. The competitor gap source is proactive,
-  but it only finds keywords competitors rank for. Truly novel topic ideas (new
-  trends, underserved questions) require a third input not yet implemented.
-
-- **Blacklist has no expiry** — if an article is deleted, its rejected variants
-  remain blacklisted. Acceptable given articles are never deleted in practice.
-
-- **Refresh articles skip the intent gate** — intentional, but means a refresh
-  brief could theoretically create a second article on the same topic if the
-  brief's slug differs from `existingSlug`. Not seen in practice.
-
-- **`getExistingArticles()` reads from disk, not live site** — if an article
-  exists on the live site but is somehow not in the repo, it's invisible to the
-  pipeline. In practice this can't happen since publish.js commits everything.
+Expected: 5/6 pass (the Bali cost case is intentionally blocked — a general
+destination cost article that covers Bali in its breakdown correctly blocks a
+Bali-specific cost article. This is the right behavior under the strict
+false-negative cost model).
+</content>
+</invoke>
