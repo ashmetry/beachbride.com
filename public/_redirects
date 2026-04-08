@@ -183,3 +183,39 @@
 /2017/05/aquamarine-beach-wedding/ /destination-wedding-guide/ 301
 /hooked-on-love/ /destination-wedding-guide/ 301
 /2017/07/hooked-on-love/ /destination-wedding-guide/ 301
+
+# --- Content slug redirects (from GA4 404 analysis, 2026-04-08) ---
+/checkout /quiz/ 301
+/privacy/ /privacy-policy/ 301
+/privacy /privacy-policy/ 301
+/social-media-tease/ / 301
+/contact-us/ /contact/ 301
+/contact-us /contact/ 301
+/contact.html /contact/ 301
+/advertising /advertise/ 301
+/write-for-us /advertise/ 301
+/guest-post /advertise/ 301
+/collab /advertise/ 301
+/kontakt /contact/ 301
+/contacte /contact/ 301
+/the-ocean-view-plus-me-and-you/ /real-weddings/ 301
+/wedding-dress/ /guides/bride/ 301
+/wedding-dress-2/ /guides/bride/ 301
+/wedding-dress-3/ /guides/bride/ 301
+/wedding-dress-4/ /guides/bride/ 301
+
+# --- Wildcard redirects for old WordPress taxonomy/listing URLs ---
+/vendors/listings/* /vendors/ 301
+/photographers/listings/* /vendors/ 301
+/blog/* /guides/ 301
+/color/* /real-weddings/ 301
+/style/* /real-weddings/ 301
+/setting/* /real-weddings/ 301
+/ethnicity/* /real-weddings/ 301
+/event/* /real-weddings/ 301
+/season/* /real-weddings/ 301
+/religion/* /real-weddings/ 301
+/holiday/* /real-weddings/ 301
+/author/* /about/ 301
+/category/* /guides/ 301
+/page/* /guides/ 301
