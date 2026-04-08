@@ -4,7 +4,7 @@
 #
 # Merge tags available in Sendy:
 #   [Name]              — first name
-#   [destinationslug]  — e.g. "cancun", "santorini"
+#   [destinationslug,fallback=]  — e.g. "cancun", "santorini"
 #
 # Exit condition: unsubscribe from this list when subscriber completes Stage 2 quiz
 # (they get added to SENDY_LIST_ID at that point).
@@ -22,7 +22,7 @@ Hi [Name],
 
 Your [destination,fallback=] wedding guide is ready — here's everything you need to start planning with confidence.
 
-**[Open your full destination guide →](https://beachbride.com/destinations/[destinationslug]/)**
+**[Open your full destination guide →](https://beachbride.com/destinations/[destinationslug,fallback=]/)**
 
 Here's what's inside:
 
@@ -149,7 +149,7 @@ https://www.insuremytrip.com/?utm_source=beachbride&utm_medium=email&utm_campaig
 ---
 
 On legal requirements: This varies so much by destination that a single checklist won't cut it. Your destination guide covers the specifics:
-https://beachbride.com/destinations/[destinationslug]/
+https://beachbride.com/destinations/[destinationslug,fallback=]/
 
 One more email coming your way in a week. It's a short one — just a question.
 
