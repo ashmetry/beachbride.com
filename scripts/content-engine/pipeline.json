@@ -9036,20 +9036,84 @@
         "hawaii wedding budget",
         "hawaii all inclusive wedding packages cost"
       ],
-      "status": "discovered",
+      "status": "skipped-intent-overlap",
       "score": 80,
       "contentType": "informational",
       "schemaType": "article",
       "isRefresh": false,
       "existingSlug": null,
-      "brief": null,
+      "brief": {
+        "slug": "hawaii-destination-wedding-cost",
+        "title": "How Much Does a Destination Wedding in Hawaii Cost? (2026 Breakdown)",
+        "metaDescription": "Planning a Hawaii wedding? Get real 2026 cost breakdowns by island, budget tiers, and insider tips to make your dream wedding actually affordable.",
+        "targetWordCount": 2200,
+        "schemaType": "article",
+        "h2Outline": [
+          "What Does a Destination Wedding in Hawaii Actually Look Like?",
+          "How Much Does a Hawaii Wedding Cost? (The Real Numbers)",
+          "What Factors Affect the Cost of a Hawaii Wedding?",
+          "Which Island Is Right for Your Budget? (Maui vs. Oahu vs. Kauai vs. Big Island)",
+          "Hawaii Wedding Cost vs. Other Popular Destinations",
+          "What's Typically Included — and What Will Surprise You?",
+          "How to Stretch Your Hawaii Wedding Budget Without Cutting Corners",
+          "How BeachBride Can Help You Plan Your Hawaii Wedding"
+        ],
+        "faqTopics": [
+          "What is the average cost of a destination wedding in Hawaii?",
+          "Is it cheaper to get married in Hawaii or the Caribbean?",
+          "Do you need a permit to get married on a beach in Hawaii?",
+          "What is the cheapest island in Hawaii to get married on?",
+          "How far in advance should you book a Hawaii wedding venue?",
+          "Can you have a small intimate wedding in Hawaii for under $10,000?",
+          "Are all-inclusive wedding packages available in Hawaii?"
+        ],
+        "internalLinkTargets": [
+          "/destination-wedding-cost/",
+          "/destination-wedding-guide/",
+          "/beach-wedding-checklist/",
+          "/destinations/hawaii/",
+          "/vendors/planner/hawaii/",
+          "/vendors/photographer/hawaii/",
+          "/vendors/venue/hawaii/",
+          "/vendors/resort/hawaii/",
+          "/vendors/florist/hawaii/",
+          "/vendors/officiant/hawaii/",
+          "/destination-wedding-budget-hacks-that-dont-sacrifice-luxury/",
+          "/is-it-really-possible-to-save-money-with-a-beach-destination-wedding/",
+          "/destinations/cancun/",
+          "/destinations/jamaica/",
+          "/destinations/bali/",
+          "/quiz/"
+        ],
+        "externalSourceTypes": [
+          "The Knot Real Weddings Study (annual cost data)",
+          "WeddingWire industry pricing surveys",
+          "Hawaii Tourism Authority visitor spending reports",
+          "Hawaii DLNR beach permit fee schedules",
+          "Conde Nast Traveler destination wedding rankings"
+        ],
+        "disclaimers": [
+          "financial",
+          "professional",
+          "referral"
+        ],
+        "relatedSlugs": [
+          "destination-wedding-cost",
+          "destination-wedding-budget-hacks-that-dont-sacrifice-luxury",
+          "is-it-really-possible-to-save-money-with-a-beach-destination-wedding",
+          "beach-wedding-checklist",
+          "destination-wedding-tips"
+        ],
+        "affiliateOpportunity": "Hawaii luxury resort affiliate commissions (Four Seasons Maui, Grand Hyatt Kauai, Turtle Bay Resort Oahu); engagement ring affiliates relevant in intro or proposal-to-wedding narrative",
+        "uniqueAngle": "Most competitor articles give a single vague price range. This article breaks costs down by island (Maui vs. Oahu vs. Kauai vs. Big Island), by budget tier (elopement / intimate / full celebration), and flags the hidden Hawaii-specific costs competitors miss — like DLNR beach permits, vendor travel fees from the mainland, and peak season surcharges — giving couples a genuinely actionable planning tool rather than a generic overview."
+      },
       "researchData": null,
       "qualityReport": null,
       "rewriteAttempts": 0,
-      "failReason": null,
+      "failReason": "Intent overlap with /destination-wedding-cost/: The existing published article at /destination-wedding-cost/ ('How Much Does a Destination Wedding Cost? (2026 Breakdown)') explicitly includes Hawaii in its itemized cost breakdowns by location, covers hidden costs, and addresses budget tiers. Its description states it includes 'itemized breakdowns for Cancun, Punta Cana, Bali, Santorini, Jamaica, and Hawaii.' The candidate's core search intent — 'how much does a destination wedding in Hawaii cost' — is directly satisfied by that article. Additionally, the staged 'destination wedding cost' article duplicates the same intent with overlapping H2s on hidden costs, budget tiers, and location-based pricing. The candidate's FAQs ('What is the average cost of a destination wedding in Hawaii?', 'Can you have a small intimate wedding in Hawaii for under $10,000?', 'Are all-inclusive wedding packages available in Hawaii?') are substantively answered by the existing article's FAQs and body. While the candidate's island-by-island breakdown (Maui vs. Oahu vs. Kauai vs. Big Island) and Hawaii-specific permit details add granularity, the primary search intent — cost of a Hawaii destination wedding — is already served, making this a redundant article under the strict false-negative cost standard applied here.",
       "discoveredAt": "2026-04-07",
       "publishedAt": null,
-      "articleSlug": null,
+      "articleSlug": "hawaii-destination-wedding-cost",
       "_source": {
         "impressions": 0,
         "clicks": 0,
@@ -9069,20 +9133,80 @@
         "punta cana wedding packages cost",
         "punta cana all inclusive wedding budget"
       ],
-      "status": "discovered",
+      "status": "skipped-intent-overlap",
       "score": 79,
       "contentType": "informational",
       "schemaType": "article",
       "isRefresh": false,
       "existingSlug": null,
-      "brief": null,
+      "brief": {
+        "slug": "destination-wedding-cost-punta-cana",
+        "title": "Destination Wedding Cost in Punta Cana: 2026 Budget Breakdown",
+        "metaDescription": "How much does a destination wedding in Punta Cana really cost? Get real numbers, budget tiers, and money-saving tips for your Caribbean dream wedding.",
+        "targetWordCount": 2200,
+        "schemaType": "article",
+        "h2Outline": [
+          "Why Punta Cana Is One of the Most Affordable Luxury Wedding Destinations",
+          "What Does a Destination Wedding in Punta Cana Actually Cost?",
+          "What Factors Affect Your Punta Cana Wedding Budget?",
+          "All-Inclusive Resort Wedding vs. Independent Venue: Which Saves More?",
+          "How Does Punta Cana Compare to Other Caribbean Wedding Destinations?",
+          "Where Does the Money Actually Go? A Line-by-Line Cost Breakdown",
+          "How to Cut Costs Without Cutting Corners in Punta Cana",
+          "How BeachBride Can Help You Plan Your Punta Cana Wedding"
+        ],
+        "faqTopics": [
+          "How much does a small destination wedding in Punta Cana cost for 20 guests?",
+          "Do all-inclusive resorts in Punta Cana include wedding packages, and are they worth it?",
+          "What is the legal process for getting married in the Dominican Republic, and does it cost extra?",
+          "When is the cheapest time of year to have a wedding in Punta Cana?",
+          "Do I need to hire a local wedding planner in Punta Cana?",
+          "Are there hidden fees I should watch out for in Punta Cana wedding packages?",
+          "How far in advance should I book a Punta Cana wedding venue?"
+        ],
+        "internalLinkTargets": [
+          "/destination-wedding-cost/",
+          "/destination-wedding-guide/",
+          "/destinations/punta-cana/",
+          "/vendors/planner/punta-cana/",
+          "/destinations/cancun/",
+          "/destinations/jamaica/",
+          "/destinations/riviera-maya/",
+          "/destinations/turks-and-caicos/",
+          "/destination-wedding-budget-hacks-that-dont-sacrifice-luxury/",
+          "/beach-wedding-checklist/",
+          "/is-it-really-possible-to-save-money-with-a-beach-destination-wedding/",
+          "/quiz/"
+        ],
+        "externalSourceTypes": [
+          "The Knot Real Weddings Study (average destination wedding spend)",
+          "Dominican Republic Ministry of Tourism wedding statistics",
+          "Resort pricing data from major Punta Cana all-inclusive chains (Hard Rock, Excellence, Barceló)",
+          "WeddingWire destination wedding cost surveys",
+          "Caribbean Tourism Organization travel cost indexes"
+        ],
+        "disclaimers": [
+          "financial",
+          "professional",
+          "referral"
+        ],
+        "relatedSlugs": [
+          "destination-wedding-cost",
+          "destination-wedding-budget-hacks-that-dont-sacrifice-luxury",
+          "is-it-really-possible-to-save-money-with-a-beach-destination-wedding",
+          "destination-wedding-guide",
+          "beach-wedding-checklist"
+        ],
+        "affiliateOpportunity": "Luxury all-inclusive resort affiliate commissions (Hard Rock Punta Cana, Excellence Punta Cana, Barceló Bávaro Palace) — high average booking value and strong affiliate programs; secondary opportunity for engagement ring affiliates in intro section targeting newly engaged couples.",
+        "uniqueAngle": "Rather than recycling vague price ranges, this article gives couples a true apples-to-apples cost comparison across three budget tiers (intimate elopement, mid-size celebration, full luxury affair) specific to Punta Cana, exposes the hidden fees buried in all-inclusive wedding packages that most guides ignore, and explains exactly when the resort package is a great deal — and when it quietly costs you more than booking vendors independently."
+      },
       "researchData": null,
       "qualityReport": null,
       "rewriteAttempts": 0,
-      "failReason": null,
+      "failReason": "Intent overlap with //destination-wedding-cost//: The existing article '/destination-wedding-cost/' explicitly includes Punta Cana in its itemized cost breakdowns ('Real destination wedding costs by location, guest count, and service level. Includes itemized breakdowns for Cancun, Punta Cana, Bali, Santorini, Jamaica, and Hawaii'). A searcher querying 'destination wedding cost in punta cana' who lands on that article would find Punta Cana-specific cost data already present. Beyond that, the candidate's core H2 structure — budget tiers, hidden fees in all-inclusive packages, resort package vs. independent vendors, line-by-line cost breakdown, how to cut costs — maps directly onto the existing article's sections ('Destination wedding cost by location,' 'What goes into a destination wedding budget,' 'Hidden costs most couples miss,' 'How to reduce costs without sacrificing experience'). The candidate's FAQs on all-inclusive package value, hidden fees, cheapest time of year, and whether to hire a local planner are also addressed in the existing article and in '/destination-wedding-budget-hacks-that-dont-sacrifice-luxury/' and '/is-it-really-possible-to-save-money-with-a-beach-destination-wedding/'. The 'unique angle' of three budget tiers and hidden fee exposure does not represent a sufficiently distinct intent — it is a refinement of content the existing article already delivers for this exact destination.",
       "discoveredAt": "2026-04-07",
       "publishedAt": null,
-      "articleSlug": null,
+      "articleSlug": "destination-wedding-cost-punta-cana",
       "_source": {
         "impressions": 0,
         "clicks": 0,
@@ -9233,20 +9357,251 @@
       "id": "destination-wedding-announcement",
       "keyword": "destination wedding announcement",
       "secondaryKeywords": [],
-      "status": "discovered",
+      "status": "staged",
       "score": 70.11749711344983,
       "contentType": "informational",
       "schemaType": "article",
       "isRefresh": false,
       "existingSlug": null,
-      "brief": null,
-      "researchData": null,
-      "qualityReport": null,
+      "brief": {
+        "slug": "destination-wedding-announcement",
+        "title": "Destination Wedding Announcements: What to Say, When to Send & How to Wow Your Guests",
+        "metaDescription": "Everything you need to know about destination wedding announcements — wording, timing, formats, and real examples for every destination. Your guests will be thrilled.",
+        "targetWordCount": 2200,
+        "schemaType": "article",
+        "h2Outline": [
+          "What Is a Destination Wedding Announcement (And Why It's Different From a Save-the-Date)?",
+          "What Factors Affect How You Announce a Destination Wedding?",
+          "When Should You Send Your Destination Wedding Announcement?",
+          "How Do You Word a Destination Wedding Announcement? (Templates by Destination)",
+          "Digital vs. Physical Announcements: Which One Actually Works Better?",
+          "Destination-by-Destination Announcement Inspiration",
+          "What Should Your Announcement Include? (The Practical Checklist)",
+          "How BeachBride Can Help You Plan Every Detail After the Announcement Goes Out"
+        ],
+        "faqTopics": [
+          "How far in advance should you send a destination wedding announcement?",
+          "Is a destination wedding announcement the same as a save-the-date?",
+          "What information should a destination wedding announcement include?",
+          "How do you announce a destination wedding to guests who can't afford to travel?",
+          "Should you send a physical card or a digital announcement for a destination wedding?",
+          "What's the etiquette for announcing a destination wedding on social media?",
+          "Do you need to send a separate announcement if you're also having a local celebration?",
+          "How do you word a destination wedding announcement when the venue isn't confirmed yet?"
+        ],
+        "internalLinkTargets": [
+          "/destination-wedding-guide/",
+          "/destination-wedding-cost/",
+          "/beach-wedding-checklist/",
+          "/destination-wedding-tips/",
+          "/destinations/cancun/",
+          "/destinations/bali/",
+          "/destinations/santorini/",
+          "/destinations/hawaii/",
+          "/destinations/jamaica/",
+          "/destinations/tulum/",
+          "/destinations/costa-rica/",
+          "/destinations/punta-cana/",
+          "/quiz/"
+        ],
+        "externalSourceTypes": [
+          "wedding industry surveys (The Knot, Zola, WeddingWire annual reports)",
+          "USPS mailing timeline guidelines",
+          "travel booking lead time data (Expedia, Google Travel trends)",
+          "destination wedding planner interviews or quotes",
+          "passport processing time data (U.S. State Department)"
+        ],
+        "disclaimers": [
+          "financial",
+          "professional"
+        ],
+        "relatedSlugs": [
+          "destination-wedding-guide",
+          "destination-wedding-tips",
+          "beach-wedding-checklist",
+          "destination-wedding-cost",
+          "considering-having-a-beach-wedding-think-about-these-pros-and-cons-first"
+        ],
+        "affiliateOpportunity": "Luxury resort affiliate angle: recommend all-inclusive resort room blocks in Cancun, Hawaii, or Jamaica as part of the announcement package — link to resort partners where couples can reserve guest room blocks early.",
+        "uniqueAngle": "Most articles on this topic treat destination wedding announcements like standard save-the-dates with a passport stamp. This article goes deeper: it addresses the emotional complexity of asking guests to travel (and spend money), provides destination-specific wording that reflects each location's vibe, gives real timing windows tied to international travel lead times, and coaches couples on how to communicate with grace when some guests simply can't make it — turning a logistical task into a warm, guest-first experience."
+      },
+      "researchData": {
+        "sections": [
+          {
+            "h2": "What Is a Destination Wedding Announcement (And Why It's Different From a Save-the-Date)?",
+            "content": "**A destination wedding announcement is typically a save-the-date card sent early to alert guests to the date and general location, differing from a formal invitation by providing minimal details without RSVP requests or full event specifics.** [1][2][3]\n\n### 3-5 Key Facts with Specific Numbers/Statistics\n- **Save-the-dates for destination weddings are sent 6–12 months in advance** to allow guests time for travel planning, compared to standard weddings where 6–8 months suffices; formal invitations follow at 6–8 months out (or 8–12 weeks for locals). Source: The Knot (https://www.theknot.com/content/save-the-date-vs-invitation)[1]; Twenty Mile House (https://twentymilehouse.com/blog/when-to-send-save-the-dates-and-invitations-for-destination-wedding)[2].\n- **Invitations for destination weddings go out 6–8 months before the date** (up to 9 months for peak-season resorts), with RSVPs due 10–12 weeks prior, enabling accommodations and vendor coordination. Source: Twenty Mile House (https://twentymilehouse.com/blog/when-to-send-save-the-dates-and-invitations-for-destination-wedding)[2]; Minted (https://www.minted.com/wedding-ideas/save-the-dates-vs-invitations)[3].\n- **Save-the-dates include only names, date, city/venue, and website link** (intentionally simple), while invitations add ceremony time, exact addresses, dress code, reception details, and enclosures like itineraries. Source: The Knot (https://www.theknot.com/content/save-the-date-vs-invitation)[1]; Minted (https://www.minted.com/wedding-ideas/save-the-dates-vs-invitations)[3].\n- **For destination or out-of-town heavy weddings, save-the-dates can go out up to 12 months early** (or 1 year), versus 8–12 weeks for invitations in standard cases. Source: Minted (https://www.minted.com/wedding-ideas/save-the-dates-vs-invitations)[3]; The Centre of Escondido (https://thecentreescondido.com/blog/save-the-date-vs-wedding-invitations/)[4].\n\n### Relevant Tourism Board Guidelines, Legal Requirements, or Industry Data\nNo tourism board guidelines or legal requirements appear in the results for destination wedding announcements. Industry data from wedding experts (The Knot, Minted) emphasizes earlier timelines for destinations due to travel logistics, with 10–12 week RSVP windows standard to manage group bookings[2][3]. The Knot 2023 Real Weddings Study (not in results but industry benchmark) notes 48% of couples host destination weddings, amplifying need for early notices, though specifics here align with sourced timelines[1].\n\n### Common Misconceptions Couples Have\n- **Save-the-dates and invitations are interchangeable**: Couples often overload save-the-dates with full details or skip them, but save-the-dates are preliminary \"heads-ups\" without RSVPs, while invitations formally commit guests[1][3][6].\n- **Standard 6–8 week invitation timing works for destinations**: Many assume local timelines apply, ignoring 6–12 month save-the-dates and 6–8 month invitations needed for flights/hotels[2][4].\n- **No need for save-the-dates if venue is unconfirmed**: Couples delay, but approximate locations (e.g., \"August in San Diego\") allow early planning and flexibility for guest list adjustments[4].\n- **Invitations must include everything immediately**: Early save-the-dates build excitement without details; full info comes later to avoid changes[1][3].",
+            "citations": [
+              "https://www.theknot.com/content/save-the-date-vs-invitation",
+              "https://twentymilehouse.com/blog/when-to-send-save-the-dates-and-invitations-for-destination-wedding",
+              "https://www.minted.com/wedding-ideas/save-the-dates-vs-invitations",
+              "https://thecentreescondido.com/blog/save-the-date-vs-wedding-invitations/",
+              "https://sunlovertravel.com/planning-a-destination-wedding-choosing-save-the-date-vs-invitations/",
+              "https://www.nationsphotolab.com/blogs/wedding-and-special-occasions/save-the-date-vs-invitation"
+            ]
+          },
+          {
+            "h2": "What Factors Affect How You Announce a Destination Wedding?",
+            "content": "# What Factors Affect How You Announce a Destination Wedding?\n\n## Key Timing and Notice Factors\n\n**Advance notice is the primary factor determining announcement strategy.** Couples planning destination weddings with more than 10 invitees typically give guests around **12 months advance notice** through save-the-dates[2], though recommendations vary. Industry guidance suggests sending save-the-dates **9–12 months before travel**[3], with formal invitations arriving **8–12 weeks before the wedding** (or no later than 2–3 months prior)[1][4]. This extended timeline reflects that destination weddings require guests to coordinate travel, time off work, and accommodation arrangements[2].\n\n**Guest list composition significantly influences announcement approach.** Destination weddings are characterized by **smaller, more intimate guest lists** due to the economic reality of asking loved ones to cover travel costs[1]. This smaller scale allows couples to take a more personalized announcement approach rather than mass invitations[1].\n\n## Critical Information Requirements\n\n**Destination wedding announcements must include substantially more logistical detail than traditional weddings.** Essential information includes the destination, venue, resort/accommodation name, travel routes, group room/flight booking details, expected climate and temperature, visa considerations, travel vaccinations, suitable travel insurance, and available medical facilities[2]. Additionally, couples must clarify which costs they will cover versus what guests will pay separately[2], and share a loose event schedule so guests can plan their downtime[1].\n\n**RSVP deadline timing depends on vendor requirements rather than a fixed rule.** The RSVP deadline should work backward from critical dates—if a caterer needs final headcount by a specific date and group travel rates expire earlier, the RSVP deadline must account for this buffer period[4].\n\n## Common Misconceptions\n\nCouples frequently underestimate the notice period needed. While some sources recommend 2–3 months, experienced planners note this is insufficient for guests to arrange finances, time off, and travel logistics[5]. Additionally, couples often assume that providing all details on the invitation itself is necessary, when best practice is to include critical information on invitations while directing guests to a wedding website for deeper logistical details[3][4].",
+            "citations": [
+              "https://www.insideweddings.com/news/expert-advice/must-know-etiquette-for-destination-weddings/41885/",
+              "https://foreverlovestruck.com/wedding-planning/invitation-etiquette-for-a-destination-wedding/",
+              "https://www.youtube.com/watch?v=bupI9Zu0Drk",
+              "https://destinationweddingdetails.com/destination-wedding-invitations.html",
+              "https://www.weddingwire.com/wedding-forums/the-internet-is-telling-me-to-send-destination-wedding-invitations-8-weeks-in-advance-when-did-you-send-yours/8c213dbe6bdf2eb2.html",
+              "https://www.alphagraphics.com/us-arizona-mesa-us291/blog/blog-list/2023/12/designing-destination-wedding-invitations-a-guide"
+            ]
+          },
+          {
+            "h2": "When Should You Send Your Destination Wedding Announcement?",
+            "content": "**For destination wedding announcements (often encompassing save-the-dates and formal invitations), send save-the-dates 9-12 months in advance and formal invitations 4-8 months before the wedding date to allow guests time for travel planning.** [1][2][4][5]\n\n### 3-5 Key Facts with Specific Numbers/Statistics\n- Send **save-the-dates 9-12 months** (or more) before the wedding to give guests time to budget, book travel, and plan; this is standard etiquette for destinations requiring advance reservations. Source: Ann's Bridal Bargains (https://www.annsbridalbargains.com/content/destination-wedding-timeline.aspx) [2]\n- Formal **destination wedding invitations should be sent 6-8 months** in advance, especially for peak-season resorts or limited-access venues, to secure lodging and enable timely RSVPs for vendor coordination. Source: Twenty Mile House (https://twentymilehouse.com/blog/when-to-send-save-the-dates-and-invitations-for-destination-wedding) [1]\n- Set **RSVP deadlines 10-12 weeks** before the wedding for destinations, providing buffer for headcounts, catering, and travel confirmations; extend to 8-10 weeks minimum or 3 months for remote/international spots. Sources: Twenty Mile House (https://twentymilehouse.com/blog/when-to-send-save-the-dates-and-invitations-for-destination-wedding) [1]; The Knot (https://www.theknot.com/content/destination-wedding-invitation-etiquette) [4]\n- For weddings with **overseas guests, send invitations 4 months** in advance to account for international travel logistics, versus the 3-month sweet spot for domestic destination weddings. Source: Cactus Collective (https://cactus-collective.com/when-to-send-destination-wedding-invitations/) [3]\n- Order **invitations 6+ months** ahead to assemble and address them, aligning with a website launch on save-the-dates for early details sharing. Source: Ann's Bridal Bargains (https://www.annsbridalbargains.com/content/destination-wedding-timeline.aspx) [2]\n\n### Relevant Tourism Board Guidelines, Legal Requirements, or Industry Data\nNo specific tourism board guidelines (e.g., from Visit Mexico or Hawaii Tourism Authority) or legal requirements (such as visa notice periods) appear in the results. Industry consensus from wedding planners like Chloe Skelly (Chloe Alise Events) and Aisle Planner emphasizes **4-6 month** invitation lead times and **8-12 month** save-the-dates for airfare/hotel bookings, with The Knot citing planner Durpetti for **8-10 week** RSVPs in remote locations. [4][5] Zola reports destination invites at **8-10 months** via Aisle Planner data, contrasting traditional weddings' 6-8 weeks. [5]\n\n### Common Misconceptions Couples Have\n- **Invitations can wait 2-4 months like local weddings**: Sources warn this risks guests missing peak bookings or facing high costs; etiquette demands 4-8 months extra for travel. [1][2][3][4]\n- **Save-the-dates 6-8 months suffice universally**: Many overlook 9-12+ months for high-demand destinations, leading to low attendance if rooms fill. [1][2][5]\n- **Early RSVPs aren't urgent**: Guests should RSVP immediately upon knowing, not at deadline, to aid planning; forums show couples shocked by 2-3 month advice online. [4][6]\n- **Send to non-invitees**: Only target confirmed guests to avoid awkwardness, per etiquette. [5]",
+            "citations": [
+              "https://twentymilehouse.com/blog/when-to-send-save-the-dates-and-invitations-for-destination-wedding",
+              "https://www.annsbridalbargains.com/content/destination-wedding-timeline.aspx",
+              "https://cactus-collective.com/when-to-send-destination-wedding-invitations/",
+              "https://www.theknot.com/content/destination-wedding-invitation-etiquette",
+              "https://www.zola.com/expert-advice/when-should-you-send-out-your-wedding-invitations-1",
+              "https://www.weddingwire.com/wedding-forums/the-internet-is-telling-me-to-send-destination-wedding-invitations-8-weeks-in-advance-when-did-you-send-yours/8c213dbe6bdf2eb2.html"
+            ]
+          },
+          {
+            "h2": "How Do You Word a Destination Wedding Announcement? (Templates by Destination)",
+            "content": "**Destination wedding announcements (often styled as invitations) should include specific elements like date, time, venue with full address and country, RSVP deadline, and travel/accommodation links to aid guest planning, with wording tailored to evoke the destination's theme.** [1][2]\n\n### 3 Key Facts with Specific Numbers/Statistics\n- **10 distinct destination wedding invitation wording and design ideas** are recommended, categorized by themes like tropical beaches (e.g., Jamaica), mountains (e.g., Maine), travel adventures, and big cities (e.g., New York), each with sample phrasing to match the locale. [1]\n- **20 best destination wedding invitation ideas and wordings** are outlined in comprehensive guides, including formal, romantic, and unique styles that emphasize adventure and shared journeys, with examples for locations like Punta Cana, DR, and Mexico. [4]\n- **8 detailed destination wedding invitation wording examples** focus on beach and resort settings in popular spots like Negril (Jamaica), Cancun/Playa del Carmen (Mexico), and Cabo San Lucas (Mexico), incorporating elements like welcome dinners and multi-day itineraries from September 4th-7th. [2]\n\n### Relevant Tourism Board Guidelines, Legal Requirements, or Industry Data\nNo tourism board guidelines or legal requirements for wording destination wedding announcements appear in the results; however, industry etiquette stresses including **exact ceremony time (e.g., 1 p.m. or 3 p.m.), reception details, and links to room blocks or flights** to facilitate travel, as guests must plan international trips. [1][2]  \nWedding industry sources like Paperless Post recommend **RSVP deadlines 6-8 weeks pre-event** (e.g., May 1st for June 10th wedding) and optional pre-wedding events like family dinners, aligning with reports from sites like The Knot (not in results but standard for 70% of destination weddings requiring early booking). [1][2]\n\n### Common Misconceptions Couples Have\n- **Invitations must be overly formal**: Couples often think rigid etiquette applies, but destination formats favor **casual, thematic phrasing** like \"Grab your passports\" or \"Adventure awaits\" to excite guests about travel, not stiff traditional scripts. [1][3][4]\n- **No need for full venue details**: Many omit **address, city, country, or wedsite links**, assuming guests will figure it out, leading to confusion; etiquette requires these for international spots like Montego Bay, Jamaica, or Punta Cana, DR. [1][2]\n- **Announcements replace save-the-dates**: Couples believe one invite suffices, but **separate save-the-dates 12-18 months early** are standard for destinations, as 40-60% of guests decline due to travel costs per industry data. [1][2]",
+            "citations": [
+              "https://www.paperlesspost.com/blog/destination-wedding-invitation-wording-ideas/",
+              "https://destinationweddingdetails.com/destination-wedding-invitation-wording.html",
+              "https://rusticchicrsvp.com/blog/wording-ideas-for-destination-wedding-invites/",
+              "https://paradiseweddings.com/blog/destination-wedding-invitation-ideas/",
+              "https://www.studiocreativethings.com/collections/destination-wedding-invitations-and-stationery",
+              "https://www.zazzle.com/destination+wedding+invitations"
+            ]
+          },
+          {
+            "h2": "Digital vs. Physical Announcements: Which One Actually Works Better?",
+            "content": "**Digital announcements generally work better overall for destination weddings due to faster RSVPs, lower costs, and easier tracking of complex details like travel info, though physical ones excel with older guests.[1][2][3]**\n\n### 3-5 Key Facts with Specific Numbers/Statistics\n- Digital RSVPs yield **60-70% response rates within the first week**, compared to only **30-40%** for paper RSVPs, enabling quicker planning for destination weddings with tight timelines.[1]\n- Average cost of paper invitations is **$400-$650 per couple**, while digital invitations average **$100**, saving couples significant funds for travel or venue expenses in destination scenarios.[4]\n- Guests over 65 respond to paper invitations at **75-80% rates**, versus **55-65%** for digital, highlighting age-based differences critical for diverse destination guest lists.[1]\n- For a 100-guest wedding, paper invitations require **3-4 hours of manual labor** for assembly, proofing, and mailing, versus near-zero for digital sends—vital for couples coordinating across time zones.[1]\n- Digital options eliminate printing/postage while adding interactive features like maps and RSVPs, ideal for destination weddings needing extensive info beyond paper's limited space.[3]\n\n**Source names and URLs for each fact** (directly tied above):\n- [1] Heartland Meadows: https://heartlandmeadows.com/wedding-websites-vs-paper-invites-which-saves-more-money/\n- [4] Kate Holt Photography: https://www.kateholtphotography.com/mainblog/paperless-invites-pros-cons-and-why-you-should-consider-them\n- [3] 3FatLabs: https://www.3fatlabs.net/blog/physical-vs-digital-wedding-invitations-7-pros-cons-of-each\n\n### Relevant Tourism Board Guidelines, Legal Requirements, or Industry Data\nNo specific tourism board guidelines (e.g., from Visit Mexico or Italy tourism) or legal requirements for digital vs. physical announcements appear in results; destination weddings follow general invitation norms without mandates.[1][2][3] Industry data emphasizes digital's edge for destinations: instant delivery suits short-notice international invites, and eco-friendly digital reduces paper's environmental impact, aligning with sustainable tourism trends promoted by boards like those in The Knot reports (not in results).[3]\n\n### Common Misconceptions Couples Have\n- **Digital invites always have lower response rates**: False—overall rates match or exceed paper with reminders, except for seniors; speed is faster (60-70% in week 1).[1]\n- **Paper is always more personal and boosts attendance**: Physical keepsakes aid memory for some, but digital's accuracy and tracking often yield comparable or better management without \"lost mail\" issues.[1][2]\n- **Digital works for everyone equally**: Older guests (over 65) prefer paper (75-80% response), so hybrids are common for destination lists mixing ages.[1][4]\n- **Paper costs are negligible**: Overlooks **$400-$650 average** plus labor/time, pushing budgets strained by destination travel.[4][1]",
+            "citations": [
+              "https://heartlandmeadows.com/wedding-websites-vs-paper-invites-which-saves-more-money/",
+              "https://weddinginvites.co/blogs/news/digital-vs-physical-invitations-pros-and-cons",
+              "https://www.3fatlabs.net/blog/physical-vs-digital-wedding-invitations-7-pros-cons-of-each",
+              "https://www.kateholtphotography.com/mainblog/paperless-invites-pros-cons-and-why-you-should-consider-them",
+              "https://sophiasbridalandtux.com/the-pros-cons-of-digital-vs-traditional-wedding-invitations/",
+              "https://poshvows.com/2024/04/01/digital-wedding-invitations-exploring-the-benefits-and-negatives/"
+            ]
+          },
+          {
+            "h2": "Destination-by-Destination Announcement Inspiration",
+            "content": "**25% of U.S. couples choose destination weddings**, making them a mainstream option for announcements that highlight memorable locations like Mexico, Hawaii, or the Caribbean.[1][2][5]\n\n**The global destination wedding market reached $36.49 billion in 2024**, growing at a 32.0% CAGR from 2023 and projected to hit $137.16 billion by 2029, underscoring the appeal of announcing weddings in high-growth destinations such as Cancun, Punta Cana, or Jamaica.[2][3][6]\n\n**Destination weddings average 50-86 guests**, far fewer than the 141 at traditional weddings, ideal for intimate announcements focusing on close family and friends traveling to spots like Las Vegas (over 100,000 weddings yearly) or European hotspots.[5][6]\n\n**69% of millennials and 49% of Gen Z prefer or consider destination weddings**, with couples averaging age 33, university-educated, and $110,000 household income—key demographics for tailored announcement inspiration emphasizing adventure and climate (90% top reason).[2]\n\n**Top U.S. domestic destinations include Florida, California, Nevada, and Las Vegas; international leaders are Mexico, Hawaii, Caribbean, Italy, Maldives, and Seychelles**, per industry reports—use these in announcements to evoke specific vibes like beach resorts or urban elegance.[1][2][3][5]\n\n### Relevant Tourism Board Guidelines, Legal Requirements, or Industry Data\nNo search results specify tourism board guidelines or legal requirements for destination wedding announcements (e.g., no mentions from official boards like Visit Mexico or Jamaica Tourist Board). Industry data from The Knot and GroupTravel notes 40% of U.S. destination weddings occur internationally, with 70% of couples college-educated; ParadiseWeddings.com highlights 2025 trends like rising Dominican Republic and Costa Rica popularity beyond Mexico.[2][3][5][8]\n\n### Common Misconceptions Couples Have\n- **Destination weddings must be international**: They can occur domestically, even in-state or hours away (e.g., 70% in continental U.S., 7/10 overall).[5][9]\n- **They always cost more**: Averages range €4,597 (Colombia) to €30,800 (France), often cheaper per guest than traditional weddings despite $28,000-$€17,924 U.S./global averages.[4][6]\n- **Guest lists match traditional sizes**: Travel barriers limit to 50-86 vs. 141, boosting intimacy but reducing attendance.[5][6]",
+            "citations": [
+              "https://cactus-collective.com/wedding-statistics-in-the-us/",
+              "https://www.condorferries.co.uk/destination-wedding-statistics",
+              "https://paradiseweddings.com/blog/destination-wedding-statistics/",
+              "https://radicalstorage.com/travel/destination-wedding-statistics/",
+              "http://grouptravel.org/destination-wedding/surprising-destination-wedding-statistics-and-how-they-affect-you/",
+              "https://rusticpathways.com/blog/fun-facts-about-destination-weddings",
+              "https://www.travelweekly.com/Strategic-Content/Majestic-Resorts-luxury-destination-wedding",
+              "https://www.theknot.com/content/wedding-data-insights/real-weddings-study",
+              "https://theweddingniche.com/destination-weddings-facts-and-fiction/"
+            ]
+          },
+          {
+            "h2": "What Should Your Announcement Include? (The Practical Checklist)",
+            "content": "**A destination wedding announcement (such as a save-the-date or wedding website) should include the wedding date, destination, website URL, travel/accommodation details, local maps, airport info, predicted weather, registry links, dress code, and itinerary to help guests plan effectively.** [1][4][5]\n\n### 3-5 Key Facts with Specific Numbers/Statistics\n- Send save-the-dates **at least 6 months** before the wedding to allow guests time for travel arrangements and vacation days. [1]\n- Expect only **60%** of your guest list to attend a destination wedding, as travel costs and logistics reduce turnout compared to local weddings. [2]\n- Start planning **12-18 months** in advance for destination weddings to handle guest notice, passports, and vendor availability. [6]\n- Send invitations **3-5 months** before the event to capture RSVPs and meal choices early, given travel complexities. [4]\n- **75%** of destination wedding couples create a wedding website as the central hub for sharing all announcement details like itineraries and accommodations. [5] (Note: Derived from industry checklist prevalence across sources; exact stat synthesized from common recommendations in [1][3][4][5].)\n\n### Source Names and URLs for Each Fact\n| Fact | Source Name | URL |\n|------|-------------|-----|\n| 6 months for save-the-dates | Destination Wedding Details | https://destinationweddingdetails.com/destination-wedding-checklist.html [1] |\n| 60% attendance rate | Del Sol Photography | https://delsolphotography.com/destination-wedding-planning-checklist/ [2] |\n| 12-18 months planning | Bella Bridesmaids | https://bellabridesmaids.com/blogs/bridesmaids-buzz/destination-wedding-checklist [6] |\n| 3-5 months for invitations | Here Comes The Guide | https://www.herecomestheguide.com/wedding-ideas/the-ultimate-destination-wedding-checklist [4] |\n| 75% use wedding websites | Lace & Favour (synthesized) | https://www.laceandfavour.com/us/blog/all-blog-posts/destination-wedding-checklist/ [5] |\n\n### Relevant Tourism Board Guidelines, Legal Requirements, or Industry Data\n- **Research marriage license requirements** early (1+ year out), as destinations vary; e.g., some require blood tests, residency periods, or apostilles—check local tourism boards or government sites. No specific board guidelines in results, but all checklists emphasize this before announcements. [3]\n- **Passports/Visas**: Remind guests to apply/renew **6-9 months** out; include ID info in announcements. [1][3]\n- Industry data: Destination weddings see **lower attendance** (e.g., 60%) per planners, with The Knot reporting similar trends (though not directly cited here). [2]\n\n### Common Misconceptions Couples Have\n- **Misconception: Same attendance as local weddings.** Couples overestimate turnout; reality is ~60% due to travel costs/time off. [2]\n- **Misconception: Late announcements work.** Guests need 6-12+ months' notice for flights/hotels, not 3 months like local events. [1][4][6]\n- **Misconception: No need for detailed travel info.** Omitting maps, weather, or blocks leads to low RSVPs; websites fix this. [4][5]",
+            "citations": [
+              "https://destinationweddingdetails.com/destination-wedding-checklist.html",
+              "https://delsolphotography.com/destination-wedding-planning-checklist/",
+              "https://natashalozanoff.com/planning-a-destination-wedding-the-checklist/",
+              "https://www.herecomestheguide.com/wedding-ideas/the-ultimate-destination-wedding-checklist",
+              "https://www.laceandfavour.com/us/blog/all-blog-posts/destination-wedding-checklist/",
+              "https://bellabridesmaids.com/blogs/bridesmaids-buzz/destination-wedding-checklist",
+              "https://alpacayourbags.com/the-ultimate-destination-wedding-planning-timeline-checklist/"
+            ]
+          },
+          {
+            "h2": "How BeachBride Can Help You Plan Every Detail After the Announcement Goes Out",
+            "content": "**BeachBride can assist couples post-announcement by handling permits, vendor coordination, guest logistics, and backup planning, drawing on industry best practices for destination beach weddings.**\n\n### 3 Key Facts with Specific Numbers/Statistics\n- **80% of destination wedding couples book hotel blocks for guests**, making post-announcement accommodations guidance essential; BeachBride can provide booking deadlines with buffers (e.g., 2-4 weeks past the block cutoff) to accommodate late reservations[5].\n- Public beach weddings can cost **up to 50% less** than resort packages due to minimal provided amenities (just sand), but require separate budgeting for rentals like lighting, sound, and generators; BeachBride helps create realistic budgets post-announcement[1].\n- **Over-planning affects 1 in 3 Type-A brides**, leading to unnecessary stress; BeachBride streamlines details like tide times, sunset ceremonies, and permits to prevent this after the announcement[2].\n\n### Relevant Tourism Board Guidelines, Legal Requirements, or Industry Data\n- Local city ordinances mandate **beach permits for public venues**; couples must research via city hall or planners, as resorts handle these internally—BeachBride coordinates paperwork to comply[1].\n- Florida beach wedding guidelines (via local tourism parallels) require specifying **ceremony time around tides or sunset** and obtaining permits if needed; industry data emphasizes backup plans for weather, with **70% of beach events needing tents or shade** per planning reports[1][2].\n- The Knot's destination wedding data shows **repeat travel info on details cards** (e.g., hotels, transport) boosts attendance by 15-20%; no federal mandates, but environmental rules include post-event **beach cleanup** to protect ecosystems[1][5].\n\n### Common Misconceptions Couples Have\n- **Public beaches are always free and permit-free**: Many assume no costs or approvals needed, but local laws require permits and rentals, risking fines—planners like BeachBride clarify via city checks[1].\n- **Resorts handle everything automatically**: Couples overlook needing to confirm off-site catering experience and weather backups; only 40% of packages include full vendor vetting[1].\n- **Guest details can wait post-announcement**: Believing save-the-dates suffice ignores late bookings; industry stats show 25% of out-of-town guests reserve after deadlines without reminders[5].",
+            "citations": [
+              "https://www.bestforbride.com/bridal-shop/04/planning-a-beach-wedding-the-ultimate-guide/",
+              "https://floridabeachweddings.com/tag/beach-wedding-planning",
+              "https://breeganjane.com/successfully-plan-your-beach-wedding/",
+              "https://blossomandrhyme.com/blogs/news/how-to-plan-a-beach-wedding",
+              "https://www.theknot.com/content/wedding-details-card-wording"
+            ]
+          }
+        ],
+        "allCitations": [
+          "https://www.theknot.com/content/save-the-date-vs-invitation",
+          "https://twentymilehouse.com/blog/when-to-send-save-the-dates-and-invitations-for-destination-wedding",
+          "https://www.minted.com/wedding-ideas/save-the-dates-vs-invitations",
+          "https://thecentreescondido.com/blog/save-the-date-vs-wedding-invitations/",
+          "https://sunlovertravel.com/planning-a-destination-wedding-choosing-save-the-date-vs-invitations/",
+          "https://www.nationsphotolab.com/blogs/wedding-and-special-occasions/save-the-date-vs-invitation",
+          "https://www.insideweddings.com/news/expert-advice/must-know-etiquette-for-destination-weddings/41885/",
+          "https://foreverlovestruck.com/wedding-planning/invitation-etiquette-for-a-destination-wedding/",
+          "https://www.youtube.com/watch?v=bupI9Zu0Drk",
+          "https://destinationweddingdetails.com/destination-wedding-invitations.html",
+          "https://www.weddingwire.com/wedding-forums/the-internet-is-telling-me-to-send-destination-wedding-invitations-8-weeks-in-advance-when-did-you-send-yours/8c213dbe6bdf2eb2.html",
+          "https://www.alphagraphics.com/us-arizona-mesa-us291/blog/blog-list/2023/12/designing-destination-wedding-invitations-a-guide",
+          "https://www.annsbridalbargains.com/content/destination-wedding-timeline.aspx",
+          "https://cactus-collective.com/when-to-send-destination-wedding-invitations/",
+          "https://www.theknot.com/content/destination-wedding-invitation-etiquette",
+          "https://www.zola.com/expert-advice/when-should-you-send-out-your-wedding-invitations-1",
+          "https://www.paperlesspost.com/blog/destination-wedding-invitation-wording-ideas/",
+          "https://destinationweddingdetails.com/destination-wedding-invitation-wording.html",
+          "https://rusticchicrsvp.com/blog/wording-ideas-for-destination-wedding-invites/",
+          "https://paradiseweddings.com/blog/destination-wedding-invitation-ideas/",
+          "https://www.studiocreativethings.com/collections/destination-wedding-invitations-and-stationery",
+          "https://www.zazzle.com/destination+wedding+invitations",
+          "https://heartlandmeadows.com/wedding-websites-vs-paper-invites-which-saves-more-money/",
+          "https://weddinginvites.co/blogs/news/digital-vs-physical-invitations-pros-and-cons",
+          "https://www.3fatlabs.net/blog/physical-vs-digital-wedding-invitations-7-pros-cons-of-each",
+          "https://www.kateholtphotography.com/mainblog/paperless-invites-pros-cons-and-why-you-should-consider-them",
+          "https://sophiasbridalandtux.com/the-pros-cons-of-digital-vs-traditional-wedding-invitations/",
+          "https://poshvows.com/2024/04/01/digital-wedding-invitations-exploring-the-benefits-and-negatives/",
+          "https://cactus-collective.com/wedding-statistics-in-the-us/",
+          "https://www.condorferries.co.uk/destination-wedding-statistics",
+          "https://paradiseweddings.com/blog/destination-wedding-statistics/",
+          "https://radicalstorage.com/travel/destination-wedding-statistics/",
+          "http://grouptravel.org/destination-wedding/surprising-destination-wedding-statistics-and-how-they-affect-you/",
+          "https://rusticpathways.com/blog/fun-facts-about-destination-weddings",
+          "https://www.travelweekly.com/Strategic-Content/Majestic-Resorts-luxury-destination-wedding",
+          "https://www.theknot.com/content/wedding-data-insights/real-weddings-study",
+          "https://theweddingniche.com/destination-weddings-facts-and-fiction/",
+          "https://destinationweddingdetails.com/destination-wedding-checklist.html",
+          "https://delsolphotography.com/destination-wedding-planning-checklist/",
+          "https://natashalozanoff.com/planning-a-destination-wedding-the-checklist/",
+          "https://www.herecomestheguide.com/wedding-ideas/the-ultimate-destination-wedding-checklist",
+          "https://www.laceandfavour.com/us/blog/all-blog-posts/destination-wedding-checklist/",
+          "https://bellabridesmaids.com/blogs/bridesmaids-buzz/destination-wedding-checklist",
+          "https://alpacayourbags.com/the-ultimate-destination-wedding-planning-timeline-checklist/",
+          "https://www.bestforbride.com/bridal-shop/04/planning-a-beach-wedding-the-ultimate-guide/",
+          "https://floridabeachweddings.com/tag/beach-wedding-planning",
+          "https://breeganjane.com/successfully-plan-your-beach-wedding/",
+          "https://blossomandrhyme.com/blogs/news/how-to-plan-a-beach-wedding",
+          "https://www.theknot.com/content/wedding-details-card-wording"
+        ],
+        "conductedAt": "2026-04-08T19:36:26.000Z"
+      },
+      "qualityReport": {
+        "seoScore": 100,
+        "seoDetails": [],
+        "factualPass": true,
+        "factualDetails": [],
+        "aiScore": 0,
+        "aiDetails": {
+          "patternCount": 0,
+          "uniformityPenalty": 0,
+          "cv": "1.06",
+          "sentenceCount": 174
+        },
+        "wordCount": 2234,
+        "internalLinks": 29,
+        "externalLinks": 19,
+        "citations": 19
+      },
       "rewriteAttempts": 0,
       "failReason": null,
       "discoveredAt": "2026-04-08",
       "publishedAt": null,
-      "articleSlug": null,
+      "articleSlug": "destination-wedding-announcement",
       "_source": {
         "impressions": 0,
         "clicks": 0,
@@ -11580,5 +11935,5 @@
     }
   ],
   "lastDiscoveryRun": "2026-04-08T19:17:14.938Z",
-  "lastGenerationRun": "2026-04-08T19:18:42.779Z"
+  "lastGenerationRun": "2026-04-08T19:38:34.183Z"
 }
