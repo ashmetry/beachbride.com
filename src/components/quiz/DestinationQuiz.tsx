@@ -169,6 +169,7 @@ export default function DestinationQuiz({ turnstileSiteKey }: Props) {
   const [turnstileToken, setTurnstileToken] = useState('');
   const turnstileRef = useRef<HTMLDivElement>(null);
   const turnstileWidgetRef = useRef<string | null>(null);
+  const quizRef = useRef<HTMLDivElement>(null);
 
   // Render Turnstile widget when email step is visible
   useEffect(() => {
@@ -205,11 +206,18 @@ export default function DestinationQuiz({ turnstileSiteKey }: Props) {
 
   const matches = submitted ? getTopMatches(answers) : [];
 
+  function scrollToTop() {
+    quizRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   function pick(key: keyof Answers, value: string) {
     const updated = { ...answers, [key]: value };
     setAnswers(updated);
     fireEvent(`quiz_${key}_selected`, { [key]: value });
-    setTimeout(() => setStep(s => s + 1), 200);
+    setTimeout(() => {
+      setStep(s => s + 1);
+      scrollToTop();
+    }, 200);
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -311,7 +319,7 @@ export default function DestinationQuiz({ turnstileSiteKey }: Props) {
   }
 
   return (
-    <div>
+    <div ref={quizRef}>
       {/* Progress dots */}
       <div className="flex items-center justify-center gap-2 mb-8">
         {[0, 1, 2, 3, 4].map(i => (
@@ -355,7 +363,7 @@ export default function DestinationQuiz({ turnstileSiteKey }: Props) {
               <PhotoCard key={s.value} label={s.label} image={s.image} onClick={() => pick('season', s.value)} />
             ))}
           </div>
-          <button className="quiz-back-btn mt-4" onClick={() => setStep(0)}>← Back</button>
+          <button className="quiz-back-btn mt-4" onClick={() => { setStep(0); scrollToTop(); }}>← Back</button>
         </div>
       )}
 
@@ -371,7 +379,7 @@ export default function DestinationQuiz({ turnstileSiteKey }: Props) {
               <PhotoCard key={g.value} label={g.label} image={g.image} onClick={() => pick('guestCount', g.value)} portrait />
             ))}
           </div>
-          <button className="quiz-back-btn mt-4" onClick={() => setStep(1)}>← Back</button>
+          <button className="quiz-back-btn mt-4" onClick={() => { setStep(1); scrollToTop(); }}>← Back</button>
         </div>
       )}
 
@@ -387,7 +395,7 @@ export default function DestinationQuiz({ turnstileSiteKey }: Props) {
               <PhotoCard key={b.value} label={b.label} image={b.image} onClick={() => pick('budget', b.value)} portrait />
             ))}
           </div>
-          <button className="quiz-back-btn mt-4" onClick={() => setStep(2)}>← Back</button>
+          <button className="quiz-back-btn mt-4" onClick={() => { setStep(2); scrollToTop(); }}>← Back</button>
         </div>
       )}
 
@@ -438,7 +446,7 @@ export default function DestinationQuiz({ turnstileSiteKey }: Props) {
           <p className="text-xs text-gray-400 text-center mt-3">
             No spam. Unsubscribe anytime. We never sell your email.
           </p>
-          <button className="quiz-back-btn mt-2" onClick={() => setStep(3)}>← Back</button>
+          <button className="quiz-back-btn mt-2" onClick={() => { setStep(3); scrollToTop(); }}>← Back</button>
         </div>
       )}
     </div>
