@@ -48,6 +48,8 @@ async function main() {
   const existingArticles = getExistingArticles();
   const existingSlugs = new Set(existingArticles.map(a => a.slug));
   const pipelineKeywords = new Set(pipeline.topics.map(t => normalizeKeyword(t.keyword)));
+  // Build a set of pipeline IDs so slug-based dedup catches what keyword-normalization misses
+  const pipelineIds = new Set(pipeline.topics.map(t => t.id));
 
   // Build word count map for thin-content refresh boosting
   const wordCountMap = buildWordCountMap(existingArticles);
@@ -96,11 +98,21 @@ async function main() {
     }
     seen.add(normalized);
 
+    // Guard: skip if the slug generated from this keyword already exists as a published
+    // article on disk OR as any pipeline topic. This catches articles that were created
+    // outside the pipeline (manual imports, WP migrations) which have no pipeline entry
+    // and therefore no keyword to match against.
+    const topicId = slugify(c.keyword);
+    if (existingSlugs.has(topicId) || pipelineIds.has(topicId)) {
+      skipped++;
+      continue;
+    }
+
     // Check cannibalization against existing articles
     const isRefresh = checkCannibalization(c, existingSlugs);
 
     const topic = {
-      id: slugify(c.keyword),
+      id: topicId,
       keyword: c.keyword,
       secondaryKeywords: [],
       status: 'discovered',

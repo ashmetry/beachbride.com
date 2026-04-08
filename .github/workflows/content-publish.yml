@@ -2,7 +2,7 @@ name: Content Engine — Publish
 
 on:
   schedule:
-    - cron: '0 14 * * 1,3,5'   # Mon/Wed/Fri 2pm UTC (9am ET)
+    - cron: '0 14 * * 1-5'   # Mon–Fri 2pm UTC (9am ET)
   workflow_dispatch:
 
 jobs:
