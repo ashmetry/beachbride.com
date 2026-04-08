@@ -16,6 +16,20 @@
   }
 }
 
+/* Responsive tables in prose/article content */
+.prose table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+}
+
+.prose table tbody tr td,
+.prose table thead tr th {
+  white-space: normal;
+  min-width: 120px;
+}
+
 @layer components {
   .btn-primary {
     @apply inline-flex items-center justify-center px-6 py-3 bg-brand-accent text-white font-semibold rounded-lg hover:bg-brand-accent-dark transition-colors duration-200 no-underline;
