@@ -133,7 +133,7 @@ function PhotoCard({ label, image, onClick, portrait = false }: {
 }) {
   return (
     <button
-      className={`group relative overflow-hidden rounded-xl w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand ${portrait ? 'aspect-[2/3]' : 'aspect-[4/3]'}`}
+      className={`group relative overflow-hidden rounded-xl w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand ${portrait ? 'aspect-[4/3] sm:aspect-[2/3]' : 'aspect-[4/3]'}`}
       onClick={onClick}
     >
       <img
@@ -366,7 +366,7 @@ export default function DestinationQuiz({ turnstileSiteKey }: Props) {
             How many guests?
           </h2>
           <p className="text-sm text-gray-500 text-center mb-6">Some destinations are perfect for 20 guests, others handle 200.</p>
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {GUEST_COUNTS.map(g => (
               <PhotoCard key={g.value} label={g.label} image={g.image} onClick={() => pick('guestCount', g.value)} portrait />
             ))}
@@ -382,7 +382,7 @@ export default function DestinationQuiz({ turnstileSiteKey }: Props) {
             What's your total budget?
           </h2>
           <p className="text-sm text-gray-500 text-center mb-6">Including venue, vendors, and travel — not per guest.</p>
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {BUDGETS.map(b => (
               <PhotoCard key={b.value} label={b.label} image={b.image} onClick={() => pick('budget', b.value)} portrait />
             ))}
