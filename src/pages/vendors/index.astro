@@ -72,7 +72,7 @@ const activeDestinations = destinations.filter(d => destinationsWithVendors.has(
         {ALL_TYPES.map(type => (
           <button
             data-type={type}
-            class="type-filter flex items-center gap-2 px-4 py-2 rounded-full border-2 border-gray-200 bg-white text-gray-700 text-sm font-medium hover:border-brand hover:text-brand transition-all"
+            class="type-filter flex items-center gap-2 px-4 py-2 rounded-full border-2 border-gray-200 bg-white text-gray-700 text-sm font-medium hover:border-brand hover:text-brand hover:bg-brand-light transition-all cursor-pointer"
           >
             <span class="w-4 h-4 text-current flex-shrink-0">
               <VendorTypeIcon type={type} size={16} />
@@ -141,7 +141,7 @@ const activeDestinations = destinations.filter(d => destinationsWithVendors.has(
   const noResults = document.getElementById('no-results')!;
 
   const activeClasses = ['border-brand', 'bg-brand', 'text-white'];
-  const inactiveClasses = ['border-gray-200', 'bg-white', 'text-gray-700'];
+  const inactiveClasses = ['border-gray-200', 'bg-white', 'text-gray-700', 'hover:border-brand', 'hover:text-brand', 'hover:bg-brand-light'];
 
   filters.forEach(btn => {
     btn.addEventListener('click', () => {
