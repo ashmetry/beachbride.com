@@ -4,7 +4,7 @@ import VendorTypeIcon from '../../components/vendors/VendorTypeIcon.astro';
 import vendors from '../../data/vendors.json';
 import destinations from '../../data/destinations.json';
 
-const LEAD_TYPES = ['planner', 'photographer', 'florist', 'caterer', 'dj', 'officiant'];
+const ALL_TYPES = ['resort', 'venue', 'planner', 'photographer', 'florist', 'caterer', 'dj', 'officiant'];
 const typeLabels: Record<string, string> = {
   planner: 'Wedding Planner',
   photographer: 'Photographer',
@@ -12,25 +12,35 @@ const typeLabels: Record<string, string> = {
   caterer: 'Caterer',
   dj: 'DJ / Entertainment',
   officiant: 'Officiant',
+  resort: 'Resort',
+  venue: 'Venue',
 };
 
-const sorted = [...vendors].sort((a, b) => {
-  const tierOrder = { pro: 0, premium: 1, free: 2 };
-  return (tierOrder[a.tier as keyof typeof tierOrder] ?? 2) - (tierOrder[b.tier as keyof typeof tierOrder] ?? 2);
-});
+const sorted = [...vendors]
+  .filter(v => ALL_TYPES.includes(v.type))
+  .sort((a, b) => {
+    const tierOrder = { pro: 0, premium: 1, free: 2 };
+    const tierDiff = (tierOrder[a.tier as keyof typeof tierOrder] ?? 2) - (tierOrder[b.tier as keyof typeof tierOrder] ?? 2);
+    if (tierDiff !== 0) return tierDiff;
+    return a.name.localeCompare(b.name);
+  });
+
+// Only show destinations that have at least one vendor listing
+const destinationsWithVendors = new Set(vendors.flatMap(v => v.destinations));
+const activeDestinations = destinations.filter(d => destinationsWithVendors.has(d.slug));
 ---
 
 <BaseLayout
-  title="Destination Wedding Vendors — Vetted Planners, Photographers & More"
-  description="Find vetted destination wedding vendors — planners, photographers, florists, caterers, and DJs serving Cancun, Punta Cana, Bali, Santorini, Hawaii, and more."
+  title="Destination Wedding Vendors — Planners, Resorts, Photographers & More"
+  description="Find destination wedding vendors — resorts, planners, photographers, florists, and more serving Cancun, Punta Cana, Bali, Santorini, Hawaii, and more."
   canonical="https://beachbride.com/vendors/"
 >
   <main class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
     <div class="text-center mb-10">
       <h1 class="text-3xl font-bold text-gray-900 mb-3">Find your perfect vendor team</h1>
       <p class="text-gray-600 max-w-2xl mx-auto">
-        All vendors in our directory are reviewed for responsiveness, portfolio quality, and real couple reviews.
-        Want us to make a personalized match? <a href="/quiz/?stage=2" class="text-brand hover:underline">Take our quiz →</a>
+        Browse destination wedding specialists across our top locations.
+        Want a personalized match? <a href="/quiz/?stage=2" class="text-brand hover:underline">Take our quiz →</a>
       </p>
     </div>
 
@@ -38,7 +48,7 @@ const sorted = [...vendors].sort((a, b) => {
     <section class="mb-12">
       <h2 class="text-lg font-bold text-gray-900 mb-4">Browse by destination</h2>
       <div class="flex flex-wrap gap-2">
-        {destinations.map(d => (
+        {activeDestinations.map(d => (
           <a
             href={`/vendors/${d.slug}/`}
             class="px-4 py-2 border border-gray-200 rounded-full text-sm font-medium text-gray-700 hover:border-brand hover:text-brand transition-colors no-underline"
@@ -49,27 +59,40 @@ const sorted = [...vendors].sort((a, b) => {
       </div>
     </section>
 
-    <!-- Browse by type -->
-    <section class="mb-12">
-      <h2 class="text-lg font-bold text-gray-900 mb-4">Browse by vendor type</h2>
-      <div class="grid grid-cols-3 sm:grid-cols-6 gap-3">
-        {LEAD_TYPES.map(type => (
-          <div class="card p-4 text-center cursor-default flex flex-col items-center gap-2">
-            <div class="text-brand/70">
-              <VendorTypeIcon type={type} size={24} />
-            </div>
-            <p class="text-xs font-medium text-gray-700">{typeLabels[type]}</p>
-          </div>
+    <!-- Filter by type -->
+    <section class="mb-8">
+      <h2 class="text-lg font-bold text-gray-900 mb-4">Filter by type</h2>
+      <div class="flex flex-wrap gap-2" id="type-filters">
+        <button
+          data-type="all"
+          class="type-filter active flex items-center gap-2 px-4 py-2 rounded-full border-2 border-brand bg-brand text-white text-sm font-medium transition-all"
+        >
+          All vendors
+        </button>
+        {ALL_TYPES.map(type => (
+          <button
+            data-type={type}
+            class="type-filter flex items-center gap-2 px-4 py-2 rounded-full border-2 border-gray-200 bg-white text-gray-700 text-sm font-medium hover:border-brand hover:text-brand transition-all"
+          >
+            <span class="w-4 h-4 text-current flex-shrink-0">
+              <VendorTypeIcon type={type} size={16} />
+            </span>
+            {typeLabels[type]}
+          </button>
         ))}
       </div>
     </section>
 
-    <!-- All vendors -->
+    <!-- Unified vendor grid -->
     <section>
-      <h2 class="text-lg font-bold text-gray-900 mb-4">All vendors</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {sorted.filter(v => LEAD_TYPES.includes(v.type)).map(v => (
-          <a href={`/vendors/${v.slug}/`} class="card p-5 hover:shadow-md transition-shadow no-underline group">
+      <p class="text-sm text-gray-400 mb-4" id="vendor-count">{sorted.length} vendors</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="vendor-grid">
+        {sorted.map(v => (
+          <a
+            href={`/vendors/${v.slug}/`}
+            class="vendor-card card p-5 hover:shadow-md transition-shadow no-underline group"
+            data-type={v.type}
+          >
             <div class="flex items-start gap-3">
               <div class="w-11 h-11 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0 text-brand/70">
                 <VendorTypeIcon type={v.type} size={22} />
@@ -77,7 +100,7 @@ const sorted = [...vendors].sort((a, b) => {
               <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-2 mb-0.5">
                   <h3 class="font-bold text-gray-900 group-hover:text-brand transition-colors truncate text-sm">{v.name}</h3>
-                  {v.tier !== 'free' && (
+                  {v.claimed && v.tier !== 'free' && (
                     <span class="text-xs px-1.5 py-0.5 rounded bg-brand-accent/10 text-brand-accent font-semibold flex-shrink-0">
                       {v.tier === 'pro' ? 'Pro' : '★'}
                     </span>
@@ -85,7 +108,7 @@ const sorted = [...vendors].sort((a, b) => {
                 </div>
                 <p class="text-xs text-gray-400 capitalize mb-1">{typeLabels[v.type] ?? v.type}</p>
                 <p class="text-xs text-gray-500 line-clamp-2">{v.description}</p>
-                {v.rating && (
+                {v.claimed && v.rating && (
                   <p class="text-xs text-gray-400 mt-1">★ {v.rating} &middot; {v.destinations.join(', ')}</p>
                 )}
               </div>
@@ -93,13 +116,55 @@ const sorted = [...vendors].sort((a, b) => {
           </a>
         ))}
       </div>
+      <p class="text-center text-gray-400 text-sm mt-8 hidden" id="no-results">
+        No vendors found for this type yet.
+      </p>
     </section>
 
     <!-- Vendor CTA -->
     <div class="mt-16 bg-gray-900 text-white rounded-2xl p-8 text-center">
       <h2 class="text-xl font-bold mb-2">Are you a wedding vendor?</h2>
-      <p class="text-gray-400 mb-6 text-sm">Join our vetted network and connect with couples planning their dream destination wedding.</p>
-      <a href="/vendors/upgrade/" class="btn-primary">List your business →</a>
+      <p class="text-gray-400 mb-2 text-sm">
+        Your business may already be listed. Claim your free profile to add photos,
+        control your description, and start receiving inquiries.
+      </p>
+      <p class="text-gray-500 text-xs mb-6">No monthly fee to get started.</p>
+      <a href="/vendors/upgrade/" class="btn-primary">Claim or list your business →</a>
     </div>
   </main>
 </BaseLayout>
+
+<script>
+  const filters = document.querySelectorAll<HTMLButtonElement>('.type-filter');
+  const cards = document.querySelectorAll<HTMLElement>('.vendor-card');
+  const countEl = document.getElementById('vendor-count')!;
+  const noResults = document.getElementById('no-results')!;
+
+  const activeClasses = ['border-brand', 'bg-brand', 'text-white'];
+  const inactiveClasses = ['border-gray-200', 'bg-white', 'text-gray-700'];
+
+  filters.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const type = btn.dataset.type!;
+
+      // Update button styles
+      filters.forEach(b => {
+        b.classList.remove(...activeClasses);
+        b.classList.add(...inactiveClasses);
+      });
+      btn.classList.remove(...inactiveClasses);
+      btn.classList.add(...activeClasses);
+
+      // Filter cards
+      let visible = 0;
+      cards.forEach(card => {
+        const match = type === 'all' || card.dataset.type === type;
+        card.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+
+      countEl.textContent = `${visible} vendor${visible === 1 ? '' : 's'}`;
+      noResults.classList.toggle('hidden', visible > 0);
+    });
+  });
+</script>

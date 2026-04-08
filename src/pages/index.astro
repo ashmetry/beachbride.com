@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import WorldMap from '../components/WorldMap.astro';
 import { getOrganizationSchema, getWebSiteSchema } from '../lib/schema/organization';
 import { SITE_CONFIG } from '../lib/site-config';
 
@@ -45,7 +46,7 @@ const schemas = [getOrganizationSchema(), getWebSiteSchema()];
   </section>
 
   <!-- Destination Grid -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-14 pb-16">
     <div class="text-center mb-10">
       <h2 class="section-heading">Choose your destination</h2>
       <p class="section-subheading">From the Caribbean to the Mediterranean — find everything you need for each location.</p>
@@ -77,6 +78,16 @@ const schemas = [getOrganizationSchema(), getWebSiteSchema()];
         View all destinations →
       </a>
     </div>
+  </section>
+
+  <!-- World Map -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+    <div class="text-center mb-8">
+      <h2 class="section-heading">25 destinations. One place to plan.</h2>
+      <p class="section-subheading">From the Caribbean to the Mediterranean to Southeast Asia — click any dot to explore.</p>
+    </div>
+    <WorldMap />
+    <p class="text-center text-xs text-gray-400 mt-3">Click any destination to see resorts, vendors, costs, and planning guides.</p>
   </section>
 
   <!-- How it works -->

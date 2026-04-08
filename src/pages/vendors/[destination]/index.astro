@@ -13,17 +13,25 @@ const { destination: slug } = Astro.params;
 const dest = destinations.find(d => d.slug === slug)!;
 
 const LEAD_TYPES = ['planner', 'photographer', 'florist', 'caterer', 'dj', 'officiant'];
+const VENUE_TYPES = ['resort', 'venue'];
 const typeLabels: Record<string, string> = {
   planner: 'Wedding Planner', photographer: 'Photographer', florist: 'Florist',
   caterer: 'Caterer', dj: 'DJ / Entertainment', officiant: 'Officiant',
+  resort: 'Resort', venue: 'Venue',
+};
+
+const byTier = (a: typeof vendors[0], b: typeof vendors[0]) => {
+  const tierOrder = { pro: 0, premium: 1, free: 2 };
+  return (tierOrder[a.tier as keyof typeof tierOrder] ?? 2) - (tierOrder[b.tier as keyof typeof tierOrder] ?? 2);
 };
 
 const localVendors = vendors.filter(
   v => v.destinations.includes(slug) && LEAD_TYPES.includes(v.type)
-).sort((a, b) => {
-  const tierOrder = { pro: 0, premium: 1, free: 2 };
-  return (tierOrder[a.tier as keyof typeof tierOrder] ?? 2) - (tierOrder[b.tier as keyof typeof tierOrder] ?? 2);
-});
+).sort(byTier);
+
+const localVenues = vendors.filter(
+  v => v.destinations.includes(slug) && VENUE_TYPES.includes(v.type)
+).sort(byTier);
 ---
 
 <BaseLayout
@@ -42,35 +50,67 @@ const localVendors = vendors.filter(
       <p class="text-gray-500 mt-1">{dest.country} &middot; <a href={`/destinations/${slug}/`} class="text-brand hover:underline no-underline">View destination guide →</a></p>
     </div>
 
-    {localVendors.length === 0 ? (
+    {/* Resorts & Venues */}
+    {localVenues.length > 0 && (
+      <div class="mb-10">
+        <h2 class="text-lg font-bold text-gray-900 mb-4">Resorts & Venues</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {localVenues.map(v => (
+            <a href={`/vendors/${v.slug}/`} class="card p-5 hover:shadow-md transition-shadow no-underline group">
+              <div class="flex items-start gap-3">
+                <div class="w-11 h-11 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0 text-brand/70">
+                  <VendorTypeIcon type={v.type} size={22} />
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 mb-0.5">
+                    <h2 class="font-bold text-gray-900 group-hover:text-brand transition-colors truncate text-sm">{v.name}</h2>
+                    {v.claimed && v.tier !== 'free' && (
+                      <span class="text-xs px-1.5 py-0.5 rounded bg-brand-accent/10 text-brand-accent font-semibold flex-shrink-0">★</span>
+                    )}
+                  </div>
+                  <p class="text-xs text-gray-400 mb-1 capitalize">{typeLabels[v.type] ?? v.type}</p>
+                  <p class="text-xs text-gray-500 line-clamp-2">{v.description}</p>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {/* Local Vendors */}
+    {localVendors.length === 0 && localVenues.length === 0 ? (
       <div class="text-center py-16">
         <p class="text-gray-500 mb-4">No vendors listed for {dest.name} yet.</p>
         <a href="/quiz/?stage=2" class="btn-primary">Get matched via quiz →</a>
       </div>
-    ) : (
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {localVendors.map(v => (
-          <a href={`/vendors/${v.slug}/`} class="card p-5 hover:shadow-md transition-shadow no-underline group">
-            <div class="flex items-start gap-3">
-              <div class="w-11 h-11 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0 text-brand/70">
-                <VendorTypeIcon type={v.type} size={22} />
-              </div>
-              <div class="flex-1 min-w-0">
-                <div class="flex items-center gap-2 mb-0.5">
-                  <h2 class="font-bold text-gray-900 group-hover:text-brand transition-colors truncate text-sm">{v.name}</h2>
-                  {v.tier !== 'free' && (
-                    <span class="text-xs px-1.5 py-0.5 rounded bg-brand-accent/10 text-brand-accent font-semibold flex-shrink-0">★</span>
+    ) : localVendors.length > 0 && (
+      <div>
+        <h2 class="text-lg font-bold text-gray-900 mb-4">Wedding Vendors</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {localVendors.map(v => (
+            <a href={`/vendors/${v.slug}/`} class="card p-5 hover:shadow-md transition-shadow no-underline group">
+              <div class="flex items-start gap-3">
+                <div class="w-11 h-11 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0 text-brand/70">
+                  <VendorTypeIcon type={v.type} size={22} />
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 mb-0.5">
+                    <h2 class="font-bold text-gray-900 group-hover:text-brand transition-colors truncate text-sm">{v.name}</h2>
+                    {v.tier !== 'free' && (
+                      <span class="text-xs px-1.5 py-0.5 rounded bg-brand-accent/10 text-brand-accent font-semibold flex-shrink-0">★</span>
+                    )}
+                  </div>
+                  <p class="text-xs text-gray-400 mb-1">{typeLabels[v.type] ?? v.type}</p>
+                  <p class="text-xs text-gray-500 line-clamp-2">{v.description}</p>
+                  {v.rating && (
+                    <p class="text-xs text-gray-400 mt-1">★ {v.rating} ({v.reviewCount} reviews)</p>
                   )}
                 </div>
-                <p class="text-xs text-gray-400 mb-1">{typeLabels[v.type] ?? v.type}</p>
-                <p class="text-xs text-gray-500 line-clamp-2">{v.description}</p>
-                {v.rating && (
-                  <p class="text-xs text-gray-400 mt-1">★ {v.rating} ({v.reviewCount} reviews)</p>
-                )}
               </div>
-            </div>
-          </a>
-        ))}
+            </a>
+          ))}
+        </div>
       </div>
     )}
 

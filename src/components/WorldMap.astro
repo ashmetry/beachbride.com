@@ -1,0 +1,193 @@
+---
+/**
+ * WorldMap.astro
+ * Minimal SVG world map with clickable destination markers.
+ * All path generation happens server-side at build time — output is pure static SVG.
+ * Client JS handles hover tooltips and click navigation only.
+ */
+import { geoEquirectangular, geoPath } from 'd3-geo';
+import { feature } from 'topojson-client';
+import type { Topology } from 'topojson-specification';
+
+// world-atlas 110m — loaded at build time, not shipped to client
+const world = (await import('world-atlas/countries-110m.json', { assert: { type: 'json' } })).default as unknown as Topology;
+
+// Equirectangular projection fitting a 1000×460 viewBox
+const projection = geoEquirectangular()
+  .scale(155)
+  .translate([500, 245]);
+
+const pathGen = geoPath().projection(projection);
+
+// Single land-mass path (much simpler than per-country paths)
+const land = feature(world, (world.objects as Record<string, any>).land);
+const landPath = pathGen(land) ?? '';
+
+// All 25 destinations with coordinates
+const DESTINATIONS = [
+  { slug: 'cancun',           name: 'Cancun',           country: 'Mexico',              lat: 21.16,   lon: -86.85  },
+  { slug: 'punta-cana',       name: 'Punta Cana',       country: 'Dominican Republic',  lat: 18.56,   lon: -68.37  },
+  { slug: 'jamaica',          name: 'Jamaica',           country: 'Jamaica',             lat: 18.11,   lon: -77.30  },
+  { slug: 'hawaii',           name: 'Hawaii',            country: 'USA',                 lat: 20.80,   lon: -156.33 },
+  { slug: 'bali',             name: 'Bali',              country: 'Indonesia',           lat: -8.41,   lon: 115.19  },
+  { slug: 'santorini',        name: 'Santorini',         country: 'Greece',              lat: 36.39,   lon: 25.46   },
+  { slug: 'tulum',            name: 'Tulum',             country: 'Mexico',              lat: 20.21,   lon: -87.47  },
+  { slug: 'costa-rica',       name: 'Costa Rica',        country: 'Costa Rica',          lat: 10.27,   lon: -85.83  },
+  { slug: 'key-west',         name: 'Key West',          country: 'USA',                 lat: 24.56,   lon: -81.78  },
+  { slug: 'los-cabos',        name: 'Los Cabos',         country: 'Mexico',              lat: 22.89,   lon: -109.92 },
+  { slug: 'st-lucia',         name: 'St. Lucia',         country: 'St. Lucia',           lat: 13.91,   lon: -60.98  },
+  { slug: 'riviera-maya',     name: 'Riviera Maya',      country: 'Mexico',              lat: 20.63,   lon: -87.07  },
+  { slug: 'turks-and-caicos', name: 'Turks & Caicos',   country: 'Turks & Caicos',      lat: 21.69,   lon: -71.80  },
+  { slug: 'aruba',            name: 'Aruba',             country: 'Aruba',               lat: 12.52,   lon: -69.97  },
+  { slug: 'amalfi-coast',     name: 'Amalfi Coast',      country: 'Italy',               lat: 40.63,   lon: 14.60   },
+  { slug: 'tuscany',          name: 'Tuscany',           country: 'Italy',               lat: 43.77,   lon: 11.25   },
+  { slug: 'algarve',          name: 'Algarve',           country: 'Portugal',            lat: 37.02,   lon: -7.93   },
+  { slug: 'dubrovnik',        name: 'Dubrovnik',         country: 'Croatia',             lat: 42.65,   lon: 18.09   },
+  { slug: 'maldives',         name: 'Maldives',          country: 'Maldives',            lat: 3.20,    lon: 73.22   },
+  { slug: 'fiji',             name: 'Fiji',              country: 'Fiji',                lat: -17.71,  lon: 178.07  },
+  { slug: 'holbox',           name: 'Holbox',            country: 'Mexico',              lat: 21.53,   lon: -87.38  },
+  { slug: 'roatan',           name: 'Roatán',            country: 'Honduras',            lat: 16.32,   lon: -86.54  },
+  { slug: 'kotor',            name: 'Kotor',             country: 'Montenegro',          lat: 42.42,   lon: 18.77   },
+  { slug: 'azores',           name: 'Azores',            country: 'Portugal',            lat: 37.74,   lon: -25.68  },
+  { slug: 'koh-lanta',        name: 'Koh Lanta',         country: 'Thailand',            lat: 7.54,    lon: 99.05   },
+];
+
+// Project each destination to SVG coordinates at build time
+const dots = DESTINATIONS.flatMap(d => {
+  const coords = projection([d.lon, d.lat]);
+  if (!coords) return [];
+  return [{ ...d, x: Math.round(coords[0] * 10) / 10, y: Math.round(coords[1] * 10) / 10 }];
+});
+---
+
+<div class="relative w-full select-none">
+  <svg
+    id="world-map"
+    viewBox="0 0 1000 460"
+    class="w-full"
+    aria-label="World map showing BeachBride destination wedding locations"
+    role="img"
+  >
+    <!-- Ocean background -->
+    <rect width="1000" height="460" fill="#EAF4F6" rx="12" />
+
+    <!-- Land masses -->
+    <path d={landPath} fill="#C8DEE3" stroke="#B0CDD4" stroke-width="0.4" />
+
+    <!-- Destination dots -->
+    {dots.map(dot => (
+      <g
+        class="dest-marker cursor-pointer"
+        data-slug={dot.slug}
+        data-name={dot.name}
+        data-country={dot.country}
+        role="button"
+        aria-label={`${dot.name}, ${dot.country}`}
+        tabindex="0"
+      >
+        {/* Outer pulse ring */}
+        <circle
+          cx={dot.x}
+          cy={dot.y}
+          r="9"
+          fill="#2A7F8F"
+          opacity="0.2"
+          class="pulse-ring"
+        />
+        {/* Inner dot */}
+        <circle
+          cx={dot.x}
+          cy={dot.y}
+          r="4.5"
+          fill="#2A7F8F"
+          stroke="white"
+          stroke-width="1.5"
+          opacity="0.95"
+        />
+      </g>
+    ))}
+  </svg>
+
+  {/* Hover tooltip — positioned via JS */}
+  <div
+    id="map-tooltip"
+    class="pointer-events-none absolute hidden z-10 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap"
+    style="transform: translate(-50%, -130%)"
+  >
+    <span id="map-tooltip-name"></span>
+    <span class="text-gray-400 ml-1" id="map-tooltip-country"></span>
+  </div>
+</div>
+
+<style>
+  .pulse-ring {
+    animation: pulse 2.5s ease-out infinite;
+  }
+
+  .dest-marker:hover .pulse-ring,
+  .dest-marker:focus .pulse-ring {
+    animation: none;
+    opacity: 0.35;
+    r: 11;
+  }
+
+  .dest-marker:hover circle:last-child,
+  .dest-marker:focus circle:last-child {
+    fill: #C9974A;
+  }
+
+  @keyframes pulse {
+    0%   { r: 5; opacity: 0.3; }
+    70%  { r: 12; opacity: 0; }
+    100% { r: 12; opacity: 0; }
+  }
+</style>
+
+<script>
+  const markers = document.querySelectorAll<SVGGElement>('.dest-marker');
+  const tooltip = document.getElementById('map-tooltip')!;
+  const tooltipName = document.getElementById('map-tooltip-name')!;
+  const tooltipCountry = document.getElementById('map-tooltip-country')!;
+  const svgEl = document.getElementById('world-map') as unknown as SVGSVGElement;
+
+  markers.forEach(marker => {
+    const slug = marker.dataset.slug!;
+    const name = marker.dataset.name!;
+    const country = marker.dataset.country!;
+
+    function showTooltip(e: MouseEvent | FocusEvent) {
+      tooltipName.textContent = name;
+      tooltipCountry.textContent = country;
+      tooltip.classList.remove('hidden');
+      positionTooltip(e as MouseEvent);
+    }
+
+    function positionTooltip(e: MouseEvent) {
+      const rect = svgEl.parentElement!.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      tooltip.style.left = `${x}px`;
+      tooltip.style.top = `${y}px`;
+    }
+
+    function hideTooltip() {
+      tooltip.classList.add('hidden');
+    }
+
+    marker.addEventListener('mousemove', positionTooltip);
+    marker.addEventListener('mouseenter', showTooltip);
+    marker.addEventListener('mouseleave', hideTooltip);
+    marker.addEventListener('focus', showTooltip);
+    marker.addEventListener('blur', hideTooltip);
+
+    marker.addEventListener('click', () => {
+      window.location.href = `/destinations/${slug}/`;
+    });
+
+    marker.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        window.location.href = `/destinations/${slug}/`;
+      }
+    });
+  });
+</script>

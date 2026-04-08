@@ -1,68 +1,50 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import VendorSignupForm from '../../components/forms/VendorSignupForm.astro';
+import vendors from '../../data/vendors.json';
+
+const claimSlug = Astro.url.searchParams.get('claim') ?? '';
+const claimedVendor = claimSlug ? vendors.find(v => v.slug === claimSlug) : null;
 ---
 
 <PageLayout
-  title="List Your Business — BeachBride Vendor Directory"
-  description="Join BeachBride's vetted vendor network. Connect with couples planning destination weddings in Cancun, Bali, Santorini, Hawaii, and more."
+  title={claimedVendor ? `Claim ${claimedVendor.name} — BeachBride` : 'List Your Business Free — BeachBride'}
+  description="List your destination wedding business on BeachBride for free. No cost, no commitment. We connect you with couples actively planning."
   canonical="https://beachbride.com/vendors/upgrade/"
 >
-  <h1 class="text-3xl font-bold text-gray-900 mb-3">List your business</h1>
-  <p class="text-gray-600 mb-8">
-    BeachBride connects vetted wedding professionals with couples planning destination weddings worldwide.
-    Join our network of planners, photographers, florists, caterers, DJs, and officiants.
+
+  {claimedVendor && (
+    <div class="bg-brand-light border border-brand/20 rounded-xl p-5 mb-8 flex items-start gap-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+      </svg>
+      <p class="text-sm text-gray-700">
+        <strong>{claimedVendor.name}</strong> is already listed on BeachBride.
+        Fill in your details below and we'll activate your profile within 1 business day.
+      </p>
+    </div>
+  )}
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-3">
+    {claimedVendor ? 'Claim your listing — it\'s free' : 'List your business — it\'s free'}
+  </h1>
+
+  <p class="text-gray-600 mb-6 text-base leading-relaxed">
+    When a couple planning a destination wedding matches your location and specialty, we'll
+    send you their details. No monthly fee, no lead charges, no catch.
   </p>
 
-  <!-- Pricing tiers -->
-  <div class="grid sm:grid-cols-3 gap-4 mb-10">
-    {[
-      {
-        name: 'Free',
-        price: '$0',
-        period: 'forever',
-        features: ['Basic directory listing', '1 destination', 'Profile page', 'Contact form'],
-        highlight: false,
-      },
-      {
-        name: 'Premium',
-        price: '$99',
-        period: 'per month',
-        features: ['Featured placement', 'Verified badge', '3 destinations', 'Lead alerts', 'Priority in search'],
-        highlight: true,
-      },
-      {
-        name: 'Pro',
-        price: '$199',
-        period: 'per month',
-        features: ['All destinations', 'Priority matching', 'Branded profile', 'Direct inquiry button', 'Analytics dashboard'],
-        highlight: false,
-      },
-    ].map(tier => (
-      <div class={`rounded-xl p-5 border-2 ${tier.highlight ? 'border-brand bg-brand-light' : 'border-gray-200 bg-white'}`}>
-        <p class="font-bold text-gray-900">{tier.name}</p>
-        <p class={`text-2xl font-bold mt-1 ${tier.highlight ? 'text-brand' : 'text-gray-900'}`}>
-          {tier.price}
-          <span class="text-sm font-normal text-gray-500"> /{tier.period}</span>
-        </p>
-        <ul class="mt-4 space-y-1.5">
-          {tier.features.map(f => (
-            <li class="text-sm text-gray-600 flex items-center gap-2">
-              <span class={`font-bold ${tier.highlight ? 'text-brand' : 'text-gray-400'}`}>✓</span>
-              {f}
-            </li>
-          ))}
-        </ul>
-      </div>
-    ))}
+  <!-- Why it's free -->
+  <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 mb-10">
+    <p class="text-sm font-semibold text-gray-800 mb-2">Why is it free?</p>
+    <p class="text-sm text-gray-600 leading-relaxed">
+      We make money the same way a travel magazine does — through affiliate commissions
+      when couples book resorts, purchase wedding rings, or buy travel insurance through
+      our guides. Vendors are how we deliver on our promise to couples. Getting you in
+      front of the right people is the whole point.
+    </p>
   </div>
 
-  <div class="border-t border-gray-200 pt-8">
-    <h2 class="text-xl font-bold text-gray-900 mb-2">Apply to join</h2>
-    <p class="text-sm text-gray-500 mb-6">
-      We review all applications and follow up within 2 business days. Free listings are approved immediately.
-      Premium and Pro listings include a brief portfolio review.
-    </p>
-    <VendorSignupForm />
-  </div>
+  <VendorSignupForm prefillName={claimedVendor?.name ?? ''} />
+
 </PageLayout>

@@ -1,9 +1,13 @@
 ---
 // Vendor signup form — submits to /workers/form with type: 'vendor'
 // Only lead-eligible types are shown in the dropdown
+interface Props {
+  prefillName?: string;
+}
+const { prefillName = '' } = Astro.props;
 ---
 
-<form id="vendor-form" class="space-y-5 max-w-lg" novalidate>
+<form id="vendor-form" class="space-y-5" novalidate>
   <!-- Honeypot -->
   <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;">
     <label for="vwebsite">Website (leave blank)</label>
@@ -18,7 +22,7 @@
     </div>
     <div>
       <label for="v-business" class="block text-sm font-medium text-gray-700 mb-1">Business name *</label>
-      <input type="text" id="v-business" name="businessName" required
+      <input type="text" id="v-business" name="businessName" required value={prefillName}
         class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent" />
     </div>
   </div>
@@ -56,15 +60,7 @@
       class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent" />
   </div>
 
-  <div>
-    <label for="v-tier" class="block text-sm font-medium text-gray-700 mb-1">Listing tier</label>
-    <select id="v-tier" name="tier"
-      class="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent bg-white">
-      <option value="free">Free — basic listing, 1 destination</option>
-      <option value="premium">Premium ($99/mo) — featured, 3 destinations, lead alerts</option>
-      <option value="pro">Pro ($199/mo) — all destinations, priority matching</option>
-    </select>
-  </div>
+  <input type="hidden" name="tier" value="free" />
 
   <div>
     <label for="v-notes" class="block text-sm font-medium text-gray-700 mb-1">Tell us about your business <span class="font-normal text-gray-400">(optional)</span></label>

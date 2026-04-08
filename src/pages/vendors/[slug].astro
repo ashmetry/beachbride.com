@@ -14,6 +14,7 @@ const { vendor } = Astro.props;
 
 const LEAD_TYPES = ['planner', 'photographer', 'florist', 'caterer', 'dj', 'officiant'];
 const isLeadVendor = LEAD_TYPES.includes(vendor.type);
+const isClaimed = vendor.claimed === true;
 
 const typeLabels: Record<string, string> = {
   planner: 'Wedding Planner', photographer: 'Photographer', florist: 'Florist',
@@ -28,11 +29,13 @@ const schema = getVendorSchema({
   slug: vendor.slug,
   type: vendor.type,
   destination: vendorDestinations[0]?.name,
-  website: vendor.website,
-  phone: vendor.contact?.phone,
+  website: vendor.website || undefined,
+  phone: vendor.contact?.phone || undefined,
   rating: vendor.rating,
   reviewCount: vendor.reviewCount,
 });
+
+const claimUrl = `/vendors/upgrade/?claim=${vendor.slug}`;
 ---
 
 <BaseLayout
@@ -47,7 +50,7 @@ const schema = getVendorSchema({
       { label: vendor.name },
     ]} />
 
-    <div class="card p-6 sm:p-8 mb-8">
+    <div class={`card p-6 sm:p-8 mb-8 ${!isClaimed ? 'opacity-90' : ''}`}>
       <div class="flex items-start gap-4">
         <div class="w-16 h-16 rounded-2xl bg-brand-light flex items-center justify-center flex-shrink-0 text-brand/70">
           <VendorTypeIcon type={vendor.type} size={28} />
@@ -55,14 +58,19 @@ const schema = getVendorSchema({
         <div class="flex-1">
           <div class="flex flex-wrap items-center gap-2 mb-1">
             <h1 class="text-2xl font-bold text-gray-900">{vendor.name}</h1>
-            {vendor.tier !== 'free' && (
+            {isClaimed && vendor.tier !== 'free' && (
               <span class="text-xs px-2 py-1 rounded-full bg-brand-accent/10 text-brand-accent font-semibold">
                 {vendor.tier === 'pro' ? 'Pro Vendor' : 'Featured Vendor'}
               </span>
             )}
+            {!isClaimed && (
+              <span class="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-500 font-medium border border-gray-200">
+                Unclaimed listing
+              </span>
+            )}
           </div>
           <p class="text-gray-500 capitalize text-sm mb-2">{typeLabels[vendor.type] ?? vendor.type}</p>
-          {vendor.rating && (
+          {isClaimed && vendor.rating && (
             <p class="text-sm text-gray-600">
               ★ <strong>{vendor.rating}</strong> &nbsp;({vendor.reviewCount} reviews)
             </p>
@@ -84,13 +92,15 @@ const schema = getVendorSchema({
         ))}
       </div>
 
-      <!-- CTA -->
-      <div class="mt-6 pt-6 border-t border-gray-100 flex flex-col sm:flex-row gap-3">
-        {isLeadVendor ? (
-          <>
-            <a href="/quiz/?stage=2" class="btn-primary flex-1 text-center">
-              Request a quote →
-            </a>
+      <!-- CTA: claimed vs unclaimed -->
+      <div class="mt-6 pt-6 border-t border-gray-100">
+        {isClaimed ? (
+          <div class="flex flex-col sm:flex-row gap-3">
+            {isLeadVendor && (
+              <a href="/quiz/?stage=2" class="btn-primary flex-1 text-center">
+                Request a quote →
+              </a>
+            )}
             {vendor.website && (
               <a
                 href={vendor.website}
@@ -101,25 +111,27 @@ const schema = getVendorSchema({
                 Visit website
               </a>
             )}
-          </>
+          </div>
         ) : (
-          vendor.website && (
-            <a
-              href={vendor.website}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              class="btn-primary flex-1 text-center"
-            >
-              View resort →
+          <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+            <p class="text-sm font-semibold text-gray-800 mb-1">Is this your business?</p>
+            <p class="text-sm text-gray-500 mb-4">
+              Claim this free listing to add your photos, control your description, and start
+              receiving inquiries from couples planning weddings in {vendorDestinations[0]?.name ?? 'your destination'}.
+            </p>
+            <a href={claimUrl} class="btn-primary inline-block">
+              Claim this listing — it's free →
             </a>
-          )
+          </div>
         )}
       </div>
     </div>
 
-    <!-- Related vendors in same destinations -->
+    <!-- Related vendors -->
     <div class="mt-10">
-      <h2 class="text-lg font-bold text-gray-900 mb-4">Other vendors in {vendorDestinations[0]?.name ?? 'this destination'}</h2>
+      <h2 class="text-lg font-bold text-gray-900 mb-4">
+        Other vendors in {vendorDestinations[0]?.name ?? 'this destination'}
+      </h2>
       <div class="grid sm:grid-cols-2 gap-4">
         {vendors
           .filter(v => v.slug !== vendor.slug && v.destinations.some(d => vendor.destinations.includes(d)))
@@ -129,8 +141,8 @@ const schema = getVendorSchema({
               <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center flex-shrink-0 text-brand/70">
                 <VendorTypeIcon type={v.type} size={20} />
               </div>
-              <div>
-                <p class="font-semibold text-sm text-gray-900 group-hover:text-brand transition-colors">{v.name}</p>
+              <div class="flex-1 min-w-0">
+                <p class="font-semibold text-sm text-gray-900 group-hover:text-brand transition-colors truncate">{v.name}</p>
                 <p class="text-xs text-gray-400 capitalize">{typeLabels[v.type] ?? v.type}</p>
               </div>
             </a>
