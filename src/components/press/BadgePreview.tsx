@@ -33,7 +33,7 @@ function LogoMark({ gold, size = 40 }: { gold: boolean; size?: number }) {
       borderRadius: '50%',
       background: gold
         ? 'linear-gradient(135deg, #C9974A 0%, #A67A35 100%)'
-        : 'linear-gradient(135deg, #2A7F8F 0%, #1A5F6F 100%)',
+        : 'linear-gradient(135deg, #1C2B4A 0%, #111B30 100%)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -118,7 +118,7 @@ function generateEmbedCode(vendor: Vendor | null, destName: string | null): stri
 
   const circleBg = gold
     ? 'linear-gradient(135deg,#C9974A 0%,#A67A35 100%)'
-    : 'linear-gradient(135deg,#2A7F8F 0%,#1A5F6F 100%)';
+    : 'linear-gradient(135deg,#1C2B4A 0%,#111B30 100%)';
   const border = isPro ? '#C9974A' : isPremiumPlus ? '#e8c98a' : '#d1d5db';
   const bg = isPremiumPlus ? 'linear-gradient(135deg,#fff 0%,#fdf8f0 100%)' : '#fff';
   const shadow = isPremiumPlus ? '0 2px 10px rgba(201,151,74,0.18)' : '0 1px 4px rgba(0,0,0,0.08)';
@@ -234,7 +234,7 @@ export default function BadgePreview({ vendors, destinations, initialSlug }: Pro
             onClick={handleCopy}
             className="absolute top-3 right-3 text-xs px-3 py-1.5 rounded-lg font-semibold transition-all"
             style={{
-              background: copied ? '#2A7F8F' : 'rgba(255,255,255,0.12)',
+              background: copied ? '#1C2B4A' : 'rgba(255,255,255,0.12)',
               color: copied ? '#fff' : '#d1d5db',
               border: '1px solid rgba(255,255,255,0.18)',
             }}

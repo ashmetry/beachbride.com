@@ -25,23 +25,36 @@ const schemas = [getOrganizationSchema(), getWebSiteSchema()];
   schema={schemas}
 >
   <!-- Hero -->
-  <section class="relative bg-brand-dark text-white overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand to-teal-400 opacity-90"></div>
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 py-24 sm:py-32 text-center">
-      <p class="text-brand-accent font-semibold tracking-widest uppercase text-sm mb-4">Destination Wedding Planning</p>
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-        Your dream wedding,<br class="hidden sm:block" /> on the beach.
-      </h1>
-      <p class="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto mb-10">
-        We match couples with vetted planners, photographers, and venues at the world's most beautiful destinations — and deliver a personalized guide the moment you start.
-      </p>
-      <a href="/quiz/" class="inline-flex items-center gap-2 bg-brand-accent hover:bg-brand-accent-dark text-white font-bold text-lg px-8 py-4 rounded-xl transition-colors duration-200 no-underline shadow-lg">
-        Find your perfect destination
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </a>
-      <p class="mt-4 text-white/50 text-sm">Takes 60 seconds &middot; Free personalized guide &middot; No spam</p>
+  <section class="relative text-white overflow-hidden" style="min-height: 640px;">
+    <img
+      src="/images/hero-wedding.jpg"
+      alt="Bride and groom on the beach at sunset"
+      class="absolute inset-0 w-full h-full object-cover"
+      style="object-position: 65% 70%;"
+      fetchpriority="high"
+    />
+    <!-- Desktop: left-to-right fade. Mobile: top-to-bottom dark overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/50 sm:hidden"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/5 hidden sm:block"></div>
+    <div class="relative max-w-6xl mx-auto px-6 sm:px-8 py-16 sm:py-28 lg:py-36 flex items-center" style="min-height: inherit;">
+      <div class="max-w-xl w-full text-center sm:text-left">
+        <p class="text-brand-accent font-semibold tracking-widest uppercase text-xs sm:text-sm mb-3">Destination Wedding Planning</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-5 drop-shadow-lg">
+          Your dream wedding, on the beach.
+        </h1>
+        <p class="text-base sm:text-lg text-white/85 mb-8 drop-shadow leading-relaxed">
+          We match couples with vetted planners, photographers, and venues at the world's most beautiful destinations — and deliver a personalized guide the moment you start.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-3">
+          <a href="/quiz/" class="inline-flex items-center gap-2 bg-brand-accent hover:bg-brand-accent-dark text-white font-bold text-base sm:text-lg px-7 py-3.5 rounded-lg transition-colors duration-200 no-underline shadow-lg w-full sm:w-auto justify-center">
+            Find your perfect destination
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+        <p class="mt-4 text-white/50 text-xs sm:text-sm">Takes 60 seconds &middot; Free personalized guide &middot; No spam</p>
+      </div>
     </div>
   </section>
 
