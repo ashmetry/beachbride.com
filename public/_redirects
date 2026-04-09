@@ -206,6 +206,60 @@
 
 /blog/ /guides/ 301
 
+# --- Real Weddings root slug redirects (missing from original WP migration) ---
+/all-white-glamour/ /real-weddings/all-white-glamour/ 301
+/amanda-mikey-romantically-rustic/ /real-weddings/amanda-mikey-romantically-rustic/ 301
+/barefoot-and-married/ /real-weddings/barefoot-and-married/ 301
+/bayside-charm/ /real-weddings/bayside-charm/ 301
+/beach-and-barn-engagement/ /real-weddings/beach-and-barn-engagement/ 301
+/beach-balls-sea-shells/ /real-weddings/beach-balls-sea-shells/ 301
+/beach-front-chic-and-romance/ /real-weddings/beach-front-chic-and-romance/ 301
+/beach-getaway-wedding/ /real-weddings/beach-getaway-wedding/ 301
+/beach-soulmates/ /real-weddings/beach-soulmates/ 301
+/bohemian-feels-at-the-beach/ /real-weddings/bohemian-feels-at-the-beach/ 301
+/chic-bohemian-dreams/ /real-weddings/chic-bohemian-dreams/ 301
+/chic-nautical-splashes/ /real-weddings/chic-nautical-splashes/ 301
+/christina-chris-flight-to-forever/ /real-weddings/christina-chris-flight-to-forever/ 301
+/colors-sunset-colors-love/ /real-weddings/colors-sunset-colors-love/ 301
+/come-and-fly-for-love/ /real-weddings/come-and-fly-for-love/ 301
+/delight-and-love/ /real-weddings/delight-and-love/ 301
+/diy-candy-buffet-jars-on-pedestals/ /real-weddings/diy-candy-buffet-jars-on-pedestals/ 301
+/el-matador-beach-placerita-canyon-engagement-shoot/ /real-weddings/el-matador-beach-placerita-canyon-engagement-shoot/ 301
+/elegant-settings-engagement-session/ /real-weddings/elegant-settings-engagement-session/ 301
+/even-rain-cant-stop-us/ /real-weddings/even-rain-cant-stop-us/ 301
+/jennifer-jason/ /real-weddings/jennifer-jason/ 301
+/jillian-arthur-beautiful-beginning/ /real-weddings/jillian-arthur-beautiful-beginning/ 301
+/labyrinthine-patterns/ /real-weddings/labyrinthine-patterns/ 301
+/land-of-leis-and-alohas/ /real-weddings/land-of-leis-and-alohas/ 301
+/laura-ramin/ /real-weddings/laura-ramin/ 301
+/leap-day-beach-wedding/ /real-weddings/leap-day-beach-wedding/ 301
+/love-and-happiness/ /real-weddings/love-and-happiness/ 301
+/love-culture-traditions/ /real-weddings/love-culture-traditions/ 301
+/love-shined-so-bright/ /real-weddings/love-shined-so-bright/ 301
+/miami-skyline-wedding/ /real-weddings/miami-skyline-wedding/ 301
+/modern-mexican-destination-wedding/ /real-weddings/modern-mexican-destination-wedding/ 301
+/nautical-day/ /real-weddings/nautical-day/ 301
+/neutral-and-non-traditional/ /real-weddings/neutral-and-non-traditional/ 301
+/ocean-blue/ /real-weddings/ocean-blue/ 301
+/orange-turquoise/ /real-weddings/orange-turquoise/ 301
+/our-love-and-the-tropics/ /real-weddings/our-love-and-the-tropics/ 301
+/palm-trees-and-sunset/ /real-weddings/palm-trees-and-sunset/ 301
+/pink-navy-nautical-beach-wedding/ /real-weddings/pink-navy-nautical-beach-wedding/ 301
+/polaroid-memoirs/ /real-weddings/polaroid-memoirs/ 301
+/pulling-heart-strings/ /real-weddings/pulling-heart-strings/ 301
+/rustic-bombastic/ /real-weddings/rustic-bombastic/ 301
+/rustic-chic-and-a-tad-bit-romantic/ /real-weddings/rustic-chic-and-a-tad-bit-romantic/ 301
+/sarah-eric/ /real-weddings/sarah-eric/ 301
+/seas-the-day/ /real-weddings/seas-the-day/ 301
+/season-of-love-and-sunflowers/ /real-weddings/season-of-love-and-sunflowers/ 301
+/simple-floral-wedding/ /real-weddings/simple-floral-wedding/ 301
+/sugar-coated-sea-sand/ /real-weddings/sugar-coated-sea-sand/ 301
+/teresa-tom-beach-blue-beautiful/ /real-weddings/teresa-tom-beach-blue-beautiful/ 301
+/the-sunrise-and-the-beach/ /real-weddings/the-sunrise-and-the-beach/ 301
+/traditions-elegance/ /real-weddings/traditions-elegance/ 301
+/vintage-rustic-destination-wedding/ /real-weddings/vintage-rustic-destination-wedding/ 301
+/you-are-the-one/ /real-weddings/you-are-the-one/ 301
+
 # --- Wildcard redirects for old WordPress taxonomy/listing URLs ---
 /vendors/listings/* /vendors/ 301
 /photographers/listings/* /vendors/ 301
