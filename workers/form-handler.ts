@@ -8,7 +8,7 @@
  *
  * Worker secrets (set via Cloudflare dashboard or `wrangler secret put <NAME>`):
  *   MAILGUN_API_KEY, MAILGUN_DOMAIN, NOTIFY_EMAIL,
- *   SENDY_URL, SENDY_API_KEY, SENDY_LIST_ID, SENDY_NURTURE_LIST_ID
+ *   SENDY_URL, SENDY_API_KEY, SENDY_LIST_ID, SENDY_NURTURE_LIST_ID, SENDY_ROOM_BLOCK_LIST_ID
  */
 
 export interface Env {
