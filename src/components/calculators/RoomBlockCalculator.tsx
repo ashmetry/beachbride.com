@@ -66,7 +66,7 @@ export default function RoomBlockCalculator() {
     setSubmitting(true);
     setEmailError('');
     try {
-      await fetch('/workers/form', {
+      const res = await fetch('/workers/form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -77,6 +77,7 @@ export default function RoomBlockCalculator() {
           utm_medium: 'tool',
         }),
       });
+      if (!res.ok) throw new Error(`Worker returned ${res.status}`);
       setUnlocked(true);
     } catch {
       setEmailError('Something went wrong. Please try again.');

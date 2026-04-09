@@ -316,7 +316,7 @@ export default {
     }
 
     // Turnstile — enforce for quiz forms when secret is configured
-    const requiresTurnstile = (raw.type === 'email-capture' || raw.type === 'room-block-capture' || raw.type === 'lead') && env.TURNSTILE_SECRET;
+    const requiresTurnstile = (raw.type === 'email-capture' || raw.type === 'lead') && env.TURNSTILE_SECRET;
     if (requiresTurnstile) {
       const token = (raw['cf-turnstile-response'] as string) || '';
       const ip = request.headers.get('CF-Connecting-IP') || '';
