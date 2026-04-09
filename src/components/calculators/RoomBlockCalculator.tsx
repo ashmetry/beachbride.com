@@ -45,6 +45,7 @@ export default function RoomBlockCalculator() {
   const [budgetTierId, setBudgetTierId] = useState('mid');
   const [destination, setDestination] = useState('');
   const [unlocked, setUnlocked] = useState(false);
+  const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [emailError, setEmailError] = useState('');
@@ -72,6 +73,7 @@ export default function RoomBlockCalculator() {
         body: JSON.stringify({
           type: 'room-block-capture',
           email,
+          firstName: firstName.trim() || undefined,
           destination: destination || undefined,
           utm_source: 'room-block-calculator',
           utm_medium: 'tool',
@@ -198,31 +200,38 @@ export default function RoomBlockCalculator() {
           <div className="border border-gray-100 rounded-xl p-5 bg-gray-50">
             <p className="font-semibold text-gray-900 mb-1 text-sm">See your full resort recommendation</p>
             <p className="text-xs text-gray-500 mb-3">
-              Enter your email to unlock: best resort brands for your budget, what to ask for in your contract, and a free consultation offer.
+              Enter your details to unlock: best resort brands for your budget, what to ask for in your contract, and a free consultation offer.
             </p>
-            <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-2">
-              <div className="flex-1">
-                <select
-                  value={destination}
-                  onChange={e => setDestination(e.target.value)}
-                  className="w-full mb-2 px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-gray-900/20"
-                >
-                  <option value="">Your destination (optional)</option>
-                  {DESTINATIONS.map(d => <option key={d} value={d}>{d}</option>)}
-                </select>
+            <form onSubmit={handleEmailSubmit} className="space-y-2">
+              <select
+                value={destination}
+                onChange={e => setDestination(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-gray-900/20"
+              >
+                <option value="">Your destination (optional)</option>
+                {DESTINATIONS.map(d => <option key={d} value={d}>{d}</option>)}
+              </select>
+              <div className="grid grid-cols-2 gap-2">
+                <input
+                  type="text"
+                  placeholder="First name"
+                  value={firstName}
+                  onChange={e => setFirstName(e.target.value)}
+                  className="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900/20"
+                />
                 <input
                   type="email"
                   required
                   placeholder="your@email.com"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900/20"
+                  className="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900/20"
                 />
               </div>
               <button
                 type="submit"
                 disabled={submitting}
-                className="px-4 py-2 bg-gray-900 text-white font-semibold rounded-lg text-sm hover:bg-gray-800 transition-colors whitespace-nowrap"
+                className="w-full px-4 py-2 bg-gray-900 text-white font-semibold rounded-lg text-sm hover:bg-gray-800 transition-colors"
               >
                 {submitting ? 'Sending…' : 'See full results'}
               </button>

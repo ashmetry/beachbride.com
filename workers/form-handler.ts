@@ -44,6 +44,7 @@ interface EmailCapturePayload {
 interface RoomBlockCapturePayload {
   type: 'room-block-capture';
   email: string;
+  firstName?: string;
   destination?: string;
   utm_source?: string;
   utm_medium?: string;
@@ -180,10 +181,11 @@ function buildOwnerEmail(payload: Payload): { subject: string; text: string } {
 
     case 'room-block-capture':
       return {
-        subject: `Room Block Capture — ${payload.email} (${payload.destination ?? 'no destination'})`,
+        subject: `Room Block Capture — ${payload.firstName ? payload.firstName + ' ' : ''}${payload.email} (${payload.destination ?? 'no destination'})`,
         text: [
           'ROOM BLOCK CALCULATOR CAPTURE',
           '==============================',
+          `Name:        ${payload.firstName ?? 'not provided'}`,
           `Email:       ${payload.email}`,
           `Destination: ${payload.destination ?? 'not specified'}`,
           ...(payload.utm_source ? [`\nSource:      ${payload.utm_source} / ${payload.utm_medium ?? 'none'}`] : []),
@@ -334,7 +336,7 @@ export default {
       await sendMailgunEmail(env, env.NOTIFY_EMAIL, subject, text);
 
       if (payload.type === 'room-block-capture') {
-        await subscribeToSendy(env, env.SENDY_ROOM_BLOCK_LIST_ID, payload.email, '', {
+        await subscribeToSendy(env, env.SENDY_ROOM_BLOCK_LIST_ID, payload.email, payload.firstName ?? '', {
           destination: payload.destination ?? '',
           utmsource: payload.utm_source ?? '',
           utmmedium: payload.utm_medium ?? '',
