@@ -438,41 +438,29 @@ irrelevant local wedding keywords would pollute the gap analysis.
 
 ---
 
-### Current Queue State
+### Manually Seeded Topics
 
-*Update this section whenever the pipeline state changes significantly.*
+Use `npm run content:status` for live queue counts — don't record them here.
 
-**As of 2026-04-08:**
-- Published: 33
-- Staged (ready to publish): 5
-- Discovered (unique, clean): 56
-- Skipped (intent overlap): 36 total
+Document manual seeds when they explain a structural decision or non-obvious
+rationale that future sessions would otherwise re-derive.
 
-Queue runway at current rates: ~9 weeks before discovery needs to run again.
-
-**How we got to 52 from 83:**
-The intra-batch dedup (Layer 2b) was added after discovery had already run and
-populated the queue without it. `cleanup-queue.js` was run to retroactively
-cluster the 83 topics by intent and remove 27 duplicates. 4 additional
-cross-batch stragglers were removed manually (peacock cake × 2, nails × 2,
-checklist × 2, packing list × 2). This is a one-time correction — future
-discovery runs will never accumulate clusters because Layer 2b runs at
+**Queue cleanup — 2026-04-08:**
+The intra-batch dedup (Layer 2b) was added after discovery had already run
+without it. `cleanup-queue.js` was run retroactively to remove 27 duplicate
+clusters. 4 cross-batch stragglers removed manually. One-time correction —
+future discovery runs won't accumulate clusters because Layer 2b runs at
 discovery time.
 
-**Room block topics added manually 2026-04-08 (+4):**
-Four high-intent room block topics seeded directly into the pipeline (source:
-`room-block-seed`, status: `discovered`). These support the room block
-coordination revenue stream and link to `/tools/room-block-calculator/`.
+**Room block topics — 2026-04-08:**
+Four topics seeded directly (source: `room-block-seed`) to support the room
+block coordination revenue stream. All link to `/tools/room-block-calculator/`
+via a LINK_TARGETS entry in `lib/config.js`. Auto-categorize to `planning`.
 
-Topics:
-- `destination-wedding-room-block-guide` [score 88] — how to set up a room block
-- `how-many-hotel-rooms-to-block-destination-wedding` [score 90] — calculator companion
-- `destination-wedding-hotel-block-cost` [score 85] — cost breakdown
-- `all-inclusive-resort-group-rates-destination-weddings` [score 86] — negotiation guide
-
-All four auto-categorize to `planning` via slug pattern match in `guide-categories.ts`.
-LINK_TARGETS entry added to `lib/config.js` so any article mentioning room blocks
-links to `/tools/room-block-calculator/` automatically.
+- `destination-wedding-room-block-guide` — how to set up a room block
+- `how-many-hotel-rooms-to-block-destination-wedding` — calculator companion
+- `destination-wedding-hotel-block-cost` — cost breakdown
+- `all-inclusive-resort-group-rates-destination-weddings` — negotiation guide
 
 ---
 
