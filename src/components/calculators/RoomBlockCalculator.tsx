@@ -70,7 +70,7 @@ export default function RoomBlockCalculator() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          type: 'email-capture',
+          type: 'room-block-capture',
           email,
           destination: destination || undefined,
           utm_source: 'room-block-calculator',

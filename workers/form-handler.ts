@@ -18,7 +18,8 @@ export interface Env {
   SENDY_URL: string;
   SENDY_API_KEY: string;
   SENDY_LIST_ID: string;
-  SENDY_NURTURE_LIST_ID: string; // Stage 1 email-capture list (triggers nurture sequence)
+  SENDY_NURTURE_LIST_ID: string;       // Stage 1 quiz email-capture list
+  SENDY_ROOM_BLOCK_LIST_ID: string;    // Room block calculator captures (separate sequence)
   TURNSTILE_SECRET?: string; // Cloudflare Turnstile — set via wrangler secret put TURNSTILE_SECRET
 }
 
@@ -38,6 +39,14 @@ interface EmailCapturePayload {
   utm_source?: string;
   utm_medium?: string;
   utm_campaign?: string;
+}
+
+interface RoomBlockCapturePayload {
+  type: 'room-block-capture';
+  email: string;
+  destination?: string;
+  utm_source?: string;
+  utm_medium?: string;
 }
 
 interface LeadPayload {
@@ -79,7 +88,7 @@ interface ContactPayload {
   message: string;
 }
 
-type Payload = EmailCapturePayload | LeadPayload | VendorPayload | ContactPayload;
+type Payload = EmailCapturePayload | RoomBlockCapturePayload | LeadPayload | VendorPayload | ContactPayload;
 
 // ─── Email ─────────────────────────────────────────────────────────────────────
 
@@ -165,6 +174,18 @@ function buildOwnerEmail(payload: Payload): { subject: string; text: string } {
           `Guests:      ${payload.guestCount ?? 'not specified'}`,
           `Budget:      ${payload.budget ?? 'not specified'}`,
           `Matches:     ${payload.matchedDestinations?.join(', ') ?? 'none'}`,
+          ...(payload.utm_source ? [`\nSource:      ${payload.utm_source} / ${payload.utm_medium ?? 'none'}`] : []),
+        ].join('\n'),
+      };
+
+    case 'room-block-capture':
+      return {
+        subject: `Room Block Capture — ${payload.email} (${payload.destination ?? 'no destination'})`,
+        text: [
+          'ROOM BLOCK CALCULATOR CAPTURE',
+          '==============================',
+          `Email:       ${payload.email}`,
+          `Destination: ${payload.destination ?? 'not specified'}`,
           ...(payload.utm_source ? [`\nSource:      ${payload.utm_source} / ${payload.utm_medium ?? 'none'}`] : []),
         ].join('\n'),
       };
@@ -295,7 +316,7 @@ export default {
     }
 
     // Turnstile — enforce for quiz forms when secret is configured
-    const requiresTurnstile = (raw.type === 'email-capture' || raw.type === 'lead') && env.TURNSTILE_SECRET;
+    const requiresTurnstile = (raw.type === 'email-capture' || raw.type === 'room-block-capture' || raw.type === 'lead') && env.TURNSTILE_SECRET;
     if (requiresTurnstile) {
       const token = (raw['cf-turnstile-response'] as string) || '';
       const ip = request.headers.get('CF-Connecting-IP') || '';
@@ -311,6 +332,14 @@ export default {
 
       // Always notify owner
       await sendMailgunEmail(env, env.NOTIFY_EMAIL, subject, text);
+
+      if (payload.type === 'room-block-capture') {
+        await subscribeToSendy(env, env.SENDY_ROOM_BLOCK_LIST_ID, payload.email, '', {
+          destination: payload.destination ?? '',
+          utmsource: payload.utm_source ?? '',
+          utmmedium: payload.utm_medium ?? '',
+        });
+      }
 
       if (payload.type === 'email-capture') {
         // Stage 1: subscribe to nurture list, send confirmation
