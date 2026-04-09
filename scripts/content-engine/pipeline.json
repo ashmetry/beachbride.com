@@ -12473,17 +12473,84 @@
         "room block destination wedding tips",
         "guest accommodations destination wedding"
       ],
-      "status": "discovered",
+      "status": "skipped-intent-overlap",
       "score": 88,
       "contentType": "guide",
       "schemaType": "howto",
       "isRefresh": false,
       "existingSlug": null,
-      "brief": null,
+      "brief": {
+        "slug": "destination-wedding-room-block",
+        "title": "Destination Wedding Room Block: How to Set One Up (And Actually Fill It)",
+        "metaDescription": "Learn how to negotiate a destination wedding room block, how many rooms to reserve, and what happens if guests don't fill them. Real numbers included.",
+        "targetWordCount": 2200,
+        "schemaType": "howto",
+        "h2Outline": [
+          "What Is a Destination Wedding Room Block (And Why You Absolutely Need One)?",
+          "How Many Rooms Should You Block? (Real Numbers by Guest Count)",
+          "What Factors Affect Your Room Block Negotiation?",
+          "How to Set Up a Room Block: Step-by-Step",
+          "Room Block Policies by Destination: What to Expect in Cancun, Hawaii, Jamaica, and Beyond",
+          "What Happens If Guests Don't Fill Your Room Block?",
+          "Perks You Can Negotiate Into Your Room Block (Most Couples Leave These on the Table)",
+          "All-Inclusive vs. Traditional Hotel Room Blocks: Which Is Right for Your Wedding?",
+          "How BeachBride Can Help You Lock In the Perfect Room Block"
+        ],
+        "faqTopics": [
+          "When should I set up a room block for a destination wedding?",
+          "How does a room block attrition clause work and how do I protect myself?",
+          "Can guests book outside the room block, and should I let them?",
+          "Do all-inclusive resorts handle room blocks differently than regular hotels?",
+          "What is a typical room block minimum for a destination wedding?",
+          "Can I get free rooms or upgrades as part of my room block deal?",
+          "What happens to unused rooms in my block if guests don't book them?",
+          "Should I use a wedding planner to negotiate my room block?"
+        ],
+        "internalLinkTargets": [
+          "/tools/room-block-calculator/",
+          "/destination-wedding-guide/",
+          "/destination-wedding-cost/",
+          "/beach-wedding-checklist/",
+          "/destinations/cancun/",
+          "/destinations/hawaii/",
+          "/destinations/jamaica/",
+          "/destinations/punta-cana/",
+          "/destinations/bali/",
+          "/destinations/santorini/",
+          "/destinations/tulum/",
+          "/destinations/costa-rica/",
+          "/vendors/planner/cancun/",
+          "/vendors/planner/hawaii/",
+          "/vendors/planner/jamaica/",
+          "/vendors/resort/cancun/",
+          "/vendors/resort/hawaii/",
+          "/vendors/planner/"
+        ],
+        "externalSourceTypes": [
+          "hotel group sales contract templates and industry standards",
+          "wedding industry surveys (The Knot, Brides, WeddingWire annual reports)",
+          "travel industry data on group booking attrition rates",
+          "resort wedding coordinator interviews or quotes",
+          "destination wedding planner expert commentary"
+        ],
+        "disclaimers": [
+          "financial",
+          "referral"
+        ],
+        "relatedSlugs": [
+          "destination-wedding-cost",
+          "destination-wedding-guide",
+          "beach-wedding-checklist",
+          "destination-wedding-tips",
+          "destination-wedding-budget-hacks-that-dont-sacrifice-luxury"
+        ],
+        "affiliateOpportunity": "Luxury resort affiliate commissions — naturally recommend and link to all-inclusive resort partners in Cancun, Hawaii, and Jamaica as prime room block destinations, with affiliate booking links embedded in resort mentions and the room block calculator tool CTA.",
+        "uniqueAngle": "Most room block articles are dry, hotel-industry-speak guides. This one translates the jargon into plain language a real couple can act on — including the negotiation tactics most planners keep to themselves, a destination-by-destination breakdown of what resorts actually expect, and honest advice on attrition clauses so couples don't get hit with surprise charges. Anchored by the BeachBride room block calculator tool as a conversion point."
+      },
       "researchData": null,
       "qualityReport": null,
       "rewriteAttempts": 0,
-      "failReason": null,
+      "failReason": "Intent overlap with /how-many-hotel-rooms-to-block-for-destination-wedding/: The queued article 'How Many Hotel Rooms to Block for a Destination Wedding' covers the same core search intent as this candidate. Both articles explain what a room block is, how many rooms to block, attrition clauses, destination-by-destination breakdowns (Cancun, Bali, Santorini, Hawaii, Jamaica), what happens if guests don't fill the block, and both anchor to a BeachBride room block calculator. FAQ overlap is near-total: attrition clause protection, courtesy vs. contracted block, leftover rooms after cutoff, how far in advance to set up a block, and blocking at multiple hotels all appear in both. The candidate's 'negotiation perks' and 'all-inclusive vs. traditional hotel' angles add marginal differentiation, but a searcher landing on the queued article would have their query fully satisfied. These two pieces are targeting the same searcher at the same moment in the planning journey.",
       "discoveredAt": "2026-04-08",
       "publishedAt": null,
       "articleSlug": "destination-wedding-room-block-guide",
@@ -12508,15 +12575,235 @@
         "how many hotel rooms do you need for a wedding",
         "room block size destination wedding"
       ],
-      "status": "discovered",
+      "status": "staged",
       "score": 90,
       "contentType": "guide",
       "schemaType": "howto",
       "isRefresh": false,
       "existingSlug": null,
-      "brief": null,
-      "researchData": null,
-      "qualityReport": null,
+      "brief": {
+        "slug": "how-many-hotel-rooms-to-block-destination-wedding",
+        "title": "How Many Hotel Rooms to Block for a Destination Wedding (+ a Calculator to Get It Right)",
+        "metaDescription": "Not sure how many hotel rooms to block for your destination wedding? Here's the exact formula, real numbers by destination, and a free room block calculator.",
+        "targetWordCount": 2200,
+        "schemaType": "howto",
+        "h2Outline": [
+          "What Is a Hotel Room Block — and Why Does It Matter for Destination Weddings?",
+          "How Many Rooms Should You Actually Block? (The Short Answer)",
+          "What Factors Affect How Many Rooms You Need?",
+          "How Does Your Destination Change the Math?",
+          "What Happens If You Block Too Many (or Too Few) Rooms?",
+          "Step-by-Step: How to Calculate Your Room Block",
+          "Room Block Tips by Destination (Cancun, Bali, Santorini, Hawaii, Jamaica & More)",
+          "How BeachBride Can Help You Get This Right"
+        ],
+        "faqTopics": [
+          "What percentage of destination wedding guests actually book the room block?",
+          "How far in advance should I set up a hotel room block?",
+          "Do I have to pay for rooms that guests don't book?",
+          "What is an attrition clause and how do I avoid getting burned by it?",
+          "Can I block rooms at more than one hotel?",
+          "What's the difference between a courtesy block and a contracted block?",
+          "Should I block rooms at the wedding venue resort or a nearby hotel?",
+          "What happens to leftover blocked rooms after the cutoff date?"
+        ],
+        "internalLinkTargets": [
+          "/tools/room-block-calculator/",
+          "/destination-wedding-guide/",
+          "/destination-wedding-cost/",
+          "/beach-wedding-checklist/",
+          "/destinations/cancun/",
+          "/destinations/bali/",
+          "/destinations/santorini/",
+          "/destinations/hawaii/",
+          "/destinations/jamaica/",
+          "/destinations/punta-cana/",
+          "/destinations/tulum/",
+          "/destinations/costa-rica/",
+          "/vendors/planner/cancun/",
+          "/vendors/planner/hawaii/",
+          "/vendors/planner/jamaica/",
+          "/vendors/planner/bali/",
+          "/vendors/planner/santorini/",
+          "/vendors/planner/",
+          "/quiz/"
+        ],
+        "externalSourceTypes": [
+          "wedding industry surveys (The Knot, WeddingWire annual reports)",
+          "hotel group sales and attrition clause industry standards",
+          "travel industry data on destination wedding guest attendance rates",
+          "resort group booking policies (all-inclusive vs. independent properties)"
+        ],
+        "disclaimers": [
+          "financial",
+          "referral"
+        ],
+        "relatedSlugs": [
+          "destination-wedding-cost",
+          "destination-wedding-guide",
+          "beach-wedding-checklist",
+          "destination-wedding-tips",
+          "destination-wedding-budget-hacks-that-dont-sacrifice-luxury"
+        ],
+        "affiliateOpportunity": "Luxury resort affiliate commissions — natural opportunity to link to all-inclusive resort partners in Cancun, Punta Cana, and Jamaica where room blocks are central to the wedding package structure; recommend specific resort tiers with affiliate tracking.",
+        "uniqueAngle": "Most articles give a vague '60–80% of guests' rule and stop there. This guide goes further: it breaks down the math by destination type (all-inclusive vs. boutique vs. villa), explains the attrition clause risk in plain language, gives real room-count examples for weddings of 30, 60, and 100 guests, and ties directly into BeachBride's free room block calculator tool — making it the only piece that turns advice into an actionable, personalized number."
+      },
+      "researchData": {
+        "sections": [
+          {
+            "h2": "What Is a Hotel Room Block — and Why Does It Matter for Destination Weddings?",
+            "content": "### Key Facts with Specific Numbers/Statistics\n\n1. **Rule of thumb for room blocks**: Block approximately **ceil((out-of-town invitees × expected attendance) ÷ 2)** rooms, plus a **10% buffer**. For example, with 60 out-of-town invitees at 70% attendance, this yields 42 travelers ÷ 2 = 21 rooms + 10% buffer = **23 rooms**.[1]\n\n   - Source: Engine.com - https://engine.com/business-travel-guide/how-many-hotel-rooms-to-block-for-a-wedding-faq\n\n2. **Typical block sizes**: A standard **courtesy block** ranges from **10-20 rooms**, while contracted blocks start at a **minimum of 10 rooms** and can be larger based on hotel agreement; many couples use two tiers, such as **20 rooms** at a midscale hotel and **15** at an upscale one.[1][2]\n\n   - Sources: Engine.com - https://engine.com/business-travel-guide/how-many-hotel-rooms-to-block-for-a-wedding-faq; Unfolded Travels - https://unfoldedtravels.com/2023/11/17/destination-wedding-room-blocks-101/\n\n3. **Destination wedding estimate**: Reserve rooms for **50% of anticipated guest count** (assuming 2 guests per room); for **100 expected guests**, block **50 rooms**.[2]\n\n   - Source: Unfolded Travels - https://unfoldedtravels.com/2023/11/17/destination-wedding-room-blocks-101/\n\n4. **Advance booking timeline**: For destination weddings, secure blocks **12-14 months** in advance due to high demand in destination markets.[1]\n\n   - Source: Engine.com - https://engine.com/business-travel-guide/how-many-hotel-rooms-to-block-for-a-wedding-faq\n\n5. **Real-world example for 100-150 guests**: With **140 out-of-town** from 190 invitees (mostly couples/families), couples estimate **40-60 rooms** across hotels.[3]\n\n   - Source: WeddingWire Forums - https://www.weddingwire.com/wedding-forums/how-many-hotel-rooms-to-block/23fc1bad52220b52.html\n\n### What Is a Hotel Room Block — and Why Does It Matter for Destination Weddings?\n\nA **hotel room block** is a reserved group of guest rooms at a negotiated group rate, either as a **courtesy block** (no financial risk if unfilled, rooms released after cutoff) or **contracted block** (formal agreement with potential attrition penalties for low pickup).[1][2][4][6]\n\nIt matters for destination weddings because:\n- Ensures **availability** near the venue in high-demand areas, as blocked rooms are removed from public inventory until the **cutoff date** (often 30 days prior).[4]\n- Locks in **consistent discounted rates**, cancellation policies, and perks like shuttles or complimentary rooms for all guests.[1][5]\n- Centralizes guests for logistics like welcome bags and events, even if 80%+ are local—recommend a small **10-15 room** block.[1]\n\n### Relevant Tourism Board Guidelines, Legal Requirements, or Industry Data\nNo specific tourism board guidelines (e.g., from Visit Florida or Mexico Tourism Board) or legal requirements appear in results; industry practice emphasizes **attrition clauses** in contracted blocks (penalties if below agreed pickup, e.g., 80%), with **drop dates** ~6 months out for adjustments without penalty.[2] Hotels may require deposits for guaranteed blocks.[6] Monitor pickup weekly and add rooms pre-cutoff.[1]\n\n### Common Misconceptions Couples Have\n- **Blocking for total guests, not out-of-towners**: Many overestimate by including locals; focus only on traveling invitees (e.g., block 23 for 60 out-of-towners at 70% attendance, not full list).[1]\n- **Courtesy vs. contracted blocks are identical**: Courtesy blocks have **no attrition risk** or deposits, while contracted ones guarantee rates but add financial penalties—ideal for peaks but riskier.[2][6]\n- **One block suffices**: Couples often underplan by using a single hotel; split across **2-3 properties** at varied price points for flexibility.[1]\n- **Last-minute booking works**: Destination spots fill fast—delaying beyond **10-12 months** risks poor rates/availability.[1][2]",
+            "citations": [
+              "https://engine.com/business-travel-guide/how-many-hotel-rooms-to-block-for-a-wedding-faq",
+              "https://unfoldedtravels.com/2023/11/17/destination-wedding-room-blocks-101/",
+              "https://www.weddingwire.com/wedding-forums/how-many-hotel-rooms-to-block/23fc1bad52220b52.html",
+              "https://amyabbottevents.com/wedding-room-block/",
+              "https://www.wedaways.com/demystifying-10-wedding-hotel-room-block-facts/",
+              "https://sunset.com/travel/hotels/hotel-room-blocks-wedding",
+              "https://thehotelgurus.com/title-estimating-guest-count-for-room-blocks/",
+              "https://forums.theknot.com/discussion/1065140/how-do-you-know-how-many-hotel-rooms-to-block-for-the-wedding"
+            ]
+          },
+          {
+            "h2": "How Many Rooms Should You Actually Block? (The Short Answer)",
+            "content": "### 3-5 Key Facts with Specific Numbers/Statistics\n\n1. **Block rooms for approximately half of anticipated out-of-town guests**, assuming an average of 2 guests per room; for example, with 100 expected guests at a destination wedding, block about 50 rooms or fewer, accounting for couples sharing.[1][6]\n   - **Source**: Yellow Umbrella Events (https://www.yellowumbrellaevents.com/room-block-information-for-your-destination-wedding/); Wed Society (https://www.wedsociety.com/article/hotel-room-blocks/).\n\n2. **Use this formula for a fast estimate: Rooms ≈ ceil((out-of-town invitees × expected attendance rate) ÷ 2) + 10% buffer**; e.g., 60 out-of-town invitees at 70% attendance = 42 travelers ÷ 2 = 21 rooms + 10% buffer = 23 rooms total.[2]\n   - **Source**: Engine.com Business Travel Guide (https://engine.com/business-travel-guide/how-many-hotel-rooms-to-block-for-a-wedding-faq).\n\n3. **For destination weddings, block 15-30 contracted rooms for 50 guests, 30-60 for 100 guests, 45-90 for 150 guests, or 60-120 for 200 guests**, planning for 80% of guests needing accommodations and reducing by 20% for conservative contracted blocks.[3]\n   - **Source**: The Knot (https://www.theknot.com/content/hotel-room-blocks-101).\n\n4. **A minimum of 10 rooms qualifies for a contracted room block** to access perks like concessions; courtesy blocks are typically 10-20 rooms with no financial risk for unused rooms.[1][2][4]\n   - **Sources**: Yellow Umbrella Events (https://www.yellowumbrellaevents.com/room-block-information-for-your-destination-wedding/); Engine.com (https://engine.com/business-travel-guide/how-many-hotel-rooms-to-block-for-a-wedding-faq); GroupTravel.org (http://grouptravel.org/wedding/how-many-hotel-rooms-should-i-reserve-for-my-wedding-guests/).\n\n5. **Split blocks across 2-3 hotels** (e.g., 20 rooms midscale + 15 upscale) to offer budget options, increase pickup, and mitigate overcommitment risk; for 100-150 guests with ~60-80 out-of-towners at 70% attendance, block 23-31 rooms total.[2]\n   - **Source**: Engine.com Business Travel Guide (https://engine.com/business-travel-guide/how-many-hotel-rooms-to-block-for-a-wedding-faq).\n\n### Relevant Tourism Board Guidelines, Legal Requirements, or Industry Data\nNo specific tourism board guidelines or legal requirements (e.g., from U.S. tourism boards or international advisories) appear in the results for room blocks. Industry data emphasizes contracted blocks of 10+ rooms for perks like free bridal suites (if 25-30+ rooms) or rate discounts, with contracts allowing reductions 1 month out.[1][4] The Knot recommends 80-90% attrition clauses in contracts, meaning couples cover shortfalls only if under 80-90% pickup (e.g., 90% attrition on 20 rooms = pay if under 18 booked).[3]\n\n### Common Misconceptions Couples Have\n- **Blocking based on total invitees instead of out-of-town guests only**: Couples often overestimate by including locals; focus on out-of-towners (e.g., block 25 for 50 traveling from 100 total, not all 100).[2][4]\n- **Assuming 1 room per guest**: Most guests are couples (2 per room) or share; adjust to 1.5 if many singles, avoiding excess blocks.[1][2]\n- **One hotel only**: Risks overcommitment; 2-3 options at varied price points boost attendance without stranding guests.[2][6]\n- **No buffer or adjustments**: Fixed blocks without 10% buffer or monitoring lead to attrition fees; reduce 1 month out if needed.[2][4]\n- **Courtesy blocks for large weddings**: Under 20 rooms suits small events; destination weddings need contracted blocks for perks.[1][3]",
+            "citations": [
+              "https://www.yellowumbrellaevents.com/room-block-information-for-your-destination-wedding/",
+              "https://engine.com/business-travel-guide/how-many-hotel-rooms-to-block-for-a-wedding-faq",
+              "https://www.theknot.com/content/hotel-room-blocks-101",
+              "http://grouptravel.org/wedding/how-many-hotel-rooms-should-i-reserve-for-my-wedding-guests/",
+              "https://www.weddingwire.com/wedding-forums/how-many-hotel-rooms-to-block/23fc1bad52220b52.html",
+              "https://www.wedsociety.com/article/hotel-room-blocks/"
+            ]
+          },
+          {
+            "h2": "What Factors Affect How Many Rooms You Need?",
+            "content": "### Key Facts with Specific Numbers/Statistics\n\n1. **Out-of-town guests drive room needs**: For 60 out-of-town invitees with 70% expected attendance, block approximately 23 rooms (42 travelers ÷ 2 guests per room, plus 10% buffer).[1]\n   \n   Source: Engine.com - https://engine.com/business-travel-guide/how-many-hotel-rooms-to-block-for-a-wedding-faq\n\n2. **Attendance rate and guest mix adjustment**: With many singles, lower the assumption to 1.5 guests per room; for 40 traveling guests at 70% attendance (28 travelers), block about 21 rooms after 10% buffer.[1]\n\n   Source: Engine.com - https://engine.com/business-travel-guide/how-many-hotel-rooms-to-block-for-a-wedding-faq\n\n3. **Scale for larger weddings**: For 100-150 total guests where 80 are out-of-town at 70% attendance, block about 31 rooms (56 travelers ÷ 2, plus buffer).[1]\n\n   Source: Engine.com - https://engine.com/business-travel-guide/how-many-hotel-rooms-to-block-for-a-wedding-faq\n\n4. **Hotel options limit**: Use 2-3 hotels total (e.g., 15-25 rooms at primary, 10-15 at secondary) to match budgets, boost pickup, and avoid overcommitment.[1][4]\n\n   Sources: Engine.com - https://engine.com/business-travel-guide/how-many-hotel-rooms-to-block-for-a-wedding-faq; The Venue Report - https://www.venuereport.com/roundups/13-tips-for-booking-hotel-room-blocks-for-your-wedding/\n\n5. **Planning timeline**: Block rooms 12-14 months in advance for destination weddings, as markets fill early; cutoff is typically 30 days out, after which unbooked rooms release publicly.[1][2][5]\n\n   Sources: Engine.com - https://engine.com/business-travel-guide/how-many-hotel-rooms-to-block-for-a-wedding-faq; Karla Casillas (Los Cabos) - https://karlacasillas.com/hotel-room-blocks-explained-a-guide-for-brides-planning-a-destination-wedding/; Amy Abbott Events - https://amyabbottevents.com/wedding-room-block/\n\n### Relevant Guidelines and Industry Data\nNo specific tourism board guidelines or legal requirements appear in results for room block sizing; however, industry practice emphasizes contracted blocks over courtesy blocks for destination weddings to guarantee availability and negotiate perks like fixed rates and no attrition fees if pickup is monitored weekly.[1][2][5][6]  \nFormula from wedding industry tools: Rooms ≈ ceil((out-of-town invitees × attendance rate) ÷ average guests/room) + 10% buffer, with 2.0 for couples or 1.5 for singles-heavy groups.[1]\n\n### Common Misconceptions Couples Have\n- **Blocking based on total guests**: Couples often count all invitees instead of just out-of-towners (e.g., if 80% are local, a 10-15 room courtesy block suffices).[1]\n- **Exact numbers required**: No need for precision—overestimate and adjust pre-cutoff; guesstimates work, as excess rooms release automatically.[1][4]\n- **Guests book independently**: Without blocks, rooms sell out, rates rise, and availability vanishes in destination markets.[5][6]\n- **One hotel suffices**: Limiting to one risks budget mismatches or low pickup; 2-3 options increase attendance.[1][4]",
+            "citations": [
+              "https://engine.com/business-travel-guide/how-many-hotel-rooms-to-block-for-a-wedding-faq",
+              "https://karlacasillas.com/hotel-room-blocks-explained-a-guide-for-brides-planning-a-destination-wedding/",
+              "https://sunset.com/travel/hotels/hotel-room-blocks-wedding",
+              "https://www.venuereport.com/roundups/13-tips-for-booking-hotel-room-blocks-for-your-wedding/",
+              "https://amyabbottevents.com/wedding-room-block/",
+              "https://www.royaltreatmenttravel.com/blog/destination-wedding-room-blocks-101",
+              "https://www.rockymountainbride.com/blog/wedding-hotel-room-blocks-what-you-need-to-know/"
+            ]
+          },
+          {
+            "h2": "How Does Your Destination Change the Math?",
+            "content": "**Destination weddings require blocking significantly more hotel rooms than local weddings due to near-100% out-of-town attendance, higher sharing rates among couples, and multi-night stays influenced by resort availability and peak season demand.** [1][3][4]\n\n### 3-5 Key Facts with Specific Numbers/Statistics\n- For a **100-guest destination wedding**, block **30-60 contracted rooms** (or 40-80 courtesy rooms), compared to 20-40 contracted for local weddings, accounting for 80-90% needing accommodations and couples sharing. [3]\n- Block rooms for **~50% of anticipated guests** at destination weddings (e.g., **50 rooms for 100 guests**), as most travel in couples or pairs, versus half of out-of-towners for local events. [1][4]\n- Use this formula for precision: **Rooms ≈ ceil((out-of-town invitees × attendance rate) ÷ 2) + 10% buffer**; e.g., 60 out-of-town invitees at 70% attendance = **~23 rooms**. Destination math adjusts upward for 80-100% travel rates and singles/families. [2]\n- **Contracted blocks start at 10+ rooms** for perks like rate holds; destination weddings often need **two-three blocks of 15-30 rooms each** across budget tiers to match resort inventory limits. [1][2][5]\n- For **150 guests**, destination weddings require **45-90 contracted rooms** (60-120 courtesy), doubling local needs due to full travel and vacation-style bookings. [3]\n\n### Relevant Tourism Board Guidelines, Legal Requirements, or Industry Data\nNo specific tourism board guidelines (e.g., from Visit Mexico or Hawaii Tourism Authority) or legal requirements appear in results; industry standards from The Knot and planners emphasize **attrition clauses** (e.g., 80-90% pickup target, with couples liable for shortfalls under 90%) and **10-12 month advance booking** for destinations to secure rates amid high demand. [3][4] The Knot reports destination blocks 1.5-2x larger than local due to 80%+ accommodation needs. [3]\n\n### Common Misconceptions Couples Have\n- **Blocking for total invitees instead of actual out-of-town attendees**: Couples overestimate by including locals, ignoring destination's near-100% travel (e.g., blocking 100 rooms for 100 guests vs. realistic 50). [1][2][4]\n- **Assuming all guests need solo rooms**: Most share (2 per room average), so divide by 2; singles often pair up, but families need multi-bed adjustments—leads to 20-30% overblocking. [1][2]\n- **One hotel suffices**: Destinations require 2-3 properties for price variety and availability; single-block risks sellouts or attrition fees. [2]\n- **No buffer needed**: Skipping 10-20% buffer ignores no-shows; conservative contracts reduce by 20% from estimates to avoid penalties. [2][3]",
+            "citations": [
+              "https://www.yellowumbrellaevents.com/room-block-information-for-your-destination-wedding/",
+              "https://engine.com/business-travel-guide/how-many-hotel-rooms-to-block-for-a-wedding-faq",
+              "https://www.theknot.com/content/hotel-room-blocks-101",
+              "https://unfoldedtravels.com/2023/11/17/destination-wedding-room-blocks-101/",
+              "http://grouptravel.org/wedding/how-many-hotel-rooms-should-i-reserve-for-my-wedding-guests/",
+              "https://www.weddingwire.com/wedding-forums/how-many-hotel-rooms-to-block/23fc1bad52220b52.html"
+            ]
+          },
+          {
+            "h2": "What Happens If You Block Too Many (or Too Few) Rooms?",
+            "content": "### Key Facts with Specific Numbers/Statistics\n\n1. **Attrition clauses penalize blocking too many rooms**: Contracts often include an **80–90% attrition rate**, meaning if you block 20 rooms but guests book only 16 (80% of the block), you may owe fees for the shortfall; The Knot recommends reducing anticipated rooms by **20%** for contracted blocks to avoid this.[2]\n\n2. **Over-blocking increases deposits and risks**: Holding too many rooms (e.g., beyond **20–30 rooms** for 100–150 guests) can trigger higher initial deposits, stricter cancellation terms, and single-occupancy surcharges (priced at double-occupancy rates if exceeding limits); destination resorts often require **3–4 night minimum stays**, amplifying costs if pickup is low.[4]\n\n3. **Under-blocking leads to sold-out scenarios**: For destination weddings with 100 guests, blocking too few (under **30–60 contracted rooms**) risks guests unable to book at group rates, as entry-level rooms sell out first; only **40–60%** of invitees typically attend, so underestimating out-of-towners by even **10%** can exhaust blocks quickly.[2][4]\n\n4. **Buffer recommendations to mitigate both risks**: Add a **10% buffer** to estimates (e.g., 42 expected travelers ÷ 2 = 21 rooms + 10% = **23 rooms**); split across **2–3 hotels** to avoid overcommitting one property, with courtesy blocks limited to **10–20 rooms** (no penalties).[1][3]\n\n5. **VIP/family sub-blocks for flexibility**: Reserve **6–10 rooms** specifically for family/wedding party to ensure availability, even if main block underperforms; this prevents scrambling if overall pickup is low (**e.g., 70% attendance**).[1]\n\n### Relevant Tourism Board Guidelines, Legal Requirements, or Industry Data\nNo specific tourism board guidelines (e.g., from Mexico or Caribbean boards) or legal requirements appear in results, as room blocks are private hotel contracts without universal mandates. Industry data emphasizes **attrition clauses** (80–90% thresholds) and **minimum night stays** (3–4 nights at resorts) as standard in destination wedding contracts to protect hotels; The Knot reports destination weddings need **higher blocks** (e.g., **45–90 contracted rooms** for 150 guests) due to travel logistics.[2][4]\n\n### Common Misconceptions Couples Have\n- **Misconception: Block based on total guests, not out-of-towners**: Couples often count all invitees, ignoring that only **out-of-town guests** (e.g., 50–80% for destinations) need rooms; this leads to massive over-blocks.[1][2][3]\n- **Misconception: More rooms = safer**: Over-blocking triggers penalties/deposits, while **courtesy blocks (10–20 rooms)** suffice for small groups without risk; many assume all blocks are penalty-free.[1][3][6]\n- **Misconception: Everyone shares (2 per room)**: Singles/families skew this; use **1.5–2.0 guests/room**, but resorts cap single-occupancy, charging double rates—leading to unexpected costs if underestimated.[1][4]\n- **Misconception: One hotel is enough**: Relying on a single property risks total sell-out; **2–3 options** at varied price points boost pickup by **20–30%**.[1][5]",
+            "citations": [
+              "https://engine.com/business-travel-guide/how-many-hotel-rooms-to-block-for-a-wedding-faq",
+              "https://www.theknot.com/content/hotel-room-blocks-101",
+              "http://grouptravel.org/wedding/how-many-hotel-rooms-should-i-reserve-for-my-wedding-guests/",
+              "https://www.everaftertravel.org/single-post/destination-wedding-room-blocks",
+              "https://chateaubeeselection.com/hotel-rooms-for-destination-wedding-guests/",
+              "https://rachelleighevents.com/navigating-the-confusing-world-of-wedding-room-blocks/"
+            ]
+          },
+          {
+            "h2": "Step-by-Step: How to Calculate Your Room Block",
+            "content": "### 3-5 Key Facts with Specific Numbers/Statistics\n\n1. **For destination weddings, block 20–40 courtesy rooms and 15–30 contracted rooms for 50 guests**; this scales up to 80–160 courtesy and 60–120 contracted rooms for 200 guests, based on expert recommendations to cover 80% of guest needs split across hotels.[1]\n\n2. **Calculate rooms by estimating 60% out-of-town guests, dividing by 2.5 (to account for couples/families sharing), then adding a 10–20% buffer**; e.g., for 100 guests: 60 out-of-town ÷ 2.5 = 24 rooms + 20% = 29 rooms total.[4]\n\n3. **Anticipate 40–60% of invited guests attending destination weddings** (lower than local weddings due to travel barriers), then apply a formula: 100% of \"definitely coming\" guests + 50% of \"might come\" guests to estimate rooms.[3]\n\n4. **Plan for 70–80% of guest list needing accommodations**, then reduce anticipated rooms by 20% for contracted attrition blocks to avoid penalties, per wedding experts.[1][2]\n\n5. **Most hotels limit blocks to 10–30 rooms**; for larger weddings, secure multiple blocks (e.g., 15–20 at a premium hotel for family/wedding party + 15–20 at budget options).[1][4][7]\n\n### Relevant Tourism Board Guidelines, Legal Requirements, or Industry Data\nNo specific tourism board guidelines (e.g., from Mexico/Caribbean boards) or legal requirements appear in results, but industry standards emphasize **contractual attrition clauses**: contracted blocks include penalties for unused rooms below a threshold (e.g., 80% pickup), unlike **courtesy blocks** (10–20 rooms, no financial risk, released 30 days out).[1][4][5] Destination wedding data shows lower attendance (40–60%) due to accessibility/cost, per specialized planners.[3]\n\n### Common Misconceptions Couples Have\n- **Misconception: Block rooms for 100% of guests.** Reality: Only 40–80% typically need them for destination weddings; over-blocking risks attrition fees.[1][2][3]\n- **Misconception: One large block suffices.** Reality: Hotels cap at 10–30 rooms; use 2+ hotels for price/options, especially splitting family vs. others.[1][4][6][7]\n- **Misconception: Room blocks are just \"holds\" without risk.** Reality: Contracted blocks are binding contracts with deposits, deadlines, and penalties.[3][5]\n- **Misconception: Divide out-of-town guests by 2 exactly.** Reality: Use 2.5 divisor for singles/families, plus buffer for extras like clergy/wedding party.[4][5][6]",
+            "citations": [
+              "https://www.theknot.com/content/hotel-room-blocks-101",
+              "https://thehotelgurus.com/how-many-rooms-to-block-for-wedding-guests-2/",
+              "https://www.everaftertravel.org/single-post/destination-wedding-room-blocks",
+              "https://www.davidsbridal.com/content/travel/how-to-calculate-wedding-room-blocks-perfectly",
+              "http://grouptravel.org/wedding/how-many-hotel-rooms-should-i-reserve-for-my-wedding-guests/",
+              "https://www.phillymag.com/philadelphia-wedding/2012/06/12/expert-figure-hotel-rooms-block-guests/",
+              "https://jacksonandjune.com/booking-hotel-blocks-101/"
+            ]
+          },
+          {
+            "h2": "Room Block Tips by Destination (Cancun, Bali, Santorini, Hawaii, Jamaica & More)",
+            "content": "### 3-5 Key Facts with Specific Numbers/Statistics\n\n1. **Resorts typically allow couples to hold approximately 50% of their total anticipated guest count in initial room blocks.** For example, with 50 expected guests, hold 25 rooms; this applies broadly to destination resorts like those in Cancun or Jamaica.[1]\n\n   - **Source:** Yellow Umbrella Events - https://www.yellowumbrellaevents.com/what-do-i-need-to-know-about-room-blocks/\n\n2. **Hotel room blocks generally require a minimum of 10 rooms.** This standard ensures negotiated group rates (often 15-40% lower than standard rates) and is common for destination weddings in places like Hawaii or Bali.[4][6]\n\n   - **Sources:** Wedaways - https://www.wedaways.com/hotel-wedding-room-blocks/; The Venue Report - https://www.venuereport.com/roundups/13-tips-for-booking-hotel-room-blocks-for-your-wedding/\n\n3. **In Hawaii, secure room blocks 9-12 months in advance, especially on Oahu, where resorts sell out quickly during peak seasons.** Blocks are recommended for 50+ guests at or near resorts to guarantee availability and perks like upgrades.[5]\n\n   - **Source:** Love Letter Weddings - https://www.loveletterweddings.com/blogposts/pros-and-cons-of-room-blocks-how-to-decide-if-theyre-a-good-idea-for-your-destination-wedding-in-hawaii\n\n4. **Initial deposits for room blocks are often $100 per room held.** Holding too many rooms risks higher deposits and stricter cancellation terms, so prioritize a mix including entry-level, accessible, and family rooms (for 5+ guests).[1][2]\n\n   - **Sources:** Yellow Umbrella Events - https://www.yellowumbrellaevents.com/what-do-i-need-to-know-about-room-blocks/; Ever After Travel - https://www.everaftertravel.org/single-post/destination-wedding-room-blocks\n\n5. **Limit options to no more than 3 hotels to avoid confusion and improve negotiation leverage.** More properties strain planning and dilute efforts to fill blocks effectively across destinations like Santorini or Jamaica.[6][8]\n\n   - **Sources:** The Venue Report - https://www.venuereport.com/roundups/13-tips-for-booking-hotel-room-blocks-for-your-wedding/; Mango Muse Events - https://www.mangomuseevents.com/blog/2018/04/18/designating-hotel-room-blocks/\n\n### Relevant Tourism Board Guidelines, Legal Requirements, or Industry Data\nNo specific tourism board guidelines (e.g., from Visit Mexico, Bali Tourism, Santorini authorities, Hawaii Tourism Authority, or Jamaica Tourist Board) or legal requirements (e.g., mandatory deposits or attrition clauses) were identified in the results for these destinations. Industry data emphasizes contracted blocks at all-inclusive resorts in Mexico/Caribbean (e.g., Cancun, Jamaica) with perks like fixed rates but risks of attrition liability for unbooked rooms; Hawaii resorts stress early booking due to high demand.[2][5] General wedding industry standards from sources like The Knot recommend RFPs for blocks and using platforms like Engine for negotiation, with no destination-specific mandates noted.[3]\n\n### Common Misconceptions Couples Have\n- **Myth: Block a room for every guest.** Reality: Don't reserve one per person—aim for 50% of guest count, as not all need hotels (e.g., some share or stay off-site); over-blocking increases deposits and liability.[1][8]\n- **Myth: Guests can book independently without issues.** Reality: This risks sell-outs, rate hikes, and scattered logistics, especially in high-demand spots like Hawaii or Bali; blocks guarantee rooms and rates.[5][7]\n- **Myth: More rooms or hotels always mean better deals.** Reality: Excess rooms trigger stricter terms; limit to 1-3 properties for simplicity and stronger negotiations, including popular categories like entry-level to avoid guest surcharges.[2][6]",
+            "citations": [
+              "https://www.yellowumbrellaevents.com/what-do-i-need-to-know-about-room-blocks/",
+              "https://www.everaftertravel.org/single-post/destination-wedding-room-blocks",
+              "https://www.theknot.com/content/hotel-room-blocks-101",
+              "https://www.wedaways.com/hotel-wedding-room-blocks/",
+              "https://www.loveletterweddings.com/blogposts/pros-and-cons-of-room-blocks-how-to-decide-if-theyre-a-good-idea-for-your-destination-wedding-in-hawaii",
+              "https://www.venuereport.com/roundups/13-tips-for-booking-hotel-room-blocks-for-your-wedding/",
+              "https://www.royaltreatmenttravel.com/blog/destination-wedding-room-blocks-101",
+              "https://www.mangomuseevents.com/blog/2018/04/18/designating-hotel-room-blocks/",
+              "https://amyabbottevents.com/wedding-room-block/"
+            ]
+          },
+          {
+            "h2": "How BeachBride Can Help You Get This Right",
+            "content": "### 3-5 Key Facts with Specific Numbers/Statistics\n\n1. **For a destination wedding with 50 guests, block 20–40 rooms on a courtesy basis (no attrition penalties) or 15–30 rooms under a contracted block (with potential penalties for unused rooms).** This accounts for out-of-town attendees and wedding party needs.[1] Source: The Knot, https://www.theknot.com/content/hotel-room-blocks-101\n\n2. **For a destination wedding with 100 guests, block 40–80 courtesy rooms or 30–60 contracted rooms.** Larger guest lists require scaling up to ensure centralized accommodations and negotiated rates.[1] Source: The Knot, https://www.theknot.com/content/hotel-room-blocks-101\n\n3. **For a destination wedding with 150–200 guests, block 60–120 or 80–160 courtesy rooms respectively (or 45–90/60–120 contracted).** These ranges help avoid sellouts at resorts, especially all-inclusives in Mexico/Caribbean.[1] Source: The Knot, https://www.theknot.com/content/hotel-room-blocks-101\n\n4. **Couples typically see 40%–60% of invited guests attend destination weddings, guiding initial room block estimates.** Factors like destination accessibility, resort affordability, and notice period influence attendance swings.[3] Source: Ever After Travel, https://www.everaftertravel.org/single-post/destination-wedding-room-blocks\n\n5. **Set room block cutoffs 30 days before the wedding, after which unbooked rooms release to the public.** This timeline balances guest flexibility with availability guarantees.[2] Source: Amy Abbott Events, https://amyabbottevents.com/wedding-room-block/\n\n### Relevant Tourism Board Guidelines, Legal Requirements, or Industry Data\nNo specific tourism board guidelines (e.g., from Mexico Tourism Board or Caribbean Tourism Organization) or legal requirements appear in the results. Industry data emphasizes **group contracts** over simple holds: these include attrition clauses (penalties for <80–90% usage), minimum night stays, deposit structures, and final payment deadlines, often handled via partners like Funjet Vacations rather than direct resort deals.[3][5] Source: Ever After Travel (https://www.everaftertravel.org/single-post/destination-wedding-room-blocks); Paradise Weddings (https://paradiseweddings.com/blog/room-block-vs-no-contract/). Blocks should be secured 8–12 months ahead for group discounts at beach destinations.[6] Source: BeachBride, https://beachbride.com/destination-wedding-tips/\n\n### Common Misconceptions Couples Have\n- **Room blocks guarantee specific room locations or sections:** They hold a number of rooms at a group rate but assign based on check-in availability; proximity requests are not binding.[3] Source: Ever After Travel, https://www.everaftertravel.org/single-post/destination-wedding-room-blocks\n- **No contract (\"no block\") ensures all guests stay on-site without issues:** 80% on-site stays may be required by resorts, but without blocks, rooms sell out, rates rise, and guests scatter, increasing couple stress.[4][5] Source: Royal Treatment Travel (https://www.royaltreatmenttravel.com/blog/destination-wedding-room-blocks-101); Paradise Weddings (https://paradiseweddings.com/blog/room-block-vs-no-contract/)\n- **Guests reliably RSVP in time without blocks:** RSVPs are unreliable; blocks simplify decisions via one discounted link, track bookings, and prevent public sellouts.[1][2] Source: The Knot (https://www.theknot.com/content/hotel-room-blocks-101); Amy Abbott Events (https://amyabbottevents.com/wedding-room-block/)",
+            "citations": [
+              "https://www.theknot.com/content/hotel-room-blocks-101",
+              "https://amyabbottevents.com/wedding-room-block/",
+              "https://www.everaftertravel.org/single-post/destination-wedding-room-blocks",
+              "https://www.royaltreatmenttravel.com/blog/destination-wedding-room-blocks-101",
+              "https://paradiseweddings.com/blog/room-block-vs-no-contract/",
+              "https://beachbride.com/destination-wedding-tips/"
+            ]
+          }
+        ],
+        "allCitations": [
+          "https://engine.com/business-travel-guide/how-many-hotel-rooms-to-block-for-a-wedding-faq",
+          "https://unfoldedtravels.com/2023/11/17/destination-wedding-room-blocks-101/",
+          "https://www.weddingwire.com/wedding-forums/how-many-hotel-rooms-to-block/23fc1bad52220b52.html",
+          "https://amyabbottevents.com/wedding-room-block/",
+          "https://www.wedaways.com/demystifying-10-wedding-hotel-room-block-facts/",
+          "https://sunset.com/travel/hotels/hotel-room-blocks-wedding",
+          "https://thehotelgurus.com/title-estimating-guest-count-for-room-blocks/",
+          "https://forums.theknot.com/discussion/1065140/how-do-you-know-how-many-hotel-rooms-to-block-for-the-wedding",
+          "https://www.yellowumbrellaevents.com/room-block-information-for-your-destination-wedding/",
+          "https://www.theknot.com/content/hotel-room-blocks-101",
+          "http://grouptravel.org/wedding/how-many-hotel-rooms-should-i-reserve-for-my-wedding-guests/",
+          "https://www.wedsociety.com/article/hotel-room-blocks/",
+          "https://karlacasillas.com/hotel-room-blocks-explained-a-guide-for-brides-planning-a-destination-wedding/",
+          "https://www.venuereport.com/roundups/13-tips-for-booking-hotel-room-blocks-for-your-wedding/",
+          "https://www.royaltreatmenttravel.com/blog/destination-wedding-room-blocks-101",
+          "https://www.rockymountainbride.com/blog/wedding-hotel-room-blocks-what-you-need-to-know/",
+          "https://www.everaftertravel.org/single-post/destination-wedding-room-blocks",
+          "https://chateaubeeselection.com/hotel-rooms-for-destination-wedding-guests/",
+          "https://rachelleighevents.com/navigating-the-confusing-world-of-wedding-room-blocks/",
+          "https://thehotelgurus.com/how-many-rooms-to-block-for-wedding-guests-2/",
+          "https://www.davidsbridal.com/content/travel/how-to-calculate-wedding-room-blocks-perfectly",
+          "https://www.phillymag.com/philadelphia-wedding/2012/06/12/expert-figure-hotel-rooms-block-guests/",
+          "https://jacksonandjune.com/booking-hotel-blocks-101/",
+          "https://www.yellowumbrellaevents.com/what-do-i-need-to-know-about-room-blocks/",
+          "https://www.wedaways.com/hotel-wedding-room-blocks/",
+          "https://www.loveletterweddings.com/blogposts/pros-and-cons-of-room-blocks-how-to-decide-if-theyre-a-good-idea-for-your-destination-wedding-in-hawaii",
+          "https://www.mangomuseevents.com/blog/2018/04/18/designating-hotel-room-blocks/",
+          "https://paradiseweddings.com/blog/room-block-vs-no-contract/",
+          "https://beachbride.com/destination-wedding-tips/"
+        ],
+        "conductedAt": "2026-04-09T05:47:03.067Z"
+      },
+      "qualityReport": {
+        "seoScore": 100,
+        "seoDetails": [],
+        "factualPass": true,
+        "factualDetails": [],
+        "aiScore": 2,
+        "aiDetails": {
+          "patternCount": 1,
+          "uniformityPenalty": 0,
+          "cv": "0.75",
+          "sentenceCount": 187
+        },
+        "wordCount": 2196,
+        "internalLinks": 39,
+        "externalLinks": 17,
+        "citations": 17
+      },
       "rewriteAttempts": 0,
       "failReason": null,
       "discoveredAt": "2026-04-08",
@@ -12578,17 +12865,79 @@
         "resort group rate perks destination wedding",
         "complimentary rooms all inclusive destination wedding"
       ],
-      "status": "discovered",
+      "status": "skipped-intent-overlap",
       "score": 86,
       "contentType": "guide",
       "schemaType": "article",
       "isRefresh": false,
       "existingSlug": null,
-      "brief": null,
+      "brief": {
+        "slug": "all-inclusive-resort-group-rates-destination-wedding",
+        "title": "All-Inclusive Resort Group Rates for Destination Weddings: What You'll Actually Pay (2026)",
+        "metaDescription": "Learn how all-inclusive resort group rates work for destination weddings — real numbers, negotiation tips, and destination-by-destination comparisons.",
+        "targetWordCount": 2200,
+        "schemaType": "article",
+        "h2Outline": [
+          "What Are All-Inclusive Resort Group Rates (and Why They Can Make or Break Your Wedding Budget)?",
+          "What Factors Affect the Group Rate You'll Be Offered?",
+          "How Do Group Rates Compare Across Top Destination Wedding Resorts?",
+          "What's Actually Negotiable — and What Isn't?",
+          "Real Numbers: What Couples Are Paying in 2026",
+          "How to Use a Room Block to Unlock Free Wedding Perks",
+          "Which Destination Is Right for Your Guest Count and Budget?",
+          "How BeachBride Matches You With Resorts That Fit Your Group"
+        ],
+        "faqTopics": [
+          "How many rooms do you need to book to qualify for a group rate at an all-inclusive resort?",
+          "Do all-inclusive group rates include the wedding package or are those priced separately?",
+          "What happens if guests don't fill the room block — are you financially liable?",
+          "Can you negotiate complimentary rooms or upgrades as part of a group rate deal?",
+          "How far in advance should you lock in group rates for a destination wedding?",
+          "Are group rates at all-inclusive resorts actually cheaper than guests booking on their own?",
+          "Which all-inclusive destinations offer the best group rate value for 2026 weddings?"
+        ],
+        "internalLinkTargets": [
+          "/destination-wedding-cost/",
+          "/destination-wedding-guide/",
+          "/beach-wedding-checklist/",
+          "/tools/room-block-calculator/",
+          "/destinations/cancun/",
+          "/destinations/punta-cana/",
+          "/destinations/jamaica/",
+          "/destinations/riviera-maya/",
+          "/destinations/los-cabos/",
+          "/destinations/turks-and-caicos/",
+          "/vendors/resort/cancun/",
+          "/vendors/planner/cancun/",
+          "/vendors/planner/jamaica/",
+          "/vendors/planner/punta-cana/",
+          "/quiz/"
+        ],
+        "externalSourceTypes": [
+          "resort group sales department rate sheets",
+          "wedding industry surveys (The Knot, Brides, WeddingWire annual reports)",
+          "travel industry group booking data (ASTA, IATA)",
+          "destination wedding planner interviews",
+          "resort brand wedding package PDFs (Sandals, Secrets, Excellence, Hyatt Ziva)"
+        ],
+        "disclaimers": [
+          "financial",
+          "referral"
+        ],
+        "relatedSlugs": [
+          "destination-wedding-cost",
+          "destination-wedding-budget-hacks-that-dont-sacrifice-luxury",
+          "is-it-really-possible-to-save-money-with-a-beach-destination-wedding",
+          "destination-wedding-tips",
+          "beach-wedding-checklist"
+        ],
+        "affiliateOpportunity": "Luxury all-inclusive resort affiliate programs (Sandals, Apple Leisure Group / Hyatt Ziva / Secrets / Excellence resorts via travel affiliate networks); angle: 'Book your group block through BeachBride and earn bonus perks' with tracked affiliate links to resort group inquiry pages.",
+        "uniqueAngle": "Most articles on this topic are either vague ('rates vary by resort') or written from a travel agent's perspective focused on commissions. This guide gives couples the insider negotiation playbook — specific room minimums, comp room formulas, attrition clause red flags, and a side-by-side destination comparison with real 2026 rate ranges — so they walk into resort negotiations knowing exactly what to ask for and what to push back on."
+      },
       "researchData": null,
       "qualityReport": null,
       "rewriteAttempts": 0,
-      "failReason": null,
+      "failReason": "Intent overlap with /how-many-hotel-rooms-to-block-for-destination-wedding/: The staged article 'How Many Hotel Rooms to Block for a Destination Wedding' directly overlaps with the candidate on core intent. Both articles target couples negotiating room blocks at destination wedding resorts. The staged article's H2s cover attrition clauses, what happens if you block too many/few rooms, destination-by-destination breakdowns, and courtesy vs. contracted blocks — all of which are central to the candidate's outline. The staged article's FAQs explicitly answer 'What is an attrition clause and how do I avoid getting burned by it?' and 'Do I have to pay for rooms that guests don't book?' — two of the candidate's featured FAQ topics. The candidate's 'negotiation playbook' angle (comp room formulas, room minimums, what's negotiable) is a meaningful extension, but the foundational search intent — 'how do group/block rates work at all-inclusive resorts for destination weddings and what will I actually pay/owe?' — is already served by the staged piece. A searcher landing on the staged article would have their core query substantially satisfied.",
       "discoveredAt": "2026-04-08",
       "publishedAt": null,
       "articleSlug": "all-inclusive-resort-group-rates-destination-weddings",
@@ -12606,7 +12955,7 @@
     }
   ],
   "lastDiscoveryRun": "2026-04-08T19:17:14.938Z",
-  "lastGenerationRun": "2026-04-08T20:15:41.904Z",
+  "lastGenerationRun": "2026-04-09T05:50:07.318Z",
   "rejectedKeywords": [
     "spring beach wedding colors",
     "best destination wedding websites",
