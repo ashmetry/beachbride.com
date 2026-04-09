@@ -27,7 +27,7 @@ faqs:
   - question: What happens if it rains on my outdoor destination wedding day?
     answer: Rain plans are non-negotiable for any outdoor destination wedding. Work with your venue and planner to establish Plan B and Plan C options before you sign any contracts. Many resorts have covered terraces or indoor backup spaces included in their packages, and experienced local planners will build weather contingencies into your timeline.
   - question: How far in advance should guests book travel for a destination wedding?
-    answer: Guests should book travel 6-8 months before the wedding to lock in reasonable airfare and hotel rates. Send save-the-dates 12-18 months out so guests have time to request time off, budget for the trip, and take advantage of early booking prices. Setting up hotel room blocks 8-12 months ahead helps secure group discounts.
+    answer: Guests should book travel 6-8 months before the wedding to lock in reasonable airfare and hotel rates. Send save-the-dates 12-18 months out so guests have time to request time off, budget for the trip, and take advantage of early booking prices. Set up hotel room blocks 12-18 months ahead for peak Caribbean and Mexican destinations — peak-season properties fill group allocations well before the 12-month mark.
 related:
   - destination-wedding-guide
   - destination-wedding-cost

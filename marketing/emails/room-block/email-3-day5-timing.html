@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <title>The [Destination,fallback=destination] timing problem</title>
+  <!--[if mso]>
+  <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+  <![endif]-->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body, table, td, a {
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+
+    body {
+      background-color: #F9F5F0;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      width: 100% !important;
+    }
+
+    table { border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { border: 0; display: block; height: auto; line-height: 100%; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; }
+    a { color: #1C2B4A; text-decoration: none; }
+
+    .email-wrapper { background-color: #F9F5F0; padding: 48px 16px; }
+
+    .email-card {
+      background-color: #ffffff;
+      border-radius: 4px;
+      max-width: 600px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .header { background-color: #111827; padding: 12px 48px; text-align: center; }
+
+    .body { padding: 48px 48px 40px; }
+
+    .greeting { color: #111B30; font-size: 15px; font-weight: 500; margin-bottom: 24px; }
+
+    .body p {
+      color: #2c2c2c;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .consequence-list {
+      background-color: #F9F5F0;
+      border-left: 3px solid #C9974A;
+      border-radius: 2px;
+      margin: 28px 0;
+      padding: 24px 28px;
+    }
+
+    .consequence-list table { width: 100%; border-collapse: collapse; }
+
+    .consequence-list td.bullet {
+      color: #C9974A;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 0 10px 14px 0;
+      vertical-align: top;
+      width: 16px;
+    }
+
+    .consequence-list td.item {
+      color: #2c2c2c;
+      font-size: 15px;
+      line-height: 1.6;
+      padding: 0 0 14px 0;
+      vertical-align: top;
+    }
+
+    .consequence-list tr:last-child td { padding-bottom: 0; }
+
+    .cta-block {
+      background-color: #111B30;
+      border-radius: 3px;
+      margin: 36px 0;
+      padding: 36px 36px 32px;
+      text-align: center;
+    }
+
+    .cta-block-headline { color: #ffffff; font-size: 20px; font-weight: 600; line-height: 1.4; margin-bottom: 8px; }
+
+    .cta-block-sub {
+      color: #E8ECF4;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      opacity: 0.85;
+    }
+
+    .cta-button {
+      background-color: #C9974A;
+      border-radius: 3px;
+      color: #ffffff !important;
+      display: inline-block;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 18px 40px;
+      text-decoration: none;
+    }
+
+    .cta-button:hover { background-color: #A67A35; }
+
+    .cta-note { color: #E8ECF4; font-size: 12px; margin-top: 14px; opacity: 0.7; }
+
+    .divider { border: none; border-top: 1px solid #E8E8E8; margin: 36px 0; }
+
+    .sign-off { color: #444; font-size: 15px; font-weight: 500; margin-top: 8px; }
+
+    .footer { background-color: #F9F5F0; border-top: 1px solid #E8E8E8; padding: 24px 48px; text-align: center; }
+    .footer p { color: #aaa; font-size: 12px; line-height: 1.6; margin-bottom: 6px; }
+    .footer a { color: #888; text-decoration: underline; }
+
+    @media only screen and (max-width: 620px) {
+      .email-wrapper { padding: 24px 12px !important; }
+      .header { padding: 28px 24px !important; }
+      .body { padding: 32px 24px 28px !important; }
+      .cta-block { padding: 28px 24px 24px !important; }
+      .footer { padding: 20px 24px !important; }
+      .body p { font-size: 16px !important; }
+      .cta-button { padding: 18px 24px !important; font-size: 15px !important; display: block !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="email-wrapper">
+  <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+    <tr>
+      <td>
+        <table class="email-card" width="600" align="center" cellpadding="0" cellspacing="0" role="presentation" style="max-width:600px;margin:0 auto;">
+
+          <tr>
+            <td class="header">
+              <img src="https://beachbride.com/images/logo-dark.png" alt="BeachBride" width="250" style="height:auto;display:inline-block;">
+            </td>
+          </tr>
+
+          <tr>
+            <td class="body">
+
+              <p class="greeting">Hi [Name,fallback=],</p>
+
+              <p>Peak-season resorts in [Destination,fallback=your destination] fill their group block allocations 12&ndash;18 months in advance. That&rsquo;s not a sales tactic &mdash; it&rsquo;s how group sales departments manage inventory.</p>
+
+              <p>Here&rsquo;s what waiting typically costs:</p>
+
+              <div class="consequence-list">
+                <table role="presentation">
+                  <tr>
+                    <td class="bullet">&mdash;</td>
+                    <td class="item">Your preferred resort&rsquo;s group allocation for your dates is already partially committed to other weddings</td>
+                  </tr>
+                  <tr>
+                    <td class="bullet">&mdash;</td>
+                    <td class="item">Room categories get picked over &mdash; standard rooms go first; your guests lose the option of an upgrade at group rate</td>
+                  </tr>
+                  <tr>
+                    <td class="bullet">&mdash;</td>
+                    <td class="item">Competing proposals are harder to get &mdash; resorts with availability have more leverage; those without can&rsquo;t offer competing rates</td>
+                  </tr>
+                  <tr>
+                    <td class="bullet">&mdash;</td>
+                    <td class="item">The complimentary perks at 20+ and 30+ rooms go to whoever books first &mdash; they&rsquo;re not guaranteed at any room count</td>
+                  </tr>
+                </table>
+              </div>
+
+              <p>The group block process itself takes about 2&ndash;3 weeks from first contact to signed contract. That&rsquo;s after we&rsquo;ve collected proposals from multiple resorts and you&rsquo;ve reviewed them.</p>
+
+              <p>If your wedding is within 18 months, starting now puts you in the strongest position. If it&rsquo;s further out, starting early gives us more to negotiate with.</p>
+
+              <div class="cta-block">
+                <div class="cta-block-headline">Book a 15-minute call. We&rsquo;ll contact the resorts.</div>
+                <div class="cta-block-sub">You&rsquo;ll get 2&ndash;3 competing proposals for [Destination,fallback=your destination]. No obligation to proceed.</div>
+                <a href="https://beachbride.com/book/" class="cta-button">
+                  Schedule Your Free Consultation &rarr;
+                </a>
+                <div class="cta-note">Free. We&rsquo;re paid by the resort, not you.</div>
+              </div>
+
+              <hr class="divider">
+
+              <p class="sign-off">&mdash; The BeachBride Team</p>
+              <p style="color:#aaa;font-size:13px;margin-top:8px;"><a href="https://beachbride.com" style="color:#1C2B4A;">beachbride.com</a></p>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td class="footer">
+              <p>You&rsquo;re receiving this because you used the room block calculator at beachbride.com.</p>
+              <p>
+                <a href="[Unsubscribe]">Unsubscribe</a>
+                &nbsp;&middot;&nbsp;
+                <a href="[View in browser]">View in browser</a>
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</body>
+</html>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="x-apple-disable-message-reformatting">
-  <title>Quick question, [Name]</title>
+  <title>Quick question, [Name,fallback=]</title>
   <!--[if mso]>
   <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
   <![endif]-->
@@ -31,10 +31,7 @@
     img { border: 0; display: block; height: auto; line-height: 100%; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; }
     a { color: #1C2B4A; text-decoration: none; }
 
-    .email-wrapper {
-      background-color: #F9F5F0;
-      padding: 48px 16px;
-    }
+    .email-wrapper { background-color: #F9F5F0; padding: 48px 16px; }
 
     .email-card {
       background-color: #ffffff;
@@ -44,22 +41,11 @@
       overflow: hidden;
     }
 
-    .header {
-      background-color: #111827;
-      padding: 12px 48px;
-      text-align: center;
-    }
+    .header { background-color: #111827; padding: 12px 48px; text-align: center; }
 
-    .body {
-      padding: 48px 48px 40px;
-    }
+    .body { padding: 48px 48px 40px; }
 
-    .greeting {
-      color: #111B30;
-      font-size: 15px;
-      font-weight: 500;
-      margin-bottom: 24px;
-    }
+    .greeting { color: #111B30; font-size: 15px; font-weight: 500; margin-bottom: 24px; }
 
     .body p {
       color: #2c2c2c;
@@ -69,40 +55,21 @@
       margin-bottom: 20px;
     }
 
-    .body p.lead {
-      font-size: 19px;
-      color: #1a1a1a;
-      font-weight: 400;
-      line-height: 1.55;
-    }
+    .body p.lead { font-size: 19px; color: #1a1a1a; font-weight: 400; line-height: 1.55; }
 
-    .stage-list {
-      margin: 32px 0;
-    }
+    .stage-list { margin: 32px 0; }
 
     .stage-item {
       border-left: 3px solid #e0e0e0;
       margin-bottom: 22px;
       padding: 0 0 0 20px;
-      transition: border-color 0.2s;
     }
 
-    .stage-item.active {
-      border-left-color: #1C2B4A;
-    }
+    .stage-item.active { border-left-color: #1C2B4A; }
 
-    .stage-label {
-      color: #1a1a1a;
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
+    .stage-label { color: #1a1a1a; font-size: 16px; font-weight: 600; margin-bottom: 6px; }
 
-    .stage-body {
-      color: #555;
-      font-size: 15px;
-      line-height: 1.65;
-    }
+    .stage-body { color: #555; font-size: 15px; line-height: 1.65; }
 
     .cta-block {
       background-color: #111B30;
@@ -121,13 +88,7 @@
       margin-bottom: 10px;
     }
 
-    .cta-block-headline {
-      color: #ffffff;
-      font-size: 20px;
-      font-weight: 600;
-      line-height: 1.4;
-      margin-bottom: 8px;
-    }
+    .cta-block-headline { color: #ffffff; font-size: 20px; font-weight: 600; line-height: 1.4; margin-bottom: 8px; }
 
     .cta-block-sub {
       color: #E8ECF4;
@@ -150,48 +111,17 @@
       text-decoration: none;
     }
 
-    .cta-button:hover {
-      background-color: #A67A35;
-    }
+    .cta-button:hover { background-color: #A67A35; }
 
-    .cta-note {
-      color: #E8ECF4;
-      font-size: 12px;
-      margin-top: 14px;
-      opacity: 0.7;
-    }
+    .cta-note { color: #E8ECF4; font-size: 12px; margin-top: 14px; opacity: 0.7; }
 
-    .divider {
-      border: none;
-      border-top: 1px solid #E8E8E8;
-      margin: 36px 0;
-    }
+    .divider { border: none; border-top: 1px solid #E8E8E8; margin: 36px 0; }
 
-    .sign-off {
-      color: #444;
-      font-size: 15px;
-      font-weight: 500;
-      margin-top: 8px;
-    }
+    .sign-off { color: #444; font-size: 15px; font-weight: 500; margin-top: 8px; }
 
-    .footer {
-      background-color: #F9F5F0;
-      border-top: 1px solid #E8E8E8;
-      padding: 24px 48px;
-      text-align: center;
-    }
-
-    .footer p {
-      color: #aaa;
-      font-size: 12px;
-      line-height: 1.6;
-      margin-bottom: 6px;
-    }
-
-    .footer a {
-      color: #888;
-      text-decoration: underline;
-    }
+    .footer { background-color: #F9F5F0; border-top: 1px solid #E8E8E8; padding: 24px 48px; text-align: center; }
+    .footer p { color: #aaa; font-size: 12px; line-height: 1.6; margin-bottom: 6px; }
+    .footer a { color: #888; text-decoration: underline; }
 
     @media only screen and (max-width: 620px) {
       .email-wrapper { padding: 24px 12px !important; }
@@ -210,18 +140,14 @@
   <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
     <tr>
       <td>
-
-        <!-- Card -->
         <table class="email-card" width="600" align="center" cellpadding="0" cellspacing="0" role="presentation" style="max-width:600px;margin:0 auto;">
 
-          <!-- Header -->
           <tr>
             <td class="header">
               <img src="https://beachbride.com/images/logo-dark.png" alt="BeachBride" width="250" style="height:auto;display:inline-block;">
             </td>
           </tr>
 
-          <!-- Body -->
           <tr>
             <td class="body">
 
@@ -233,30 +159,28 @@
 
               <p>Most couples at this stage are somewhere in one of three places:</p>
 
-              <!-- Stage list -->
               <div class="stage-list">
 
                 <div class="stage-item">
                   <div class="stage-label">Still in early research</div>
-                  <div class="stage-body">Totally fine. Keep the guides, revisit when you're ready, and reply to this email if you ever want a recommendation.</div>
+                  <div class="stage-body">Totally fine. Keep the guides, revisit when you&rsquo;re ready, and reply to this email if you ever want a recommendation.</div>
                 </div>
 
                 <div class="stage-item">
                   <div class="stage-label">Getting serious but overwhelmed</div>
-                  <div class="stage-body">This is where a local planner makes the biggest difference &mdash; not because you can't figure it out, but because someone who has done 50 weddings at your destination will save you months of back-and-forth with vendors who don't respond reliably to international inquiries.</div>
+                  <div class="stage-body">This is where a local planner makes the biggest difference &mdash; not because you can&rsquo;t figure it out, but because someone who has done 50 weddings at your destination will save you months of back-and-forth with vendors who don&rsquo;t respond reliably to international inquiries.</div>
                 </div>
 
                 <div class="stage-item active">
                   <div class="stage-label">Ready to start talking to vendors</div>
-                  <div class="stage-body">Then I'd love to make an introduction.</div>
+                  <div class="stage-body">Then I&rsquo;d love to make an introduction.</div>
                 </div>
 
               </div>
 
-              <!-- Dark CTA block -->
               <div class="cta-block">
                 <div class="cta-block-eyebrow">Free. No obligation.</div>
-                <div class="cta-block-headline">Tell us what you need and we'll match you with 2&ndash;3 vendors who fit.</div>
+                <div class="cta-block-headline">Tell us what you need and we&rsquo;ll match you with 2&ndash;3 vendors who fit.</div>
                 <div class="cta-block-sub">Vetted planners, photographers, and florists at your destination &mdash; used to working with couples planning from thousands of miles away.</div>
                 <a href="https://beachbride.com/quiz/?stage=2" class="cta-button">
                   Get Your Vendor Matches &rarr;
@@ -264,7 +188,7 @@
                 <div class="cta-note">Takes about 3 minutes</div>
               </div>
 
-              <p>Or just reply to this email if you'd rather chat first. Either way, I hope the guides have been useful.</p>
+              <p>Or just reply to this email if you&rsquo;d rather chat first. Either way, I hope the guides have been useful.</p>
 
               <hr class="divider">
 
@@ -278,10 +202,9 @@
             </td>
           </tr>
 
-          <!-- Footer -->
           <tr>
             <td class="footer">
-              <p>One more email coming next week &mdash; then only if there's something genuinely worth sharing.</p>
+              <p>One more email coming next week &mdash; then only if there&rsquo;s something genuinely worth sharing.</p>
               <p>
                 <a href="[Unsubscribe]">Unsubscribe</a>
                 &nbsp;&middot;&nbsp;
@@ -291,8 +214,6 @@
           </tr>
 
         </table>
-        <!-- /Card -->
-
       </td>
     </tr>
   </table>

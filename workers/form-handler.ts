@@ -340,6 +340,8 @@ export default {
           Destination: payload.destination ?? '',
           UTMSource: payload.utm_source ?? '',
           UTMMedium: payload.utm_medium ?? '',
+          // TODO: pass GuestCount + Budget here once room block calculator captures those fields
+          // so room-block-sequence.md can personalise perk thresholds by guest size
         });
       }
 
@@ -391,6 +393,7 @@ export default {
         }
 
         await subscribeToSendy(env, env.SENDY_LIST_ID, payload.email, payload.name, {
+          Destination: payload.destination ?? '',
           DestinationSlug: payload.destinationSlug ?? '',
           WeddingDate: payload.weddingDate ?? '',
           GuestCount: payload.guestCount ?? '',
