@@ -182,7 +182,7 @@ Writing voice: warm, aspirational, and expert. Like a trusted friend who has pla
 Content type: ${topic.contentType}
 Schema type: ${topic.schemaType}
 ${topic.isRefresh ? `This is a REFRESH of existing article: /${topic.existingSlug}/` : 'This is a NEW article.'}
-${topic._wpContext ? `\nOriginal article context (improve and expand on this):\n${topic._wpContext}\n` : ''}
+${topic._wpContext ? `\nOriginal article context (improve and expand on this):\n${topic._wpContext}\n` : ''}${topic._editorialNotes ? `\nEDITORIAL NOTES — Pre-verified facts that MUST be incorporated accurately. Do not contradict these:\n${topic._editorialNotes}\n` : ''}
 
 Outline structure for this content type:
 ${outlineGuide}
@@ -444,8 +444,7 @@ ${affiliateTargets}
 ` : ''}EXISTING ARTICLES (for \`related\` frontmatter and context):
 ${articleList}
 
-${existingContent ? `EXISTING ARTICLE TO REFRESH (improve, don't just rewrite):\n${existingContent}\n` : ''}
-
+${existingContent ? `EXISTING ARTICLE TO REFRESH (improve, don't just rewrite):\n${existingContent}\n` : ''}${topic._editorialNotes ? `\nEDITORIAL NOTES — Pre-verified facts that MUST be incorporated accurately. Do not contradict these:\n${topic._editorialNotes}\n` : ''}
 OUTPUT FORMAT: A complete markdown file starting with YAML frontmatter between --- delimiters.
 
 Required frontmatter fields:

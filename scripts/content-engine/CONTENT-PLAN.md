@@ -512,3 +512,41 @@ Bali-specific cost article. This is the right behavior under the strict
 false-negative cost model).
 </content>
 </invoke>
+---
+
+### Editorial Notes (_editorialNotes) — added 2026-04-09
+
+A mechanism for injecting pre-verified facts into the pipeline so generated
+articles use accurate, researched data rather than hallucinated numbers.
+
+**How it works:**
+- Add `_editorialNotes` (string) to any topic in `pipeline.json`
+- For topics with an existing brief (status `staged`), also add `verifiedFacts`
+  to `topic.brief` — this ensures the notes survive into the write step
+- `generate.js` injects the notes into both:
+  1. The **brief prompt** (so brief structure reflects verified angles)
+  2. The **write prompt** (so the article body uses the verified data)
+- Label in prompt: "EDITORIAL NOTES — Pre-verified facts that MUST be
+  incorporated accurately. Do not contradict these."
+
+**When to use:**
+- When you've done external research and verified specific numbers before the
+  article is generated
+- When a topic covers factual territory where hallucinated figures would be
+  misleading (pricing, perk thresholds, contract terms, return policies)
+- When a topic is about a subject where common industry claims are wrong and
+  you want the article to reflect current reality
+
+**Current usage:**
+- `how-many-hotel-rooms-to-block-destination-wedding` (staged) — verified
+  Sandals/AMR/Hard Rock/Hyatt Ziva perk thresholds, attrition norms, timing
+- `destination-wedding-hotel-block-cost` (discovered) — same verified data
+
+**Verified room block data (April 2026):**
+Sandals: perks from 5 rooms, AMR: 1 comp per 5-7 rooms + cocktail at 10+,
+Hard Rock: room-night thresholds (30-59 nights = 2hr dinner), Hyatt Ziva: $1,200
+off at 30+ rooms. Post-COVID: value is perks not rate discounts. Attrition range
+70-90%; negotiate toward 70-75%. Timing: 12-18 months for peak Caribbean.
+Full data in memory: `reference_room_block_verified_data.md`.
+
+**Cost:** No additional API cost — notes are injected into existing prompts.
