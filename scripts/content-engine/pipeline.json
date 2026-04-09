@@ -9594,7 +9594,7 @@
       "id": "destination-wedding-announcement",
       "keyword": "destination wedding announcement",
       "secondaryKeywords": [],
-      "status": "staged",
+      "status": "published",
       "score": 70.11749711344983,
       "contentType": "informational",
       "schemaType": "article",
@@ -9837,7 +9837,7 @@
       "rewriteAttempts": 0,
       "failReason": null,
       "discoveredAt": "2026-04-08",
-      "publishedAt": null,
+      "publishedAt": "2026-04-09T15:20:16.237Z",
       "articleSlug": "destination-wedding-announcement",
       "_source": {
         "impressions": 0,

@@ -1,39 +1,44 @@
 ---
 title: "Destination Wedding Announcements: What to Say, When to Send & How to Wow Your Guests"
-description: "Learn exactly how to word, time, and send your destination wedding announcement. Real templates, timing windows, and guest-first etiquette for every destination."
+description: Learn exactly how to word, time, and send your destination wedding announcement. Real templates, timing windows, and guest-first etiquette for every destination.
 publishDate: 2026-04-08
-author: "BeachBride Editorial Team"
-tags: ["destination wedding announcement", "save the date", "destination wedding etiquette", "wedding invitations", "destination wedding planning", "wedding announcement wording"]
-schemaType: "article"
-
+author: BeachBride Editorial Team
+tags:
+  - destination wedding announcement
+  - save the date
+  - destination wedding etiquette
+  - wedding invitations
+  - destination wedding planning
+  - wedding announcement wording
+schemaType: article
 affiliateDisclosure: true
 faqs:
-  - question: "How far in advance should you send a destination wedding announcement?"
-    answer: "Send save-the-dates 9 to 12 months before the wedding and formal invitations 6 to 8 months out. For weddings in peak-season destinations or those requiring international travel, lean toward the earlier end of that window so guests have time to book flights and accommodations at reasonable prices."
-  - question: "Is a destination wedding announcement the same as a save-the-date?"
-    answer: "They overlap but aren't identical. A save-the-date is a specific type of announcement that locks in the date and general location. A post-wedding announcement, by contrast, shares the news after the ceremony. For destination weddings, most couples use the save-the-date as their primary early announcement."
-  - question: "What information should a destination wedding announcement include?"
-    answer: "At minimum, include your names, the wedding date, the destination city and country, and a link to your wedding website. Save detailed logistics like dress code, itinerary, and room block info for the website or the formal invitation that follows."
-  - question: "How do you announce a destination wedding to guests who can't afford to travel?"
-    answer: "Be upfront and gracious. Include a line like 'Your love and support mean the world to us, whether or not you can join us in person.' Consider hosting a casual local celebration after the wedding so everyone feels included without financial pressure."
-  - question: "Should you send a physical card or a digital announcement for a destination wedding?"
-    answer: "Either works, and many couples use both. Digital announcements are faster and cheaper, while physical cards feel more personal for older guests. A hybrid approach, sending digital to most guests and mailing printed cards to grandparents and close family, covers all bases."
-  - question: "What's the etiquette for announcing a destination wedding on social media?"
-    answer: "Wait until every invited guest has received their save-the-date before posting on social media. You don't want anyone learning about the wedding through Instagram before they get a personal notification. A simple, joyful post works best once your guest list has been notified."
-  - question: "Do you need to send a separate announcement if you're also having a local celebration?"
-    answer: "Yes. Send the destination save-the-date to your travel guest list first. Then send a separate invitation for the local celebration to that broader group. Keeping the two communications distinct avoids confusion about who is invited to which event."
-  - question: "How do you word a destination wedding announcement when the venue isn't confirmed yet?"
-    answer: "Use the city or region instead of a specific venue name. Something like 'August 2027 in Santorini, Greece' gives guests everything they need to start planning travel without locking you into a venue you haven't finalized."
+  - question: How far in advance should you send a destination wedding announcement?
+    answer: Send save-the-dates 9 to 12 months before the wedding and formal invitations 6 to 8 months out. For weddings in peak-season destinations or those requiring international travel, lean toward the earlier end of that window so guests have time to book flights and accommodations at reasonable prices.
+  - question: Is a destination wedding announcement the same as a save-the-date?
+    answer: They overlap but aren't identical. A save-the-date is a specific type of announcement that locks in the date and general location. A post-wedding announcement, by contrast, shares the news after the ceremony. For destination weddings, most couples use the save-the-date as their primary early announcement.
+  - question: What information should a destination wedding announcement include?
+    answer: At minimum, include your names, the wedding date, the destination city and country, and a link to your wedding website. Save detailed logistics like dress code, itinerary, and room block info for the website or the formal invitation that follows.
+  - question: How do you announce a destination wedding to guests who can't afford to travel?
+    answer: Be upfront and gracious. Include a line like 'Your love and support mean the world to us, whether or not you can join us in person.' Consider hosting a casual local celebration after the wedding so everyone feels included without financial pressure.
+  - question: Should you send a physical card or a digital announcement for a destination wedding?
+    answer: Either works, and many couples use both. Digital announcements are faster and cheaper, while physical cards feel more personal for older guests. A hybrid approach, sending digital to most guests and mailing printed cards to grandparents and close family, covers all bases.
+  - question: What's the etiquette for announcing a destination wedding on social media?
+    answer: Wait until every invited guest has received their save-the-date before posting on social media. You don't want anyone learning about the wedding through Instagram before they get a personal notification. A simple, joyful post works best once your guest list has been notified.
+  - question: Do you need to send a separate announcement if you're also having a local celebration?
+    answer: Yes. Send the destination save-the-date to your travel guest list first. Then send a separate invitation for the local celebration to that broader group. Keeping the two communications distinct avoids confusion about who is invited to which event.
+  - question: How do you word a destination wedding announcement when the venue isn't confirmed yet?
+    answer: Use the city or region instead of a specific venue name. Something like 'August 2027 in Santorini, Greece' gives guests everything they need to start planning travel without locking you into a venue you haven't finalized.
 related:
-  - "destination-wedding-guide"
-  - "destination-wedding-tips"
-  - "beach-wedding-checklist"
-  - "destination-wedding-cost"
-  - "considering-having-a-beach-wedding-think-about-these-pros-and-cons-first"
+  - destination-wedding-guide
+  - destination-wedding-tips
+  - beach-wedding-checklist
+  - destination-wedding-cost
+  - considering-having-a-beach-wedding-think-about-these-pros-and-cons-first
 disclaimers:
-  - "financial"
-  - "professional"
-heroImage: "/images/destination-wedding-announcement.jpg"
+  - financial
+  - professional
+heroImage: /images/destination-wedding-announcement.jpg
 ---
 
 You've picked a destination. You're buzzing with excitement. Now comes the part that trips up so many couples: telling everyone about it. A destination wedding announcement is more than a pretty card with a palm tree on it. It's your first real conversation with your guests about what you're asking them to do, and getting the tone, timing, and details right sets the stage for everything that follows.
@@ -133,7 +138,7 @@ Each destination has its own personality, and your announcement should reflect t
 
 According to [Condor Ferries](https://www.condorferries.co.uk/destination-wedding-statistics), the global destination wedding market reached $36.49 billion in 2024, with top international destinations including Mexico, the Caribbean, and Italy. According to [Paradise Weddings](https://paradiseweddings.com/blog/destination-wedding-statistics/), destination weddings average 50 to 86 guests, far fewer than the 141 at traditional weddings, which means your announcement list is likely more curated and personal.
 
-**[Cancun](/destinations/cancun/) & [Riviera Maya](/destinations/riviera-maya/):** Think turquoise water imagery, warm tones, and playful language. Mention the ease of direct flights from most U.S. cities. If you're booking an all-inclusive resort with a room block, include that detail on your wedding website so guests can lock in group rates early. Resorts like [Sandals](https://www.sandals.com/){rel="noopener noreferrer sponsored"} offer dedicated wedding packages that simplify group bookings.
+**[Cancun](/destinations/cancun/) & [Riviera Maya](/destinations/riviera-maya/):** Think turquoise water imagery, warm tones, and playful language. Mention the ease of direct flights from most U.S. cities. If you're booking an all-inclusive resort with a [room block](/tools/room-block-calculator/), include that detail on your wedding website so guests can lock in group rates early. Resorts like [Sandals](https://www.sandals.com/){rel="noopener noreferrer sponsored"} offer dedicated wedding packages that simplify group bookings.
 
 **[Hawaii](/destinations/hawaii/):** Lei imagery, sunset palettes, and "Aloha" openers feel natural without being cliché. Note which island you've chosen, since inter-island flights add complexity for guests.
 
