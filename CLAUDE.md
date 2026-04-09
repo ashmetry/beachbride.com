@@ -47,16 +47,18 @@ Content page (organic)
 - **Email**: Mailgun (transactional), Sendy (nurture sequences + list management)
 - **TypeScript**: strict mode, path aliases `@components/*`, `@layouts/*`, `@lib/*`, `@data/*`
 
-## Brand Palette (Option 1 — Warm Coastal Luxe)
+## Brand Palette (Warm Coastal Luxe — Navy + Gold)
 
 ```
-brand:        #2A7F8F  (warm teal — ocean)
-brand-light:  #E8F4F6
-brand-dark:   #1A5F6F
+brand:        #1C2B4A  (deep navy — premium, coastal)
+brand-light:  #E8ECF4
+brand-dark:   #111B30
 accent:       #C9974A  (warm gold — sunset, rings, luxury)
 accent-dark:  #A67A35
 neutral:      #F9F5F0  (warm white — sand)
 ```
+
+Teal was replaced with navy in April 2026. Navy pairs naturally with the gold accent and cream background, reads more premium, and harmonizes with the dark footer. Do not reintroduce teal.
 
 Font: DM Sans (already in blueprint). Warm teal reads as ocean without nautical baggage. Gold accent fits jewelry affiliate content naturally. Warm white background complements beach photography.
 
