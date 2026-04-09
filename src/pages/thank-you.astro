@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_CONFIG } from '../lib/site-config';
 ---
 
 <BaseLayout
@@ -8,21 +9,63 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   canonical="https://beachbride.com/thank-you/"
   noIndex={true}
 >
-  <main class="min-h-[60vh] flex items-center justify-center px-4">
-    <div class="text-center max-w-lg">
+  <main class="max-w-lg mx-auto px-4 py-16">
+    <!-- Confirmation -->
+    <div class="text-center mb-10">
       <div class="w-16 h-16 bg-brand/10 rounded-full flex items-center justify-center mx-auto mb-6">
         <svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
         </svg>
       </div>
       <h1 class="text-3xl font-bold text-gray-900 mb-3">Check your inbox!</h1>
-      <p class="text-gray-600 mb-8">
-        Your personalized destination guide is on its way. In the meantime, explore our destination guides and vendor directory.
+      <p class="text-gray-600">
+        Your personalized destination guide is on its way. In the meantime, explore destinations or read our planning guides.
       </p>
-      <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <a href="/destinations/" class="btn-secondary">Browse Destinations</a>
-        <a href="/guides/" class="btn-outline">Read Our Guides</a>
-      </div>
+    </div>
+
+    <!-- Travel insurance CTA -->
+    <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 mb-4">
+      <h2 class="font-bold text-gray-900 mb-1 text-base">Protect your wedding investment</h2>
+      <p class="text-sm text-gray-600 mb-3">
+        Non-refundable deposits, international flights, and tropical weather all carry real risk.
+        Most destination couples skip travel insurance — and regret it.
+      </p>
+      <a
+        href={SITE_CONFIG.affiliates.travelInsurance}
+        target="_blank"
+        rel="noopener noreferrer sponsored"
+        class="inline-flex items-center gap-1.5 text-sm font-semibold text-amber-700 hover:text-amber-900 transition-colors no-underline"
+      >
+        Compare travel insurance plans
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+        </svg>
+      </a>
+      <p class="text-xs text-gray-400 mt-1">Affiliate disclosure: BeachBride may earn a commission at no cost to you.</p>
+    </div>
+
+    <!-- Room block CTA -->
+    <div class="bg-brand-light border border-brand/20 rounded-2xl p-6 mb-8">
+      <h2 class="font-bold text-gray-900 mb-1 text-base">Where will your 40 guests stay?</h2>
+      <p class="text-sm text-gray-600 mb-3">
+        We secure group hotel rates at all-inclusive resorts — Sandals, Secrets, Hard Rock, and more.
+        Free to you. No obligation.
+      </p>
+      <a
+        href="/tools/room-block-calculator/"
+        class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand hover:underline no-underline"
+      >
+        Estimate your room block
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+
+    <!-- Nav links -->
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/destinations/" class="btn-secondary">Browse Destinations</a>
+      <a href="/guides/" class="btn-outline">Read Our Guides</a>
     </div>
   </main>
 </BaseLayout>

@@ -51,6 +51,7 @@ interface LeadPayload {
   guestCount?: string;
   budget?: string;
   servicesNeeded?: string[]; // ["planner", "photographer", "florist"] — NOT resorts/jewelers
+  roomBlockInterest?: boolean; // true = wants free group rate help — high-value signal
   utm_source?: string;
   utm_medium?: string;
   utm_campaign?: string;
@@ -170,7 +171,7 @@ function buildOwnerEmail(payload: Payload): { subject: string; text: string } {
 
     case 'lead':
       return {
-        subject: `New Lead — ${payload.name} (${payload.destination})`,
+        subject: `New Lead${payload.roomBlockInterest ? ' 🏨 ROOM BLOCK' : ''} — ${payload.name} (${payload.destination})`,
         text: [
           'NEW WEDDING LEAD',
           '================',
@@ -182,6 +183,7 @@ function buildOwnerEmail(payload: Payload): { subject: string; text: string } {
           `Guests:      ${payload.guestCount ?? 'not specified'}`,
           `Budget:      ${payload.budget ?? 'not specified'}`,
           `Services:    ${payload.servicesNeeded?.join(', ') ?? 'not specified'}`,
+          `Room Block:  ${payload.roomBlockInterest ? 'YES — wants group rate help' : 'No'}`,
           ...(payload.utm_source ? [`\nSource:      ${payload.utm_source} / ${payload.utm_medium ?? 'none'}`] : []),
           ...(payload.utm_campaign ? [`Campaign:    ${payload.utm_campaign}`] : []),
         ].join('\n'),
@@ -334,6 +336,28 @@ export default {
           `You're matched — ${payload.destination} wedding vendors will be in touch`,
           buildBrideConfirmation(payload)
         );
+
+        // High-value signal: separate alert for room block interest
+        if (payload.roomBlockInterest) {
+          await sendMailgunEmail(
+            env,
+            env.NOTIFY_EMAIL,
+            `[ROOM BLOCK] ${payload.name} — ${payload.destination} (${payload.guestCount ?? 'unknown guests'})`,
+            [
+              'ROOM BLOCK INTEREST — ACT WITHIN 24 HRS',
+              '=========================================',
+              `Name:        ${payload.name}`,
+              `Email:       ${payload.email}`,
+              `Phone:       ${payload.phone}`,
+              `Destination: ${payload.destination}`,
+              `Date:        ${payload.weddingDate ?? 'not specified'}`,
+              `Guests:      ${payload.guestCount ?? 'not specified'}`,
+              `Budget:      ${payload.budget ?? 'not specified'}`,
+              '',
+              'Next step: reach out to secure a courtesy block proposal from the resort group sales team.',
+            ].join('\n')
+          );
+        }
 
         await subscribeToSendy(env, env.SENDY_LIST_ID, payload.email, payload.name, {
           destinationslug: payload.destinationSlug ?? '',

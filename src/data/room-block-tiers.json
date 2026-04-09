@@ -1,0 +1,17 @@
+{
+  "budgetTiers": [
+    { "id": "value",   "label": "Under $150/person/night",  "avgNightly": 130, "brands": ["Moon Palace", "RIU Resorts", "Barceló"] },
+    { "id": "mid",     "label": "$150–$250/person/night",   "avgNightly": 200, "brands": ["Hard Rock", "Hyatt Ziva", "Hilton All-Inclusive"] },
+    { "id": "upper",   "label": "$250–$400/person/night",   "avgNightly": 310, "brands": ["Secrets Resorts", "Dreams Resorts", "Now Resorts"] },
+    { "id": "luxury",  "label": "$400+/person/night",       "avgNightly": 480, "brands": ["Sandals", "Le Blanc", "Zoetry"] }
+  ],
+  "perks": [
+    { "minRooms": 5,  "description": "Group rate locked in, dedicated group sales contact" },
+    { "minRooms": 10, "description": "Group rate + early check-in priority for couple" },
+    { "minRooms": 15, "description": "Group rate + welcome cocktail reception (1-hr open bar)" },
+    { "minRooms": 20, "description": "1 complimentary room + cocktail reception" },
+    { "minRooms": 25, "description": "1–2 complimentary rooms + private dinner option" },
+    { "minRooms": 30, "description": "2 complimentary rooms + couple suite upgrade" },
+    { "minRooms": 45, "description": "Premium package: suite, multiple comps, F&B credits, private event space" }
+  ]
+}

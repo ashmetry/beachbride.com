@@ -82,6 +82,7 @@ interface FormData {
   guestCount: string;
   budget: string;
   services: string[];
+  roomBlockInterest: boolean | null; // null = not yet answered
   name: string;
   email: string;
   phone: string;
@@ -113,6 +114,7 @@ export default function LeadQuiz({ turnstileSiteKey }: Props) {
     guestCount: '',
     budget: '',
     services: [],
+    roomBlockInterest: null,
     name: '',
     email: '',
     phone: '',
@@ -196,6 +198,7 @@ export default function LeadQuiz({ turnstileSiteKey }: Props) {
           guestCount: form.guestCount || undefined,
           budget: form.budget || undefined,
           servicesNeeded: form.services.length ? form.services : undefined,
+          roomBlockInterest: form.roomBlockInterest === true ? true : undefined,
           utm_source: sessionStorage.getItem('utm_source') || undefined,
           utm_medium: sessionStorage.getItem('utm_medium') || undefined,
           utm_campaign: sessionStorage.getItem('utm_campaign') || undefined,
@@ -217,18 +220,54 @@ export default function LeadQuiz({ turnstileSiteKey }: Props) {
 
   if (submitted) {
     return (
-      <div className="text-center py-6">
-        <div className="text-5xl mb-4">🌊</div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-3">You're matched!</h2>
-        <p className="text-gray-600 mb-2">
-          Vetted vendors in <strong>{form.destination}</strong> will reach out within 24–48 hours.
-        </p>
-        <p className="text-gray-500 text-sm mb-6">
-          We've also sent a confirmation to <strong>{form.email}</strong>.
-        </p>
+      <div className="py-6">
+        <div className="text-center mb-8">
+          <div className="w-14 h-14 bg-brand/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg className="w-7 h-7 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">You're matched!</h2>
+          <p className="text-gray-600 text-sm">
+            Vetted vendors in <strong>{form.destination}</strong> will reach out within 24–48 hours.
+          </p>
+        </div>
+
+        {/* Room block follow-up — only shown if they opted in */}
+        {form.roomBlockInterest && (
+          <div className="bg-brand-light border border-brand/20 rounded-xl p-5 mb-4 text-center">
+            <p className="font-semibold text-gray-900 mb-1">We'll sort your guest rooms too.</p>
+            <p className="text-sm text-gray-600 mb-3">
+              We'll reach out within 24 hours about your group rate. Want to move faster?
+            </p>
+            <a
+              href="https://beachbride.com/tools/room-block-calculator/"
+              className="text-sm font-semibold text-brand hover:underline"
+            >
+              Estimate your room block now →
+            </a>
+          </div>
+        )}
+
+        {/* Travel insurance CTA */}
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-5 text-center">
+          <p className="font-semibold text-gray-900 mb-1 text-sm">Protect your wedding investment</p>
+          <p className="text-xs text-gray-500 mb-2">
+            Non-refundable deposits + international flights = real risk. Most couples skip travel insurance and regret it.
+          </p>
+          <a
+            href="https://www.insuremytrip.com/?utm_source=beachbride&utm_medium=quiz-confirmation&utm_campaign=destination-wedding-insurance"
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+            className="text-sm font-semibold text-amber-700 hover:text-amber-900"
+          >
+            Compare travel insurance plans →
+          </a>
+        </div>
+
         <a
           href={`/destinations/${slugifyDestination(form.destination)}/`}
-          className="quiz-btn-primary"
+          className="quiz-btn-primary block text-center"
         >
           Explore {form.destination.split(',')[0]} →
         </a>
@@ -352,7 +391,37 @@ export default function LeadQuiz({ turnstileSiteKey }: Props) {
               </button>
             ))}
           </div>
-          <div className="flex gap-3 mt-6">
+          {/* Room block opt-in */}
+          <div className="mt-6 border border-gray-100 rounded-xl p-4 bg-gray-50">
+            <p className="font-semibold text-gray-900 text-sm mb-1">Would you like free help booking hotel rooms for your guests?</p>
+            <p className="text-xs text-gray-500 mb-3">We secure group rates at all-inclusive resorts — no cost to you, resort pays us.</p>
+            <div className="flex gap-2">
+              <button
+                type="button"
+                className={`flex-1 py-2 px-3 rounded-lg border text-sm font-medium transition-colors ${
+                  form.roomBlockInterest === true
+                    ? 'bg-brand text-white border-brand'
+                    : 'bg-white text-gray-700 border-gray-200 hover:border-brand/50'
+                }`}
+                onClick={() => setForm(f => ({ ...f, roomBlockInterest: true }))}
+              >
+                Yes, help me with that
+              </button>
+              <button
+                type="button"
+                className={`flex-1 py-2 px-3 rounded-lg border text-sm font-medium transition-colors ${
+                  form.roomBlockInterest === false
+                    ? 'bg-gray-200 text-gray-700 border-gray-300'
+                    : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300'
+                }`}
+                onClick={() => setForm(f => ({ ...f, roomBlockInterest: false }))}
+              >
+                No thanks
+              </button>
+            </div>
+          </div>
+
+          <div className="flex gap-3 mt-4">
             <button className="quiz-back-btn" onClick={() => setStep(1)}>← Back</button>
             <button
               className="quiz-btn-primary flex-1"

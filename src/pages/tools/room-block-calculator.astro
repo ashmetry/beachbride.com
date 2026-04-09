@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RoomBlockCalculator from '../../components/calculators/RoomBlockCalculator';
+---
+
+<BaseLayout
+  title="Destination Wedding Room Block Calculator — How Many Hotel Rooms Do You Need?"
+  description="Find out how many hotel rooms to block for your destination wedding, what it will cost your guests, and what free perks you can expect. Takes 60 seconds."
+  canonical="https://beachbride.com/tools/room-block-calculator/"
+>
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+    <div class="text-center mb-10">
+      <p class="text-brand font-semibold text-sm uppercase tracking-widest mb-2">Free Tool</p>
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        How many hotel rooms do you need to block?
+      </h1>
+      <p class="text-gray-500 max-w-xl mx-auto">
+        Adjust your guest count, budget, and stay length. See your room estimate, per-guest cost, and what complimentary perks you can negotiate — instantly.
+      </p>
+    </div>
+
+    <RoomBlockCalculator client:load />
+
+    <!-- Educational context -->
+    <div class="mt-16 border-t border-gray-100 pt-12 prose prose-sm max-w-none text-gray-600">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">How destination wedding room blocks work</h2>
+      <p>
+        A room block is a set of hotel rooms reserved at a negotiated group rate for your wedding guests.
+        The resort holds them under your name for a set period — usually until 30–60 days before arrival —
+        after which unreserved rooms release back to general inventory.
+      </p>
+      <h3 class="text-base font-bold text-gray-900 mt-6 mb-2">Courtesy block vs. contracted block</h3>
+      <p>
+        A <strong>courtesy block</strong> has no fill obligation — if guests don't book, nothing happens.
+        This is what you want for most destination weddings under 40 rooms.
+        A <strong>contracted block</strong> requires an attrition guarantee (typically 80–90% of rooms must be booked
+        or you pay for the difference). Never sign one until you have strong RSVP confidence.
+      </p>
+      <h3 class="text-base font-bold text-gray-900 mt-6 mb-2">What does "free to the couple" mean?</h3>
+      <p>
+        All-inclusive resorts pay travel advisors a commission (10–21% depending on the brand) for coordinating
+        group bookings. The couple and guests pay the same rate they'd find booking direct — sometimes less,
+        because group rates are typically discounted. BeachBride acts as the travel advisor and earns that
+        resort-paid commission. There is no charge to you.
+      </p>
+      <h3 class="text-base font-bold text-gray-900 mt-6 mb-2">When should you book your room block?</h3>
+      <p>
+        12–18 months before your wedding date for peak season (November–April in Mexico/Caribbean).
+        8–12 months is fine for shoulder season. The earlier you lock in the rate, the more flexibility
+        you have if guest counts change.
+      </p>
+    </div>
+  </main>
+</BaseLayout>

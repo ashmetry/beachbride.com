@@ -4,13 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-BeachBride.com is a destination wedding lead and affiliate site. Three revenue streams:
+BeachBride.com is a destination wedding planning resource for brides. Three revenue streams:
 
 1. **Pay-per-lead** — brides matched to wedding planners, photographers, florists, caterers, DJs. Small operators who actively need clients. Vendors pay per qualified lead.
-2. **Affiliate commissions** — high-ticket items where lead-gen doesn't fit: resorts/hotels (Sandals, Beaches, Booking.com affiliate), jewelry (Blue Nile, Brilliant Earth, James Allen — 5-10% on $3K-$15K+ orders), travel insurance, honeymoon packages. Woven into content naturally.
-3. **Premium vendor directory** — free listing vs. paid tiers (~$99/mo featured, ~$199/mo pro). Predictable MRR that doesn't depend on lead volume.
+2. **Affiliate commissions** — high-ticket items: resorts/hotels (Sandals, Beaches, Booking.com affiliate), jewelry (Blue Nile, Brilliant Earth, James Allen — 5-10% on $3K-$15K+ orders), travel insurance, honeymoon packages. Woven into content naturally.
+3. **Room block coordination** — BeachBride acts as a travel advisor (via Fora host agency), securing group room blocks at all-inclusive resorts for destination wedding couples. Free to couples — revenue is 10–21% resort commission, ~$3,500–6,000 net per wedding. Scales via wedding planner referral partners ($400 flat per referral).
 
-**Do NOT model resorts or jewelers as pay-per-lead vendors.** They have established acquisition channels and won't buy email leads. They belong in affiliate links and the premium directory.
+**Do NOT model resorts or jewelers as pay-per-lead vendors.** They belong in affiliate links and the directory. The vendor directory exists for discoverability — paid directory tiers are not being pursued as a revenue stream.
 
 ## Conversion Funnel
 
@@ -81,6 +81,17 @@ npm run content:publish -- --dry-run                 # Preview publish
 npm run content:publish                              # Publish oldest queued article
 npm run content:status                               # Pipeline status
 
+# pSEO page enrichment (vendor type+destination editorial copy)
+npm run content:enrich-pseo -- --dry-run             # Preview
+npm run content:enrich-pseo -- --skip-existing       # Only add missing entries
+npm run content:enrich-pseo -- --type planner --destination hawaii
+npm run content:enrich-pseo -- --all                 # Regenerate all priority combos
+
+# Destination climate data
+npm run fetch-climate                                # Fetch missing climate data
+npm run fetch-climate:force                          # Force-refresh all destinations
+npm run fetch-climate:validate                       # Validate existing data
+
 # WP migration audit
 npm run wp:audit                                     # Audit WordPress migration
 npm run wp:audit:dry                                 # Dry run audit
@@ -98,7 +109,8 @@ No linter or test framework is configured. Validation happens via `npm run build
 ### Three deployment targets
 1. **Cloudflare Pages** — static Astro site, auto-deploys on push to `main` (live at beachbride.com) or `develop` (preview at develop.beachbride-site.pages.dev)
 2. **Form handler Worker** (`workers/form-handler.ts`) — handles lead/vendor/contact form POSTs at `/workers/form` and `/workers/contact`, auto-deploys with Pages on `main`
-3. **Chat proxy Worker** (`workers/chat-proxy.ts`) — optional, manual deploy only (`wrangler deploy --config wrangler-chat.toml`)
+3. **www redirect Worker** (`workers/www-redirect.ts`) — redirects www → apex; config in `wrangler-www.toml`, manual deploy
+4. **Chat proxy Worker** (`workers/chat-proxy.ts`) — optional, manual deploy only (`wrangler deploy --config wrangler-chat.toml`)
 
 Worker secrets (set via `wrangler secret put` or CF dashboard): `MAILGUN_API_KEY`, `MAILGUN_DOMAIN`, `SENDY_URL`, `SENDY_API_KEY`, `SENDY_LIST_ID`, `SENDY_NURTURE_LIST_ID`
 
@@ -124,6 +136,7 @@ Pipeline is **resume-safe**: each topic checks its status before sub-steps and s
 - `/real-weddings/[slug]/` — individual gallery page (hero + text + masonry photo grid + quiz CTA)
 - `/quiz/` — Stage 1 quiz (email capture) and Stage 2 (full lead form)
 - `/lp/` — paid traffic landing pages (LandingPageLayout, minimal nav)
+- `/vendors/[type]/[destination]/` — pSEO vendor type+destination pages (e.g. `/vendors/planner/hawaii/`). Editorial copy served from `src/data/pseo-editorial.json`; falls back to hardcoded templates when key absent.
 
 ### Layout hierarchy
 `BaseLayout.astro` (head/nav/footer/JSON-LD) → `ArticleLayout.astro` (TOC/breadcrumbs/FAQs/related) | `PageLayout.astro` (static pages) | `LandingPageLayout.astro` (paid traffic)
@@ -151,7 +164,13 @@ Articles are auto-assigned to a guide category by `getCategoryForSlug()` in `src
 - `scripts/content-engine/lib/config.js` — all content engine config (models, thresholds, paths, `LINK_TARGETS`)
 - `scripts/content-engine/lib/openrouter.js` — OpenRouter client with rate limiting, retry, 429/500 handling
 - `scripts/content-engine/pipeline.json` — pipeline state (committed)
+- `src/data/pseo-editorial.json` — generated editorial copy for vendor type+destination pages, keyed by `"type-destination"` (e.g. `"planner-hawaii"`)
+- `src/data/destination-climate.json` — climate/weather data per destination, generated by `fetch-destination-climate.js`
 - `scripts/seed-editorial-topics.js` — manually seed WP-migrated topics into pipeline bypassing discovery
+- `scripts/seed-vendor-guide-topics.js` — seed "how to find a [vendor] in [destination]" articles; link to pSEO type+destination pages
+- `scripts/seed-vendors-places.js` — seed vendor entries from Google Places API
+- `scripts/content-engine/enrich-pseo-pages.js` — generate editorial copy for pSEO pages → `pseo-editorial.json`
+- `scripts/content-engine/regen-image.js` — regenerate article images via Gemini; use `--skip-existing` for bulk runs
 - `scripts/migrate-real-weddings.js` — one-time WP gallery migration script (already run)
 
 ### Vendor data model
@@ -172,12 +191,10 @@ Articles are auto-assigned to a guide category by `getCategoryForSlug()` in `src
 }
 ```
 
-Resort and jeweler `type` entries exist in the directory but are **not** enrolled in pay-per-lead. They appear via affiliate links in content and can purchase premium/pro directory tiers.
+Resort and jeweler `type` entries exist in the directory but are **not** enrolled in pay-per-lead. They appear via affiliate links in content.
 
 ### Vendor directory tiers
-- **Free**: basic profile, listed in directory, 1 destination
-- **Premium ($99/mo)**: featured placement, verified badge, 3 destinations, lead alerts
-- **Pro ($199/mo)**: all destinations, priority matching, branded profile, direct inquiry button
+The `tier` field (`free`/`premium`/`pro`) exists in `vendors.json` and the data model but paid tiers are not being actively monetized. All 957 vendors are currently `free`. The directory exists for SEO (pSEO vendor pages) and trust, not as a subscription revenue stream.
 
 ## Content Rules (enforced by quality gate)
 
@@ -204,6 +221,22 @@ Resort and jeweler `type` entries exist in the directory but are **not** enrolle
 - `realWeddings` collection MDX files must use `tags: []` (not bare `tags:`) and `images: []` when empty, otherwise Astro reads them as null and fails schema validation.
 - GSC property for beachbride.com is `sc-domain:beachbride.com` (not `https://beachbride.com/`). Service account has access to the domain property only.
 - The local dev server may conflict with other projects on port 4321. Run `npm run dev -- --port 4324` for beachbride if needed.
+
+## Memory — Standing Rule
+
+**Proactively save to memory without being asked.** The user will not remember to ask. Save automatically whenever a conversation contains:
+
+- **Strategy** — revenue models, monetization approaches, partnership structures, business model decisions
+- **Architecture** — new page types, new pipeline stages, tech stack decisions, API integrations chosen
+- **Research** — specific platforms, vendors, tools, services evaluated (with names, URLs, commission rates, pricing)
+- **Decisions made** — why one approach was chosen over another, what was ruled out and why
+- **Contacts/providers** — any specific company, tool, or service discussed as a candidate for integration
+
+**What to save:** Write to `C:\Users\ash\.claude\projects\c--Users-ash-Documents-Projects-CC-beachbride-com\memory\` and update `MEMORY.md` index. Use `project_` prefix for business/site context, `feedback_` for preferences, `reference_` for external resources.
+
+**When to save:** During the conversation as topics emerge — not just at the end. If it would take more than 2 minutes to reconstruct, save it now.
+
+**What not to save:** Code that's already in the repo, git history, temporary task state, anything derivable by reading the current codebase.
 
 ## Content Engine — Standing Rule
 

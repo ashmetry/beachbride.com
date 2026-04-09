@@ -110,6 +110,8 @@ export const LINK_TARGETS = [
   { patterns: ['symbolic ceremony', 'symbolic wedding', 'legal vs symbolic'], slug: 'guides/symbolic-ceremony' },
   { patterns: ['hidden gem destination', 'undiscovered wedding destination', 'hidden gem wedding'], slug: 'destinations/hidden-gems' },
   { patterns: ['personalized match', 'vendor match', 'matched with vendors', 'take the quiz'], slug: 'quiz' },
+  // Room block + guest accommodations
+  { patterns: ['room block', 'hotel block', 'group rooms', 'room block calculator', 'how many hotel rooms', 'guest accommodations', 'hotel block for wedding'], slug: 'tools/room-block-calculator' },
 ];
 
 // ── Affiliate Link Targets ─────────────────────────────────────────────────────

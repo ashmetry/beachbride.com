@@ -1,6 +1,6 @@
 # BeachBride.com
 
-Destination wedding lead-gen and affiliate site. Three revenue streams: pay-per-lead vendor matching, affiliate commissions (resorts, jewelry, travel insurance), and premium vendor directory listings.
+Destination wedding planning resource for brides. Revenue streams: pay-per-lead vendor matching, affiliate commissions (resorts, jewelry, travel insurance), and room block coordination (travel advisor via Fora host agency, ~$3,500–6,000 net per wedding). Planner referral partners ($400 flat/wedding) are the primary volume channel for room blocks.
 
 ## Tech Stack
 
@@ -93,15 +93,11 @@ BaseLayout.astro (head/nav/footer/JSON-LD)
 
 Vendor types: `planner`, `photographer`, `florist`, `caterer`, `dj`, `officiant`, `resort`, `venue`
 
-Resorts and venues are **not** enrolled in pay-per-lead. They belong in affiliate links and the premium directory only.
+Resorts and venues are **not** enrolled in pay-per-lead. They belong in affiliate links.
 
 ### Vendor directory tiers
 
-| Tier | Price | Features |
-|---|---|---|
-| Free | $0 | Basic profile, 1 destination, listed in directory |
-| Premium | $99/mo | Featured placement, verified badge, 3 destinations, lead alerts |
-| Pro | $199/mo | All destinations, priority matching, branded profile, direct inquiry |
+The `tier` field (`free`/`premium`/`pro`) exists in the data model but paid tiers are not being monetized. All vendors are currently `free`. The directory serves SEO (pSEO vendor pages) and trust — not subscription revenue.
 
 ## Programmatic SEO
 

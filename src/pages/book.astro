@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Book a Free Room Block Consultation — BeachBride"
+  description="Schedule your free 20-minute consultation. We'll get you group rate proposals from 2–3 all-inclusive resorts within 48 hours."
+  canonical="https://beachbride.com/book/"
+  noIndex={true}
+>
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+    <div class="text-center mb-10">
+      <p class="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-2">Free · 20 minutes</p>
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        Book your room block consultation
+      </h1>
+      <p class="text-gray-500 max-w-xl mx-auto">
+        Tell us your destination, guest count, and dates. We'll get proposals from 2–3 resorts within 48 hours —
+        at group rates not available to the public. No cost to you, ever.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-3 gap-4 mb-10">
+      <div class="bg-gray-50 rounded-xl p-4 text-center">
+        <p class="text-2xl font-bold text-gray-900 mb-1">20 min</p>
+        <p class="text-sm text-gray-500">Call length</p>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-4 text-center">
+        <p class="text-2xl font-bold text-gray-900 mb-1">48 hrs</p>
+        <p class="text-sm text-gray-500">To first proposals</p>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-4 text-center">
+        <p class="text-2xl font-bold text-gray-900 mb-1">$0</p>
+        <p class="text-sm text-gray-500">Cost to you</p>
+      </div>
+    </div>
+
+    <div class="card overflow-hidden">
+      <!-- Google Calendar Appointment Scheduling -->
+      <iframe
+        src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2gaX4GvmhO05Daq6Y3uKybtq2vh5CKCAZ8uSKnV2G7E23FSk5sEB-shcoRl2j106lDgY3qp1aT?gv=true"
+        style="border: 0"
+        width="100%"
+        height="600"
+        frameborder="0"
+        title="Book a room block consultation"
+      ></iframe>
+    </div>
+
+    <p class="text-xs text-gray-400 text-center mt-6">
+      BeachBride earns a commission from resorts for coordinating group bookings — there is no charge to couples or guests.
+    </p>
+  </main>
+</BaseLayout>
