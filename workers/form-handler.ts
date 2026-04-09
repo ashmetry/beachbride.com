@@ -337,24 +337,24 @@ export default {
 
       if (payload.type === 'room-block-capture') {
         await subscribeToSendy(env, env.SENDY_ROOM_BLOCK_LIST_ID, payload.email, payload.firstName ?? '', {
-          destination: payload.destination ?? '',
-          utmsource: payload.utm_source ?? '',
-          utmmedium: payload.utm_medium ?? '',
+          Destination: payload.destination ?? '',
+          UTMSource: payload.utm_source ?? '',
+          UTMMedium: payload.utm_medium ?? '',
         });
       }
 
       if (payload.type === 'email-capture') {
         // Stage 1: subscribe to nurture list, send confirmation
         await subscribeToSendy(env, env.SENDY_NURTURE_LIST_ID, payload.email, payload.name ?? '', {
-          destinationslug: payload.destinationSlug ?? '',
-          destination: payload.destination ?? '',
-          vibe: payload.vibe ?? '',
-          season: payload.season ?? '',
-          guestcount: payload.guestCount ?? '',
-          budget: payload.budget ?? '',
-          utmsource: payload.utm_source ?? '',
-          utmmedium: payload.utm_medium ?? '',
-          utmcampaign: payload.utm_campaign ?? '',
+          DestinationSlug: payload.destinationSlug ?? '',
+          Destination: payload.destination ?? '',
+          Vibe: payload.vibe ?? '',
+          Season: payload.season ?? '',
+          GuestCount: payload.guestCount ?? '',
+          Budget: payload.budget ?? '',
+          UTMSource: payload.utm_source ?? '',
+          UTMMedium: payload.utm_medium ?? '',
+          UTMCampaign: payload.utm_campaign ?? '',
         });
         // Email 1 is sent by Sendy autoresponder (day 0) — no Mailgun send needed here.
       }
@@ -391,15 +391,15 @@ export default {
         }
 
         await subscribeToSendy(env, env.SENDY_LIST_ID, payload.email, payload.name, {
-          destinationslug: payload.destinationSlug ?? '',
-          weddingdate: payload.weddingDate ?? '',
-          guestcount: payload.guestCount ?? '',
-          budget: payload.budget ?? '',
-          services: payload.servicesNeeded?.join(', ') ?? '',
-          phone: payload.phone,
-          utm_source: payload.utm_source ?? '',
-          utm_medium: payload.utm_medium ?? '',
-          utm_campaign: payload.utm_campaign ?? '',
+          DestinationSlug: payload.destinationSlug ?? '',
+          WeddingDate: payload.weddingDate ?? '',
+          GuestCount: payload.guestCount ?? '',
+          Budget: payload.budget ?? '',
+          Services: payload.servicesNeeded?.join(', ') ?? '',
+          Phone: payload.phone,
+          UTMSource: payload.utm_source ?? '',
+          UTMMedium: payload.utm_medium ?? '',
+          UTMCampaign: payload.utm_campaign ?? '',
         });
       }
 
