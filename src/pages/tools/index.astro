@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const tools = [
+  {
+    href: '/tools/destination-comparison/',
+    title: 'Destination Comparison',
+    description: 'Not sure where to get married? Compare locations side by side — costs, guest ease, legal requirements, and best months.',
+    tags: ['Planning', 'Destinations'],
+    cta: 'Compare destinations →',
+  },
+  {
+    href: '/tools/wedding-budget-calculator/',
+    title: 'Wedding Budget Calculator',
+    description: 'Select your destination, guest count, and vendors. Get an itemised budget estimate with per-category ranges.',
+    tags: ['Budget', 'Planning'],
+    cta: 'Estimate your budget →',
+  },
+  {
+    href: '/tools/wedding-planning-timeline/',
+    title: 'Planning Timeline Generator',
+    description: 'Enter your wedding date and destination. Get a reverse-countdown checklist with destination-specific notes on vendor lead times and legal requirements.',
+    tags: ['Timeline', 'Checklist'],
+    cta: 'Build your timeline →',
+  },
+  {
+    href: '/tools/room-block-calculator/',
+    title: 'Room Block Calculator',
+    description: 'How many hotel rooms do you need to block? Estimate guest room count, per-guest accommodation cost, and what complimentary perks you can negotiate.',
+    tags: ['Guest Logistics', 'Room Block'],
+    cta: 'Calculate your room block →',
+  },
+  {
+    href: '/tools/guest-travel-cost/',
+    title: 'Guest Travel Cost Estimator',
+    description: 'What will attending your wedding cost your guests? Estimate flights and accommodation by destination — and see how a room block locks in the rate.',
+    tags: ['Guest Logistics', 'Budget'],
+    cta: 'Estimate guest costs →',
+  },
+];
+---
+
+<BaseLayout
+  title="Free Destination Wedding Planning Tools — BeachBride"
+  description="Free interactive tools for destination wedding planning. Compare destinations, estimate your budget, build your planning timeline, and calculate guest travel costs."
+  canonical="https://beachbride.com/tools/"
+>
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+    <div class="text-center mb-12">
+      <p class="text-brand font-semibold text-sm uppercase tracking-widest mb-2">Free Tools</p>
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        Destination wedding planning tools
+      </h1>
+      <p class="text-gray-500 max-w-xl mx-auto">
+        Interactive calculators and generators to help you plan your destination wedding — budget, timeline, location, and guest logistics.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-6">
+      {tools.map(tool => (
+        <a
+          href={tool.href}
+          class="card p-6 group hover:shadow-md transition-shadow no-underline block"
+        >
+          <div class="flex flex-wrap gap-1.5 mb-3">
+            {tool.tags.map(tag => (
+              <span class="text-xs font-semibold text-brand bg-brand/10 px-2 py-0.5 rounded-full">
+                {tag}
+              </span>
+            ))}
+          </div>
+          <h2 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-brand transition-colors">
+            {tool.title}
+          </h2>
+          <p class="text-sm text-gray-600 mb-4 leading-relaxed">{tool.description}</p>
+          <span class="text-sm font-semibold text-brand">{tool.cta}</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-16 text-center border-t border-gray-100 pt-10">
+      <p class="text-gray-500 text-sm mb-4">Ready to start planning? Get matched with local vendors for free.</p>
+      <a href="/quiz/" class="btn-primary inline-block">Get matched with vendors →</a>
+    </div>
+  </main>
+</BaseLayout>

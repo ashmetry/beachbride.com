@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GuestTravelCost from '../../components/calculators/GuestTravelCost';
+---
+
+<BaseLayout
+  title="Destination Wedding Guest Travel Cost Estimator — What Will Guests Spend?"
+  description="Estimate what attending your destination wedding will cost your guests — flights, accommodation, and total spend. See how a room block can lock in the accommodation rate."
+  canonical="https://beachbride.com/tools/guest-travel-cost/"
+>
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+    <div class="text-center mb-10">
+      <p class="text-brand font-semibold text-sm uppercase tracking-widest mb-2">Free Tool</p>
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        What will attending your wedding cost your guests?
+      </h1>
+      <p class="text-gray-500 max-w-xl mx-auto">
+        Select your destination, guest count, and stay length. Get an estimate of what each guest will spend on flights and accommodation — and see how a room block can help.
+      </p>
+    </div>
+
+    <GuestTravelCost client:load />
+
+    <!-- Educational context -->
+    <div class="mt-16 border-t border-gray-100 pt-12 prose prose-sm max-w-none text-gray-600">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Understanding guest travel burden</h2>
+      <p>
+        One of the most common anxieties about destination weddings is the cost to guests. The honest answer: yes, attending a destination wedding is more expensive than a local one. But the experience is also incomparably better — a 4-day beach vacation with their closest friends is something guests will talk about for years.
+      </p>
+      <h3 class="text-base font-bold text-gray-900 mt-6 mb-2">What guests actually spend</h3>
+      <p>
+        Most guests budget $1,000–$2,500 per person for a destination wedding in the Caribbean or Mexico. Closer US destinations (Key West, Hawaii) can be less. European destinations (Santorini, Amalfi) are typically more. The biggest variable is flights — guests from the West Coast to Mexico pay roughly the same as East Coast guests; guests to Europe pay significantly more.
+      </p>
+      <h3 class="text-base font-bold text-gray-900 mt-6 mb-2">How a room block reduces accommodation cost</h3>
+      <p>
+        All-inclusive resorts typically offer group rates below public booking prices when a room block is negotiated. More importantly, a room block gives your guests a single booking link and a rate that's locked — they don't need to comparison shop, and they know they're staying at the right property. <a href="/tools/room-block-calculator/">Estimate your room block here.</a>
+      </p>
+      <h3 class="text-base font-bold text-gray-900 mt-6 mb-2">Setting guest expectations</h3>
+      <p>
+        The earlier you communicate, the better. Send save-the-dates 12–18 months out with a cost estimate so guests have time to save. Include a travel page on your wedding website with flight suggestions, the hotel booking link, and a clear "what to budget" section. Guests who feel informed and prepared are far more likely to attend.
+      </p>
+    </div>
+  </main>
+</BaseLayout>

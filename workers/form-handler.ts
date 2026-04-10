@@ -46,6 +46,7 @@ interface RoomBlockCapturePayload {
   email: string;
   firstName?: string;
   destination?: string;
+  guestCount?: string;
   utm_source?: string;
   utm_medium?: string;
 }
@@ -338,10 +339,9 @@ export default {
       if (payload.type === 'room-block-capture') {
         await subscribeToSendy(env, env.SENDY_ROOM_BLOCK_LIST_ID, payload.email, payload.firstName ?? '', {
           Destination: payload.destination ?? '',
+          GuestCount: payload.guestCount ?? '',
           UTMSource: payload.utm_source ?? '',
           UTMMedium: payload.utm_medium ?? '',
-          // TODO: pass GuestCount + Budget here once room block calculator captures those fields
-          // so room-block-sequence.md can personalise perk thresholds by guest size
         });
       }
 

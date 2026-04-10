@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WeddingBudgetCalculator from '../../components/calculators/WeddingBudgetCalculator';
+---
+
+<BaseLayout
+  title="Destination Wedding Budget Calculator — How Much Will It Cost?"
+  description="Enter your destination, guest count, and vendors you need. Get an instant budget estimate with per-category breakdown. Free tool, takes 30 seconds."
+  canonical="https://beachbride.com/tools/wedding-budget-calculator/"
+>
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+    <div class="text-center mb-10">
+      <p class="text-brand font-semibold text-sm uppercase tracking-widest mb-2">Free Tool</p>
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        How much will your destination wedding cost?
+      </h1>
+      <p class="text-gray-500 max-w-xl mx-auto">
+        Select your destination, guest count, and the vendors you need. See a live budget estimate and per-category breakdown — instantly.
+      </p>
+    </div>
+
+    <WeddingBudgetCalculator client:load />
+
+    <!-- Educational context -->
+    <div class="mt-16 border-t border-gray-100 pt-12 prose prose-sm max-w-none text-gray-600">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">What's included in a destination wedding budget?</h2>
+      <p>
+        A destination wedding budget covers more line items than most couples expect. The biggest variable is venue — whether you're booking a private beach ceremony or an all-inclusive resort package will shift costs significantly. Here's how the categories typically break down.
+      </p>
+      <h3 class="text-base font-bold text-gray-900 mt-6 mb-2">Venue and resort fees</h3>
+      <p>
+        At an all-inclusive resort, the "venue fee" is often a wedding package that includes ceremony setup, tables, chairs, and sometimes catering. At a private villa or beach, you're renting the space separately and bringing vendors in. Resort packages run $3,000–$15,000 depending on the property and guest count; private venues vary widely.
+      </p>
+      <h3 class="text-base font-bold text-gray-900 mt-6 mb-2">Photography and video</h3>
+      <p>
+        Destination wedding photographers typically charge $4,000–$12,000, including travel expenses. Many charge a day rate plus travel — budget $500–$1,500 for flights and accommodation on top of their base rate. Book 9–12 months out; the best photographers in popular destinations fill quickly.
+      </p>
+      <h3 class="text-base font-bold text-gray-900 mt-6 mb-2">Florals and decor</h3>
+      <p>
+        Tropical destinations can reduce floral costs — local blooms are abundant and inexpensive. Destination florists typically quote $2,500–$8,000 for ceremony arch, centerpieces, and bouquets. Import flowers (peonies, garden roses) cost significantly more than local tropical varieties.
+      </p>
+      <h3 class="text-base font-bold text-gray-900 mt-6 mb-2">Planning fees</h3>
+      <p>
+        A local destination wedding planner runs $3,000–$8,000 depending on the destination and scope. They handle vendor coordination, legal paperwork, venue negotiation, and day-of logistics. For a destination wedding, a local planner who knows the vendors and legal requirements is often worth it.
+      </p>
+    </div>
+  </main>
+</BaseLayout>

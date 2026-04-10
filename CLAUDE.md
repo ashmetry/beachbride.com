@@ -97,6 +97,11 @@ npm run fetch-climate:validate                       # Validate existing data
 # WP migration audit
 npm run wp:audit                                     # Audit WordPress migration
 npm run wp:audit:dry                                 # Dry run audit
+
+# Content engine maintenance (run directly with node)
+node scripts/content-engine/cleanup-queue.js         # Remove duplicate topic clusters from pipeline; run after any large bulk import
+node scripts/content-engine/test-intent-gate.js      # Validate intent overlap logic against 6 synthetic test cases (~$0.03); run when checkIntentOverlap prompt changes
+node scripts/content-engine/test-section-images.js   # Generate section images for an already-published article without re-running the full pipeline (~$0.15–0.20)
 ```
 
 No linter or test framework is configured. Validation happens via `npm run build` (Astro type-checks and catches broken references) and the content engine's quality gate.
@@ -124,6 +129,12 @@ Worker secrets (set via `wrangler secret put` or CF dashboard): `MAILGUN_API_KEY
 
 Pipeline is **resume-safe**: each topic checks its status before sub-steps and skips completed stages.
 
+**`_editorialNotes`** — add this string field to any topic in `pipeline.json` to inject pre-verified facts into both the brief and write prompts. For topics already `staged`, also add `verifiedFacts` to `topic.brief` so notes survive into the write step. Use when factual data matters (pricing, perk thresholds, contract terms). Labelled "EDITORIAL NOTES — Pre-verified facts that MUST be incorporated accurately" in the prompt.
+
+**Section images** — `generate.js` detects visual-intent keywords (colors/palettes, cakes, bouquets, decor, invitations, etc.) and generates 2–3 section images beyond the hero. Named `{slug}-2.jpg`, `{slug}-3.jpg`, etc. `publish.js` moves all of them (checks indices 2–5). `test-section-images.js` adds section images to already-published articles without re-running the pipeline.
+
+**Canonical content engine doc**: `scripts/content-engine/CONTENT-PLAN.md` — full pipeline architecture, dedup layers, scoring, cost estimates, and beachbride-specific configuration. Read this before making structural changes to the pipeline.
+
 ### Key page types
 - `/` — homepage (email capture primary CTA)
 - `/destinations/[slug]/` — destination hub pages (content + vendors + resort affiliate links for a single destination). High commercial intent. First-class pages, not just vendor filters.
@@ -136,7 +147,7 @@ Pipeline is **resume-safe**: each topic checks its status before sub-steps and s
 - `/real-weddings/` — gallery listing (62 migrated WP posts with real photos)
 - `/real-weddings/[slug]/` — individual gallery page (hero + text + masonry photo grid + quiz CTA)
 - `/quiz/` — Stage 1 quiz (email capture) and Stage 2 (full lead form)
-- `/lp/` — paid traffic landing pages (LandingPageLayout, minimal nav)
+- `/lp/` — paid traffic landing pages (LandingPageLayout, minimal nav) — directory not yet populated
 - `/vendors/[type]/[destination]/` — pSEO vendor type+destination pages (e.g. `/vendors/planner/hawaii/`). Editorial copy served from `src/data/pseo-editorial.json`; falls back to hardcoded templates when key absent.
 - `/tools/room-block-calculator/` — interactive React calculator (Astro island, `client:load`). Uses `src/data/room-block-tiers.json` for budget/perk thresholds. Email capture at bottom subscribes to `SENDY_ROOM_BLOCK_LIST_ID`.
 - `/book/` — room block consultation intake page (`noIndex: true`). Linked from destination hubs and calculator CTA via `SITE_CONFIG.roomBlockCalendlyUrl`.

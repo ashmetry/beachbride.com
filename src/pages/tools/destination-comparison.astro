@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DestinationComparison from '../../components/calculators/DestinationComparison';
+---
+
+<BaseLayout
+  title="Destination Wedding Comparison Tool — Compare Cancun, Bali, Santorini & More"
+  description="Compare destination wedding locations side by side. See costs, guest ease scores, legal requirements, best months, and flight accessibility for every destination."
+  canonical="https://beachbride.com/tools/destination-comparison/"
+>
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div class="text-center mb-10">
+      <p class="text-brand font-semibold text-sm uppercase tracking-widest mb-2">Free Tool</p>
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        Compare destination wedding locations
+      </h1>
+      <p class="text-gray-500 max-w-xl mx-auto">
+        Select up to 3 destinations and compare them side by side — wedding costs, how easy it is for guests to travel there, legal ceremony type, best months, and more.
+      </p>
+    </div>
+
+    <DestinationComparison client:load />
+
+    <!-- Educational context -->
+    <div class="mt-16 border-t border-gray-100 pt-12 prose prose-sm max-w-none text-gray-600 max-w-3xl mx-auto">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">How to choose a destination wedding location</h2>
+      <p>
+        Most couples narrow their destination based on three things: budget, guest accessibility, and the vibe they want. The comparison above surfaces the data for all three — but here's what each metric actually means in practice.
+      </p>
+      <h3 class="text-base font-bold text-gray-900 mt-6 mb-2">Guest ease score</h3>
+      <p>
+        This is a composite score (out of 10) based on flight hours from the US East Coast, visa requirements, and physical accessibility at the destination. A score of 9–10 means guests can get there on a direct flight with no visa paperwork. A score of 5–6 means long-haul or connecting flights, which will reduce your attendance rate.
+      </p>
+      <h3 class="text-base font-bold text-gray-900 mt-6 mb-2">Legal vs. symbolic ceremonies</h3>
+      <p>
+        Some destinations (Bali, Maldives, parts of Europe) don't allow foreign couples to legally marry under local law. This means your ceremony there is symbolic — beautiful, meaningful, and exactly what you're picturing — while the legal marriage paperwork happens at home. This is completely normal and doesn't change the experience in any way couples notice.
+      </p>
+      <h3 class="text-base font-bold text-gray-900 mt-6 mb-2">Cost ranges</h3>
+      <p>
+        The cost estimates shown are for approximately 50 guests. Your actual costs will scale with guest count (catering and accommodation) but some costs are fixed regardless of guests (photography, florals, planner fee). See our <a href="/tools/wedding-budget-calculator/">budget calculator</a> for a guest-count-specific estimate.
+      </p>
+    </div>
+  </main>
+</BaseLayout>

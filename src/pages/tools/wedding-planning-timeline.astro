@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WeddingTimelineGenerator from '../../components/calculators/WeddingTimelineGenerator';
+---
+
+<BaseLayout
+  title="Destination Wedding Planning Timeline — When to Book What"
+  description="Enter your wedding date and destination. Get a reverse-countdown planning timeline with destination-specific notes on legal requirements, vendor lead times, and more."
+  canonical="https://beachbride.com/tools/wedding-planning-timeline/"
+>
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+    <div class="text-center mb-10">
+      <p class="text-brand font-semibold text-sm uppercase tracking-widest mb-2">Free Tool</p>
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        When do you need to do what?
+      </h1>
+      <p class="text-gray-500 max-w-xl mx-auto">
+        Enter your wedding date and destination. We'll build a reverse-countdown planning timeline — with notes on legal requirements, vendor lead times, and seasonal considerations for your destination.
+      </p>
+    </div>
+
+    <WeddingTimelineGenerator client:load />
+
+    <!-- Educational context -->
+    <div class="mt-16 border-t border-gray-100 pt-12 prose prose-sm max-w-none text-gray-600">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Why destination wedding timelines are different</h2>
+      <p>
+        A local wedding can be planned in 6 months. A destination wedding almost always needs 12–18 months — not because there's more to do, but because the logistics compound. Vendors in popular destinations like Cancun, Punta Cana, and Santorini book out fast, legal paperwork has international lead times, and guests need runway to arrange travel.
+      </p>
+      <h3 class="text-base font-bold text-gray-900 mt-6 mb-2">The photographer problem</h3>
+      <p>
+        The most common regret from destination brides: not booking the photographer early enough. The best destination wedding photographers — especially in Mexico and the Caribbean — book 12–18 months out. If you fall in love with someone's work online, reach out immediately. Don't wait until the venue is confirmed.
+      </p>
+      <h3 class="text-base font-bold text-gray-900 mt-6 mb-2">Legal vs. symbolic ceremonies</h3>
+      <p>
+        Many popular destinations (Bali, some European countries) only allow symbolic ceremonies for foreign couples. In this case, the legal marriage ceremony happens at home before or after the destination event. This is not a limitation — it actually simplifies things considerably and is completely normal.
+      </p>
+      <h3 class="text-base font-bold text-gray-900 mt-6 mb-2">Room blocks and guest logistics</h3>
+      <p>
+        If you're inviting 30+ guests, setting up a hotel room block 12 months out is strongly recommended. Blocks secure rooms at a locked rate, give guests a private booking link, and often unlock complimentary perks (upgrades, welcome cocktails, comp rooms). Blocks are typically free to set up and have no financial liability for a courtesy block.
+      </p>
+    </div>
+  </main>
+</BaseLayout>
