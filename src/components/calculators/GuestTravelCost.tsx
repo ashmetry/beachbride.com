@@ -126,10 +126,11 @@ export default function GuestTravelCost() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          type: 'room-block-capture',
+          type: 'email-capture',
           email,
-          firstName: firstName.trim() || undefined,
+          name: firstName.trim() || undefined,
           destination: destLabel || undefined,
+          destinationSlug: destSlug || undefined,
           guestCount: String(guestCount),
           utm_source: 'guest-travel-cost',
           utm_medium: 'tool',
