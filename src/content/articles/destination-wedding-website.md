@@ -1,37 +1,43 @@
 ---
 title: "Destination Wedding Websites: What to Include, How to Build One & Why It Matters"
-description: "Learn what to include on your destination wedding website, compare the best builders, and discover how to keep guests informed across time zones and borders."
+description: Learn what to include on your destination wedding website, compare the best builders, and discover how to keep guests informed across time zones and borders.
 publishDate: 2026-04-08
-author: "BeachBride Editorial Team"
-tags: [destination wedding website, wedding website builder, destination wedding planning, guest communication, wedding RSVP, travel logistics, destination wedding tips]
-schemaType: "article"
-
+author: BeachBride Editorial Team
+tags:
+  - destination wedding website
+  - wedding website builder
+  - destination wedding planning
+  - guest communication
+  - wedding RSVP
+  - travel logistics
+  - destination wedding tips
+schemaType: article
 affiliateDisclosure: true
 faqs:
-  - question: "When should you launch your destination wedding website?"
-    answer: "Launch your website 4 to 6 months before the wedding, ideally right after sending save-the-dates. This gives guests enough time to research flights, book accommodations through your room block links, and RSVP before your deadline."
-  - question: "Do you need a password-protected destination wedding website?"
-    answer: "Password protection is optional but smart if you're sharing personal details like hotel room block codes or private event addresses. Most builders like Zola and Joy offer this feature for free, so there's no downside to adding it."
-  - question: "What travel information should you include for international guests?"
-    answer: "Include the nearest airport code, passport and visa requirements, recommended airlines or flight routes, ground transportation options from the airport, currency and tipping customs, and any health or safety advisories. Always note that entry requirements change and guests should verify with the relevant embassy."
-  - question: "Should your destination wedding website include a registry?"
-    answer: "Yes, but keep it secondary to travel logistics. About 45% of destination wedding guests prioritize travel info over gift registries, so place your registry link in the navigation but don't feature it on the homepage."
-  - question: "How do you handle RSVPs on a destination wedding website?"
-    answer: "Use a built-in RSVP tool that tracks meal choices, plus-ones, and dietary restrictions. Set your deadline 5 to 8 weeks before the wedding to give yourself a buffer for final vendor headcounts. Platforms like Zola and WithJoy include free RSVP management."
-  - question: "Can you use a free website builder for a destination wedding?"
-    answer: "Absolutely. Zola, The Knot, WithJoy, and Minted all offer free tiers with RSVP tracking, travel pages, and mobile-friendly templates. You only need to pay if you want a custom domain, which typically runs 13 to 20 dollars per year."
-  - question: "What's the difference between a wedding website and a wedding app for destination weddings?"
-    answer: "A wedding website is browser-based and accessible to anyone with the link. A wedding app, like Appy Couple's downloadable option, lives on guests' phones and can send push notifications. Apps are great for real-time updates during multi-day events, while websites are better for initial planning and broad accessibility."
+  - question: When should you launch your destination wedding website?
+    answer: Launch your website 4 to 6 months before the wedding, ideally right after sending save-the-dates. This gives guests enough time to research flights, book accommodations through your room block links, and RSVP before your deadline.
+  - question: Do you need a password-protected destination wedding website?
+    answer: Password protection is optional but smart if you're sharing personal details like hotel room block codes or private event addresses. Most builders like Zola and Joy offer this feature for free, so there's no downside to adding it.
+  - question: What travel information should you include for international guests?
+    answer: Include the nearest airport code, passport and visa requirements, recommended airlines or flight routes, ground transportation options from the airport, currency and tipping customs, and any health or safety advisories. Always note that entry requirements change and guests should verify with the relevant embassy.
+  - question: Should your destination wedding website include a registry?
+    answer: Yes, but keep it secondary to travel logistics. About 45% of destination wedding guests prioritize travel info over gift registries, so place your registry link in the navigation but don't feature it on the homepage.
+  - question: How do you handle RSVPs on a destination wedding website?
+    answer: Use a built-in RSVP tool that tracks meal choices, plus-ones, and dietary restrictions. Set your deadline 5 to 8 weeks before the wedding to give yourself a buffer for final vendor headcounts. Platforms like Zola and WithJoy include free RSVP management.
+  - question: Can you use a free website builder for a destination wedding?
+    answer: Absolutely. Zola, The Knot, WithJoy, and Minted all offer free tiers with RSVP tracking, travel pages, and mobile-friendly templates. You only need to pay if you want a custom domain, which typically runs 13 to 20 dollars per year.
+  - question: What's the difference between a wedding website and a wedding app for destination weddings?
+    answer: A wedding website is browser-based and accessible to anyone with the link. A wedding app, like Appy Couple's downloadable option, lives on guests' phones and can send push notifications. Apps are great for real-time updates during multi-day events, while websites are better for initial planning and broad accessibility.
 related:
-  - "/destination-wedding-guide/"
-  - "/destination-wedding-cost/"
-  - "/beach-wedding-checklist/"
-  - "/destination-wedding-tips/"
-  - "/considering-having-a-beach-wedding-think-about-these-pros-and-cons-first/"
+  - /destination-wedding-guide/
+  - /destination-wedding-cost/
+  - /beach-wedding-checklist/
+  - /destination-wedding-tips/
+  - /considering-having-a-beach-wedding-think-about-these-pros-and-cons-first/
 disclaimers:
-  - "financial"
-  - "referral"
-heroImage: "/images/destination-wedding-website.jpg"
+  - financial
+  - referral
+heroImage: /images/destination-wedding-website.jpg
 ---
 
 Your guests are scattered across time zones. They need to book flights, figure out passport renewals, and decide whether to tack on a vacation. A destination wedding website is the single most important communication tool you'll build during your planning process, and it does far more than display your engagement photos. It becomes a travel hub, an FAQ page, a booking portal, and a real-time update center for every person you've invited.
@@ -70,7 +76,7 @@ Here's your content checklist, organized by priority:
 - Visa or entry permit info, with a note to confirm current requirements with the relevant embassy
 
 **Accommodations**
-- Room block details with booking links and discount codes
+- [Room block](/tools/room-block-calculator/) details with booking links and discount codes
 - Block cutoff deadline (typically 60 to 90 days before the event)
 - Alternative hotel options at different price points
 - Notes on what's included (breakfast, Wi-Fi, airport transfers)

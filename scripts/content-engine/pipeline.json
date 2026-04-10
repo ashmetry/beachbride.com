@@ -9854,7 +9854,7 @@
       "id": "destination-wedding-website",
       "keyword": "destination wedding website",
       "secondaryKeywords": [],
-      "status": "staged",
+      "status": "published",
       "score": 65.80069222725035,
       "contentType": "informational",
       "schemaType": "article",
@@ -10098,7 +10098,7 @@
       "rewriteAttempts": 0,
       "failReason": null,
       "discoveredAt": "2026-04-08",
-      "publishedAt": null,
+      "publishedAt": "2026-04-10T14:45:10.053Z",
       "articleSlug": "destination-wedding-website",
       "_source": {
         "impressions": 0,
