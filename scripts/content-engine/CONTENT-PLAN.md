@@ -30,8 +30,7 @@ runs deduplication, saves to `pipeline.json` (status: `discovered`)
 **generate.js** — brief → intent gate → research → write → quality gate →
 image (status: `staged`)
 
-**publish.js** — picks oldest staged article, adds internal links, commits +
-pushes to repo (status: `published`)
+**publish.js** — picks oldest staged article, adds internal links, stamps `publishDate` to the actual go-live date (overwriting the generation date), commits + pushes to repo (status: `published`)
 
 Pipeline is **resume-safe**: every sub-step checks `topic.status` before
 running and skips already-completed stages. A run can be interrupted and

@@ -58,6 +58,10 @@ async function main() {
 
   console.log(`  Title: ${title}`);
 
+  // Stamp publishDate to today (generation date is stale by the time an article is published)
+  const today = new Date().toISOString().slice(0, 10);
+  frontmatter.publishDate = today;
+
   // 2. Internal link integration
   const existingArticles = getExistingArticles();
   const modifiedFiles = [];

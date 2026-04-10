@@ -1,7 +1,7 @@
 ---
 title: "Destination Wedding Announcements: What to Say, When to Send & How to Wow Your Guests"
 description: Learn exactly how to word, time, and send your destination wedding announcement. Real templates, timing windows, and guest-first etiquette for every destination.
-publishDate: 2026-04-08
+publishDate: 2026-04-10
 author: BeachBride Editorial Team
 tags:
   - destination wedding announcement
