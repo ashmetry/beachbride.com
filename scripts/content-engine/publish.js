@@ -170,15 +170,52 @@ async function main() {
   exec('git push origin main');
   console.log('  Pushed to main');
 
-  // 8. Email notification
+  // 8. Wait for Cloudflare Pages to build and deploy before notifying/pinging
+  const DEPLOY_WAIT_MS = 5 * 60 * 1000;
+  console.log(`\n  Waiting ${DEPLOY_WAIT_MS / 60000} minutes for Cloudflare to deploy...`);
+  await new Promise(resolve => setTimeout(resolve, DEPLOY_WAIT_MS));
+
+  // 9. Email notification
   await notifyPublished(title, slug);
 
-  // 9. Weekly digest — send on Fridays only (last publish of the week)
+  // 10. IndexNow ping — notify search engines the URL is live
+  await pingIndexNow(slug);
+
+  // 11. Weekly digest — send on Fridays only (last publish of the week)
   if (new Date().getDay() === 5) {
     await sendWeeklyDigest(pipeline);
   }
 
   console.log(`\n  Done. Article live at: https://beachbride.com/${slug}/`);
+}
+
+// ── IndexNow ──────────────────────────────────────────────────────────────────
+
+const INDEXNOW_KEY = 'c6ae39507a11a3503ba9d535de85814c';
+
+async function pingIndexNow(slug) {
+  const url = `https://beachbride.com/${slug}/`;
+  const body = JSON.stringify({
+    host: 'beachbride.com',
+    key: INDEXNOW_KEY,
+    keyLocation: `https://beachbride.com/${INDEXNOW_KEY}.txt`,
+    urlList: [url],
+  });
+
+  try {
+    const res = await fetch('https://api.indexnow.org/indexnow', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      body,
+    });
+    if (res.ok || res.status === 202) {
+      console.log(`  IndexNow: pinged (${res.status}) — ${url}`);
+    } else {
+      console.warn(`  IndexNow: unexpected status ${res.status}`);
+    }
+  } catch (err) {
+    console.warn(`  IndexNow: ping failed — ${err.message}`);
+  }
 }
 
 // ── Weekly Digest (Fridays) ────────────────────────────────────────────────────

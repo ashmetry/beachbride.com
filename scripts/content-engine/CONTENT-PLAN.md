@@ -30,7 +30,7 @@ runs deduplication, saves to `pipeline.json` (status: `discovered`)
 **generate.js** — brief → intent gate → research → write → quality gate →
 image (status: `staged`)
 
-**publish.js** — picks oldest staged article, adds internal links, stamps `publishDate` to the actual go-live date (overwriting the generation date), commits + pushes to repo (status: `published`)
+**publish.js** — picks oldest staged article, adds internal links, stamps `publishDate` to the actual go-live date (overwriting the generation date), commits + pushes to repo (status: `published`), waits 5 minutes for Cloudflare to deploy, then sends email notification and pings IndexNow (`api.indexnow.org`). Key file: `public/c6ae39507a11a3503ba9d535de85814c.txt`.
 
 Pipeline is **resume-safe**: every sub-step checks `topic.status` before
 running and skips already-completed stages. A run can be interrupted and
