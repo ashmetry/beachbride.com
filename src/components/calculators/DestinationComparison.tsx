@@ -42,9 +42,8 @@ function flightAccessibility(hours: number): { label: string; color: string } {
 
 function budgetTierLabel(tier: string): string {
   const map: Record<string, string> = {
-    value: 'Budget-friendly',
+    budget: 'Budget-friendly',
     mid: 'Mid-range',
-    upper: 'Upper-mid',
     luxury: 'Luxury',
   };
   return map[tier] ?? tier;
@@ -127,7 +126,7 @@ export default function DestinationComparison() {
             Select 2–3 destinations to compare{selected.length > 0 ? ` (${selected.length} selected)` : ''}
           </p>
           <div className="flex gap-2 flex-wrap">
-            {['', 'value', 'mid', 'upper', 'luxury'].map(tier => (
+            {['', 'budget', 'mid', 'luxury'].map(tier => (
               <button
                 key={tier}
                 type="button"

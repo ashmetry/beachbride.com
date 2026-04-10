@@ -1,7 +1,7 @@
 /**
  * Wedding Planning Timeline Generator
- * Inputs: wedding date, destination, guest count
- * Teaser: months to go + 3 upcoming milestones
+ * Inputs: wedding date (month + year selects), destination, guest count
+ * Teaser: months to go + 3 upcoming milestones (current phase + next 2)
  * Full results (email-gated): complete reverse-countdown table with destination-specific notes
  * Submits email-capture payload → SENDY_NURTURE_LIST_ID
  */
@@ -45,6 +45,14 @@ const GUEST_COUNTS = [
   'Large (100+)',
 ];
 
+const MONTH_NAMES = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
+
+const currentYear = new Date().getFullYear();
+const YEARS = Array.from({ length: 5 }, (_, i) => currentYear + i);
+
 interface Milestone {
   phase: string;
   monthsBefore: number;
@@ -52,18 +60,20 @@ interface Milestone {
   note?: string;
 }
 
-function getMilestones(destSlug: string, weddingMonth: string, guestCount: string): Milestone[] {
+function getMilestones(destSlug: string, weddingDate: string, guestCount: string): Milestone[] {
   const dest = (destinationsData as Destination[]).find(d => d.slug === destSlug);
   const isSymbolic = dest?.legalCeremonyType === 'symbolic';
   const legalNote = dest?.legalNotes;
   const bestMonths = dest?.bestMonths ?? [];
   const destName = dest?.name ?? 'your destination';
 
-  // Check if wedding month is in best months
-  const wMonth = weddingMonth ? new Date(weddingMonth + '-01').toLocaleString('en-US', { month: 'long' }) : '';
+  const wMonth = weddingDate
+    ? new Date(weddingDate + '-01').toLocaleString('en-US', { month: 'long' })
+    : '';
   const isOffSeason = wMonth && bestMonths.length > 0 && !bestMonths.includes(wMonth);
 
   const isLarge = guestCount === 'Large (100+)' || guestCount === 'Medium (50–100)';
+  const isElopement = guestCount === 'Elopement (just us)';
 
   return [
     {
@@ -72,7 +82,11 @@ function getMilestones(destSlug: string, weddingMonth: string, guestCount: strin
       tasks: [
         'Finalise your destination and set a target budget',
         'Start researching resorts and venues',
-        isLarge ? 'Secure a room block early — availability fills fast for large groups' : 'Research group room block options for guests',
+        isElopement
+          ? 'Look into elopement packages — many resorts offer intimate ceremony packages for 2'
+          : isLarge
+          ? 'Secure a room block early — availability fills fast for large groups'
+          : 'Research group room block options for guests',
         'Check passport validity for you and your partner (6+ months past wedding date)',
       ],
       note: isOffSeason
@@ -88,7 +102,9 @@ function getMilestones(destSlug: string, weddingMonth: string, guestCount: strin
           ? `Book your ceremony officiant — ${destName} ceremonies are typically symbolic (your home-country legal ceremony is separate)`
           : 'Book your ceremony — ask about the legal vs. symbolic ceremony process',
         'Hire your wedding planner (local knowledge is invaluable for destination weddings)',
-        'Set your guest list and send save-the-dates',
+        isElopement
+          ? 'Send informal notice to immediate family — even elopements benefit from 12 months notice'
+          : 'Set your guest list and send save-the-dates',
       ],
     },
     {
@@ -97,7 +113,9 @@ function getMilestones(destSlug: string, weddingMonth: string, guestCount: strin
       tasks: [
         'Book your photographer and videographer (top talent fills 9–12 months out)',
         'Book your florist and discuss what local blooms are available',
-        'Begin dress shopping (alterations take 4–6 months)',
+        isElopement
+          ? 'Shop for your dress — boutiques have shorter lead times for simpler styles'
+          : 'Begin dress shopping (alterations take 4–6 months)',
         'Research travel insurance options for you and guests',
       ],
     },
@@ -105,8 +123,12 @@ function getMilestones(destSlug: string, weddingMonth: string, guestCount: strin
       phase: '6 months out',
       monthsBefore: 6,
       tasks: [
-        'Send formal invitations with RSVP deadline',
-        'Set up your room block if not already done',
+        isElopement
+          ? 'Confirm your ceremony details and any private dinner plans'
+          : 'Send formal invitations with RSVP deadline',
+        isLarge
+          ? 'Confirm your room block is set — follow up with the resort on room count and perks'
+          : 'Set up your room block if not already done',
         'Book additional vendors: DJ/band, caterer (if not resort-catered), officiant',
         'Plan rehearsal dinner and welcome event logistics',
       ],
@@ -120,7 +142,9 @@ function getMilestones(destSlug: string, weddingMonth: string, guestCount: strin
           : `Gather legal documents for the ceremony in ${destName}`,
         'Confirm all vendor bookings in writing',
         'Finalise your ceremony script and vows',
-        'Arrange airport transfers and welcome bags for guests',
+        isElopement
+          ? 'Pack essentials: dress, rings, any decor, and your bouquet order confirmation'
+          : 'Arrange airport transfers and welcome bags for guests',
       ],
       note: !isSymbolic && legalNote
         ? `Legal requirements for ${destName}: ${legalNote.slice(0, 200)}${legalNote.length > 200 ? '…' : ''}`
@@ -130,7 +154,9 @@ function getMilestones(destSlug: string, weddingMonth: string, guestCount: strin
       phase: '1 month out',
       monthsBefore: 1,
       tasks: [
-        'Final headcount and RSVP follow-ups',
+        isElopement
+          ? 'Final check on all bookings — ceremony, accommodation, dinner, photographer'
+          : 'Final headcount and RSVP follow-ups',
         'Create a day-of timeline and share with all vendors',
         'Arrange wedding-day emergency kit (safety pins, stain remover, etc.)',
         'Schedule a final call with your planner to walk through the day',
@@ -139,27 +165,45 @@ function getMilestones(destSlug: string, weddingMonth: string, guestCount: strin
   ];
 }
 
-function monthsUntil(weddingMonth: string): number {
-  if (!weddingMonth) return 0;
+function monthsUntil(weddingDate: string): number {
+  if (!weddingDate) return 0;
   const now = new Date();
-  const target = new Date(weddingMonth + '-01');
+  const target = new Date(weddingDate + '-01');
   return Math.max(0, (target.getFullYear() - now.getFullYear()) * 12 + (target.getMonth() - now.getMonth()));
 }
 
+/**
+ * Returns the 3 milestones starting from the current phase.
+ * Current phase = the last milestone in the list where monthsBefore >= months
+ * (i.e. the phase whose start window hasn't fully passed yet).
+ * If more than 18 months out, starts from the first milestone.
+ */
 function getUpcomingMilestones(milestones: Milestone[], months: number): Milestone[] {
-  // Find the 3 milestones whose monthsBefore is >= months (not yet passed)
-  return milestones
-    .filter(m => m.monthsBefore <= months)
-    .slice(-3)
-    .reverse();
+  let currentIdx = 0;
+  for (let i = 0; i < milestones.length; i++) {
+    if (milestones[i].monthsBefore >= months) {
+      currentIdx = i;
+    }
+  }
+  return milestones.slice(currentIdx, currentIdx + 3);
 }
 
 function getDestinationSlug(label: string): string {
   return DESTINATIONS.find(d => d.label === label)?.slug ?? '';
 }
 
+function guestCountNote(guestCount: string): string | null {
+  if (!guestCount) return null;
+  if (guestCount === 'Elopement (just us)') return 'Elopement timelines are more flexible — your biggest lead times are photography and legal paperwork.';
+  if (guestCount === 'Intimate (under 20)') return 'Small guest list means simpler logistics — you can move faster on most decisions.';
+  if (guestCount === 'Large (100+)') return 'With 100+ guests, your room block and catering contracts are the longest-lead items. Prioritise these first.';
+  if (guestCount === 'Medium (50–100)') return 'At this size, book your venue and room block first — both fill quickly for larger groups.';
+  return null;
+}
+
 export default function WeddingTimelineGenerator() {
-  const [weddingDate, setWeddingDate] = useState('');
+  const [weddingYear, setWeddingYear] = useState('');
+  const [weddingMonth, setWeddingMonth] = useState('');
   const [destination, setDestination] = useState('');
   const [guestCount, setGuestCount] = useState('');
   const [unlocked, setUnlocked] = useState(false);
@@ -168,11 +212,15 @@ export default function WeddingTimelineGenerator() {
   const [submitting, setSubmitting] = useState(false);
   const [emailError, setEmailError] = useState('');
 
+  // Derived date string (YYYY-MM) for calculations
+  const weddingDate = weddingYear && weddingMonth ? `${weddingYear}-${weddingMonth}` : '';
+  const hasDate = weddingDate !== '';
+
   const months = monthsUntil(weddingDate);
   const destSlug = getDestinationSlug(destination);
   const milestones = getMilestones(destSlug, weddingDate, guestCount);
   const upcoming = getUpcomingMilestones(milestones, months);
-  const hasDate = weddingDate !== '';
+  const guestNote = guestCountNote(guestCount);
 
   async function handleEmailSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -211,17 +259,31 @@ export default function WeddingTimelineGenerator() {
     <div className="max-w-2xl mx-auto">
       {/* Inputs */}
       <div className="card p-6 mb-6 space-y-5">
+        {/* Date picker — two selects instead of type="month" */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
             Wedding date <span className="font-normal text-gray-400">(approximate is fine)</span>
           </label>
-          <input
-            type="month"
-            value={weddingDate}
-            onChange={e => setWeddingDate(e.target.value)}
-            min={new Date().toISOString().slice(0, 7)}
-            className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-brand/20"
-          />
+          <div className="grid grid-cols-2 gap-3">
+            <select
+              value={weddingMonth}
+              onChange={e => setWeddingMonth(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-brand/20"
+            >
+              <option value="">Month</option>
+              {MONTH_NAMES.map((m, i) => (
+                <option key={m} value={String(i + 1).padStart(2, '0')}>{m}</option>
+              ))}
+            </select>
+            <select
+              value={weddingYear}
+              onChange={e => setWeddingYear(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-brand/20"
+            >
+              <option value="">Year</option>
+              {YEARS.map(y => <option key={y} value={String(y)}>{y}</option>)}
+            </select>
+          </div>
         </div>
 
         <div>
@@ -260,7 +322,7 @@ export default function WeddingTimelineGenerator() {
       {/* Teaser — always visible once date is set */}
       <div className="card p-6 mb-6">
         {!hasDate ? (
-          <p className="text-gray-500 text-sm text-center py-4">Enter your wedding date above to see your timeline.</p>
+          <p className="text-gray-500 text-sm text-center py-4">Select your wedding month and year above to see your timeline.</p>
         ) : (
           <>
             <div className="text-center mb-6">
@@ -268,15 +330,21 @@ export default function WeddingTimelineGenerator() {
               <p className="text-gray-500 text-sm mt-1">months until your wedding</p>
             </div>
 
+            {guestNote && (
+              <div className="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 text-sm text-amber-800 mb-4">
+                {guestNote}
+              </div>
+            )}
+
             {upcoming.length > 0 && (
               <div className="space-y-3 mb-6">
-                <p className="text-sm font-semibold text-gray-700">Coming up next:</p>
+                <p className="text-sm font-semibold text-gray-700">Your planning phases:</p>
                 {upcoming.map((m, i) => (
                   <div key={i} className="flex gap-3 items-start">
-                    <div className="flex-shrink-0 w-2 h-2 rounded-full bg-brand mt-1.5" />
+                    <div className={`flex-shrink-0 w-2 h-2 rounded-full mt-1.5 ${i === 0 ? 'bg-brand' : 'bg-gray-300'}`} />
                     <div>
-                      <p className="text-sm font-semibold text-gray-900">{m.phase}</p>
-                      <p className="text-xs text-gray-500">{m.tasks[0]}</p>
+                      <p className={`text-sm font-semibold ${i === 0 ? 'text-gray-900' : 'text-gray-500'}`}>{m.phase}</p>
+                      <p className="text-xs text-gray-400">{m.tasks[0]}</p>
                     </div>
                   </div>
                 ))}
@@ -289,7 +357,8 @@ export default function WeddingTimelineGenerator() {
                 <p className="font-semibold text-gray-900 mb-1 text-sm">Get your complete planning timeline</p>
                 <p className="text-xs text-gray-500 mb-3">
                   All milestones from now until your wedding
-                  {destination ? `, with notes specific to ${destination.split(',')[0]}` : ''}.
+                  {destination ? `, with notes specific to ${destination.split(',')[0]}` : ''}
+                  {guestCount ? ` for a ${guestCount.toLowerCase()} wedding` : ''}.
                 </p>
                 <form onSubmit={handleEmailSubmit} className="space-y-2">
                   <div className="grid grid-cols-2 gap-2">
@@ -321,31 +390,47 @@ export default function WeddingTimelineGenerator() {
               </div>
             ) : (
               <div className="space-y-4">
-                {milestones.map((m, i) => (
-                  <div
-                    key={i}
-                    className={`rounded-xl border p-5 ${
-                      m.monthsBefore <= months
-                        ? 'border-brand/20 bg-brand/5'
-                        : 'border-gray-100 bg-gray-50 opacity-60'
-                    }`}
-                  >
-                    <p className="font-bold text-gray-900 mb-2">{m.phase}</p>
-                    <ul className="space-y-1.5">
-                      {m.tasks.map((t, j) => (
-                        <li key={j} className="flex gap-2 items-start text-sm text-gray-700">
-                          <span className="text-brand font-bold mt-0.5">✓</span>
-                          {t}
-                        </li>
-                      ))}
-                    </ul>
-                    {m.note && (
-                      <p className="mt-3 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
-                        {m.note}
-                      </p>
-                    )}
-                  </div>
-                ))}
+                {milestones.map((m, i) => {
+                  // Active = current phase or future (not yet past its deadline)
+                  // Current phase index = last milestone where monthsBefore >= months
+                  let currentIdx = 0;
+                  for (let j = 0; j < milestones.length; j++) {
+                    if (milestones[j].monthsBefore >= months) currentIdx = j;
+                  }
+                  const isActive = i >= currentIdx;
+                  return (
+                    <div
+                      key={i}
+                      className={`rounded-xl border p-5 ${
+                        isActive
+                          ? i === currentIdx
+                            ? 'border-brand/30 bg-brand/5'
+                            : 'border-gray-200 bg-white'
+                          : 'border-gray-100 bg-gray-50 opacity-50'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2 mb-2">
+                        {i === currentIdx && isActive && (
+                          <span className="text-xs font-bold text-brand bg-brand/10 px-2 py-0.5 rounded-full">Now</span>
+                        )}
+                        <p className="font-bold text-gray-900">{m.phase}</p>
+                      </div>
+                      <ul className="space-y-1.5">
+                        {m.tasks.map((t, j) => (
+                          <li key={j} className="flex gap-2 items-start text-sm text-gray-700">
+                            <span className="text-brand font-bold mt-0.5">✓</span>
+                            {t}
+                          </li>
+                        ))}
+                      </ul>
+                      {m.note && (
+                        <p className="mt-3 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+                          {m.note}
+                        </p>
+                      )}
+                    </div>
+                  );
+                })}
 
                 {/* CTA */}
                 <div className="bg-brand text-white rounded-xl p-5 text-center">

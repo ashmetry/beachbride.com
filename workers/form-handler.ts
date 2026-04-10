@@ -35,6 +35,7 @@ interface EmailCapturePayload {
   season?: string; // e.g. "winter", "spring", "summer", "fall"
   guestCount?: string; // e.g. "intimate", "medium", "large"
   budget?: string; // e.g. "budget", "mid", "luxury"
+  weddingDate?: string; // e.g. "2027-06" — from timeline generator
   matchedDestinations?: string[]; // top 3 slugs from quiz scoring
   utm_source?: string;
   utm_medium?: string;
@@ -318,8 +319,10 @@ export default {
       return jsonResponse({ ok: true });
     }
 
-    // Turnstile — enforce for quiz forms when secret is configured
-    const requiresTurnstile = (raw.type === 'email-capture' || raw.type === 'lead') && env.TURNSTILE_SECRET;
+    // Turnstile — enforce for quiz forms when secret is configured.
+    // Tool submissions (utm_medium === 'tool') bypass Turnstile — they use a different email gate pattern.
+    const isToolSubmission = raw.utm_medium === 'tool';
+    const requiresTurnstile = !isToolSubmission && (raw.type === 'email-capture' || raw.type === 'lead') && env.TURNSTILE_SECRET;
     if (requiresTurnstile) {
       const token = (raw['cf-turnstile-response'] as string) || '';
       const ip = request.headers.get('CF-Connecting-IP') || '';
@@ -354,6 +357,7 @@ export default {
           Season: payload.season ?? '',
           GuestCount: payload.guestCount ?? '',
           Budget: payload.budget ?? '',
+          WeddingDate: payload.weddingDate ?? '',
           UTMSource: payload.utm_source ?? '',
           UTMMedium: payload.utm_medium ?? '',
           UTMCampaign: payload.utm_campaign ?? '',
