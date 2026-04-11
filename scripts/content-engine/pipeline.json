@@ -12955,6 +12955,48 @@
         "difficulty": 0,
         "source": "room-block-seed"
       }
+    },
+    {
+      "id": "how-to-cover-tattoos-for-wedding",
+      "keyword": "how to cover tattoos for wedding",
+      "secondaryKeywords": [
+        "covering tattoos for wedding day",
+        "tattoo cover up for wedding",
+        "how to cover up tattoos for wedding",
+        "tattoo coverage for wedding makeup"
+      ],
+      "targetSlug": "how-to-cover-tattoos-for-wedding",
+      "contentType": "howto",
+      "schemaType": "howto",
+      "volume": 1200,
+      "difficulty": 28,
+      "cpc": 1.4,
+      "score": 88,
+      "source": "wp-migration-rescue",
+      "status": "discovered",
+      "discoveredAt": "2026-04-11T15:39:58.689Z",
+      "_editorialNotes": "WP article (cover-tattoos-wedding-day, 2014) had 29 GSC impressions in 28 days across 8+ tattoo cover queries but was mis-redirected to /beach-wedding-checklist/ losing all ranking equity. Write a comprehensive HowTo: product recommendations (Dermablend Leg and Body, KVD Good Apple, Ben Nye body makeup), step-by-step application process, timing advice (practice 2-3 weeks before wedding day), professional makeup artist vs DIY, photography lighting considerations, and how to decide whether to cover at all. Tone: non-judgmental and practical. Original WP summary: Even if you usually love the tribal tattoo on your back or the multi-colored half-sleeve on your arm, there may be occasions when you want to cover them up, such as your wedding day . It’s great to know that makeup isn’t only for your face! Here are some tips for covering up your tattoos for your wedding day. [caption id=\"attachment_1746\" align=\"aligncenter\" width=\"600\"] slodive.com[/caption] Step 1: Purchase a Concealing Cover-Up Since tattoos no longer cover a select few of the population, mor"
+    },
+    {
+      "id": "bible-verses-for-wedding-ceremony",
+      "keyword": "bible verses for wedding ceremony",
+      "secondaryKeywords": [
+        "best bible verses for weddings",
+        "christian wedding scripture readings",
+        "bible passages for wedding vows",
+        "bible quotes for wedding ceremony"
+      ],
+      "targetSlug": "bible-verses-for-wedding-ceremony",
+      "contentType": "listicle",
+      "schemaType": "article",
+      "volume": 2400,
+      "difficulty": 32,
+      "cpc": 0.8,
+      "score": 86,
+      "source": "wp-migration-rescue",
+      "status": "discovered",
+      "discoveredAt": "2026-04-11T15:39:58.690Z",
+      "_editorialNotes": "WP article (the-top-3-bible-verses-for-weddings, 2013) mis-redirected to /destination-wedding-guide/ losing ranking equity. The original only listed 3 verses. New article must be substantially better: 15-20 verses organised by theme (love/commitment/unity/joy/covenant), context for each explaining why couples choose it, which work for readings vs vows vs programs, denomination guidance, and how to coordinate with officiant. Include a comparison table. Must cite actual Bible verses verbatim. Original 3 verses were: 1 Corinthians 13:4-13, Ruth 1:16-17, Ecclesiastes 4:9-12. Content note: Some of the most beautiful words can be found in your Bible! If you’re looking for a quote to display at your wedding or something to add to your vows, you’ve come to the right place. Check out these 3 beautiful scriptures to get some ideas. 1 Corinthians 13:4-13 Love is patient and kind; love does not envy or boast; it is not arrogant or rude. It does not insist on its own way; it is not irritabl"
     }
   ],
   "lastDiscoveryRun": "2026-04-08T19:17:14.938Z",
