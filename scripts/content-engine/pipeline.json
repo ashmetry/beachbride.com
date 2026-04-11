@@ -12575,7 +12575,7 @@
         "how many hotel rooms do you need for a wedding",
         "room block size destination wedding"
       ],
-      "status": "staged",
+      "status": "published",
       "score": 90,
       "contentType": "guide",
       "schemaType": "howto",
@@ -12808,7 +12808,7 @@
       "rewriteAttempts": 0,
       "failReason": null,
       "discoveredAt": "2026-04-08",
-      "publishedAt": null,
+      "publishedAt": "2026-04-11T16:02:13.648Z",
       "articleSlug": "how-many-hotel-rooms-to-block-destination-wedding",
       "_forcedSlug": "how-many-hotel-rooms-to-block-destination-wedding",
       "destination": null,

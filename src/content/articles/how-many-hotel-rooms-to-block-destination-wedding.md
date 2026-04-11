@@ -1,53 +1,59 @@
 ---
-title: "How Many Hotel Rooms to Block for a Destination Wedding (+ a Calculator to Get It Right)"
-description: "Not sure how many hotel rooms to block for your destination wedding? Here's the exact formula, real numbers by destination, and a free room block calculator."
-publishDate: 2026-04-09
-author: "BeachBride Editorial Team"
-tags: ["hotel room block", "destination wedding planning", "room block calculator", "wedding guest accommodations", "destination wedding logistics", "hotel block tips"]
-schemaType: "howto"
+title: How Many Hotel Rooms to Block for a Destination Wedding (+ a Calculator to Get It Right)
+description: Not sure how many hotel rooms to block for your destination wedding? Here's the exact formula, real numbers by destination, and a free room block calculator.
+publishDate: 2026-04-11
+author: BeachBride Editorial Team
+tags:
+  - hotel room block
+  - destination wedding planning
+  - room block calculator
+  - wedding guest accommodations
+  - destination wedding logistics
+  - hotel block tips
+schemaType: howto
 howToSteps:
-  - name: "Count your out-of-town guests"
-    text: "List every guest who will need to travel and stay overnight. For destination weddings, this is typically 80-100% of your invite list since nearly everyone is traveling."
-  - name: "Estimate your attendance rate"
-    text: "Expect 40-60% of invited guests to attend a destination wedding, compared to 75-85% for local weddings. Use 50% as a conservative starting point, or poll close family for a better read."
-  - name: "Divide by guests per room"
-    text: "Divide your expected attendee count by 2 if most guests are couples. If you have many single friends, use 1.5 instead. For family-heavy guest lists, use 2.5 to account for kids sharing parents' rooms."
-  - name: "Add a 10-20% buffer"
-    text: "Multiply your room count by 1.1 (for a 10% buffer) or 1.2 (for a 20% buffer). This covers last-minute RSVPs, guests who prefer solo rooms, and any surprises."
-  - name: "Split across 2-3 properties"
-    text: "Divide your total room count across two or three hotels at different price points. Place 60% of rooms at your primary venue and 40% at a nearby budget-friendly option."
-  - name: "Choose courtesy vs. contracted blocks"
-    text: "Use courtesy blocks (10-20 rooms, no financial penalty) for smaller groups or secondary hotels. Use contracted blocks for your primary property where you need guaranteed availability and perks."
-  - name: "Run the numbers through a calculator"
-    text: "Use BeachBride's free room block calculator at /tools/room-block-calculator/ to get a personalized recommendation based on your guest list, destination, and wedding date."
+  - name: Count your out-of-town guests
+    text: List every guest who will need to travel and stay overnight. For destination weddings, this is typically 80-100% of your invite list since nearly everyone is traveling.
+  - name: Estimate your attendance rate
+    text: Expect 40-60% of invited guests to attend a destination wedding, compared to 75-85% for local weddings. Use 50% as a conservative starting point, or poll close family for a better read.
+  - name: Divide by guests per room
+    text: Divide your expected attendee count by 2 if most guests are couples. If you have many single friends, use 1.5 instead. For family-heavy guest lists, use 2.5 to account for kids sharing parents' rooms.
+  - name: Add a 10-20% buffer
+    text: Multiply your room count by 1.1 (for a 10% buffer) or 1.2 (for a 20% buffer). This covers last-minute RSVPs, guests who prefer solo rooms, and any surprises.
+  - name: Split across 2-3 properties
+    text: Divide your total room count across two or three hotels at different price points. Place 60% of rooms at your primary venue and 40% at a nearby budget-friendly option.
+  - name: Choose courtesy vs. contracted blocks
+    text: Use courtesy blocks (10-20 rooms, no financial penalty) for smaller groups or secondary hotels. Use contracted blocks for your primary property where you need guaranteed availability and perks.
+  - name: Run the numbers through a calculator
+    text: Use BeachBride's free room block calculator at /tools/room-block-calculator/ to get a personalized recommendation based on your guest list, destination, and wedding date.
 affiliateDisclosure: true
 faqs:
-  - question: "What percentage of destination wedding guests actually book the room block?"
-    answer: "Typically 40-60% of invited guests attend a destination wedding, and most of those will book through your room block if the rate is competitive. According to Ever After Travel, accessibility and resort affordability are the biggest factors influencing attendance swings. Sending your booking link early and often helps maximize pickup."
-  - question: "How far in advance should I set up a hotel room block?"
-    answer: "For destination weddings, secure your room blocks 12-14 months in advance. According to Engine.com, destination markets fill quickly, and waiting beyond 10-12 months risks poor rates and limited availability, especially during peak travel seasons."
-  - question: "Do I have to pay for rooms that guests don't book?"
-    answer: "It depends on the type of block. Courtesy blocks carry no financial risk for unused rooms. Contracted blocks, however, may include attrition clauses that penalize you if guest bookings fall below a certain threshold, often 80-90% of the reserved rooms."
-  - question: "What is an attrition clause and how do I avoid getting burned by it?"
-    answer: "An attrition clause is a contract provision that requires you to pay for a percentage of your blocked rooms whether guests book them or not. According to The Knot, most contracts set the threshold at 80-90% pickup. To protect yourself, reduce your anticipated room count by 20% when signing a contracted block, and monitor bookings weekly."
-  - question: "Can I block rooms at more than one hotel?"
-    answer: "Yes, and most planners recommend it. Splitting your block across 2-3 hotels at different price points gives guests budget flexibility and reduces your risk of overcommitting at a single property. According to Engine.com, this approach can also increase overall guest pickup."
-  - question: "What's the difference between a courtesy block and a contracted block?"
-    answer: "A courtesy block holds 10-20 rooms at a group rate with no financial obligation if rooms go unbooked. A contracted block is a formal agreement, often starting at 10 rooms, that guarantees availability and perks but may include deposits and attrition penalties for low pickup."
-  - question: "Should I block rooms at the wedding venue resort or a nearby hotel?"
-    answer: "Ideally, both. Block the majority of rooms at your venue resort for convenience, especially for the wedding party and family. Then offer a secondary block at a nearby property for guests who want a different price point or more independence."
-  - question: "What happens to leftover blocked rooms after the cutoff date?"
-    answer: "Unbooked rooms in a courtesy block are released back to the hotel's public inventory, typically 30 days before the wedding, with no penalty to you. For contracted blocks, you may owe fees on rooms that fall below the attrition threshold. Always confirm your specific cutoff date and terms in writing."
+  - question: What percentage of destination wedding guests actually book the room block?
+    answer: Typically 40-60% of invited guests attend a destination wedding, and most of those will book through your room block if the rate is competitive. According to Ever After Travel, accessibility and resort affordability are the biggest factors influencing attendance swings. Sending your booking link early and often helps maximize pickup.
+  - question: How far in advance should I set up a hotel room block?
+    answer: For destination weddings, secure your room blocks 12-14 months in advance. According to Engine.com, destination markets fill quickly, and waiting beyond 10-12 months risks poor rates and limited availability, especially during peak travel seasons.
+  - question: Do I have to pay for rooms that guests don't book?
+    answer: It depends on the type of block. Courtesy blocks carry no financial risk for unused rooms. Contracted blocks, however, may include attrition clauses that penalize you if guest bookings fall below a certain threshold, often 80-90% of the reserved rooms.
+  - question: What is an attrition clause and how do I avoid getting burned by it?
+    answer: An attrition clause is a contract provision that requires you to pay for a percentage of your blocked rooms whether guests book them or not. According to The Knot, most contracts set the threshold at 80-90% pickup. To protect yourself, reduce your anticipated room count by 20% when signing a contracted block, and monitor bookings weekly.
+  - question: Can I block rooms at more than one hotel?
+    answer: Yes, and most planners recommend it. Splitting your block across 2-3 hotels at different price points gives guests budget flexibility and reduces your risk of overcommitting at a single property. According to Engine.com, this approach can also increase overall guest pickup.
+  - question: What's the difference between a courtesy block and a contracted block?
+    answer: A courtesy block holds 10-20 rooms at a group rate with no financial obligation if rooms go unbooked. A contracted block is a formal agreement, often starting at 10 rooms, that guarantees availability and perks but may include deposits and attrition penalties for low pickup.
+  - question: Should I block rooms at the wedding venue resort or a nearby hotel?
+    answer: Ideally, both. Block the majority of rooms at your venue resort for convenience, especially for the wedding party and family. Then offer a secondary block at a nearby property for guests who want a different price point or more independence.
+  - question: What happens to leftover blocked rooms after the cutoff date?
+    answer: Unbooked rooms in a courtesy block are released back to the hotel's public inventory, typically 30 days before the wedding, with no penalty to you. For contracted blocks, you may owe fees on rooms that fall below the attrition threshold. Always confirm your specific cutoff date and terms in writing.
 related:
-  - "destination-wedding-cost"
-  - "destination-wedding-guide"
-  - "beach-wedding-checklist"
-  - "destination-wedding-tips"
-  - "destination-wedding-budget-hacks-that-dont-sacrifice-luxury"
+  - destination-wedding-cost
+  - destination-wedding-guide
+  - beach-wedding-checklist
+  - destination-wedding-tips
+  - destination-wedding-budget-hacks-that-dont-sacrifice-luxury
 disclaimers:
-  - "financial"
-  - "referral"
-heroImage: "/images/how-many-hotel-rooms-to-block-destination-wedding.jpg"
+  - financial
+  - referral
+heroImage: /images/how-many-hotel-rooms-to-block-destination-wedding.jpg
 ---
 
 Figuring out how many hotel rooms to block for a destination wedding is one of those tasks that sounds simple until you actually sit down to do it. Block too many and you could be on the hook for rooms nobody books. Block too few and your guests are scrambling for overpriced leftovers at a hotel 30 minutes from the ceremony. The good news? There's a straightforward formula that takes the guesswork out of it, and we've built a free [room block calculator](/tools/room-block-calculator/) to make it even easier.
