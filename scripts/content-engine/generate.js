@@ -207,7 +207,8 @@ Return a JSON object with these fields:
   "disclaimers": ["financial"],
   "relatedSlugs": ["existing-slug-1", "existing-slug-2", ...],
   "affiliateOpportunity": "resort or jewelry angle if relevant, otherwise null",
-  "uniqueAngle": "What makes this article different from competitors"
+  "uniqueAngle": "What makes this article different from competitors",
+  "sectionImageCount": 0
 }
 
 Rules:
@@ -215,7 +216,8 @@ Rules:
 - Include 5-8 FAQ topics
 - relatedSlugs must be real slugs from the existing articles list (3-5)
 - disclaimers: always include "financial" for any cost/budget content; add "professional" for legal requirement content; add "referral" if recommending specific vendors or resorts
-- slug should be concise and keyword-rich`;
+- slug should be concise and keyword-rich
+- sectionImageCount: number of ADDITIONAL images beyond the hero. Use 0 for text-heavy articles (guides, checklists, how-tos, cost breakdowns, legal info, scripture). Use 2 for articles where readers expect to see visual examples (venue roundups, real wedding features, destination overviews, honeymoon destinations). Use 3 only for pure inspiration articles where every section benefits from a distinct visual (color palettes, cake designs, bouquet styles, nail looks, decor themes). Maximum is 3.`;
 
   return await callModelJSON(MODEL_BRIEF, systemPrompt, userPrompt, { temperature: 0.3, max_tokens: 2000 });
 }
@@ -761,11 +763,13 @@ async function generateImages(topic) {
     console.log('    Hero image failed — article will publish without hero image');
   }
 
-  // Section images for visual-intent topics (colors, cakes, decor, florals, etc.)
-  const isVisual = detectVisualIntent(topic.keyword);
-  if (isVisual) {
-    const imageCount = getSectionImageCount(topic.keyword);
-    console.log(`    Visual-intent topic — generating ${imageCount} section images...`);
+  // Section images: use LLM's brief judgement if available, fall back to keyword regex
+  const briefCount = typeof topic.brief?.sectionImageCount === 'number' ? topic.brief.sectionImageCount : -1;
+  const imageCount = briefCount >= 0
+    ? Math.min(briefCount, 3)  // cap at 3 regardless of what LLM returns
+    : (detectVisualIntent(topic.keyword) ? getSectionImageCount(topic.keyword) : 0);
+  if (imageCount > 0) {
+    console.log(`    ${briefCount >= 0 ? 'Brief' : 'Regex'}-detected visual intent — generating ${imageCount} section image(s)...`);
     const sectionResults = await generateSectionImages(
       topic.articleSlug,
       topic.brief.title,

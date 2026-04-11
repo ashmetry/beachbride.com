@@ -497,22 +497,32 @@ via a LINK_TARGETS entry in `lib/config.js`. Auto-categorize to `planning`.
 
 ---
 
-### Section Images for Visual-Intent Articles ← added 2026-04-08
+### Section Images for Visual-Intent Articles ← updated 2026-04-11
 
-Articles on visual-intent topics (colors, cakes, florals, decor, nails, attire,
-invitations, etc.) generate 2–3 contextual section images in addition to the
-hero image. Each image is specific to an H2 heading, not a generic repeat of
-the hero.
+Articles on visual-intent topics generate 2–3 contextual section images in
+addition to the hero image. Each image is specific to an H2 heading.
 
-**How it works:**
-1. `detectVisualIntent(keyword)` checks the keyword against pattern list
-2. `getSectionImageCount(keyword)` returns 3 for color/palette topics, 2 for others
-3. After hero generation, `generateSectionImages()` selects H2s evenly distributed
+**How the count is decided (priority order):**
+1. `topic.brief.sectionImageCount` — the LLM sets this during brief generation
+   based on full topic context (0 = text-heavy, 2 = venue/destination/real-wedding
+   roundups, 3 = pure inspiration: palettes, cakes, bouquets, decor themes).
+   Capped at 3 regardless of what the LLM returns.
+2. Regex fallback — used only for topics already in pipeline without a brief
+   `sectionImageCount`. The regex list (`VISUAL_INTENT_PATTERNS`) covers 14
+   keyword patterns; `getSectionImageCount` returns 3 for color/palette, 2 for all
+   others. This fallback is preserved for backwards compatibility only.
+
+**How images are inserted:**
+1. After hero generation, `generateSectionImages()` selects H2s evenly distributed
    across the outline (skipping first and last — those positions are awkward)
-4. Claude Haiku writes a section-specific prompt per H2, Gemini generates the image
-5. `insertSectionImagesIntoArticle()` inserts `![alt](/images/slug-N.jpg)` tags
-   immediately after each selected H2, before the section body — deterministic
-   placement, not LLM-placed
+2. Claude Haiku writes a section-specific prompt per H2, Gemini generates the image
+3. `insertSectionImagesIntoArticle()` inserts `![alt](/images/slug-N.jpg)` tags
+   immediately after each selected H2, before the section body
+
+**Why LLM instead of regex:** Regex only catches keyword patterns. The LLM can
+identify visual intent from full topic context — "best beach wedding venues in
+Santorini" or "bora bora elopement" are visual articles that no keyword list
+would catch reliably.
 
 **Cost:** ~$0.15 extra per visual article (3 Haiku prompt calls + 3 Gemini images)
 
