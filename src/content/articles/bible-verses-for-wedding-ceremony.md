@@ -73,7 +73,7 @@ These are the verses that describe love itself. They're the most popular categor
 This is the verse. According to [EC Matrimony](https://www.ecmatrimony.com/blog/2024/3/12/10-perfect-scriptures-for-your-wedding), 1 Corinthians 13 tops virtually every wedding verse list and is requested even by non-religious couples. It works as a standalone reading, and its rhythm makes it powerful when spoken aloud over crashing waves or in a quiet chapel. Every major Christian denomination embraces it. **Best used as:** a ceremony reading by a loved one.
 
 **2. Song of Solomon 8:6-7 (NIV)**
-> "Place me like a seal over your heart, like a seal on your arm; for love is as strong as death, its jealousy unyielding as the grave. It burns like blazing fire, like a mighty flame. Many waters cannot quench love; rivers cannot sweep it away."
+> "Place me like a seal over your heart, like a seal on your arm; for love is as strong as death, its jealousy unyielding as the grave. It burns like blazing fire, like a mighty flame. Many waters cannot quench love; rivers cannot sweep it away. If one were to give all the wealth of one's house for love, it would be utterly scorned."
 
 Intensely romantic. The water imagery makes it a natural fit for a beach ceremony. According to [Cru](https://www.cru.org/us/en/train-and-grow/life-and-relationships/marriage/wedding-verses.html), it ranks among the most frequently recommended passages. **Best used as:** a reading or printed on a sign near your ceremony arch.
 
@@ -116,7 +116,7 @@ Not a traditional wedding verse, but couples who have weathered long-distance re
 These verses pair beautifully with unity rituals like sand ceremonies, cord braiding, or candle lighting.
 
 **9. Ecclesiastes 4:9-12 (ESV)**
-> "Two are better than one, because they have a good reward for their toil. For if they fall, one will lift up his fellow. But woe to him who is alone when he falls and has not another to lift him up! Again, if two lie together, they keep warm, but how can one keep warm alone? And though a man might prevail against one who is alone, two will withstand him — a threefold cord is not quickly broken."
+> "Two are better than one, because they have a good reward for their toil. For if they fall, one will lift up his fellow. But woe to him who is alone when he falls and has not another to lift him up! Again, if two lie together, they keep warm, but how can one keep warm alone? And though a man might prevail against one who is alone, two will withstand him—a threefold cord is not quickly broken."
 
 This was one of our original three picks, and it remains a favorite. According to [The Knot](https://www.theknot.com/real-weddings/gods-knot-wedding-unity-ceremony-tradition-photo), the "cord of three strands" imagery has inspired an entire wedding ritual (sometimes called God's Knot) where couples braid three cords during the ceremony. It's a powerful visual for guests. **Best used as:** a reading paired with a unity cord ceremony.
 
@@ -126,12 +126,12 @@ This was one of our original three picks, and it remains a favorite. According t
 Foundational. According to [EC Matrimony](https://www.ecmatrimony.com/blog/2024/3/12/10-perfect-scriptures-for-your-wedding), it ranks among the top three most cited verses in wedding ceremonies across multiple traditions. **Best used as:** part of the officiant's homily.
 
 **11. Mark 10:8-9 (NIV)**
-> "'And the two will become one flesh.' So they are no longer two, but one flesh. Therefore what God has joined together, let no one separate."
+> "'and the two will become one flesh.' So they are no longer two, but one flesh. Therefore what God has joined together, let no one separate."
 
 Jesus speaking directly about marriage. This verse carries particular weight in Catholic and Orthodox ceremonies. **Best used as:** a reading or officiant declaration.
 
 **12. Ephesians 4:2-3 (ESV)**
-> "With all humility and gentleness, with patience, bearing with one another in love, eager to maintain the unity of the Spirit in the bond of peace."
+> "with all humility and gentleness, with patience, bearing with one another in love, eager to maintain the unity of the Spirit in the bond of peace."
 
 Practical and tender. It reads like actual marriage advice. **Best used as:** a reading or incorporated into a blessing.
 
@@ -164,7 +164,7 @@ The classic benediction. Many officiants use this to close the ceremony. If you'
 For couples who want their ceremony to reflect marriage as a spiritual covenant, not just a legal contract.
 
 **17. Ephesians 5:25 (ESV)**
-> "Husbands, love your wives, as Christ loved the church and gave himself up for her."
+> "Husbands, love your wives, as Christ loved the church and gave himself up for her,"
 
 According to [EC Matrimony](https://www.ecmatrimony.com/blog/2024/3/12/10-perfect-scriptures-for-your-wedding), this verse appears in over 80% of top-ten wedding verse lists. It speaks to sacrificial, selfless love. Some couples read the fuller passage (Ephesians 5:25-33) for deeper context. Note: the surrounding passage includes language about submission that some couples choose to address or skip. Discuss with your officiant. **Best used as:** part of a homily or sermon.
 
