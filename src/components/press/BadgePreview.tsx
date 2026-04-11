@@ -95,7 +95,7 @@ export function Badge({ vendor, destName }: { vendor: Vendor | null; destName: s
         )}
         {isPro && (destName || vendor?.rating) && (
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 3 }}>
-            {destName && <span style={{ fontSize: 10, color: '#6b7280' }}>📍 {destName}</span>}
+            {destName && <span style={{ fontSize: 10, color: '#6b7280' }}>{destName}</span>}
             {vendor?.rating && (
               <span style={{ fontSize: 10, color: '#C9974A', fontWeight: 700 }}>★ {vendor.rating}</span>
             )}
@@ -130,7 +130,7 @@ function generateEmbedCode(vendor: Vendor | null, destName: string | null): stri
       ? `<div style="font-size:12px;color:#374151;font-weight:500;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${vendor.name}</div>`
       : '',
     isPro && (destName || vendor?.rating)
-      ? `<div style="font-size:10px;color:#6b7280;margin-top:3px">${destName ? `📍 ${destName}` : ''}${destName && vendor?.rating ? '&nbsp; ' : ''}${vendor?.rating ? `<span style="color:#C9974A;font-weight:700">&#9733; ${vendor.rating}</span>` : ''}</div>`
+      ? `<div style="font-size:10px;color:#6b7280;margin-top:3px">${destName ? destName : ''}${destName && vendor?.rating ? '&nbsp;&middot;&nbsp;' : ''}${vendor?.rating ? `<span style="color:#C9974A;font-weight:700">&#9733; ${vendor.rating}</span>` : ''}</div>`
       : '',
   ].filter(Boolean).join('\n    ');
 

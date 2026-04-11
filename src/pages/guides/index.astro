@@ -39,7 +39,6 @@ const canonical = 'https://beachbride.com/guides/';
         <!-- Category header -->
         <div class="flex items-center justify-between mb-5">
           <div class="flex items-center gap-2">
-            <span class="text-2xl">{cat.heroEmoji}</span>
             <div>
               <h2 class="text-xl font-bold text-gray-900">{cat.label}</h2>
               <p class="text-sm text-gray-500">{articles.length} {articles.length === 1 ? 'guide' : 'guides'}</p>
@@ -72,9 +71,7 @@ const canonical = 'https://beachbride.com/guides/';
                       />
                     </div>
                   ) : (
-                    <div class="aspect-[16/9] bg-brand-light flex items-center justify-center">
-                      <span class="text-4xl">{cat.heroEmoji}</span>
-                    </div>
+                    <div class="aspect-[16/9] bg-brand-light"></div>
                   )}
                   <div class="p-4">
                     <h3 class="font-semibold text-gray-900 text-sm leading-snug group-hover:text-brand transition-colors line-clamp-2">
@@ -92,7 +89,6 @@ const canonical = 'https://beachbride.com/guides/';
                 href={`/guides/${cat.slug}/`}
                 class="group flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-200 hover:border-brand hover:bg-brand-light transition-colors p-6 text-center min-h-[180px]"
               >
-                <span class="text-3xl mb-2">{cat.heroEmoji}</span>
                 <span class="text-sm font-semibold text-gray-600 group-hover:text-brand">
                   +{articles.length - 3} more {cat.label} guides
                 </span>

@@ -51,12 +51,12 @@ const DESTINATIONS = [
 ];
 
 const SERVICES = [
-  { value: 'planner', label: 'Wedding Planner', icon: '📋' },
-  { value: 'photographer', label: 'Photographer', icon: '📸' },
-  { value: 'florist', label: 'Florist', icon: '💐' },
-  { value: 'caterer', label: 'Caterer / Food', icon: '🍽️' },
-  { value: 'dj', label: 'DJ / Entertainment', icon: '🎵' },
-  { value: 'officiant', label: 'Officiant', icon: '💍' },
+  { value: 'planner', label: 'Wedding Planner' },
+  { value: 'photographer', label: 'Photographer' },
+  { value: 'florist', label: 'Florist' },
+  { value: 'caterer', label: 'Caterer / Food' },
+  { value: 'dj', label: 'DJ / Entertainment' },
+  { value: 'officiant', label: 'Officiant' },
 ];
 
 const BUDGETS = [
@@ -383,7 +383,6 @@ export default function LeadQuiz({ turnstileSiteKey }: Props) {
                 className={`quiz-option-card py-4 ${form.services.includes(s.value) ? 'selected' : ''}`}
                 onClick={() => toggleService(s.value)}
               >
-                <span className="text-2xl mb-1">{s.icon}</span>
                 <span className="font-semibold text-sm text-gray-900">{s.label}</span>
                 {form.services.includes(s.value) && (
                   <span className="absolute top-2 right-2 text-brand text-xs">✓</span>

@@ -74,8 +74,7 @@ const legalDisplay = dest.legalCeremonyType === 'legal' ? 'Yes — legal' :
         )}
       </div>
     ) : (
-      <div class="relative w-full rounded-2xl bg-brand-light flex items-center justify-center aspect-[21/9] mb-8 text-8xl">
-        {dest.emoji}
+      <div class="relative w-full rounded-2xl bg-brand-light aspect-[21/9] mb-8">
         {dest.isHiddenGem && (
           <span class="absolute top-4 right-4 bg-brand-accent/90 text-white text-xs font-semibold px-3 py-1 rounded-full">
             ✦ Hidden Gem
@@ -85,7 +84,6 @@ const legalDisplay = dest.legalCeremonyType === 'legal' ? 'Yes — legal' :
     )}
 
     <div class="flex items-center gap-3 mb-2">
-      <span class="text-4xl">{dest.emoji}</span>
       <div>
         <h1 class="text-3xl sm:text-4xl font-bold text-gray-900">{dest.name} Destination Wedding</h1>
         <p class="text-gray-500">{dest.country} &middot; {dest.region}</p>
@@ -273,8 +271,8 @@ const legalDisplay = dest.legalCeremonyType === 'legal' ? 'Yes — legal' :
         <div class="grid sm:grid-cols-2 gap-4">
           {localVendors.map(v => (
             <a href={`/vendors/${v.slug}/`} class="card p-4 hover:shadow-md transition-shadow no-underline group flex items-start gap-3">
-              <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center flex-shrink-0 text-lg">
-                {v.type === 'planner' ? '📋' : v.type === 'photographer' ? '📸' : v.type === 'florist' ? '💐' : v.type === 'caterer' ? '🍽️' : v.type === 'dj' ? '🎵' : '💍'}
+              <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center flex-shrink-0 text-xs font-bold text-brand uppercase">
+                {v.type.slice(0, 2)}
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 group-hover:text-brand transition-colors text-sm">{v.name}</h3>

@@ -40,16 +40,14 @@ const canonical = 'https://beachbride.com/real-weddings/';
               />
             </div>
           ) : (
-            <div class="aspect-[4/3] bg-brand-light flex items-center justify-center">
-              <span class="text-4xl">🌊</span>
-            </div>
+            <div class="aspect-[4/3] bg-brand-light"></div>
           )}
           <div class="p-4">
             <h2 class="font-semibold text-gray-900 text-sm leading-snug group-hover:text-brand transition-colors line-clamp-2">
               {w.data.title}
             </h2>
             {w.data.location && (
-              <p class="text-xs text-gray-400 mt-1">📍 {w.data.location}</p>
+              <p class="text-xs text-gray-400 mt-1">{w.data.location}</p>
             )}
             {w.data.tags.length > 0 && (
               <div class="flex flex-wrap gap-1 mt-2">

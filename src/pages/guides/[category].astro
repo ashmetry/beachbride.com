@@ -43,7 +43,6 @@ const otherCats = GUIDE_CATEGORIES.filter(c => c.slug !== cat.slug);
     <!-- Header -->
     <header class="mb-10">
       <div class="flex items-center gap-3 mb-2">
-        <span class="text-3xl">{cat.heroEmoji}</span>
         <h1 class="text-3xl md:text-4xl font-bold text-gray-900">{cat.label}</h1>
       </div>
       <p class="text-gray-600 max-w-2xl">{cat.description}</p>
@@ -70,9 +69,7 @@ const otherCats = GUIDE_CATEGORIES.filter(c => c.slug !== cat.slug);
                   />
                 </div>
               ) : (
-                <div class="aspect-[16/9] bg-brand-light flex items-center justify-center">
-                  <span class="text-4xl">{cat.heroEmoji}</span>
-                </div>
+                <div class="aspect-[16/9] bg-brand-light"></div>
               )}
               <div class="p-4">
                 <h2 class="font-semibold text-gray-900 text-sm leading-snug group-hover:text-brand transition-colors line-clamp-2">
@@ -97,7 +94,6 @@ const otherCats = GUIDE_CATEGORIES.filter(c => c.slug !== cat.slug);
             href={`/guides/${c.slug}/`}
             class="flex items-center gap-2 p-3 rounded-lg border border-gray-200 hover:border-brand hover:bg-brand-light transition-colors no-underline text-sm font-medium text-gray-700 hover:text-brand"
           >
-            <span>{c.heroEmoji}</span>
             <span>{c.label}</span>
           </a>
         ))}
