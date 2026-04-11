@@ -15,7 +15,9 @@
     "wp:audit:dry": "node scripts/wp-migration/audit.js --dry-run",
     "fetch-climate": "node scripts/fetch-destination-climate.js",
     "fetch-climate:force": "node scripts/fetch-destination-climate.js --force",
-    "fetch-climate:validate": "node scripts/fetch-destination-climate.js --validate"
+    "fetch-climate:validate": "node scripts/fetch-destination-climate.js --validate",
+    "content:audit-rankings": "node scripts/content-engine/audit-rankings.js",
+    "content:audit-rankings:report": "node scripts/content-engine/audit-rankings.js --report"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.0",

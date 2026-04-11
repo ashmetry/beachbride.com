@@ -16,6 +16,40 @@ architectural problems get re-solved from scratch.
 
 ## Part 1 — Universal Architecture
 
+### Rankings Audit & Feedback Loop
+
+**`audit-rankings.js`** — weekly GSC snapshot tool that builds a trend history
+and recommends the right action for each ranking page. Run with:
+
+```bash
+npm run content:audit-rankings         # fetch new snapshot + report
+npm run content:audit-rankings:report  # report from existing history only
+node scripts/content-engine/audit-rankings.js --dry-run  # test without saving
+```
+
+History stored in `scripts/content-engine/rankings-history.json` (committed).
+Keeps last 26 snapshots (~6 months). Minimum 6 days between snapshots to avoid noise.
+
+**Action taxonomy:**
+
+| Action | Condition | What to do |
+|--------|-----------|------------|
+| `META_ONLY` | pos < 10, impressions ≥ 3, CTR = 0 | Fix title/meta description only — content is ranking fine |
+| `REWRITE` | PLATEAUED 2+ weeks, pos > 15, impressions ≥ 3 | Full rewrite with fresh research |
+| `INVESTIGATE` | Position worsening | Check for competing new pages, technical issues |
+| `CLIMBING` | Position improving > 2 positions | Do not touch |
+| `LEAVE` | Confirmed climbing | Leave alone |
+| `MONITOR` / `WATCH` | Insufficient data | Wait for more snapshots |
+
+**Key rule:** Never rewrite a CLIMBING article regardless of CTR. Position
+improvement signals Google is already rewarding the content. A rewrite risks
+losing that signal.
+
+**Bad redirect detection:** The script also scans `public/_redirects` for
+topic-keyword URLs that redirect to semantically unrelated destinations (e.g.
+a tattoo-cover article routing to the beach checklist page). These represent
+ranking traffic being discarded.
+
 ### Pipeline Overview
 
 ```

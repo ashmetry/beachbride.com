@@ -1,0 +1,54 @@
+name: Content Engine — Rankings Audit
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'   # Monday 6am UTC — weekly snapshot + trend report
+  workflow_dispatch:        # manual trigger anytime
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run rankings audit
+        run: node scripts/content-engine/audit-rankings.js
+        env:
+          GSC_SERVICE_ACCOUNT_KEY: ${{ secrets.GSC_SERVICE_ACCOUNT_KEY }}
+
+      - name: Commit snapshot
+        run: |
+          git config user.name "BeachBride Bot"
+          git config user.email "bot@beachbride.com"
+          git add scripts/content-engine/rankings-history.json
+          git diff --cached --quiet || git commit -m "Rankings audit: snapshot $(date +%Y-%m-%d)"
+          git push || true
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          MSG="The rankings audit workflow failed on $(date -u '+%Y-%m-%d %H:%M UTC'). Check: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          curl -s --user "api:$MAILGUN_API_KEY" \
+            https://api.mailgun.net/v3/beachbride.com/messages \
+            -F from="BeachBride Content Engine <noreply@beachbride.com>" \
+            -F to="$NOTIFY_EMAIL" \
+            -F subject="Content Engine: Rankings audit FAILED" \
+            -F text="$MSG"
+        env:
+          MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}

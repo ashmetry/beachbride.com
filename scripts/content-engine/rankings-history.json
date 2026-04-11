@@ -1,0 +1,554 @@
+{
+  "snapshots": [
+    {
+      "date": "2026-04-11",
+      "pages": {
+        "/celebrity-beach-weddings/": {
+          "impressions": 2,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 8.5,
+          "topQueries": [
+            {
+              "q": "\"danced barefoot\" \"wedding\" celebrity",
+              "impressions": 1,
+              "position": 12
+            },
+            {
+              "q": "celebrity beach weddings",
+              "impressions": 1,
+              "position": 5
+            }
+          ]
+        },
+        "/vendors/amy-abbott-events-los-cabos/": {
+          "impressions": 1,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 24,
+          "topQueries": [
+            {
+              "q": "amy abbott events",
+              "impressions": 1,
+              "position": 24
+            }
+          ]
+        },
+        "/destination-wedding-cost/": {
+          "impressions": 22,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 49,
+          "topQueries": [
+            {
+              "q": "destination wedding cost",
+              "impressions": 6,
+              "position": 46.2
+            },
+            {
+              "q": "weddings abroad prices",
+              "impressions": 3,
+              "position": 79.3
+            },
+            {
+              "q": "destination wedding prices",
+              "impressions": 2,
+              "position": 47.5
+            },
+            {
+              "q": "overseas wedding cost",
+              "impressions": 2,
+              "position": 69.5
+            },
+            {
+              "q": "average cost destination wedding 2026",
+              "impressions": 1,
+              "position": 12
+            }
+          ]
+        },
+        "/vendors/photographer/bali/": {
+          "impressions": 1,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 36,
+          "topQueries": [
+            {
+              "q": "bali wedding photographer",
+              "impressions": 1,
+              "position": 36
+            }
+          ]
+        },
+        "/beach-wedding-beautiful-and-easy-centerpiece-ideas/": {
+          "impressions": 2,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 20.5,
+          "topQueries": [
+            {
+              "q": "beach wedding centerpiece ideas",
+              "impressions": 1,
+              "position": 12
+            },
+            {
+              "q": "diy beach wedding centerpieces",
+              "impressions": 1,
+              "position": 29
+            }
+          ]
+        },
+        "/beach-wedding-checklist/": {
+          "impressions": 2,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 52,
+          "topQueries": [
+            {
+              "q": "beach wedding checklist",
+              "impressions": 1,
+              "position": 26
+            },
+            {
+              "q": "beach wedding packing list",
+              "impressions": 1,
+              "position": 78
+            }
+          ]
+        },
+        "/beautiful-beach-wedding-color-schemes/": {
+          "impressions": 12,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 8.1,
+          "topQueries": [
+            {
+              "q": "colors for a beach wedding",
+              "impressions": 4,
+              "position": 6
+            },
+            {
+              "q": "beach wedding color palette",
+              "impressions": 2,
+              "position": 11
+            },
+            {
+              "q": "beach wedding colors",
+              "impressions": 2,
+              "position": 14.5
+            },
+            {
+              "q": "summer beach wedding colors",
+              "impressions": 2,
+              "position": 7.5
+            },
+            {
+              "q": "beach wedding color scheme",
+              "impressions": 1,
+              "position": 1
+            }
+          ]
+        },
+        "/beautiful-beach-wedding-color-schemes/#does-the-season-or-destination-affect-which-colors-work": {
+          "impressions": 5,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 6.2,
+          "topQueries": [
+            {
+              "q": "colors for a beach wedding",
+              "impressions": 4,
+              "position": 6
+            },
+            {
+              "q": "beach wedding color palette",
+              "impressions": 1,
+              "position": 7
+            }
+          ]
+        },
+        "/beautiful-beach-wedding-color-schemes/#what-are-the-6-palette-directions-that-consistently-work-at-beach-venues": {
+          "impressions": 1,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 7,
+          "topQueries": [
+            {
+              "q": "beach wedding color palette",
+              "impressions": 1,
+              "position": 7
+            }
+          ]
+        },
+        "/beautiful-beach-wedding-color-schemes/#which-colors-photograph-badly-at-beach-weddings": {
+          "impressions": 5,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 6.2,
+          "topQueries": [
+            {
+              "q": "colors for a beach wedding",
+              "impressions": 4,
+              "position": 6
+            },
+            {
+              "q": "beach wedding color palette",
+              "impressions": 1,
+              "position": 7
+            }
+          ]
+        },
+        "/beautiful-beach-wedding-color-schemes/#why-does-beach-light-change-how-colors-look": {
+          "impressions": 5,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 6.2,
+          "topQueries": [
+            {
+              "q": "colors for a beach wedding",
+              "impressions": 4,
+              "position": 6
+            },
+            {
+              "q": "beach wedding color palette",
+              "impressions": 1,
+              "position": 7
+            }
+          ]
+        },
+        "/vendors/planner/tuscany/": {
+          "impressions": 5,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 56.4,
+          "topQueries": [
+            {
+              "q": "wedding planner tuscany",
+              "impressions": 2,
+              "position": 62.5
+            },
+            {
+              "q": "best wedding planners in tuscany italy",
+              "impressions": 1,
+              "position": 50
+            },
+            {
+              "q": "wedding planner tuscany italy",
+              "impressions": 1,
+              "position": 54
+            },
+            {
+              "q": "wedding planners tuscany",
+              "impressions": 1,
+              "position": 53
+            }
+          ]
+        },
+        "/vendors/il-borgo-di-vignamaggio-tuscany/": {
+          "impressions": 4,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 51.5,
+          "topQueries": [
+            {
+              "q": "borgo di vignamaggio wedding",
+              "impressions": 2,
+              "position": 50
+            },
+            {
+              "q": "il borgo di vignamaggio",
+              "impressions": 1,
+              "position": 41
+            },
+            {
+              "q": "vignamaggio wedding",
+              "impressions": 1,
+              "position": 65
+            }
+          ]
+        },
+        "/destinations/punta-cana/": {
+          "impressions": 8,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 73.8,
+          "topQueries": [
+            {
+              "q": "punta cana destination wedding",
+              "impressions": 2,
+              "position": 60
+            },
+            {
+              "q": "punta cana weddings",
+              "impressions": 2,
+              "position": 65.5
+            },
+            {
+              "q": "weddings punta cana",
+              "impressions": 2,
+              "position": 87.5
+            },
+            {
+              "q": "chez bisutti punta cana",
+              "impressions": 1,
+              "position": 78
+            },
+            {
+              "q": "getting married in punta cana",
+              "impressions": 1,
+              "position": 86
+            }
+          ]
+        },
+        "/vendors/como-parrot-cay-turks-and-caicos/": {
+          "impressions": 1,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 37,
+          "topQueries": [
+            {
+              "q": "como parrot cay wedding",
+              "impressions": 1,
+              "position": 37
+            }
+          ]
+        },
+        "/vendors/cvjecara-clover-kotor/": {
+          "impressions": 1,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 6,
+          "topQueries": [
+            {
+              "q": "cvjecara clover",
+              "impressions": 1,
+              "position": 6
+            }
+          ]
+        },
+        "/vendors/dj/cancun/": {
+          "impressions": 1,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 25,
+          "topQueries": [
+            {
+              "q": "destination wedding dj cancun",
+              "impressions": 1,
+              "position": 25
+            }
+          ]
+        },
+        "/destinations/fiji/": {
+          "impressions": 6,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 51,
+          "topQueries": [
+            {
+              "q": "destination wedding fiji",
+              "impressions": 2,
+              "position": 50
+            },
+            {
+              "q": "fiji destination wedding",
+              "impressions": 2,
+              "position": 45
+            },
+            {
+              "q": "fiji wedding",
+              "impressions": 1,
+              "position": 45
+            },
+            {
+              "q": "fiji weddings",
+              "impressions": 1,
+              "position": 71
+            }
+          ]
+        },
+        "/vendors/tuscany/": {
+          "impressions": 8,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 77.3,
+          "topQueries": [
+            {
+              "q": "destination wedding planner tuscany",
+              "impressions": 3,
+              "position": 78
+            },
+            {
+              "q": "wedding planner tuscany",
+              "impressions": 3,
+              "position": 80.7
+            },
+            {
+              "q": "tuscany wedding catering",
+              "impressions": 1,
+              "position": 66
+            },
+            {
+              "q": "wedding planners in tuscany",
+              "impressions": 1,
+              "position": 76
+            }
+          ]
+        },
+        "/vendors/santa-caterina-hotel-amalfi-coast/": {
+          "impressions": 1,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 54,
+          "topQueries": [
+            {
+              "q": "hotel santa caterina wedding",
+              "impressions": 1,
+              "position": 54
+            }
+          ]
+        },
+        "/vendors/iberostar-selection-cancn-cancun/": {
+          "impressions": 1,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 67,
+          "topQueries": [
+            {
+              "q": "iberostar cancun wedding",
+              "impressions": 1,
+              "position": 67
+            }
+          ]
+        },
+        "/vendors/tropical-weddings-jamaica-wedding-planner-jamaica/": {
+          "impressions": 1,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 97,
+          "topQueries": [
+            {
+              "q": "jamaican wedding planner",
+              "impressions": 1,
+              "position": 97
+            }
+          ]
+        },
+        "/vendors/florist/key-west/": {
+          "impressions": 1,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 27,
+          "topQueries": [
+            {
+              "q": "key west wedding florist",
+              "impressions": 1,
+              "position": 27
+            }
+          ]
+        },
+        "/vendors/say-yes-in-key-west-key-west/": {
+          "impressions": 2,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 67.5,
+          "topQueries": [
+            {
+              "q": "key west wedding planners",
+              "impressions": 2,
+              "position": 67.5
+            }
+          ]
+        },
+        "/vendors/koh-lanta/": {
+          "impressions": 2,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 11,
+          "topQueries": [
+            {
+              "q": "rattana+resort+เกาะลันตาน้อย",
+              "impressions": 2,
+              "position": 11
+            }
+          ]
+        },
+        "/vendors/sunset-ranch-hawaii-hawaii/": {
+          "impressions": 3,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 54.7,
+          "topQueries": [
+            {
+              "q": "sunset ranch hawaii",
+              "impressions": 3,
+              "position": 54.7
+            }
+          ]
+        },
+        "/vendors/planner/jamaica/": {
+          "impressions": 2,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 12,
+          "topQueries": [
+            {
+              "q": "top wedding planners in jamaica",
+              "impressions": 2,
+              "position": 12
+            }
+          ]
+        },
+        "/destinations/tulum/": {
+          "impressions": 5,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 78,
+          "topQueries": [
+            {
+              "q": "tulum wedding",
+              "impressions": 3,
+              "position": 84.3
+            },
+            {
+              "q": "tulum mexico wedding",
+              "impressions": 1,
+              "position": 72
+            },
+            {
+              "q": "tulum wedding packages",
+              "impressions": 1,
+              "position": 65
+            }
+          ]
+        },
+        "/vendors/villa-le-fontanelle-tuscany/": {
+          "impressions": 2,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 71,
+          "topQueries": [
+            {
+              "q": "villa le fontanelle wedding",
+              "impressions": 2,
+              "position": 71
+            }
+          ]
+        },
+        "/vendors/": {
+          "impressions": 1,
+          "clicks": 0,
+          "ctr": 0,
+          "avgPosition": 98,
+          "topQueries": [
+            {
+              "q": "wedding planners arcadian shores",
+              "impressions": 1,
+              "position": 98
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

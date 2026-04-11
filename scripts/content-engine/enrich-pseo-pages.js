@@ -19,8 +19,8 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { callModelJSON } from './lib/openrouter.js';
 import { MODEL_BRIEF } from './lib/config.js';
-import destinations from '../../src/data/destinations.json' assert { type: 'json' };
-import vendors from '../../src/data/vendors.json' assert { type: 'json' };
+import destinations from '../../src/data/destinations.json' with { type: 'json' };
+import vendors from '../../src/data/vendors.json' with { type: 'json' };
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -63,6 +63,15 @@ const PRIORITY_COMBOS = [
   { type: 'planner',      destination: 'tulum',       volume: 190 },
   // Costa Rica
   { type: 'planner',      destination: 'costa-rica',  volume: 210 },
+  // Key West — strong GSC signal, 47 vendors, high commercial intent
+  { type: 'planner',      destination: 'key-west',    volume: 320 },
+  { type: 'photographer', destination: 'key-west',    volume: 240 },
+  { type: 'florist',      destination: 'key-west',    volume: 160 },
+  { type: 'officiant',    destination: 'key-west',    volume: 200 },
+  // Tuscany — showing up in GSC, high CPC, aspirational European destination
+  { type: 'planner',      destination: 'tuscany',     volume: 260 },
+  { type: 'photographer', destination: 'tuscany',     volume: 180 },
+  { type: 'venue',        destination: 'tuscany',     volume: 220 },
 ];
 
 // Vendor type context for prompts
