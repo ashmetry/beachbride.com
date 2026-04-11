@@ -12973,7 +12973,7 @@
       "cpc": 1.4,
       "score": 88,
       "source": "wp-migration-rescue",
-      "status": "staged",
+      "status": "published",
       "discoveredAt": "2026-04-11T15:39:58.689Z",
       "_editorialNotes": "WP article (cover-tattoos-wedding-day, 2014) had 29 GSC impressions in 28 days across 8+ tattoo cover queries but was mis-redirected to /beach-wedding-checklist/ losing all ranking equity. Write a comprehensive HowTo: product recommendations (Dermablend Leg and Body, KVD Good Apple, Ben Nye body makeup), step-by-step application process, timing advice (practice 2-3 weeks before wedding day), professional makeup artist vs DIY, photography lighting considerations, and how to decide whether to cover at all. Tone: non-judgmental and practical. Original WP summary: Even if you usually love the tribal tattoo on your back or the multi-colored half-sleeve on your arm, there may be occasions when you want to cover them up, such as your wedding day . It’s great to know that makeup isn’t only for your face! Here are some tips for covering up your tattoos for your wedding day. [caption id=\"attachment_1746\" align=\"aligncenter\" width=\"600\"] slodive.com[/caption] Step 1: Purchase a Concealing Cover-Up Since tattoos no longer cover a select few of the population, mor",
       "brief": {
@@ -13202,7 +13202,8 @@
         "internalLinks": 13,
         "externalLinks": 18,
         "citations": 18
-      }
+      },
+      "publishedAt": "2026-04-11T16:07:36.724Z"
     },
     {
       "id": "bible-verses-for-wedding-ceremony",
