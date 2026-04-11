@@ -1,53 +1,188 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import { getOrganizationSchema } from '../lib/schema/organization';
+import destinations from '../data/destinations.json';
+import vendors from '../data/vendors.json';
+
+const destCount = destinations.length;
+const vendorCount = vendors.length;
+
+const publications = [
+  "Harper's Bazaar", "Martha Stewart Weddings", "Brides",
+  "The Knot", "Style Me Pretty", "HuffPost", "Grace Ormonde", "WeddingWire",
+];
+
+const vendorCriteria = [
+  'Portfolio quality relative to destination and price point',
+  'Responsiveness — couples deserve to hear back',
+  'Destination experience, not just proximity',
+  'Reviews from real couples, verified where possible',
+];
+
+const revenueStreams = [
+  {
+    label: 'Affiliate commissions',
+    copy: 'When you book a resort, purchase jewelry, or buy travel insurance through a link on this site, we may earn a commission. This has no effect on the price you pay and no effect on our editorial recommendations.',
+  },
+  {
+    label: 'Pay-per-lead referrals',
+    copy: 'Local wedding vendors — planners, photographers, florists, caterers, DJs, officiants — pay a fee when we connect them with a qualified couple. Vendors do not pay to rank higher or appear more prominently.',
+  },
+  {
+    label: 'Room block coordination',
+    copy: 'For couples needing hotel room blocks for destination wedding guests, we coordinate group rates at all-inclusive resorts. The resort pays a commission. There is no cost to the couple.',
+  },
+];
 ---
 
 <PageLayout
-  title="About BeachBride"
-  description="BeachBride helps couples plan destination weddings at the world's most beautiful beach locations — connecting you with vetted vendors and expert guides."
+  title="About BeachBride — Who We Are and How We Work"
+  description="BeachBride is a destination wedding planning resource built by a wedding industry insider, with expert contributors published in Harper's Bazaar, Martha Stewart Weddings, Brides, and The Knot."
   canonical="https://beachbride.com/about/"
   schema={getOrganizationSchema()}
 >
-  <h1 class="text-3xl font-bold text-gray-900 mb-6">About BeachBride</h1>
 
-  <div class="prose prose-gray max-w-none">
-    <p class="lead text-lg text-gray-600">
-      BeachBride exists to make destination wedding planning feel as beautiful as the wedding itself — clear, joyful, and free of the overwhelm.
-    </p>
-
-    <h2>Our Mission</h2>
-    <p>
-      Planning a wedding across the world is genuinely complex. Couples face a maze of unfamiliar vendors, currency conversions, legal requirements, and logistical challenges — all while trying to stay inspired. BeachBride cuts through that noise with expert destination guides, a curated vendor network, and a matching process that connects the right couples with the right professionals.
-    </p>
-
-    <h2>How We're Different</h2>
-    <p>
-      We don't take commissions from vendors to rank them higher. Every vendor in our directory is vetted for responsiveness, portfolio quality, and real couple reviews. When we recommend a resort or a photographer, it's because they're genuinely great — not because they paid for placement.
-    </p>
-    <p>
-      We do earn affiliate commissions from some resort and travel partners, which is how we keep our planning tools free for couples. We disclose this clearly in relevant content.
-    </p>
-
-    <h2>Editorial Standards</h2>
-    <p>
-      Our destination guides are researched with input from local wedding planners and photographers who work in those destinations professionally. We cover the practical details most sites skip: legal marriage requirements by country, permit processes, best seasons, and hidden costs. Content is updated annually or when local conditions change significantly.
-    </p>
-    <p>
-      Meet the industry professionals who contribute expert knowledge to our guides: <a href="/experts/">our contributors →</a>
-    </p>
-
-    <h2>For Vendors</h2>
-    <p>
-      BeachBride operates a lead referral network for wedding planners, photographers, florists, caterers, DJs, and officiants. If you're a professional serving destination wedding couples and want qualified leads, visit our <a href="/vendors/upgrade/">vendor listing page</a>.
-    </p>
-    <p>
-      Resorts and jewelers can list in our directory and reach engaged couples through our content — <a href="/contact/">reach out</a> to discuss partnership options.
-    </p>
-
-    <h2>Contact</h2>
-    <p>
-      Questions, corrections, or partnership inquiries: <a href="/contact/">contact us here</a>.
+  <!-- Hero -->
+  <div class="mb-14">
+    <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-4">About BeachBride</p>
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-5 leading-tight">
+      A destination wedding resource<br class="hidden sm:block" /> built from the inside out.
+    </h1>
+    <p class="text-lg text-gray-600 leading-relaxed">
+      Most wedding planning sites are built by lifestyle bloggers or aggregator platforms with no direct industry experience. BeachBride is built by someone who spent years working inside the wedding industry — alongside the vendors, media platforms, and technology companies that couples interact with every day. That background shapes what we cover, how we vet vendors, and what we're willing to say.
     </p>
   </div>
+
+  <!-- Founder -->
+  <section class="mb-14">
+    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+      <div class="flex flex-col sm:flex-row">
+        <div class="sm:w-44 flex-shrink-0 bg-brand-light flex items-center justify-center p-8">
+          <img
+            src="/images/experts/ash.jpg"
+            alt="Ash Metry — Founder, BeachBride"
+            class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md"
+          />
+        </div>
+        <div class="p-6 sm:p-8 flex-1">
+          <div class="flex flex-wrap items-center gap-2 mb-1">
+            <h2 class="text-xl font-bold text-gray-900">Ash Metry</h2>
+            <span class="text-xs bg-accent/10 text-accent-dark px-2.5 py-1 rounded-full font-semibold border border-accent/20 uppercase tracking-wide">Founder</span>
+          </div>
+          <p class="text-sm text-brand font-medium mb-0.5">Founder, BeachBride</p>
+          <p class="text-xs text-gray-500 mb-4">Houston, TX</p>
+          <p class="text-sm text-gray-600 leading-relaxed mb-5">
+            Ash built BeachBride with direct experience spanning wedding media, advertising, and technology — including running TWBN, a wedding media and advertising network, and investing in wedding planning software. Having worked alongside vendors, publishers, and platforms from the inside, he understands the incentives that shape what most wedding sites recommend — and where those incentives create blind spots for couples. BeachBride exists to close that gap.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="text-xs bg-brand-light text-brand-dark px-2.5 py-1 rounded-full font-medium border border-brand/20">Wedding media &amp; advertising</span>
+            <span class="text-xs bg-brand-light text-brand-dark px-2.5 py-1 rounded-full font-medium border border-brand/20">Wedding planning technology</span>
+            <span class="text-xs bg-brand-light text-brand-dark px-2.5 py-1 rounded-full font-medium border border-brand/20">Vendor networks</span>
+          </div>
+          <a
+            href="https://www.linkedin.com/in/ashmetry/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-xs text-gray-400 hover:text-brand transition-colors no-underline"
+          >
+            linkedin.com/in/ashmetry →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="mb-14">
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      {[
+        { n: String(destCount), label: 'destinations' },
+        { n: '10', label: 'expert contributors' },
+        { n: `${vendorCount}+`, label: 'vetted vendors' },
+        { n: '6', label: 'vendor categories' },
+      ].map(s => (
+        <div class="bg-brand-light rounded-xl p-5 text-center">
+          <p class="text-2xl font-bold text-brand mb-1">{s.n}</p>
+          <p class="text-xs text-gray-500 uppercase tracking-wide leading-snug">{s.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Expert contributors -->
+  <section class="mb-14 pb-14 border-b border-gray-100">
+    <h2 class="text-xl font-bold text-gray-900 mb-3">Expert contributors</h2>
+    <p class="text-gray-600 leading-relaxed mb-5">
+      Our destination guides are informed by working professionals — not research alone. BeachBride's contributors are photographers and planners actively working in their regions. Their work has been published in:
+    </p>
+    <div class="flex flex-wrap gap-2 mb-6">
+      {publications.map(pub => (
+        <span class="text-xs bg-white border border-gray-200 text-gray-700 px-3 py-1.5 rounded-full font-medium">{pub}</span>
+      ))}
+    </div>
+    <p class="text-sm text-gray-500 leading-relaxed">
+      Contributors bring first-hand knowledge of venue permit requirements, resort protocols, seasonal light conditions, and the planning details that couples routinely underestimate — the practical specifics that don't appear in generic destination overviews.
+    </p>
+    <a href="/experts/" class="inline-block mt-5 text-sm font-semibold text-brand hover:text-brand-dark no-underline">
+      Meet the contributors →
+    </a>
+  </section>
+
+  <!-- Editorial standards -->
+  <section class="mb-14 pb-14 border-b border-gray-100">
+    <h2 class="text-xl font-bold text-gray-900 mb-3">Editorial standards</h2>
+    <div class="space-y-4 text-gray-600 leading-relaxed">
+      <p>
+        Every destination guide covers what most planning resources skip: legal marriage requirements by country, permit processes by beach, realistic cost ranges (not aspirational ones), best and worst travel months, and what's changed since previous guidance was written. Legal requirements are verified against official government sources. Content is updated when conditions change.
+      </p>
+      <p>
+        Vendors do not pay to rank higher, receive more prominent placement, or appear in editorial recommendations. Our content team does not accept payment for coverage. Where we use affiliate links — resort bookings, jewelry, travel insurance — we disclose this clearly in the relevant content.
+      </p>
+      <p>
+        Factual errors are corrected within 48 hours. If you find an outdated legal requirement, an incorrect cost figure, or a vendor that has closed, <a href="/contact/" class="text-brand hover:text-brand-dark no-underline">let us know</a> and we'll verify and update.
+      </p>
+    </div>
+  </section>
+
+  <!-- Vendor vetting -->
+  <section class="mb-14 pb-14 border-b border-gray-100">
+    <h2 class="text-xl font-bold text-gray-900 mb-3">Vendor standards</h2>
+    <p class="text-gray-600 leading-relaxed mb-5">
+      BeachBride's directory covers wedding planners, photographers, florists, caterers, DJs, and officiants serving destination couples. To appear in the network, vendors are assessed on:
+    </p>
+    <ul class="space-y-3">
+      {vendorCriteria.map(c => (
+        <li class="flex gap-3 text-sm text-gray-600">
+          <span class="text-accent font-bold mt-0.5 flex-shrink-0">—</span>
+          <span>{c}</span>
+        </li>
+      ))}
+    </ul>
+    <p class="text-sm text-gray-400 mt-5">
+      Resorts and jewelers appear in our directory for discovery but are not enrolled in the lead referral network. They are featured via affiliate relationships in our guides and destination pages.
+    </p>
+  </section>
+
+  <!-- Revenue transparency -->
+  <section class="mb-14 pb-14 border-b border-gray-100">
+    <h2 class="text-xl font-bold text-gray-900 mb-1">How BeachBride makes money</h2>
+    <p class="text-sm text-gray-500 mb-5">We believe in being direct about this.</p>
+    <div class="space-y-3">
+      {revenueStreams.map(item => (
+        <div class="bg-white border border-gray-200 rounded-xl p-5">
+          <p class="font-semibold text-gray-900 text-sm mb-1.5">{item.label}</p>
+          <p class="text-sm text-gray-500 leading-relaxed">{item.copy}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section>
+    <h2 class="text-xl font-bold text-gray-900 mb-3">Contact</h2>
+    <p class="text-gray-600 leading-relaxed">
+      Questions, corrections, partnership inquiries, or vendor applications: <a href="/contact/" class="text-brand hover:text-brand-dark no-underline font-medium">contact us here</a>.
+    </p>
+  </section>
+
 </PageLayout>
