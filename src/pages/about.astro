@@ -37,13 +37,13 @@ const revenueStreams = [
 
 <PageLayout
   title="About BeachBride — Who We Are and How We Work"
-  description="BeachBride is a destination wedding planning resource built by a wedding industry insider, with expert contributors published in Harper's Bazaar, Martha Stewart Weddings, Brides, and The Knot."
+  description="BeachBride is a destination wedding planning resource built by a wedding industry insider, connected to experts published in Harper's Bazaar, Martha Stewart Weddings, Brides, and The Knot."
   canonical="https://beachbride.com/about/"
   schema={getOrganizationSchema()}
 >
 
   <!-- Hero -->
-  <div class="mb-14">
+  <div class="mb-10">
     <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-4">About BeachBride</p>
     <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-5 leading-tight">
       A destination wedding resource<br class="hidden sm:block" /> built from the inside out.
@@ -54,7 +54,7 @@ const revenueStreams = [
   </div>
 
   <!-- Founder -->
-  <section class="mb-14">
+  <section class="mb-10">
     <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
       <div class="flex flex-col sm:flex-row">
         <div class="sm:w-44 flex-shrink-0 bg-brand-light flex items-center justify-center p-8">
@@ -93,11 +93,11 @@ const revenueStreams = [
   </section>
 
   <!-- Stats -->
-  <section class="mb-14">
+  <section class="mb-10">
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
       {[
         { n: String(destCount), label: 'destinations' },
-        { n: '10', label: 'expert contributors' },
+        { n: '10', label: 'industry experts' },
         { n: `${vendorCount}+`, label: 'vetted vendors' },
         { n: '6', label: 'vendor categories' },
       ].map(s => (
@@ -109,11 +109,11 @@ const revenueStreams = [
     </div>
   </section>
 
-  <!-- Expert contributors -->
-  <section class="mb-14 pb-14 border-b border-gray-100">
-    <h2 class="text-xl font-bold text-gray-900 mb-3">Expert contributors</h2>
+  <!-- Experts -->
+  <section class="mb-10 pb-10 border-b border-gray-100">
+    <h2 class="text-xl font-bold text-gray-900 mb-3">Industry experts</h2>
     <p class="text-gray-600 leading-relaxed mb-5">
-      Our destination guides are informed by working professionals — not research alone. BeachBride's contributors are photographers and planners actively working in their regions. Their work has been published in:
+      BeachBride is connected to a network of working professionals — photographers and planners actively operating in their destinations. Their work has been published in:
     </p>
     <div class="flex flex-wrap gap-2 mb-6">
       {publications.map(pub => (
@@ -121,15 +121,15 @@ const revenueStreams = [
       ))}
     </div>
     <p class="text-sm text-gray-500 leading-relaxed">
-      Contributors bring first-hand knowledge of venue permit requirements, resort protocols, seasonal light conditions, and the planning details that couples routinely underestimate — the practical specifics that don't appear in generic destination overviews.
+      These professionals bring first-hand knowledge of venue permit requirements, resort protocols, seasonal conditions, and the planning details couples routinely underestimate — the practical specifics that don't appear in generic destination overviews.
     </p>
     <a href="/experts/" class="inline-block mt-5 text-sm font-semibold text-brand hover:text-brand-dark no-underline">
-      Meet the contributors →
+      Meet the experts →
     </a>
   </section>
 
   <!-- Editorial standards -->
-  <section class="mb-14 pb-14 border-b border-gray-100">
+  <section class="mb-10 pb-10 border-b border-gray-100">
     <h2 class="text-xl font-bold text-gray-900 mb-3">Editorial standards</h2>
     <div class="space-y-4 text-gray-600 leading-relaxed">
       <p>
@@ -145,7 +145,7 @@ const revenueStreams = [
   </section>
 
   <!-- Vendor vetting -->
-  <section class="mb-14 pb-14 border-b border-gray-100">
+  <section class="mb-10 pb-10 border-b border-gray-100">
     <h2 class="text-xl font-bold text-gray-900 mb-3">Vendor standards</h2>
     <p class="text-gray-600 leading-relaxed mb-5">
       BeachBride's directory covers wedding planners, photographers, florists, caterers, DJs, and officiants serving destination couples. To appear in the network, vendors are assessed on:
@@ -164,7 +164,7 @@ const revenueStreams = [
   </section>
 
   <!-- Revenue transparency -->
-  <section class="mb-14 pb-14 border-b border-gray-100">
+  <section class="mb-10 pb-10 border-b border-gray-100">
     <h2 class="text-xl font-bold text-gray-900 mb-1">How BeachBride makes money</h2>
     <p class="text-sm text-gray-500 mb-5">We believe in being direct about this.</p>
     <div class="space-y-3">
