@@ -115,10 +115,12 @@ export const LINK_TARGETS = [
 ];
 
 // ── Affiliate Link Targets ─────────────────────────────────────────────────────
-// keyword patterns → Awin tracked affiliate URL (inserted by generate script)
-// Canonical registry: src/data/affiliate-links.ts (front-end)
-// These are the same Awin tracking links, used at content-generation time.
-// rel="sponsored nofollow noopener" is enforced in the write prompt.
+// Controls which affiliate cards get auto-injected into articles and where.
+// `key` must match a key in src/data/affiliate-links.ts — that file owns all URLs.
+// Cards link to /go/{key}; the /go/ page resolves the URL from affiliate-links.ts.
+// Card copy (cardTitle, cardDesc, cardCta, cardProof) and keyword patterns live here.
+// Destination deep links (booking-*, getyourguide-*, top-villas-*) are resolved via
+// DEEP_LINK_KEYS below — keys must also exist in affiliate-links.ts.
 export const AFFILIATE_TARGETS = [
   // Wedding insurance
   { key: 'ewed', patterns: ['wedding insurance', 'wedding cancellation insurance', 'wedding liability insurance', 'protect your wedding'],

@@ -1,15 +1,23 @@
 /**
- * Centralized affiliate link registry.
+ * Affiliate link registry — single source of truth for all tracking URLs.
  *
- * Every affiliate URL on the site resolves through this file.
- * Content files reference links by key (e.g. "booking-cancun"),
- * never by raw URL. This keeps tracking IDs in one place and
- * ensures every link gets rel="sponsored nofollow noopener".
+ * Architecture:
+ *   /go/[key]  →  this file  →  Awin cread.php  →  advertiser destination
  *
- * To add a new link:
- *   1. Generate it via Awin Link Builder API (see memory/reference_awin_tracking_links.md)
- *   2. Add an entry below with a descriptive key
- *   3. Use `getAffiliateLink(key)` or `affiliateAttrs(key)` in templates
+ * Every key here generates a /go/{key} redirect page (src/pages/go/[key].astro).
+ * The content pipeline (publish.js, generate.js, backfill.js) injects cards using
+ * /go/{key} hrefs — card copy and keyword patterns live in config.js AFFILIATE_TARGETS,
+ * which references keys defined here. No raw tracking URLs appear anywhere else.
+ *
+ * To add a new affiliate link:
+ *   1. Generate the Awin tracking URL via the Awin Link Builder API
+ *   2. Add an entry below with a unique key
+ *   3. If the pipeline should auto-inject it into articles, also add to
+ *      AFFILIATE_TARGETS in scripts/content-engine/lib/config.js
+ *   4. If it's a destination deep link, also add the key to DEEP_LINK_KEYS in config.js
+ *
+ * Verification rule: always test the full chain — /go/ page → Awin 302 → destination live.
+ * Never declare a link verified without confirming the final landing page is correct.
  */
 
 export interface AffiliateLink {
@@ -38,13 +46,6 @@ export const affiliateLinks: Record<string, AffiliateLink> = {
     awinId: 86129,
     advertiser: 'eWed Insurance',
   },
-  'ewed-quote': {
-    label: 'Get a Wedding Insurance Quote',
-    url: 'https://www.awin1.com/cread.php?awinmid=86129&awinaffid=2852109&ued=https%3A%2F%2Fwww.ewedinsurance.com&platform=pl',
-    short: '',
-    awinId: 86129,
-    advertiser: 'eWed Insurance',
-  },
 
   // ── Travel Insurance ───────────────────────────────────────────────────
   'generali': {
@@ -54,33 +55,12 @@ export const affiliateLinks: Record<string, AffiliateLink> = {
     awinId: 49127,
     advertiser: 'Generali Travel Insurance',
   },
-  'generali-quote': {
-    label: 'Get a Trip Protection Quote',
-    url: 'https://www.awin1.com/cread.php?awinmid=49127&awinaffid=2852109&ued=https%3A%2F%2Fwww.generalitravelinsurance.com%2Fchoose-plan.html&platform=pl',
-    short: '',
-    awinId: 49127,
-    advertiser: 'Generali Travel Insurance',
-  },
 
   // ── Fine Jewelry ───────────────────────────────────────────────────────
-  'jade-trau': {
-    label: 'Jade Trau',
-    url: 'https://www.awin1.com/cread.php?awinmid=44255&awinaffid=2852109&ued=https%3A%2F%2Fjadetrau.com&platform=pl',
-    short: 'https://tidd.ly/4sszq2A',
-    awinId: 44255,
-    advertiser: 'Jade Trau',
-  },
   'jade-trau-bridal': {
     label: 'Jade Trau Bridal Collection',
     url: 'https://www.awin1.com/cread.php?awinmid=44255&awinaffid=2852109&ued=https%3A%2F%2Fjadetrau.com%2Fcollections%2Fbridal&platform=pl',
     short: 'https://tidd.ly/4t9ttch',
-    awinId: 44255,
-    advertiser: 'Jade Trau',
-  },
-  'jade-trau-rings': {
-    label: 'Jade Trau Rings',
-    url: 'https://www.awin1.com/cread.php?awinmid=44255&awinaffid=2852109&ued=https%3A%2F%2Fjadetrau.com%2Fcollections%2Frings&platform=pl',
-    short: 'https://tidd.ly/47Vixq2',
     awinId: 44255,
     advertiser: 'Jade Trau',
   },
@@ -91,33 +71,12 @@ export const affiliateLinks: Record<string, AffiliateLink> = {
     awinId: 44489,
     advertiser: 'Rare Carat',
   },
-  'rare-carat-engagement': {
-    label: 'Rare Carat Engagement Rings',
-    url: 'https://www.awin1.com/cread.php?awinmid=44489&awinaffid=2852109&ued=https%3A%2F%2Fwww.rarecarat.com%2Fengagement-rings&platform=pl',
-    short: 'https://tidd.ly/423SHg6',
-    awinId: 44489,
-    advertiser: 'Rare Carat',
-  },
-  'larson': {
-    label: 'Larson Jewelers',
-    url: 'https://www.awin1.com/cread.php?awinmid=117539&awinaffid=2852109&ued=https%3A%2F%2Fwww.larsonjewelers.com&platform=pl',
-    short: 'https://tidd.ly/4cqaHGr',
-    awinId: 117539,
-    advertiser: 'Larson Jewelers',
-  },
   'larson-wedding-bands': {
     label: 'Larson Jewelers Wedding Bands',
     url: 'https://www.awin1.com/cread.php?awinmid=117539&awinaffid=2852109&ued=https%3A%2F%2Fwww.larsonjewelers.com%2Fcollections%2Fwedding-bands&platform=pl',
     short: 'https://tidd.ly/47SJc6X',
     awinId: 117539,
     advertiser: 'Larson Jewelers',
-  },
-  'anjays': {
-    label: 'AnjaysDesigns',
-    url: 'https://www.awin1.com/cread.php?awinmid=88939&awinaffid=2852109&ued=https%3A%2F%2Fanjaysdesigns.com&platform=pl',
-    short: 'https://tidd.ly/3OehE5q',
-    awinId: 88939,
-    advertiser: 'AnjaysDesigns',
   },
   'anjays-engagement': {
     label: 'AnjaysDesigns Engagement Rings',
@@ -288,13 +247,6 @@ export const affiliateLinks: Record<string, AffiliateLink> = {
   },
 
   // ── Photography ────────────────────────────────────────────────────────
-  'flytographer': {
-    label: 'Flytographer',
-    url: 'https://www.awin1.com/cread.php?awinmid=112308&awinaffid=2852109&ued=https%3A%2F%2Fwww.flytographer.com&platform=pl',
-    short: 'https://tidd.ly/4c8DxfG',
-    awinId: 112308,
-    advertiser: 'Flytographer',
-  },
   'flytographer-wedding': {
     label: 'Flytographer Destination Photography',
     url: 'https://www.awin1.com/cread.php?awinmid=112308&awinaffid=2852109&ued=https%3A%2F%2Fwww.flytographer.com&platform=pl',
@@ -445,13 +397,6 @@ export const affiliateLinks: Record<string, AffiliateLink> = {
     label: 'GoToSea Cruises',
     url: 'https://www.awin1.com/cread.php?awinmid=57795&awinaffid=2852109&ued=https%3A%2F%2Fwww.gotosea.com&platform=pl',
     short: 'https://tidd.ly/47VOU8b',
-    awinId: 57795,
-    advertiser: 'GoToSea',
-  },
-  'gotosea-caribbean': {
-    label: 'Caribbean Cruises',
-    url: 'https://www.awin1.com/cread.php?awinmid=57795&awinaffid=2852109&ued=https%3A%2F%2Fwww.gotosea.com%2Fcruises-to-caribbean&platform=pl',
-    short: 'https://tidd.ly/4tINmH4',
     awinId: 57795,
     advertiser: 'GoToSea',
   },
