@@ -9,6 +9,7 @@ import destinations from '../../data/destinations.json';
 import vendors from '../../data/vendors.json';
 import { getDestinationSchema } from '../../lib/schema/destination';
 import { SITE_CONFIG } from '../../lib/site-config';
+import { affiliateAttrs } from '../../data/affiliate-links';
 import { VENDOR_TYPES, typePluralLabels, type VendorType } from '../../lib/vendors';
 import { getCollection } from 'astro:content';
 import { existsSync } from 'fs';
@@ -249,9 +250,7 @@ const legalDisplay = dest.legalCeremonyType === 'legal' ? 'Yes — legal' :
             Most destination couples skip travel insurance — and regret it. Compare plans in 2 minutes.
           </p>
           <a
-            href={SITE_CONFIG.affiliates.travelInsurance}
-            target="_blank"
-            rel="noopener noreferrer sponsored"
+            {...affiliateAttrs('generali')}
             class="inline-flex items-center gap-2 text-sm font-semibold text-amber-700 hover:text-amber-900 transition-colors no-underline"
           >
             Compare destination wedding insurance plans

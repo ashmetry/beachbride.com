@@ -115,13 +115,40 @@ export const LINK_TARGETS = [
 ];
 
 // ── Affiliate Link Targets ─────────────────────────────────────────────────────
-// keyword patterns → affiliate URL (inserted by generate script for resort/jewelry content)
+// keyword patterns → Awin tracked affiliate URL (inserted by generate script)
+// Canonical registry: src/data/affiliate-links.ts (front-end)
+// These are the same Awin tracking links, used at content-generation time.
+// rel="sponsored nofollow noopener" is enforced in the write prompt.
 export const AFFILIATE_TARGETS = [
-  { patterns: ['sandals resort', 'sandals cancun', 'sandals jamaica', 'sandals barbados'], url: 'https://www.sandals.com/', rel: 'sponsored' },
-  { patterns: ['beaches resort', 'beaches turks', 'beaches negril'], url: 'https://www.beaches.com/', rel: 'sponsored' },
-  { patterns: ['engagement ring', 'diamond ring', 'solitaire ring', 'halo ring'], url: 'https://www.bluenile.com/', rel: 'sponsored' },
-  { patterns: ['lab grown diamond', 'lab diamond ring', 'ethical diamond'], url: 'https://www.brilliantearth.com/', rel: 'sponsored' },
-  { patterns: ['custom engagement ring', 'design your ring', 'james allen'], url: 'https://www.jamesallen.com/', rel: 'sponsored' },
+  // Wedding insurance
+  { patterns: ['wedding insurance', 'wedding cancellation insurance', 'wedding liability insurance', 'protect your wedding'], url: 'https://tidd.ly/4mspchp', label: 'eWed Insurance', rel: 'sponsored nofollow' },
+  // Travel insurance
+  { patterns: ['travel insurance', 'trip protection', 'trip cancellation', 'travel protection plan'], url: 'https://tidd.ly/4dD5Vrk', label: 'Generali Travel Insurance', rel: 'sponsored nofollow' },
+  // Fine jewelry — bridal
+  { patterns: ['luxury wedding jewelry', 'bridal jewelry', '18k gold', 'platinum ring', 'diamond necklace', 'fine jewelry'], url: 'https://tidd.ly/4t9ttch', label: 'Jade Trau Bridal', rel: 'sponsored nofollow' },
+  // Engagement rings
+  { patterns: ['engagement ring', 'diamond ring', 'solitaire ring', 'halo ring', 'compare diamonds'], url: 'https://tidd.ly/3Q7Po4S', label: 'Rare Carat', rel: 'sponsored nofollow' },
+  { patterns: ['custom engagement ring', 'design your ring', 'bespoke ring'], url: 'https://tidd.ly/4c5uGez', label: 'AnjaysDesigns', rel: 'sponsored nofollow' },
+  // Men's wedding bands
+  { patterns: ['wedding band', "groom's ring", 'tungsten ring', 'titanium ring', 'silicone ring', "men's wedding ring"], url: 'https://tidd.ly/47SJc6X', label: 'Larson Jewelers', rel: 'sponsored nofollow' },
+  // Hotels — destination-specific (generic fallback)
+  { patterns: ['book a hotel', 'find accommodation', 'resort booking', 'hotel deals', 'where to stay'], url: 'https://tidd.ly/4ssglOg', label: 'Booking.com', rel: 'sponsored nofollow' },
+  // Destination photographers
+  { patterns: ['destination photographer', 'local photographer', 'vacation photographer', 'book a photographer abroad', 'destination wedding photographer'], url: 'https://tidd.ly/4vkss2p', label: 'Flytographer', rel: 'sponsored nofollow' },
+  // Villas
+  { patterns: ['private villa', 'villa wedding', 'luxury villa', 'rent a villa'], url: 'https://tidd.ly/4syBRRf', label: 'Top Villas', rel: 'sponsored nofollow' },
+  // Video guest book
+  { patterns: ['video guest book', 'guest video messages', 'virtual guest book', 'guests who can\'t attend'], url: 'https://tidd.ly/4dD5NrQ', label: 'Voast', rel: 'sponsored nofollow' },
+  // Activities / tours
+  { patterns: ['guest activities', 'things to do', 'excursions for guests', 'tours and activities', 'local tours'], url: 'https://tidd.ly/3NWpGQk', label: 'GetYourGuide', rel: 'sponsored nofollow' },
+  // Cruises
+  { patterns: ['honeymoon cruise', 'cruise wedding', 'caribbean cruise', 'wedding cruise'], url: 'https://tidd.ly/47VOU8b', label: 'GoToSea', rel: 'sponsored nofollow' },
+  // Car rental
+  { patterns: ['car rental', 'rent a car', 'airport transfer', 'transportation at destination'], url: 'https://tidd.ly/47R2REo', label: 'Discover Cars', rel: 'sponsored nofollow' },
+  // Bridal box
+  { patterns: ['bridal subscription box', 'bride-to-be gift', 'bridal box', 'engagement gift box'], url: 'https://tidd.ly/4dEvEj6', label: 'Miss To Mrs', rel: 'sponsored nofollow' },
+  // Xcaret (Cancun-specific activities)
+  { patterns: ['xcaret', 'cancun eco park', 'riviera maya activities', 'cancun attractions'], url: 'https://tidd.ly/47ZjZrr', label: 'Xcaret', rel: 'sponsored nofollow' },
 ];
 
 // ── Existing Articles Inventory ────────────────────────────────────────────────

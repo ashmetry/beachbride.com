@@ -593,3 +593,49 @@ off at 30+ rooms. Post-COVID: value is perks not rate discounts. Attrition range
 Full data in memory: `reference_room_block_verified_data.md`.
 
 **Cost:** No additional API cost — notes are injected into existing prompts.
+
+---
+
+### Affiliate Link Integration — added 2026-04-12
+
+Affiliate links are injected at two points in the pipeline: during generation
+(prompt guidance) and at publish time (post-processing).
+
+**`AFFILIATE_TARGETS` in `lib/config.js`:**
+15 entries covering wedding insurance, travel insurance, fine jewelry, engagement
+rings, men's wedding bands, hotels (Booking.com), destination photographers,
+villas (Vrbo), video guest books, activities (GetYourGuide), cruises (GoToSea),
+car rental (Discover Cars), bridal boxes, and Xcaret. Each entry has `patterns`
+(keyword triggers), `url` (Awin tidd.ly tracking link), `label`, and `rel`
+(`sponsored nofollow`).
+
+**generate.js changes:**
+- `affiliateOpportunity` in the brief now covers the full range of affiliate
+  categories (hotels, jewelry, insurance, photography, activities, villas, car
+  rental, cruises, bridal gifts) — previously only "resort or jewelry angle"
+- Writing prompt lists each affiliate target with label and URL, instructs the
+  LLM to weave 2–3 naturally into the content with `rel="sponsored nofollow noopener"`
+- Max 2–3 per article to avoid SEO penalties
+
+**publish.js `ensureAffiliateLinks()` — post-processing safety net:**
+After outbound internal links (step 2a-ii), scans the article body for
+AFFILIATE_TARGETS keyword patterns and injects `<a>` tags where missing.
+Rules:
+- Max 3 affiliate links per article
+- Skips text already inside links, headings, or image markup
+- Skips first paragraph after H2 (preserves answer capsule rule)
+- Sets `frontmatter.affiliateDisclosure = true` when links are added
+
+**Backfill script (`scripts/backfill-affiliate-links.js`):**
+One-time script to inject affiliate links into existing articles. Same logic as
+`ensureAffiliateLinks()`. Run with `--dry-run` first. Applied 2026-04-12:
+9 articles modified, 12 total links added.
+
+**Centralized link registry (`src/data/affiliate-links.ts`):**
+42 tracked links across 15 advertisers. All Awin-tracked with tidd.ly short URLs.
+Template code uses `affiliateAttrs(key)` which returns `{ href, rel, target }` —
+never raw URLs in templates. See `reference_awin_tracking_links.md` in memory
+for full architecture details.
+
+**FTC compliance:** Articles with affiliate links get `affiliateDisclosure: true`
+in frontmatter. The article layout renders an appropriate disclosure notice.

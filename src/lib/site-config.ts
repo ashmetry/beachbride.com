@@ -10,13 +10,9 @@ export const SITE_CONFIG = {
     instagram: 'https://instagram.com/beachbride',
     pinterest: 'https://pinterest.com/beachbride',
   },
-  // Affiliate links — single source of truth. Update here, propagates everywhere.
-  affiliates: {
-    // Travel insurance — swap InsureMyTrip ($7 flat) for Travel Guard CJ (10-15%) once enrolled.
-    // Sign up at cj.com, search "Travel Guard", get your unique tracking link, paste below.
-    // Until then, InsureMyTrip link remains active.
-    travelInsurance: 'https://www.insuremytrip.com/?utm_source=beachbride&utm_medium=site&utm_campaign=destination-wedding-insurance',
-  },
+  // Affiliate links live in src/data/affiliate-links.ts (centralized registry).
+  // Use getAffiliateUrl(key) or affiliateAttrs(key) from that file.
+  // Do NOT put raw affiliate URLs in templates or content — always go through the registry.
   // Room block consultation — booking/scheduling link for intake calls.
   // Falls back to email when empty. Linked from destination hub pages + calculator CTA.
   roomBlockCalendlyUrl: '/book/',

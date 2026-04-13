@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_CONFIG } from '../lib/site-config';
+import { affiliateAttrs } from '../data/affiliate-links';
 ---
 
 <BaseLayout
@@ -31,9 +32,7 @@ import { SITE_CONFIG } from '../lib/site-config';
         Most destination couples skip travel insurance — and regret it.
       </p>
       <a
-        href={SITE_CONFIG.affiliates.travelInsurance}
-        target="_blank"
-        rel="noopener noreferrer sponsored"
+        {...affiliateAttrs('generali')}
         class="inline-flex items-center gap-1.5 text-sm font-semibold text-amber-700 hover:text-amber-900 transition-colors no-underline"
       >
         Compare travel insurance plans

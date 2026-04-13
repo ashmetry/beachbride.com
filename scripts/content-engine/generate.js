@@ -206,7 +206,7 @@ Return a JSON object with these fields:
   "externalSourceTypes": ["travel industry data", "wedding industry surveys", ...],
   "disclaimers": ["financial"],
   "relatedSlugs": ["existing-slug-1", "existing-slug-2", ...],
-  "affiliateOpportunity": "resort or jewelry angle if relevant, otherwise null",
+  "affiliateOpportunity": "Any relevant affiliate angle: hotels/resorts, jewelry/rings, travel insurance, wedding insurance, destination photography, guest activities, villas, car rental, honeymoon cruises, bridal gifts — or null if none fit naturally",
   "uniqueAngle": "What makes this article different from competitors",
   "sectionImageCount": 0
 }
@@ -390,7 +390,7 @@ async function writeArticle(topic, existingArticles) {
   const articleList = existingArticles.map(a => `- /${a.slug}/ — ${a.title}`).join('\n');
   const linkTargets = LINK_TARGETS.map(t => `- /${t.slug}/ — matches: ${t.patterns.join(', ')}`).join('\n');
   const affiliateTargets = brief.affiliateOpportunity
-    ? AFFILIATE_TARGETS.map(t => `- ${t.url} (rel="${t.rel}") — matches: ${t.patterns.join(', ')}`).join('\n')
+    ? AFFILIATE_TARGETS.map(t => `- [${t.label}](${t.url}){rel="${t.rel} noopener"} — matches: ${t.patterns.join(', ')}`).join('\n')
     : '';
 
   const researchContext = research.sections.map(s =>
@@ -417,7 +417,7 @@ CRITICAL RULES:
 - Every number/statistic needs attribution
 - Legal requirements must note that they change — "consult your local planner or the [country] embassy to confirm current requirements"
 - Cost figures must include a disclaimer: "costs vary significantly based on season, guest count, and specific vendors"
-- Affiliate links: resort links must use rel="noopener noreferrer sponsored"; jewelry links same
+- Affiliate links: MUST use rel="sponsored nofollow noopener" and target="_blank". Max 2-3 affiliate links per article. Only link where the product is genuinely relevant to the reader's need.
 - NEVER use: em-dashes (—), "game-changer", "seamlessly", "cutting-edge", "robust", "comprehensive", "In conclusion", "not just X but also Y", "It's worth noting", "In today's world", "dream wedding" (overused — use "your wedding" or "the wedding you've imagined")
 
 STRUCTURE RULES:

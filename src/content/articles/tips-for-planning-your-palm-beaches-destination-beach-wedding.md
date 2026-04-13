@@ -1,6 +1,8 @@
 ---
 title: "Palm Beaches Destination Wedding Guide: Venues, Costs & Planning Tips"
-description: Planning a Palm Beaches destination wedding? Get real venue options, honest budget numbers, marriage license steps, and expert tips to pull it off beautifully.
+description: Planning a Palm Beaches destination wedding? Get real venue
+  options, honest budget numbers, marriage license steps, and expert tips to
+  pull it off beautifully.
 publishDate: 2026-04-07
 author: BeachBride Editorial Team
 tags:
@@ -14,19 +16,43 @@ schemaType: article
 affiliateDisclosure: true
 faqs:
   - question: Is a permit required to get married on a public beach in Palm Beach County?
-    answer: Simple ceremonies on public beaches are generally allowed without a permit, but roping off sections or hosting a full reception with alcohol requires checking local ordinances and potentially securing permits. Most couples hold a short ceremony on the sand and then move to a nearby venue for the reception.
+    answer: Simple ceremonies on public beaches are generally allowed without a
+      permit, but roping off sections or hosting a full reception with alcohol
+      requires checking local ordinances and potentially securing permits. Most
+      couples hold a short ceremony on the sand and then move to a nearby venue
+      for the reception.
   - question: How far in advance should we book a Palm Beaches wedding venue?
-    answer: For peak season (November through April), aim to book 12 to 18 months ahead. Off-peak dates during summer or early fall offer more flexibility, but popular venues like The Breakers still fill quickly, so 9 to 12 months is a safe minimum.
+    answer: For peak season (November through April), aim to book 12 to 18 months
+      ahead. Off-peak dates during summer or early fall offer more flexibility,
+      but popular venues like The Breakers still fill quickly, so 9 to 12 months
+      is a safe minimum.
   - question: Can non-Florida residents legally marry in Palm Beach County?
-    answer: Yes. Non-residents can apply for a Florida marriage license at the Palm Beach County Clerk's office. Both applicants must appear in person with valid photo ID. The three-day waiting period is waived for couples who are both non-Florida residents.
+    answer: Yes. Non-residents can apply for a Florida marriage license at the Palm
+      Beach County Clerk's office. Both applicants must appear in person with
+      valid photo ID. The three-day waiting period is waived for couples who are
+      both non-Florida residents.
   - question: What is the waiting period after applying for a Florida marriage license?
-    answer: Florida residents face a three-day waiting period after the license is issued. This waiting period is waived if both applicants are non-residents or if the couple completes a state-certified premarital course of at least four hours.
+    answer: Florida residents face a three-day waiting period after the license is
+      issued. This waiting period is waived if both applicants are non-residents
+      or if the couple completes a state-certified premarital course of at least
+      four hours.
   - question: Are there all-inclusive resort wedding packages in the Palm Beaches?
-    answer: Yes. Several Palm Beaches resorts offer packages that bundle the venue, catering, coordination, and sometimes lodging. Pricing varies widely, from mid-range beachfront hotels to luxury properties where packages start at $500 per person and up.
+    answer: Yes. Several Palm Beaches resorts offer packages that bundle the venue,
+      catering, coordination, and sometimes lodging. Pricing varies widely, from
+      mid-range beachfront hotels to luxury properties where packages start at
+      $500 per person and up.
   - question: What's the average guest count for a Palm Beaches destination wedding?
-    answer: Destination weddings in general average around 50 guests, according to industry data from WeddingWire. Palm Beaches weddings follow a similar pattern, though the area's accessibility from major East Coast cities sometimes pushes counts higher.
-  - question: How does a Palm Beaches wedding compare in cost to a Caribbean destination wedding?
-    answer: A Palm Beaches wedding often costs more per guest at luxury venues but saves on travel logistics since no passports or international flights are needed. Mid-range Palm Beaches beach weddings for 30 to 50 guests can run $4,500 to $15,000, which is competitive with Caribbean all-inclusive packages once you factor in airfare and travel days.
+    answer: Destination weddings in general average around 50 guests, according to
+      industry data from WeddingWire. Palm Beaches weddings follow a similar
+      pattern, though the area's accessibility from major East Coast cities
+      sometimes pushes counts higher.
+  - question: How does a Palm Beaches wedding compare in cost to a Caribbean
+      destination wedding?
+    answer: A Palm Beaches wedding often costs more per guest at luxury venues but
+      saves on travel logistics since no passports or international flights are
+      needed. Mid-range Palm Beaches beach weddings for 30 to 50 guests can run
+      $4,500 to $15,000, which is competitive with Caribbean all-inclusive
+      packages once you factor in airfare and travel days.
 related:
   - destination-wedding-cost
   - beach-wedding-checklist
@@ -130,7 +156,7 @@ According to [Wedding Bells and Seashells](https://www.weddingbellsandseashells.
 
 Fall is an underrated pick. According to [Married in Palm Beach](https://marriedinpalmbeach.com/things-every-couple-needs-to-know/), late September through November brings warm breezy days, tapering humidity, and often lower venue pricing.
 
-**The hurricane factor:** According to [Sugar Beach Weddings](https://sugarbeachweddings.com/articles/best-time-of-year-for-a-beach-wedding-in-florida/), hurricane season runs June 1 through November 30, with peak activity from mid-August through late October. This does not make fall impossible, but it does make wedding insurance essential. If you are using our [beach wedding checklist](/beach-wedding-checklist/), add "purchase event insurance" to your to-do list for any date between June and November.
+**The hurricane factor:** According to [Sugar Beach Weddings](https://sugarbeachweddings.com/articles/best-time-of-year-for-a-beach-wedding-in-florida/), hurricane season runs June 1 through November 30, with peak activity from mid-August through late October. This does not make fall impossible, but it does make <a href="https://tidd.ly/4mspchp" target="_blank" rel="sponsored nofollow noopener">wedding insurance</a> essential. If you are using our [beach wedding checklist](/beach-wedding-checklist/), add "purchase event insurance" to your to-do list for any date between June and November.
 
 **Summer warning:** June through August brings frequent afternoon thunderstorms, high humidity, and peak vacation crowds. If you must go summer, plan for an early evening start and provide guests with fans, cold water, and shade.
 

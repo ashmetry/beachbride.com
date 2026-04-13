@@ -13,7 +13,7 @@ import { execSync } from 'child_process';
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
 import {
   ROOT, ARTICLES_DIR, IMAGES_DIR, QUEUE_DIR, QUEUE_IMAGES_DIR,
-  loadPipeline, savePipeline, getExistingArticles, LINK_TARGETS, cliFlags,
+  loadPipeline, savePipeline, getExistingArticles, LINK_TARGETS, AFFILIATE_TARGETS, cliFlags,
 } from './lib/config.js';
 import { notifyPublished, notifyDigest } from './lib/email.js';
 
@@ -68,6 +68,13 @@ async function main() {
 
   // 2a. Ensure outbound links in new article (read-only — modifies in-memory body only)
   let updatedBody = ensureOutboundLinks(body, slug);
+
+  // 2a-ii. Ensure affiliate links where topic matches (max 3 per article)
+  const { body: affiliatedBody, added: affiliateCount } = ensureAffiliateLinks(updatedBody);
+  if (affiliateCount > 0) {
+    updatedBody = affiliatedBody;
+    frontmatter.affiliateDisclosure = true;
+  }
 
   // Reassemble article
   articleContent = assembleFrontmatter(frontmatter, updatedBody);
@@ -287,6 +294,59 @@ function ensureOutboundLinks(body, currentSlug) {
   const linkCount = (updated.match(/\]\(\//g) || []).length;
   console.log(`    Outbound links: ${linkCount}`);
   return updated;
+}
+
+// ── Affiliate Linking ──────────────────────────────────────────────────────────
+
+function ensureAffiliateLinks(body) {
+  const MAX_AFFILIATE_LINKS = 3;
+  let updated = body;
+  let added = 0;
+  const linked = new Set();
+
+  for (const target of AFFILIATE_TARGETS) {
+    if (added >= MAX_AFFILIATE_LINKS) break;
+    if (linked.has(target.url)) continue;
+
+    // Skip if this affiliate URL is already in the article
+    if (updated.includes(target.url)) {
+      linked.add(target.url);
+      continue;
+    }
+
+    for (const pattern of target.patterns) {
+      if (added >= MAX_AFFILIATE_LINKS) break;
+
+      const regex = new RegExp(`\\b(${escapeRegex(pattern)})\\b`, 'i');
+      const match = updated.match(regex);
+      if (!match) continue;
+
+      const idx = match.index;
+      // Don't link inside existing links, headings, image alts, or frontmatter
+      const before = updated.slice(Math.max(0, idx - 10), idx);
+      if (before.includes('[') || before.includes('(') || before.includes('#') || before.includes('!')) continue;
+
+      // Don't link in the first paragraph after an H2 (answer capsule rule)
+      const linesBefore = updated.slice(0, idx).split('\n');
+      const lastH2Idx = linesBefore.findLastIndex(l => l.startsWith('## '));
+      if (lastH2Idx >= 0) {
+        const linesBetween = linesBefore.slice(lastH2Idx + 1).filter(l => l.trim()).length;
+        if (linesBetween < 1) continue; // Still in the first paragraph
+      }
+
+      updated = updated.slice(0, idx) +
+        `<a href="${target.url}" target="_blank" rel="${target.rel} noopener">${match[1]}</a>` +
+        updated.slice(idx + match[1].length);
+      linked.add(target.url);
+      added++;
+      break;
+    }
+  }
+
+  if (added > 0) {
+    console.log(`    Affiliate links added: ${added}`);
+  }
+  return { body: updated, added };
 }
 
 // ── Internal Linking: Inbound ──────────────────────────────────────────────────
