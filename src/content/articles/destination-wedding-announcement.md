@@ -179,7 +179,7 @@ According to [Condor Ferries](https://www.condorferries.co.uk/destination-weddin
 <p class="affiliate-card-title">Wedding Hotels in Santorini</p>
 <p class="affiliate-card-desc">Compare all-inclusive resorts and boutique hotels in Santorini. Read verified reviews, check wedding-friendly amenities, and book with free cancellation.</p>
 <p class="affiliate-card-proof">Free cancellation on most properties. No booking fees.</p>
-<a class="affiliate-card-cta" href="https://tidd.ly/4suHbFs" target="_blank" rel="sponsored nofollow noopener">Search Santorini Hotels <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+<a class="affiliate-card-cta" href="/go/booking-santorini" target="_blank" rel="sponsored nofollow noopener">Search Santorini Hotels <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
 </div>
 </div>
 

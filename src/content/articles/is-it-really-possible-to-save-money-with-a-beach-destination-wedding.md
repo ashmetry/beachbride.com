@@ -77,7 +77,7 @@ According to [The Knot](https://www.theknot.com/content/average-destination-wedd
 <p class="affiliate-card-title">Find Your Wedding Venue & Guest Hotels</p>
 <p class="affiliate-card-desc">Compare resort rates, read verified guest reviews, and book with free cancellation. Filter by wedding-friendly properties at your destination.</p>
 <p class="affiliate-card-proof">Free cancellation on most properties. No booking fees.</p>
-<a class="affiliate-card-cta" href="https://tidd.ly/4ssglOg" target="_blank" rel="sponsored nofollow noopener">Search Hotels <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+<a class="affiliate-card-cta" href="/go/booking" target="_blank" rel="sponsored nofollow noopener">Search Hotels <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
 </div>
 </div>
 
@@ -210,7 +210,7 @@ And here's a thought: the money you save on the wedding itself could go toward s
 <p class="affiliate-card-title">Compare Diamond Prices Instantly</p>
 <p class="affiliate-card-desc">Search across all major jewelers to find the best diamond for your budget. Save up to 40% vs. retail with AI-powered price comparison.</p>
 <p class="affiliate-card-proof">Featured in the NY Times. Over 1 million diamonds compared.</p>
-<a class="affiliate-card-cta" href="https://tidd.ly/3Q7Po4S" target="_blank" rel="sponsored nofollow noopener">Compare Diamonds <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+<a class="affiliate-card-cta" href="/go/rare-carat" target="_blank" rel="sponsored nofollow noopener">Compare Diamonds <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
 </div>
 </div>
 
@@ -231,7 +231,7 @@ According to [The Budget Savvy Bride](https://thebudgetsavvybride.com/hiring-bud
 <p class="affiliate-card-title">Book a Local Wedding Photographer</p>
 <p class="affiliate-card-desc">Professional photographers in 400+ cities worldwide who know the best light, angles, and hidden spots at your destination.</p>
 <p class="affiliate-card-proof">3 million+ photos taken. 100% happiness guarantee.</p>
-<a class="affiliate-card-cta" href="https://tidd.ly/4vkss2p" target="_blank" rel="sponsored nofollow noopener">Find a Photographer <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+<a class="affiliate-card-cta" href="/go/flytographer-wedding" target="_blank" rel="sponsored nofollow noopener">Find a Photographer <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
 </div>
 </div>
 

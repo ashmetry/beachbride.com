@@ -302,7 +302,8 @@ function ensureOutboundLinks(body, currentSlug) {
 function buildAffiliateCardHtml(target) {
   const arrow = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>';
   const proof = target.cardProof ? `\n<p class="affiliate-card-proof">${target.cardProof}</p>` : '';
-  return `\n<div class="affiliate-card not-prose">\n<div class="affiliate-card-inner">\n<span class="affiliate-card-label">We Recommend</span>\n<p class="affiliate-card-title">${target.cardTitle}</p>\n<p class="affiliate-card-desc">${target.cardDesc}</p>${proof}\n<a class="affiliate-card-cta" href="${target.url}" target="_blank" rel="${target.rel} noopener">${target.cardCta} ${arrow}</a>\n</div>\n</div>\n`;
+  const href = `/go/${target.key}`;
+  return `\n<div class="affiliate-card not-prose">\n<div class="affiliate-card-inner">\n<span class="affiliate-card-label">We Recommend</span>\n<p class="affiliate-card-title">${target.cardTitle}</p>\n<p class="affiliate-card-desc">${target.cardDesc}</p>${proof}\n<a class="affiliate-card-cta" href="${href}" target="_blank" rel="${target.rel} noopener">${target.cardCta} ${arrow}</a>\n</div>\n</div>\n`;
 }
 
 function ensureAffiliateLinks(body, frontmatter = {}, slug = '') {
@@ -323,11 +324,12 @@ function ensureAffiliateLinks(body, frontmatter = {}, slug = '') {
     // Resolve destination-specific deep link (URL + card copy)
     const resolved = resolveDeepLink(target, destination);
 
-    if (linked.has(resolved.url)) continue;
+    const goPath = `/go/${resolved.key}`;
+    if (linked.has(resolved.key)) continue;
 
-    // Skip if this affiliate URL is already in the article (card or inline)
-    if (updated.includes(resolved.url) || updated.includes(target.url)) {
-      linked.add(resolved.url);
+    // Skip if this affiliate link is already in the article (card or inline)
+    if (updated.includes(goPath)) {
+      linked.add(resolved.key);
       continue;
     }
 
@@ -364,7 +366,7 @@ function ensureAffiliateLinks(body, frontmatter = {}, slug = '') {
 
       const card = buildAffiliateCardHtml(resolved);
       updated = updated.slice(0, insertPos) + '\n' + card + updated.slice(insertPos);
-      linked.add(resolved.url);
+      linked.add(resolved.key);
       added++;
       break;
     }

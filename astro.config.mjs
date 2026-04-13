@@ -17,6 +17,7 @@ export default defineConfig({
           '/vendors/upgrade/',
           '/contact/',
           '/advertise/',
+          '/go/',
         ];
         return !excluded.some(path => page.includes(path));
       },

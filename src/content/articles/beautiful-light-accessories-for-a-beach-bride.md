@@ -91,7 +91,7 @@ The global bridal jewelry market reflects this shift toward outdoor-friendly pie
 <p class="affiliate-card-title">Bridal Jewelry That Travels Beautifully</p>
 <p class="affiliate-card-desc">Handcrafted fine jewelry designed for the modern bride. Pieces that look stunning in natural light and ocean backdrops.</p>
 <p class="affiliate-card-proof">Worn by celebrities. Handcrafted in NYC with ethically sourced stones.</p>
-<a class="affiliate-card-cta" href="https://tidd.ly/4t9ttch" target="_blank" rel="sponsored nofollow noopener">Browse the Collection <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+<a class="affiliate-card-cta" href="/go/jade-trau-bridal" target="_blank" rel="sponsored nofollow noopener">Browse the Collection <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
 </div>
 </div>
 
@@ -168,7 +168,7 @@ For bracelets, keep it slim. A thin bangle or a single strand of pearls works. S
 <p class="affiliate-card-title">Compare Diamond Prices Instantly</p>
 <p class="affiliate-card-desc">Search across all major jewelers to find the best diamond for your budget. Save up to 40% vs. retail with AI-powered price comparison.</p>
 <p class="affiliate-card-proof">Featured in the NY Times. Over 1 million diamonds compared.</p>
-<a class="affiliate-card-cta" href="https://tidd.ly/3Q7Po4S" target="_blank" rel="sponsored nofollow noopener">Compare Diamonds <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+<a class="affiliate-card-cta" href="/go/rare-carat" target="_blank" rel="sponsored nofollow noopener">Compare Diamonds <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
 </div>
 </div>
 

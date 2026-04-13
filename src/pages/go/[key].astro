@@ -1,0 +1,41 @@
+---
+/**
+ * Clean redirect pages for affiliate links.
+ *
+ * /go/booking-cancun → instant redirect → Awin tracking URL
+ *
+ * Benefits:
+ *   - Single place to update tracking URLs (affiliate-links.ts)
+ *   - Article content never contains raw tracking URLs
+ *   - Easy to grep/audit which links are live
+ *
+ * Built as static HTML with <meta http-equiv="refresh"> since Astro
+ * static output can't do server-side 302s. The JS redirect fires
+ * instantly; the meta tag is a fallback.
+ */
+import { affiliateLinks } from '@data/affiliate-links';
+
+export function getStaticPaths() {
+  return Object.keys(affiliateLinks).map((key) => ({
+    params: { key },
+    props: { link: affiliateLinks[key] },
+  }));
+}
+
+const { link } = Astro.props;
+const dest = link.short || link.url;
+---
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="refresh" content={`0;url=${dest}`}>
+  <link rel="canonical" href={dest}>
+  <meta name="robots" content="noindex, nofollow">
+  <title>Redirecting…</title>
+</head>
+<body>
+  <script is:inline define:vars={{ dest }}>window.location.replace(dest);</script>
+  <p>Redirecting to <a href={dest} rel="sponsored nofollow noopener">{link.label}</a>…</p>
+</body>
+</html>

@@ -415,7 +415,7 @@ async function writeArticle(topic, existingArticles) {
   const affiliateTargets = brief.affiliateOpportunity
     ? AFFILIATE_TARGETS.map(t => {
         const resolved = resolveDeepLink(t, destinationSlug);
-        return `- ${resolved.label}: url="${resolved.url}" | cta="${resolved.cardCta}" | title="${resolved.cardTitle}" | desc="${resolved.cardDesc}" | matches: ${t.patterns.join(', ')}`;
+        return `- ${resolved.label}: key="${resolved.key}" | cta="${resolved.cardCta}" | title="${resolved.cardTitle}" | desc="${resolved.cardDesc}" | proof="${resolved.cardProof || ''}" | matches: ${t.patterns.join(', ')}`;
       }).join('\n')
     : '';
 
@@ -451,11 +451,11 @@ CRITICAL RULES:
 <p class="affiliate-card-title">TITLE</p>
 <p class="affiliate-card-desc">DESCRIPTION</p>
 <p class="affiliate-card-proof">PROOF</p>
-<a class="affiliate-card-cta" href="URL" target="_blank" rel="sponsored nofollow noopener">CTA TEXT <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+<a class="affiliate-card-cta" href="/go/KEY" target="_blank" rel="sponsored nofollow noopener">CTA TEXT <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
 </div>
 </div>
 
-Replace TITLE, DESCRIPTION, PROOF, CTA TEXT, and URL with values from the AFFILIATE TARGETS list below. The label is always "We Recommend". Only place cards where the product is genuinely relevant to the reader's need. Never place a card inside or immediately after an H2 heading. Never place a card in the first two sections of the article — let the reader get invested before showing recommendations.
+Replace TITLE, DESCRIPTION, PROOF, CTA TEXT, and KEY with values from the AFFILIATE TARGETS list below. The href is always "/go/KEY" where KEY is the affiliate key. The label is always "We Recommend". Only place cards where the product is genuinely relevant to the reader's need. Never place a card inside or immediately after an H2 heading. Never place a card in the first two sections of the article — let the reader get invested before showing recommendations.
 - NEVER use: em-dashes (—), "game-changer", "seamlessly", "cutting-edge", "robust", "comprehensive", "In conclusion", "not just X but also Y", "It's worth noting", "In today's world", "dream wedding" (overused — use "your wedding" or "the wedding you've imagined")
 
 STRUCTURE RULES:

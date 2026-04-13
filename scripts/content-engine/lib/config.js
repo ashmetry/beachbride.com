@@ -121,112 +121,92 @@ export const LINK_TARGETS = [
 // rel="sponsored nofollow noopener" is enforced in the write prompt.
 export const AFFILIATE_TARGETS = [
   // Wedding insurance
-  { patterns: ['wedding insurance', 'wedding cancellation insurance', 'wedding liability insurance', 'protect your wedding'],
-    url: 'https://tidd.ly/4mspchp', label: 'eWed Insurance', rel: 'sponsored nofollow',
+  { key: 'ewed', patterns: ['wedding insurance', 'wedding cancellation insurance', 'wedding liability insurance', 'protect your wedding'],
+    label: 'eWed Insurance', rel: 'sponsored nofollow',
     cardTitle: 'Protect Your Wedding Day', cardDesc: 'Destination wedding insurance covers cancellation, vendor no-shows, extreme weather, and more. Policies start under $200 for up to $35,000 in coverage.', cardCta: 'Get a Free Quote', cardProof: 'Rated A+ by the BBB. Policies issued within minutes.' },
   // Travel insurance
-  { patterns: ['travel insurance', 'trip protection', 'trip cancellation', 'travel protection plan'],
-    url: 'https://tidd.ly/4dD5Vrk', label: 'Generali Travel Insurance', rel: 'sponsored nofollow',
+  { key: 'generali', patterns: ['travel insurance', 'trip protection', 'trip cancellation', 'travel protection plan'],
+    label: 'Generali Travel Insurance', rel: 'sponsored nofollow',
     cardTitle: 'Trip Protection for Your Wedding Party', cardDesc: 'Cover flights, hotels, and medical emergencies for your entire guest list. Cancel-for-any-reason options ideal for destination weddings.', cardCta: 'Compare Plans', cardProof: 'A+ rated insurer. Group plans available for wedding parties.' },
   // Fine jewelry — bridal
-  { patterns: ['luxury wedding jewelry', 'bridal jewelry', '18k gold', 'platinum ring', 'diamond necklace', 'fine jewelry'],
-    url: 'https://tidd.ly/4t9ttch', label: 'Jade Trau', rel: 'sponsored nofollow',
+  { key: 'jade-trau-bridal', patterns: ['luxury wedding jewelry', 'bridal jewelry', '18k gold', 'platinum ring', 'diamond necklace', 'fine jewelry'],
+    label: 'Jade Trau', rel: 'sponsored nofollow',
     cardTitle: 'Bridal Jewelry That Travels Beautifully', cardDesc: 'Handcrafted fine jewelry designed for the modern bride. Pieces that look stunning in natural light and ocean backdrops.', cardCta: 'Browse the Collection', cardProof: 'Worn by celebrities. Handcrafted in NYC with ethically sourced stones.' },
   // Engagement rings
-  { patterns: ['engagement ring', 'diamond ring', 'solitaire ring', 'halo ring', 'compare diamonds'],
-    url: 'https://tidd.ly/3Q7Po4S', label: 'Rare Carat', rel: 'sponsored nofollow',
+  { key: 'rare-carat', patterns: ['engagement ring', 'diamond ring', 'solitaire ring', 'halo ring', 'compare diamonds'],
+    label: 'Rare Carat', rel: 'sponsored nofollow',
     cardTitle: 'Compare Diamond Prices Instantly', cardDesc: 'Search across all major jewelers to find the best diamond for your budget. Save up to 40% vs. retail with AI-powered price comparison.', cardCta: 'Compare Diamonds', cardProof: 'Featured in the NY Times. Over 1 million diamonds compared.' },
-  { patterns: ['custom engagement ring', 'design your ring', 'bespoke ring'],
-    url: 'https://tidd.ly/4c5uGez', label: 'AnjaysDesigns', rel: 'sponsored nofollow',
+  { key: 'anjays-engagement', patterns: ['custom engagement ring', 'design your ring', 'bespoke ring'],
+    label: 'AnjaysDesigns', rel: 'sponsored nofollow',
     cardTitle: 'Design a One-of-a-Kind Ring', cardDesc: 'Custom engagement rings handcrafted to your exact vision. Work directly with a designer to create something as unique as your love story.', cardCta: 'Start Your Custom Design', cardProof: '4.9 stars from 2,000+ reviews. Free resizing included.' },
   // Men's wedding bands
-  { patterns: ['wedding band', "groom's ring", 'tungsten ring', 'titanium ring', 'silicone ring', "men's wedding ring"],
-    url: 'https://tidd.ly/47SJc6X', label: 'Larson Jewelers', rel: 'sponsored nofollow',
+  { key: 'larson-wedding-bands', patterns: ['wedding band', "groom's ring", 'tungsten ring', 'titanium ring', 'silicone ring', "men's wedding ring"],
+    label: 'Larson Jewelers', rel: 'sponsored nofollow',
     cardTitle: "Wedding Bands Built for Adventure", cardDesc: "Tungsten, titanium, and alternative metal bands that handle sand, salt water, and everything your destination wedding throws at them.", cardCta: 'Shop Wedding Bands', cardProof: 'Lifetime warranty. Free engraving on all bands.' },
   // Hotels — destination-aware (resolves to deep link at injection time)
-  { patterns: ['book a hotel', 'find accommodation', 'resort booking', 'hotel deals', 'where to stay', 'all-inclusive', 'resort'],
-    url: 'https://tidd.ly/4ssglOg', label: 'Booking.com', rel: 'sponsored nofollow',
+  { key: 'booking', patterns: ['book a hotel', 'find accommodation', 'resort booking', 'hotel deals', 'where to stay', 'all-inclusive', 'resort'],
+    label: 'Booking.com', rel: 'sponsored nofollow',
     cardTitle: 'Find Your Wedding Venue & Guest Hotels', cardDesc: 'Compare resort rates, read verified guest reviews, and book with free cancellation. Filter by wedding-friendly properties at your destination.', cardCta: 'Search Hotels', cardProof: 'Free cancellation on most properties. No booking fees.',
     deepLinkPrefix: 'booking' },
   // Destination photographers
-  { patterns: ['destination photographer', 'local photographer', 'vacation photographer', 'book a photographer abroad', 'destination wedding photographer'],
-    url: 'https://tidd.ly/4vkss2p', label: 'Flytographer', rel: 'sponsored nofollow',
+  { key: 'flytographer-wedding', patterns: ['destination photographer', 'local photographer', 'vacation photographer', 'book a photographer abroad', 'destination wedding photographer'],
+    label: 'Flytographer', rel: 'sponsored nofollow',
     cardTitle: 'Book a Local Wedding Photographer', cardDesc: 'Professional photographers in 400+ cities worldwide who know the best light, angles, and hidden spots at your destination.', cardCta: 'Find a Photographer', cardProof: '3 million+ photos taken. 100% happiness guarantee.' },
   // Villas — region-aware
-  { patterns: ['private villa', 'villa wedding', 'luxury villa', 'rent a villa'],
-    url: 'https://tidd.ly/4syBRRf', label: 'Top Villas', rel: 'sponsored nofollow',
+  { key: 'top-villas', patterns: ['private villa', 'villa wedding', 'luxury villa', 'rent a villa'],
+    label: 'Top Villas', rel: 'sponsored nofollow',
     cardTitle: 'Private Villa Weddings', cardDesc: 'Luxury villas with pools, ocean views, and space for your entire wedding party. Caribbean beachfront estates to Tuscan hilltop retreats.', cardCta: 'Browse Villas', cardProof: 'Concierge service included. Villas sleep 10-30+ guests.',
     deepLinkPrefix: 'top-villas' },
   // Video guest book
-  { patterns: ['video guest book', 'guest video messages', 'virtual guest book', 'guests who can\'t attend'],
-    url: 'https://tidd.ly/4dD5NrQ', label: 'Voast', rel: 'sponsored nofollow',
+  { key: 'voast', patterns: ['video guest book', 'guest video messages', 'virtual guest book', 'guests who can\'t attend'],
+    label: 'Voast', rel: 'sponsored nofollow',
     cardTitle: 'Video Guest Book for Your Wedding', cardDesc: 'Let guests who can\'t make the trip send heartfelt video messages. Collect, organize, and rewatch forever.', cardCta: 'Create Your Guest Book', cardProof: 'Loved by 50,000+ couples. Takes 30 seconds to set up.' },
   // Activities / tours — destination-aware
-  { patterns: ['guest activities', 'things to do', 'excursions for guests', 'tours and activities', 'local tours'],
-    url: 'https://tidd.ly/3NWpGQk', label: 'GetYourGuide', rel: 'sponsored nofollow',
+  { key: 'getyourguide', patterns: ['guest activities', 'things to do', 'excursions for guests', 'tours and activities', 'local tours'],
+    label: 'GetYourGuide', rel: 'sponsored nofollow',
     cardTitle: 'Plan Activities for Your Wedding Guests', cardDesc: 'Snorkeling, sunset cruises, food tours, and more at every major destination. Book activities your guests will actually remember.', cardCta: 'Browse Activities', cardProof: 'Free cancellation up to 24 hours before. Mobile tickets.',
     deepLinkPrefix: 'getyourguide' },
   // Cruises
-  { patterns: ['honeymoon cruise', 'cruise wedding', 'caribbean cruise', 'wedding cruise'],
-    url: 'https://tidd.ly/47VOU8b', label: 'GoToSea', rel: 'sponsored nofollow',
+  { key: 'gotosea', patterns: ['honeymoon cruise', 'cruise wedding', 'caribbean cruise', 'wedding cruise'],
+    label: 'GoToSea', rel: 'sponsored nofollow',
     cardTitle: 'Wedding Cruises & Honeymoon Sailings', cardDesc: 'Compare cruise lines, itineraries, and onboard wedding packages. Caribbean, Mediterranean, and beyond.', cardCta: 'Explore Cruises', cardProof: 'Price match guarantee. All major cruise lines compared.' },
   // Car rental
-  { patterns: ['car rental', 'rent a car', 'airport transfer', 'transportation at destination'],
-    url: 'https://tidd.ly/47R2REo', label: 'Discover Cars', rel: 'sponsored nofollow',
+  { key: 'discover-cars', patterns: ['car rental', 'rent a car', 'airport transfer', 'transportation at destination'],
+    label: 'Discover Cars', rel: 'sponsored nofollow',
     cardTitle: 'Destination Car Rentals', cardDesc: 'Compare rates from all major rental companies at your destination. Free cancellation and no hidden fees.', cardCta: 'Compare Car Rentals', cardProof: '500+ trusted suppliers. Best price guaranteed.' },
   // Bridal box
-  { patterns: ['bridal subscription box', 'bride-to-be gift', 'bridal box', 'engagement gift box'],
-    url: 'https://tidd.ly/4dEvEj6', label: 'Miss To Mrs', rel: 'sponsored nofollow',
+  { key: 'miss-to-mrs', patterns: ['bridal subscription box', 'bride-to-be gift', 'bridal box', 'engagement gift box'],
+    label: 'Miss To Mrs', rel: 'sponsored nofollow',
     cardTitle: 'The Ultimate Bridal Subscription Box', cardDesc: 'Curated bride-to-be gifts delivered monthly from engagement to wedding day. The perfect gift for a bride planning a destination wedding.', cardCta: 'See What\'s Inside', cardProof: '4.8 stars on Trustpilot. Ships to 50+ countries.' },
   // Xcaret (Cancun-specific activities)
-  { patterns: ['xcaret', 'cancun eco park', 'riviera maya activities', 'cancun attractions'],
-    url: 'https://tidd.ly/47ZjZrr', label: 'Xcaret', rel: 'sponsored nofollow',
+  { key: 'xcaret', patterns: ['xcaret', 'cancun eco park', 'riviera maya activities', 'cancun attractions'],
+    label: 'Xcaret', rel: 'sponsored nofollow',
     cardTitle: 'Xcaret Parks — Cancun\'s Best Group Activity', cardDesc: 'Underground rivers, snorkeling, cultural shows, and more. Perfect for a wedding-week outing your guests will never forget.', cardCta: 'Get Tickets', cardProof: '#1 attraction in Riviera Maya. Group discounts available.' },
 ];
 
 // ── Deep Link Resolution ──────────────────────────────────────────────────────
 
 /**
- * Maps deepLinkPrefix + destination slug to the Awin tracking URL.
- * Used by ensureAffiliateLinks() to resolve destination-specific deep links.
+ * Valid deep link keys — must match keys in src/data/affiliate-links.ts.
+ * Used by resolveDeepLink() to verify a destination-specific key exists
+ * before generating a /go/{key} URL.
  */
-const DEEP_LINK_MAP = {
-  'booking-cancun': 'https://tidd.ly/3QiKa6m',
-  'booking-punta-cana': 'https://tidd.ly/47Zk3HH',
-  'booking-jamaica': 'https://tidd.ly/480mCtc',
-  'booking-hawaii': 'https://tidd.ly/4tK8Z9T',
-  'booking-bali': 'https://tidd.ly/3Olk427',
-  'booking-santorini': 'https://tidd.ly/4suHbFs',
-  'booking-tulum': 'https://tidd.ly/3Q6G80X',
-  'booking-costa-rica': 'https://tidd.ly/4tOc7Sh',
-  'booking-key-west': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DKey%2BWest%26nflt%3Dht_id%253D204&platform=pl',
-  'booking-los-cabos': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DLos%2BCabos%26nflt%3Dht_id%253D204&platform=pl',
-  'booking-st-lucia': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DSt%2BLucia%26nflt%3Dht_id%253D204&platform=pl',
-  'booking-riviera-maya': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DRiviera%2BMaya%26nflt%3Dht_id%253D204&platform=pl',
-  'booking-turks-and-caicos': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DTurks%2Band%2BCaicos%26nflt%3Dht_id%253D204&platform=pl',
-  'booking-aruba': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DAruba%26nflt%3Dht_id%253D204&platform=pl',
-  'booking-amalfi-coast': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DAmalfi%2BCoast%26nflt%3Dht_id%253D204&platform=pl',
-  'booking-tuscany': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DTuscany%26nflt%3Dht_id%253D204&platform=pl',
-  'booking-maldives': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DMaldives%26nflt%3Dht_id%253D204&platform=pl',
-  'booking-fiji': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DFiji%26nflt%3Dht_id%253D204&platform=pl',
-  'getyourguide-cancun': 'https://tidd.ly/4vIp167',
-  'getyourguide-punta-cana': 'https://tidd.ly/4tdOUsO',
-  'getyourguide-jamaica': 'https://tidd.ly/47YA5Sh',
-  'getyourguide-hawaii': 'https://tidd.ly/4c7wjZk',
-  'getyourguide-bali': 'https://tidd.ly/47VP8w3',
-  'getyourguide-santorini': 'https://tidd.ly/4taU48O',
-  'getyourguide-los-cabos': 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Fcabo-san-lucas-l1058%2F&platform=pl',
-  'getyourguide-st-lucia': 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Fsaint-lucia-l1001%2F&platform=pl',
-  'getyourguide-riviera-maya': 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Friviera-maya-l2685%2F&platform=pl',
-  'getyourguide-turks-and-caicos': 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Fturks-and-caicos-l33654%2F&platform=pl',
-  'getyourguide-aruba': 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Faruba-l577%2F&platform=pl',
-  'getyourguide-amalfi-coast': 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Famalfi-coast-l2587%2F&platform=pl',
-  'getyourguide-tuscany': 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Ftuscany-l2594%2F&platform=pl',
-  'getyourguide-maldives': 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Fmaldives-l387%2F&platform=pl',
-  'getyourguide-fiji': 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Ffiji-l271%2F&platform=pl',
-  'top-villas-caribbean': 'https://tidd.ly/4tIj1bl',
-  'top-villas-mexico': 'https://tidd.ly/41YtsvI',
-};
+const DEEP_LINK_KEYS = new Set([
+  // Booking.com destinations
+  'booking-cancun', 'booking-punta-cana', 'booking-jamaica', 'booking-hawaii',
+  'booking-bali', 'booking-santorini', 'booking-tulum', 'booking-costa-rica',
+  'booking-key-west', 'booking-los-cabos', 'booking-st-lucia', 'booking-riviera-maya',
+  'booking-turks-and-caicos', 'booking-aruba', 'booking-amalfi-coast', 'booking-tuscany',
+  'booking-maldives', 'booking-fiji',
+  // GetYourGuide destinations
+  'getyourguide-cancun', 'getyourguide-punta-cana', 'getyourguide-jamaica',
+  'getyourguide-hawaii', 'getyourguide-bali', 'getyourguide-santorini',
+  'getyourguide-los-cabos', 'getyourguide-st-lucia', 'getyourguide-riviera-maya',
+  'getyourguide-turks-and-caicos', 'getyourguide-aruba', 'getyourguide-amalfi-coast',
+  'getyourguide-tuscany', 'getyourguide-maldives', 'getyourguide-fiji',
+  // Top Villas regions
+  'top-villas-caribbean', 'top-villas-mexico',
+]);
 
 /** Maps destination slug → region for Top Villas deep links */
 const DESTINATION_TO_VILLA_REGION = {
@@ -278,8 +258,9 @@ export function detectDestination(frontmatter, slug, body) {
 
 /**
  * Resolve a deep link for a target + destination.
- * Returns { url, cardTitle, cardDesc, cardCta } with destination-specific values,
+ * Returns { key, cardTitle, cardDesc, cardCta } with destination-specific values,
  * or the original target values if no deep link exists.
+ * The `key` field maps to affiliate-links.ts registry and /go/{key} redirect.
  */
 export function resolveDeepLink(target, destinationSlug) {
   if (!target.deepLinkPrefix || !destinationSlug) return target;
@@ -287,7 +268,7 @@ export function resolveDeepLink(target, destinationSlug) {
   const destName = DESTINATION_NAMES[destinationSlug];
   if (!destName) return target;
 
-  // Resolve URL
+  // Resolve key (must exist in affiliate-links.ts / DEEP_LINK_KEYS)
   let deepKey;
   if (target.deepLinkPrefix === 'top-villas') {
     const region = DESTINATION_TO_VILLA_REGION[destinationSlug];
@@ -296,11 +277,10 @@ export function resolveDeepLink(target, destinationSlug) {
     deepKey = `${target.deepLinkPrefix}-${destinationSlug}`;
   }
 
-  const deepUrl = deepKey ? DEEP_LINK_MAP[deepKey] : null;
-  if (!deepUrl) return target;
+  if (!deepKey || !DEEP_LINK_KEYS.has(deepKey)) return target;
 
   // Customize card copy for the destination
-  const overrides = { url: deepUrl };
+  const overrides = { key: deepKey };
   if (target.deepLinkPrefix === 'booking') {
     overrides.cardTitle = `Wedding Hotels in ${destName}`;
     overrides.cardDesc = `Compare all-inclusive resorts and boutique hotels in ${destName}. Read verified reviews, check wedding-friendly amenities, and book with free cancellation.`;

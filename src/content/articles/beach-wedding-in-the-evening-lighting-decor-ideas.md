@@ -96,7 +96,7 @@ According to [Ultimate Party Tents](https://www.ultimatepartytents.com/blog/ligh
 <p class="affiliate-card-title">Wedding Hotels in Bali</p>
 <p class="affiliate-card-desc">Compare all-inclusive resorts and boutique hotels in Bali. Read verified reviews, check wedding-friendly amenities, and book with free cancellation.</p>
 <p class="affiliate-card-proof">Free cancellation on most properties. No booking fees.</p>
-<a class="affiliate-card-cta" href="https://tidd.ly/3Olk427" target="_blank" rel="sponsored nofollow noopener">Search Bali Hotels <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+<a class="affiliate-card-cta" href="/go/booking-bali" target="_blank" rel="sponsored nofollow noopener">Search Bali Hotels <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
 </div>
 </div>
 
