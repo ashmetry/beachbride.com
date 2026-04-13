@@ -642,8 +642,18 @@ Cards break out of prose styling via `not-prose` class. Left gold accent bar
 CSS lives in `src/styles/global.css` (`.affiliate-card` class). Colors: white
 card with left gold accent bar, navy CTA button, subtle shadow with hover lift.
 
-Each `AFFILIATE_TARGETS` entry carries `cardTitle`, `cardDesc`, `cardCta`,
-`cardProof`, and optionally `deepLinkPrefix` fields.
+Each `AFFILIATE_TARGETS` entry carries `key`, `cardTitle`, `cardDesc`, `cardCta`,
+`cardProof`, and optionally `deepLinkPrefix` fields. The `key` maps to both
+the `affiliate-links.ts` registry and the `/go/{key}` redirect page.
+
+**Clean redirect layer (`/go/[key]`):**
+Cards link to `/go/{key}` (e.g. `/go/booking-cancun`) instead of raw tracking
+URLs. Each key generates a static redirect page (`src/pages/go/[key].astro`)
+that does an instant JS redirect + meta refresh fallback to the Awin tracking URL.
+- Single source of truth: update a URL in `affiliate-links.ts`, rebuild, done
+- Article content never contains raw tracking URLs (tidd.ly/cread.php)
+- Pages are `noindex, nofollow` and excluded from sitemap
+- 59 redirect pages covering all affiliate link keys
 
 **Placement guardrails:**
 - Max 3 cards per article
@@ -658,10 +668,10 @@ to destination-specific deep links at injection time. The system:
 
 1. `detectDestination(frontmatter, slug, body)` — detects article destination
    from frontmatter field, slug keywords, or body mention frequency (≥5)
-2. `resolveDeepLink(target, destinationSlug)` — looks up `DEEP_LINK_MAP` for
-   destination-specific Awin tracking URL, customizes card copy (title, desc,
-   CTA) with the destination name
-3. Falls back to generic homepage URL if no deep link exists
+2. `resolveDeepLink(target, destinationSlug)` — checks `DEEP_LINK_KEYS` (Set)
+   for a valid destination-specific key, customizes card copy (title, desc,
+   CTA) with the destination name, returns the resolved key
+3. Falls back to the target's default key if no deep link key exists
 
 Example: Key West article gets "Wedding Hotels in Key West" → Booking.com
 search filtered to Key West resorts, instead of generic Booking.com homepage.
