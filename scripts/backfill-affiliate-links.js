@@ -16,7 +16,7 @@
 import { readFileSync, writeFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
-import { ARTICLES_DIR, AFFILIATE_TARGETS } from './content-engine/lib/config.js';
+import { ARTICLES_DIR, AFFILIATE_TARGETS, detectDestination, resolveDeepLink } from './content-engine/lib/config.js';
 
 const dryRun = process.argv.includes('--dry-run');
 const MAX_PER_ARTICLE = 3;
@@ -83,23 +83,32 @@ function processArticle(filepath) {
   if (!parsed) return null;
 
   let { fm, body } = parsed;
+  const slug = filepath.replace(/.*[/\\]/, '').replace(/\.(mdx|md)$/, '');
 
   // Step 1: Strip old inline affiliate links and existing cards
   const { body: cleanedBody, stripped } = stripOldInlineAffiliateLinks(body);
   body = cleanedBody;
 
-  // Step 2: Inject affiliate cards
+  // Step 2: Detect destination for deep link resolution
+  const destination = detectDestination(fm, slug, body);
+
+  // Step 3: Inject affiliate cards with destination-aware deep links
   let updated = body;
   let added = 0;
   const linked = new Set();
+  let destInfo = destination ? ` [${destination}]` : '';
 
   for (const target of AFFILIATE_TARGETS) {
     if (added >= MAX_PER_ARTICLE) break;
-    if (linked.has(target.url)) continue;
+
+    // Resolve destination-specific deep link
+    const resolved = resolveDeepLink(target, destination);
+
+    if (linked.has(resolved.url)) continue;
 
     // Skip if this affiliate URL is already in the article
-    if (updated.includes(target.url)) {
-      linked.add(target.url);
+    if (updated.includes(resolved.url) || updated.includes(target.url)) {
+      linked.add(resolved.url);
       continue;
     }
 
@@ -130,9 +139,9 @@ function processArticle(filepath) {
         ? updated.length
         : idx + nextBlankLine;
 
-      const card = buildAffiliateCardHtml(target);
+      const card = buildAffiliateCardHtml(resolved);
       updated = updated.slice(0, insertPos) + '\n' + card + updated.slice(insertPos);
-      linked.add(target.url);
+      linked.add(resolved.url);
       added++;
       break;
     }
@@ -143,7 +152,7 @@ function processArticle(filepath) {
   if (added > 0) {
     fm.affiliateDisclosure = true;
   }
-  return { content: assembleFrontmatter(fm, updated), added, stripped };
+  return { content: assembleFrontmatter(fm, updated), added, stripped, destInfo };
 }
 
 // Main
@@ -166,7 +175,7 @@ for (const file of files) {
   const parts = [];
   if (result.stripped > 0) parts.push(`stripped ${result.stripped} old link(s)`);
   if (result.added > 0) parts.push(`+${result.added} card(s)`);
-  console.log(`  ${file}: ${parts.join(', ')}`);
+  console.log(`  ${file}${result.destInfo || ''}: ${parts.join(', ')}`);
 
   if (!dryRun) {
     writeFileSync(filepath, result.content, 'utf8');

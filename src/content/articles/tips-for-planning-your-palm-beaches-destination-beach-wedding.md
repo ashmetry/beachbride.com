@@ -83,6 +83,14 @@ A few things set this area apart from other Florida wedding spots like [Key West
 
 One common misconception: people assume Palm Beaches weddings are beach-only affairs. The reality is that many couples hold a 15-to-25-minute ceremony on the sand and then move indoors for cocktails and dinner at a nearby resort or gallery.
 
+<div class="affiliate-card not-prose">
+<span class="affiliate-card-label">Booking.com</span>
+<p class="affiliate-card-title">Find Your Wedding Venue & Guest Hotels</p>
+<p class="affiliate-card-desc">Compare resort rates, read verified guest reviews, and book with free cancellation. Filter by wedding-friendly properties at your destination.</p>
+<a class="affiliate-card-cta" href="https://tidd.ly/4ssglOg" target="_blank" rel="sponsored nofollow noopener">Search Hotels <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
+
+
 ## What Does a Palm Beaches Destination Wedding Actually Cost?
 
 Costs range from about $2,000 for a small beach elopement to $215,000 or more for a large luxury affair at a top-tier resort. Your guest count and venue choice drive the number more than anything else.

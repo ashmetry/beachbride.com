@@ -12,6 +12,7 @@ import { join } from 'path';
 import {
   loadPipeline, savePipeline, getExistingArticles, ensureDirs, cliFlags,
   QUEUE_DIR, QUEUE_IMAGES_DIR, ARTICLES_DIR, LINK_TARGETS, AFFILIATE_TARGETS,
+  resolveDeepLink,
   MODEL_BRIEF, MODEL_WRITE, MODEL_GATE, MODEL_RESEARCH, MODEL_ALT,
   SEO_THRESHOLD, AI_DETECTION_THRESHOLD, MAX_REWRITES,
   MIN_WORD_COUNT, MAX_WORD_COUNT,
@@ -383,14 +384,39 @@ Be specific. Use real data. Cite every claim.`,
 
 // ── C. Article Writing ─────────────────────────────────────────────────────────
 
+const DESTINATION_KEYWORDS = {
+  'cancun': 'cancun', 'cancún': 'cancun', 'punta cana': 'punta-cana',
+  'jamaica': 'jamaica', 'hawaii': 'hawaii', 'maui': 'hawaii', 'oahu': 'hawaii',
+  'bali': 'bali', 'santorini': 'santorini', 'tulum': 'tulum',
+  'costa rica': 'costa-rica', 'key west': 'key-west', 'los cabos': 'los-cabos',
+  'cabo': 'los-cabos', 'st lucia': 'st-lucia', 'saint lucia': 'st-lucia',
+  'riviera maya': 'riviera-maya', 'turks': 'turks-and-caicos', 'aruba': 'aruba',
+  'amalfi': 'amalfi-coast', 'tuscany': 'tuscany', 'maldives': 'maldives',
+  'fiji': 'fiji', 'dubrovnik': 'dubrovnik', 'algarve': 'algarve',
+};
+
+function detectTopicDestination(text) {
+  for (const [keyword, slug] of Object.entries(DESTINATION_KEYWORDS)) {
+    if (text.includes(keyword)) return slug;
+  }
+  return null;
+}
+
 async function writeArticle(topic, existingArticles) {
   const brief = topic.brief;
   const research = topic.researchData;
 
   const articleList = existingArticles.map(a => `- /${a.slug}/ — ${a.title}`).join('\n');
   const linkTargets = LINK_TARGETS.map(t => `- /${t.slug}/ — matches: ${t.patterns.join(', ')}`).join('\n');
+  // Detect destination from topic keyword/title for deep link resolution
+  const topicText = `${topic.keyword || ''} ${brief.title || ''}`.toLowerCase();
+  const destinationSlug = detectTopicDestination(topicText);
+
   const affiliateTargets = brief.affiliateOpportunity
-    ? AFFILIATE_TARGETS.map(t => `- ${t.label}: url="${t.url}" | cta="${t.cardCta}" | title="${t.cardTitle}" | desc="${t.cardDesc}" | matches: ${t.patterns.join(', ')}`).join('\n')
+    ? AFFILIATE_TARGETS.map(t => {
+        const resolved = resolveDeepLink(t, destinationSlug);
+        return `- ${resolved.label}: url="${resolved.url}" | cta="${resolved.cardCta}" | title="${resolved.cardTitle}" | desc="${resolved.cardDesc}" | matches: ${t.patterns.join(', ')}`;
+      }).join('\n')
     : '';
 
   const researchContext = research.sections.map(s =>

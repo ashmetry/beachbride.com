@@ -1,6 +1,8 @@
 ---
 title: "Beach Wedding Table Decor Ideas: 25 Stunning Looks From Boho to Black-Tie"
-description: From floating candles to tropical florals, discover 25 beach wedding table decor ideas that work for every style, budget, and destination. Real inspiration inside.
+description: From floating candles to tropical florals, discover 25 beach
+  wedding table decor ideas that work for every style, budget, and destination.
+  Real inspiration inside.
 publishDate: 2026-04-07
 author: BeachBride Editorial Team
 tags:
@@ -15,19 +17,44 @@ schemaType: article
 affiliateDisclosure: true
 faqs:
   - question: What centerpieces work best for an outdoor beach wedding on a windy day?
-    answer: Low-profile centerpieces under 10 inches tall are your best bet. Weighted options like driftwood bases, sand-filled hurricane vases, and stone or shell anchors keep everything in place. Avoid loose petals, tall taper candles, or anything lightweight that can catch a gust.
+    answer: Low-profile centerpieces under 10 inches tall are your best bet.
+      Weighted options like driftwood bases, sand-filled hurricane vases, and
+      stone or shell anchors keep everything in place. Avoid loose petals, tall
+      taper candles, or anything lightweight that can catch a gust.
   - question: Can I use real seashells and sand in my table decor, or does it look tacky?
-    answer: "Real shells and sand can look stunning when used with restraint. The key is editing: one or two statement shells per table alongside florals or candles, rather than scattering handfuls across every surface. Limit sand to contained vessels like glass cylinders or votives."
+    answer: "Real shells and sand can look stunning when used with restraint. The
+      key is editing: one or two statement shells per table alongside florals or
+      candles, rather than scattering handfuls across every surface. Limit sand
+      to contained vessels like glass cylinders or votives."
   - question: What flowers hold up best in heat and humidity for beach wedding tables?
-    answer: Orchids, protea, succulents, anthurium, and bird of paradise are all heat-tolerant and hold their shape in humid conditions. Roses and hydrangeas wilt quickly in direct sun, so if you love them, keep them in shaded reception areas and mist them before the event.
+    answer: Orchids, protea, succulents, anthurium, and bird of paradise are all
+      heat-tolerant and hold their shape in humid conditions. Roses and
+      hydrangeas wilt quickly in direct sun, so if you love them, keep them in
+      shaded reception areas and mist them before the event.
   - question: How do I keep candles lit at a beach reception?
-    answer: Use hurricane glass enclosures, floating candles in tall cylinder vases, or flameless LED candles. Floating candles in water-filled vessels are especially effective because the glass walls block wind while the water adds a reflective glow.
-  - question: What's the difference in table decor style between destinations like Bali vs. Santorini vs. Tulum?
-    answer: A Bali wedding leans into lush tropical greenery and carved wood details. Santorini calls for white linens, olive branches, and Mediterranean blues. Tulum favors boho neutrals, pampas grass, and raw wood. Each destination's natural palette and architecture should guide your choices.
-  - question: How far in advance should I book a florist or decorator for a destination wedding?
-    answer: Book your florist or decorator 8 to 12 months before your wedding date. Popular beach destinations have limited vendor availability during peak season, and shipping specialty items internationally requires extra lead time for customs and logistics.
+    answer: Use hurricane glass enclosures, floating candles in tall cylinder vases,
+      or flameless LED candles. Floating candles in water-filled vessels are
+      especially effective because the glass walls block wind while the water
+      adds a reflective glow.
+  - question: What's the difference in table decor style between destinations like
+      Bali vs. Santorini vs. Tulum?
+    answer: A Bali wedding leans into lush tropical greenery and carved wood
+      details. Santorini calls for white linens, olive branches, and
+      Mediterranean blues. Tulum favors boho neutrals, pampas grass, and raw
+      wood. Each destination's natural palette and architecture should guide
+      your choices.
+  - question: How far in advance should I book a florist or decorator for a
+      destination wedding?
+    answer: Book your florist or decorator 8 to 12 months before your wedding date.
+      Popular beach destinations have limited vendor availability during peak
+      season, and shipping specialty items internationally requires extra lead
+      time for customs and logistics.
   - question: What's a realistic per-table budget for beach wedding decor at a resort?
-    answer: Expect to spend $50 to $200 per table for a polished look using a mix of candles, natural elements, and simple florals. Elaborate floral centerpieces can push costs to $300 to $500 per table. Many all-inclusive resorts include basic table decor in their wedding packages, so check what's covered before buying extras.
+    answer: Expect to spend $50 to $200 per table for a polished look using a mix of
+      candles, natural elements, and simple florals. Elaborate floral
+      centerpieces can push costs to $300 to $500 per table. Many all-inclusive
+      resorts include basic table decor in their wedding packages, so check
+      what's covered before buying extras.
 related:
   - beach-wedding-beautiful-and-easy-centerpiece-ideas
   - beautiful-beach-wedding-color-schemes
@@ -69,6 +96,14 @@ Your color palette matters more than you might expect. According to [Family Affa
 | Black-Tie Beach | Navy, gold, ivory | Tall hurricanes, lush low florals, crystal glassware | [Turks and Caicos](/destinations/turks-and-caicos/), [Maldives](/destinations/maldives/) |
 
 Before you start pinning inspiration, check your [beach wedding checklist](/beach-wedding-checklist/) to confirm what your venue provides. Many all-inclusive resorts at places like <a href="https://www.sandals.com/" rel="noopener noreferrer sponsored">Sandals</a> include basic linens, tableware, and even simple centerpieces in their wedding packages. Knowing what's already covered prevents you from paying twice.
+
+<div class="affiliate-card not-prose">
+<span class="affiliate-card-label">Booking.com</span>
+<p class="affiliate-card-title">Wedding Hotels in Santorini</p>
+<p class="affiliate-card-desc">Compare all-inclusive resorts and boutique hotels in Santorini. Read verified reviews, check wedding-friendly amenities, and book with free cancellation.</p>
+<a class="affiliate-card-cta" href="https://tidd.ly/4suHbFs" target="_blank" rel="sponsored nofollow noopener">Search Santorini Hotels <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
+
 
 ## Centerpiece Ideas That Steal the Show Without Blocking the View
 

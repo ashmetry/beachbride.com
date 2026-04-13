@@ -635,8 +635,26 @@ arrow icon. Cards break out of prose styling via `not-prose` class.
 CSS lives in `src/styles/global.css` (`.affiliate-card` class). Colors: white
 card with gold accent CTA button, on-brand hover effect.
 
-Each `AFFILIATE_TARGETS` entry now carries `cardTitle`, `cardDesc`, and `cardCta`
-fields alongside the original `patterns`, `url`, `label`, and `rel`.
+Each `AFFILIATE_TARGETS` entry now carries `cardTitle`, `cardDesc`, `cardCta`,
+and optionally `deepLinkPrefix` fields.
+
+**Destination-aware deep linking (added 2026-04-12):**
+Targets with `deepLinkPrefix` (Booking.com, GetYourGuide, Top Villas) resolve
+to destination-specific deep links at injection time. The system:
+
+1. `detectDestination(frontmatter, slug, body)` — detects article destination
+   from frontmatter field, slug keywords, or body mention frequency (≥5)
+2. `resolveDeepLink(target, destinationSlug)` — looks up `DEEP_LINK_MAP` for
+   destination-specific Awin tracking URL, customizes card copy (title, desc,
+   CTA) with the destination name
+3. Falls back to generic homepage URL if no deep link exists
+
+Example: Key West article gets "Wedding Hotels in Key West" → Booking.com
+search filtered to Key West resorts, instead of generic Booking.com homepage.
+
+**Coverage:** 18 destinations have Booking.com deep links, 15 have GetYourGuide
+deep links, Caribbean + Mexico destinations have Top Villas regional links.
+All deep links generated via Awin Publisher Link Builder API.
 
 **Backfill script (`scripts/backfill-affiliate-links.js`):**
 Strips old inline affiliate links (the `<a href="tidd.ly/...">` tags from

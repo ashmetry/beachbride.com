@@ -143,26 +143,29 @@ export const AFFILIATE_TARGETS = [
   { patterns: ['wedding band', "groom's ring", 'tungsten ring', 'titanium ring', 'silicone ring', "men's wedding ring"],
     url: 'https://tidd.ly/47SJc6X', label: 'Larson Jewelers', rel: 'sponsored nofollow',
     cardTitle: "Wedding Bands Built for Adventure", cardDesc: "Tungsten, titanium, and alternative metal bands that handle sand, salt water, and everything else your destination wedding throws at them.", cardCta: 'Shop Wedding Bands' },
-  // Hotels — destination-specific (generic fallback)
-  { patterns: ['book a hotel', 'find accommodation', 'resort booking', 'hotel deals', 'where to stay'],
+  // Hotels — destination-aware (resolves to deep link at injection time)
+  { patterns: ['book a hotel', 'find accommodation', 'resort booking', 'hotel deals', 'where to stay', 'all-inclusive', 'resort'],
     url: 'https://tidd.ly/4ssglOg', label: 'Booking.com', rel: 'sponsored nofollow',
-    cardTitle: 'Find Your Wedding Venue & Guest Hotels', cardDesc: 'Compare resort rates, read verified guest reviews, and book with free cancellation. Filter by wedding-friendly properties at your destination.', cardCta: 'Search Hotels' },
+    cardTitle: 'Find Your Wedding Venue & Guest Hotels', cardDesc: 'Compare resort rates, read verified guest reviews, and book with free cancellation. Filter by wedding-friendly properties at your destination.', cardCta: 'Search Hotels',
+    deepLinkPrefix: 'booking' },
   // Destination photographers
   { patterns: ['destination photographer', 'local photographer', 'vacation photographer', 'book a photographer abroad', 'destination wedding photographer'],
     url: 'https://tidd.ly/4vkss2p', label: 'Flytographer', rel: 'sponsored nofollow',
     cardTitle: 'Book a Local Wedding Photographer', cardDesc: 'Professional photographers in 400+ cities worldwide who know the best light, angles, and hidden spots at your destination. Browse portfolios and book online.', cardCta: 'Find a Photographer' },
-  // Villas
+  // Villas — region-aware
   { patterns: ['private villa', 'villa wedding', 'luxury villa', 'rent a villa'],
     url: 'https://tidd.ly/4syBRRf', label: 'Top Villas', rel: 'sponsored nofollow',
-    cardTitle: 'Private Villa Weddings', cardDesc: 'Luxury villas with pools, ocean views, and space for your entire wedding party. From Caribbean beachfront estates to Tuscan hilltop retreats.', cardCta: 'Browse Villas' },
+    cardTitle: 'Private Villa Weddings', cardDesc: 'Luxury villas with pools, ocean views, and space for your entire wedding party. From Caribbean beachfront estates to Tuscan hilltop retreats.', cardCta: 'Browse Villas',
+    deepLinkPrefix: 'top-villas' },
   // Video guest book
   { patterns: ['video guest book', 'guest video messages', 'virtual guest book', 'guests who can\'t attend'],
     url: 'https://tidd.ly/4dD5NrQ', label: 'Voast', rel: 'sponsored nofollow',
     cardTitle: 'Video Guest Book for Your Wedding', cardDesc: 'Let guests who can\'t make the trip send heartfelt video messages. Collect, organize, and rewatch forever.', cardCta: 'Create Your Guest Book' },
-  // Activities / tours
+  // Activities / tours — destination-aware
   { patterns: ['guest activities', 'things to do', 'excursions for guests', 'tours and activities', 'local tours'],
     url: 'https://tidd.ly/3NWpGQk', label: 'GetYourGuide', rel: 'sponsored nofollow',
-    cardTitle: 'Plan Activities for Your Wedding Guests', cardDesc: 'Snorkeling, sunset cruises, food tours, and more at every major destination. Book activities your guests will actually remember.', cardCta: 'Browse Activities' },
+    cardTitle: 'Plan Activities for Your Wedding Guests', cardDesc: 'Snorkeling, sunset cruises, food tours, and more at every major destination. Book activities your guests will actually remember.', cardCta: 'Browse Activities',
+    deepLinkPrefix: 'getyourguide' },
   // Cruises
   { patterns: ['honeymoon cruise', 'cruise wedding', 'caribbean cruise', 'wedding cruise'],
     url: 'https://tidd.ly/47VOU8b', label: 'GoToSea', rel: 'sponsored nofollow',
@@ -180,6 +183,141 @@ export const AFFILIATE_TARGETS = [
     url: 'https://tidd.ly/47ZjZrr', label: 'Xcaret', rel: 'sponsored nofollow',
     cardTitle: 'Xcaret Parks — Cancun\'s Best Group Activity', cardDesc: 'Underground rivers, snorkeling, cultural shows, and more. Perfect for a wedding-week outing your guests will never forget.', cardCta: 'Get Tickets' },
 ];
+
+// ── Deep Link Resolution ──────────────────────────────────────────────────────
+
+/**
+ * Maps deepLinkPrefix + destination slug to the Awin tracking URL.
+ * Used by ensureAffiliateLinks() to resolve destination-specific deep links.
+ */
+const DEEP_LINK_MAP = {
+  'booking-cancun': 'https://tidd.ly/3QiKa6m',
+  'booking-punta-cana': 'https://tidd.ly/47Zk3HH',
+  'booking-jamaica': 'https://tidd.ly/480mCtc',
+  'booking-hawaii': 'https://tidd.ly/4tK8Z9T',
+  'booking-bali': 'https://tidd.ly/3Olk427',
+  'booking-santorini': 'https://tidd.ly/4suHbFs',
+  'booking-tulum': 'https://tidd.ly/3Q6G80X',
+  'booking-costa-rica': 'https://tidd.ly/4tOc7Sh',
+  'booking-key-west': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DKey%2BWest%26nflt%3Dht_id%253D204&platform=pl',
+  'booking-los-cabos': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DLos%2BCabos%26nflt%3Dht_id%253D204&platform=pl',
+  'booking-st-lucia': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DSt%2BLucia%26nflt%3Dht_id%253D204&platform=pl',
+  'booking-riviera-maya': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DRiviera%2BMaya%26nflt%3Dht_id%253D204&platform=pl',
+  'booking-turks-and-caicos': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DTurks%2Band%2BCaicos%26nflt%3Dht_id%253D204&platform=pl',
+  'booking-aruba': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DAruba%26nflt%3Dht_id%253D204&platform=pl',
+  'booking-amalfi-coast': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DAmalfi%2BCoast%26nflt%3Dht_id%253D204&platform=pl',
+  'booking-tuscany': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DTuscany%26nflt%3Dht_id%253D204&platform=pl',
+  'booking-maldives': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DMaldives%26nflt%3Dht_id%253D204&platform=pl',
+  'booking-fiji': 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DFiji%26nflt%3Dht_id%253D204&platform=pl',
+  'getyourguide-cancun': 'https://tidd.ly/4vIp167',
+  'getyourguide-punta-cana': 'https://tidd.ly/4tdOUsO',
+  'getyourguide-jamaica': 'https://tidd.ly/47YA5Sh',
+  'getyourguide-hawaii': 'https://tidd.ly/4c7wjZk',
+  'getyourguide-bali': 'https://tidd.ly/47VP8w3',
+  'getyourguide-santorini': 'https://tidd.ly/4taU48O',
+  'getyourguide-los-cabos': 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Fcabo-san-lucas-l1058%2F&platform=pl',
+  'getyourguide-st-lucia': 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Fsaint-lucia-l1001%2F&platform=pl',
+  'getyourguide-riviera-maya': 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Friviera-maya-l2685%2F&platform=pl',
+  'getyourguide-turks-and-caicos': 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Fturks-and-caicos-l33654%2F&platform=pl',
+  'getyourguide-aruba': 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Faruba-l577%2F&platform=pl',
+  'getyourguide-amalfi-coast': 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Famalfi-coast-l2587%2F&platform=pl',
+  'getyourguide-tuscany': 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Ftuscany-l2594%2F&platform=pl',
+  'getyourguide-maldives': 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Fmaldives-l387%2F&platform=pl',
+  'getyourguide-fiji': 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Ffiji-l271%2F&platform=pl',
+  'top-villas-caribbean': 'https://tidd.ly/4tIj1bl',
+  'top-villas-mexico': 'https://tidd.ly/41YtsvI',
+};
+
+/** Maps destination slug → region for Top Villas deep links */
+const DESTINATION_TO_VILLA_REGION = {
+  'cancun': 'mexico', 'tulum': 'mexico', 'riviera-maya': 'mexico', 'los-cabos': 'mexico',
+  'jamaica': 'caribbean', 'punta-cana': 'caribbean', 'st-lucia': 'caribbean',
+  'turks-and-caicos': 'caribbean', 'aruba': 'caribbean',
+};
+
+/** Destination slug → display name for card copy customization */
+const DESTINATION_NAMES = {
+  'cancun': 'Cancún', 'punta-cana': 'Punta Cana', 'jamaica': 'Jamaica',
+  'hawaii': 'Hawaii', 'bali': 'Bali', 'santorini': 'Santorini', 'tulum': 'Tulum',
+  'costa-rica': 'Costa Rica', 'key-west': 'Key West', 'los-cabos': 'Los Cabos',
+  'st-lucia': 'St. Lucia', 'riviera-maya': 'Riviera Maya',
+  'turks-and-caicos': 'Turks & Caicos', 'aruba': 'Aruba',
+  'amalfi-coast': 'the Amalfi Coast', 'tuscany': 'Tuscany',
+  'maldives': 'the Maldives', 'fiji': 'Fiji',
+  'holbox': 'Holbox', 'roatan': 'Roatán', 'kotor': 'Kotor',
+  'azores': 'the Azores', 'koh-lanta': 'Koh Lanta', 'dubrovnik': 'Dubrovnik',
+  'algarve': 'the Algarve',
+};
+
+/**
+ * Detect which destination an article is about from frontmatter + slug + body.
+ * Returns the destination slug or null.
+ */
+export function detectDestination(frontmatter, slug, body) {
+  // 1. Explicit frontmatter destination
+  if (frontmatter.destination) return frontmatter.destination;
+
+  // 2. Check slug for destination names
+  for (const dest of Object.keys(DESTINATION_NAMES)) {
+    if (slug.includes(dest)) return dest;
+  }
+
+  // 3. Check article body for dominant destination mentions (must appear 3+ times)
+  const counts = {};
+  for (const dest of Object.keys(DESTINATION_NAMES)) {
+    const name = DESTINATION_NAMES[dest].replace(/^the /, '');
+    const regex = new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
+    const matches = body.match(regex);
+    if (matches && matches.length >= 3) counts[dest] = matches.length;
+  }
+  const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+  if (sorted.length > 0 && sorted[0][1] >= 5) return sorted[0][0];
+
+  return null;
+}
+
+/**
+ * Resolve a deep link for a target + destination.
+ * Returns { url, cardTitle, cardDesc, cardCta } with destination-specific values,
+ * or the original target values if no deep link exists.
+ */
+export function resolveDeepLink(target, destinationSlug) {
+  if (!target.deepLinkPrefix || !destinationSlug) return target;
+
+  const destName = DESTINATION_NAMES[destinationSlug];
+  if (!destName) return target;
+
+  // Resolve URL
+  let deepKey;
+  if (target.deepLinkPrefix === 'top-villas') {
+    const region = DESTINATION_TO_VILLA_REGION[destinationSlug];
+    deepKey = region ? `top-villas-${region}` : null;
+  } else {
+    deepKey = `${target.deepLinkPrefix}-${destinationSlug}`;
+  }
+
+  const deepUrl = deepKey ? DEEP_LINK_MAP[deepKey] : null;
+  if (!deepUrl) return target;
+
+  // Customize card copy for the destination
+  const overrides = { url: deepUrl };
+  if (target.deepLinkPrefix === 'booking') {
+    overrides.cardTitle = `Wedding Hotels in ${destName}`;
+    overrides.cardDesc = `Compare all-inclusive resorts and boutique hotels in ${destName}. Read verified reviews, check wedding-friendly amenities, and book with free cancellation.`;
+    overrides.cardCta = `Search ${destName} Hotels`;
+  } else if (target.deepLinkPrefix === 'getyourguide') {
+    overrides.cardTitle = `Things to Do in ${destName}`;
+    overrides.cardDesc = `Snorkeling, sunset cruises, food tours, and more in ${destName}. Book wedding-week activities your guests will actually remember.`;
+    overrides.cardCta = `Browse ${destName} Activities`;
+  } else if (target.deepLinkPrefix === 'top-villas') {
+    const regionName = DESTINATION_TO_VILLA_REGION[destinationSlug] === 'mexico' ? 'Mexico' : 'Caribbean';
+    overrides.cardTitle = `${regionName} Villa Weddings`;
+    overrides.cardDesc = `Luxury ${regionName.toLowerCase()} villas with pools, ocean views, and space for your entire wedding party near ${destName}.`;
+    overrides.cardCta = `Browse ${regionName} Villas`;
+  }
+
+  return { ...target, ...overrides };
+}
 
 // ── Existing Articles Inventory ────────────────────────────────────────────────
 

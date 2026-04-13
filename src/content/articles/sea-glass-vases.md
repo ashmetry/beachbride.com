@@ -1,6 +1,9 @@
 ---
-title: "DIY Sea Glass Vases for Weddings: Step-by-Step Guide to Stunning Coastal Centerpieces"
-description: Make dreamy DIY sea glass vases for your beach wedding in an afternoon. Step-by-step tutorial with supply list, color tips, and styling ideas for every budget.
+title: "DIY Sea Glass Vases for Weddings: Step-by-Step Guide to Stunning Coastal
+  Centerpieces"
+description: Make dreamy DIY sea glass vases for your beach wedding in an
+  afternoon. Step-by-step tutorial with supply list, color tips, and styling
+  ideas for every budget.
 publishDate: 2026-04-07
 author: BeachBride Editorial Team
 tags:
@@ -14,35 +17,70 @@ tags:
 schemaType: howto
 howToSteps:
   - name: Gather your supplies
-    text: Collect glass bottles or vases (thrift stores, dollar stores, or recycled from your kitchen), Krylon Sea Glass spray paint in your chosen colors, rubbing alcohol, paper towels, and a cardboard spray box.
+    text: Collect glass bottles or vases (thrift stores, dollar stores, or recycled
+      from your kitchen), Krylon Sea Glass spray paint in your chosen colors,
+      rubbing alcohol, paper towels, and a cardboard spray box.
   - name: Clean and prep each bottle
-    text: Remove all labels by soaking bottles in warm soapy water for 20 minutes. Scrub off residue, rinse, dry completely, then wipe every surface with rubbing alcohol to remove oils and fingerprints.
+    text: Remove all labels by soaking bottles in warm soapy water for 20 minutes.
+      Scrub off residue, rinse, dry completely, then wipe every surface with
+      rubbing alcohol to remove oils and fingerprints.
   - name: Set up your spray station
-    text: Work outdoors or in a well-ventilated garage. Place bottles upside down on sticks or skewers inside a cardboard box to catch overspray and allow 360-degree coverage.
+    text: Work outdoors or in a well-ventilated garage. Place bottles upside down on
+      sticks or skewers inside a cardboard box to catch overspray and allow
+      360-degree coverage.
   - name: Apply light coats of sea glass spray paint
-    text: Hold the can 10-12 inches from the glass and spray in short, sweeping passes. Apply very thin coats, allowing 10-15 minutes of drying time between each coat. Plan for 6-8 coats total.
+    text: Hold the can 10-12 inches from the glass and spray in short, sweeping
+      passes. Apply very thin coats, allowing 10-15 minutes of drying time
+      between each coat. Plan for 6-8 coats total.
   - name: Check translucency between coats
-    text: Hold each bottle up to natural light after every 2-3 coats. Stop when you achieve the frosted, slightly translucent look of real sea glass. Fewer coats give a lighter wash; more coats create deeper saturation.
+    text: Hold each bottle up to natural light after every 2-3 coats. Stop when you
+      achieve the frosted, slightly translucent look of real sea glass. Fewer
+      coats give a lighter wash; more coats create deeper saturation.
   - name: Cure and protect the finish
-    text: Let finished vases dry for 24 hours before handling. For extra durability, bake in a cold oven brought to 350°F for 30 minutes, then let them cool completely inside the oven before removing.
+    text: Let finished vases dry for 24 hours before handling. For extra durability,
+      bake in a cold oven brought to 350°F for 30 minutes, then let them cool
+      completely inside the oven before removing.
   - name: Style your vases as centerpieces
-    text: Group 3-5 vases of varying heights on each table. Add a single stem of greenery or a small bloom to each, scatter shells or sand dollars around the base, and place on a white linen runner for contrast.
+    text: Group 3-5 vases of varying heights on each table. Add a single stem of
+      greenery or a small bloom to each, scatter shells or sand dollars around
+      the base, and place on a white linen runner for contrast.
 affiliateDisclosure: true
 faqs:
   - question: What spray paint brand gives the most realistic sea glass look?
-    answer: Krylon Sea Glass spray paint is the most widely recommended option among DIY wedding crafters. It produces a translucent, frosted finish that closely mimics ocean-tumbled glass. Apply 6-8 very light coats with 10-15 minutes between each for the best results.
+    answer: Krylon Sea Glass spray paint is the most widely recommended option among
+      DIY wedding crafters. It produces a translucent, frosted finish that
+      closely mimics ocean-tumbled glass. Apply 6-8 very light coats with 10-15
+      minutes between each for the best results.
   - question: How far in advance can I make DIY sea glass vases before my wedding?
-    answer: You can make them months ahead with no issues. Once fully cured (24 hours of air drying or oven-baked at 350°F for 30 minutes), the finish is stable and durable. Store them wrapped in tissue paper inside boxes to prevent scratching.
+    answer: You can make them months ahead with no issues. Once fully cured (24
+      hours of air drying or oven-baked at 350°F for 30 minutes), the finish is
+      stable and durable. Store them wrapped in tissue paper inside boxes to
+      prevent scratching.
   - question: Can I use plastic bottles instead of glass for sea glass vases?
-    answer: Glass gives far better results. Sea glass spray paint adheres best to actual glass surfaces, and plastic bottles tend to produce uneven, unconvincing finishes. Stick with glass from thrift stores or dollar stores for the most realistic look.
+    answer: Glass gives far better results. Sea glass spray paint adheres best to
+      actual glass surfaces, and plastic bottles tend to produce uneven,
+      unconvincing finishes. Stick with glass from thrift stores or dollar
+      stores for the most realistic look.
   - question: How do I remove stubborn labels from recycled glass bottles?
-    answer: Soak bottles in warm water with a few drops of dish soap for 20 minutes, then scrub with a rough sponge. For leftover adhesive, rub with rubbing alcohol or a paste of baking soda and cooking oil. Wipe clean and dry fully before painting.
+    answer: Soak bottles in warm water with a few drops of dish soap for 20 minutes,
+      then scrub with a rough sponge. For leftover adhesive, rub with rubbing
+      alcohol or a paste of baking soda and cooking oil. Wipe clean and dry
+      fully before painting.
   - question: What flowers look best inside sea glass vases for a beach wedding?
-    answer: Single stems work best to let the vases shine. Hydrangeas, white ranunculus, baby's breath, and eucalyptus sprigs all pair beautifully with sea glass tones. Avoid heavy, droopy blooms that overpower the delicate frosted glass.
+    answer: Single stems work best to let the vases shine. Hydrangeas, white
+      ranunculus, baby's breath, and eucalyptus sprigs all pair beautifully with
+      sea glass tones. Avoid heavy, droopy blooms that overpower the delicate
+      frosted glass.
   - question: Are DIY sea glass vases allowed at resort or hotel wedding venues?
-    answer: Most resorts allow personal decor items, but policies vary. Contact your venue coordinator at least two months before your wedding to confirm. Some all-inclusive resorts restrict outside decor or charge a setup fee, so ask early.
+    answer: Most resorts allow personal decor items, but policies vary. Contact your
+      venue coordinator at least two months before your wedding to confirm. Some
+      all-inclusive resorts restrict outside decor or charge a setup fee, so ask
+      early.
   - question: How do I transport DIY sea glass vases to a destination wedding?
-    answer: Wrap each vase individually in bubble wrap, then pack them snugly in a hard-sided suitcase with clothing as padding. Ship a box ahead via FedEx or UPS if you have a reliable receiving address at your hotel or rental. Always pack a few extras in case of breakage.
+    answer: Wrap each vase individually in bubble wrap, then pack them snugly in a
+      hard-sided suitcase with clothing as padding. Ship a box ahead via FedEx
+      or UPS if you have a reliable receiving address at your hotel or rental.
+      Always pack a few extras in case of breakage.
 related:
   - beach-wedding-beautiful-and-easy-centerpiece-ideas
   - beautiful-beach-wedding-color-schemes
@@ -195,6 +233,14 @@ According to [Island Bliss Weddings](https://www.islandblissweddings.com/diy-sea
 **Packing for travel:** Wrap each vase individually in bubble wrap, then nestle them in a hard-sided suitcase surrounded by soft clothing. For a [Cancun wedding](/destinations/cancun/) or [Tulum wedding](/destinations/tulum/), consider shipping a box to your resort 2-3 weeks ahead via a tracked carrier. Call the hotel concierge first to confirm they'll hold packages.
 
 **Resort policies:** Some all-inclusive resorts restrict outside decor or charge a setup fee. Contact your venue coordinator at least two months out. If your resort won't allow outside items, ask whether their on-site florist can incorporate your vases into their setup.
+
+<div class="affiliate-card not-prose">
+<span class="affiliate-card-label">Booking.com</span>
+<p class="affiliate-card-title">Find Your Wedding Venue & Guest Hotels</p>
+<p class="affiliate-card-desc">Compare resort rates, read verified guest reviews, and book with free cancellation. Filter by wedding-friendly properties at your destination.</p>
+<a class="affiliate-card-cta" href="https://tidd.ly/4ssglOg" target="_blank" rel="sponsored nofollow noopener">Search Hotels <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
+
 
 **Weight considerations:** A set of 40 small glass bottles weighs roughly 15-20 pounds. That's manageable in a checked bag, but you'll want to pad generously. Pack 3-5 extras to account for any breakage in transit.
 

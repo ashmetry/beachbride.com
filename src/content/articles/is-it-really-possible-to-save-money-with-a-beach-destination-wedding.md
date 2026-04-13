@@ -71,6 +71,14 @@ The biggest reason destination weddings cost less has nothing to do with cheaper
 
 According to [The Knot](https://www.theknot.com/content/average-destination-wedding-cost), the average U.S. hometown wedding costs around $33,000. Meanwhile, all-inclusive resort packages can bring a 40-to-50-person destination wedding in at $10,000 to $20,000 in places like [Riviera Maya](/destinations/riviera-maya/) or [Punta Cana](/destinations/punta-cana/). That's not a typo. When you're feeding and entertaining half as many people, the numbers shift dramatically.
 
+<div class="affiliate-card not-prose">
+<span class="affiliate-card-label">Booking.com</span>
+<p class="affiliate-card-title">Find Your Wedding Venue & Guest Hotels</p>
+<p class="affiliate-card-desc">Compare resort rates, read verified guest reviews, and book with free cancellation. Filter by wedding-friendly properties at your destination.</p>
+<a class="affiliate-card-cta" href="https://tidd.ly/4ssglOg" target="_blank" rel="sponsored nofollow noopener">Search Hotels <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
+
+
 According to [Travel Bash](https://www.travel-bash.com/blog/the-real-cost-of-destination-weddings-are-they-less-expensive-than-traditional), guests actually spend *less* attending a destination wedding ($673 per person on average) than a traditional local one ($703). So the idea that you're burdening your guests financially? The data doesn't support it. Many guests treat the trip as a vacation, which changes the whole dynamic.
 
 The other factor: bundling. A resort that includes your venue, catering, cake, DJ, and basic décor in one package eliminates the piecemeal vendor costs that balloon traditional wedding budgets. You're not separately hiring a caterer, renting linens, booking a venue, and coordinating deliveries. It's one contract, one price.

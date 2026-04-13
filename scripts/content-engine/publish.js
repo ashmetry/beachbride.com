@@ -13,7 +13,8 @@ import { execSync } from 'child_process';
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
 import {
   ROOT, ARTICLES_DIR, IMAGES_DIR, QUEUE_DIR, QUEUE_IMAGES_DIR,
-  loadPipeline, savePipeline, getExistingArticles, LINK_TARGETS, AFFILIATE_TARGETS, cliFlags,
+  loadPipeline, savePipeline, getExistingArticles, LINK_TARGETS, AFFILIATE_TARGETS,
+  detectDestination, resolveDeepLink, cliFlags,
 } from './lib/config.js';
 import { notifyPublished, notifyDigest } from './lib/email.js';
 
@@ -69,8 +70,8 @@ async function main() {
   // 2a. Ensure outbound links in new article (read-only — modifies in-memory body only)
   let updatedBody = ensureOutboundLinks(body, slug);
 
-  // 2a-ii. Ensure affiliate links where topic matches (max 3 per article)
-  const { body: affiliatedBody, added: affiliateCount } = ensureAffiliateLinks(updatedBody);
+  // 2a-ii. Ensure affiliate cards where topic matches (max 3, destination-aware deep links)
+  const { body: affiliatedBody, added: affiliateCount } = ensureAffiliateLinks(updatedBody, frontmatter, slug);
   if (affiliateCount > 0) {
     updatedBody = affiliatedBody;
     frontmatter.affiliateDisclosure = true;
@@ -303,19 +304,29 @@ function buildAffiliateCardHtml(target) {
   return `\n<div class="affiliate-card not-prose">\n<span class="affiliate-card-label">${target.label}</span>\n<p class="affiliate-card-title">${target.cardTitle}</p>\n<p class="affiliate-card-desc">${target.cardDesc}</p>\n<a class="affiliate-card-cta" href="${target.url}" target="_blank" rel="${target.rel} noopener">${target.cardCta} ${arrow}</a>\n</div>\n`;
 }
 
-function ensureAffiliateLinks(body) {
+function ensureAffiliateLinks(body, frontmatter = {}, slug = '') {
   const MAX_AFFILIATE_CARDS = 3;
   let updated = body;
   let added = 0;
   const linked = new Set();
 
+  // Detect destination for deep link resolution
+  const destination = detectDestination(frontmatter, slug, body);
+  if (destination) {
+    console.log(`    Detected destination: ${destination}`);
+  }
+
   for (const target of AFFILIATE_TARGETS) {
     if (added >= MAX_AFFILIATE_CARDS) break;
-    if (linked.has(target.url)) continue;
+
+    // Resolve destination-specific deep link (URL + card copy)
+    const resolved = resolveDeepLink(target, destination);
+
+    if (linked.has(resolved.url)) continue;
 
     // Skip if this affiliate URL is already in the article (card or inline)
-    if (updated.includes(target.url)) {
-      linked.add(target.url);
+    if (updated.includes(resolved.url) || updated.includes(target.url)) {
+      linked.add(resolved.url);
       continue;
     }
 
@@ -346,9 +357,9 @@ function ensureAffiliateLinks(body) {
         ? updated.length
         : idx + nextBlankLine;
 
-      const card = buildAffiliateCardHtml(target);
+      const card = buildAffiliateCardHtml(resolved);
       updated = updated.slice(0, insertPos) + '\n' + card + updated.slice(insertPos);
-      linked.add(target.url);
+      linked.add(resolved.url);
       added++;
       break;
     }

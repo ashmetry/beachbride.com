@@ -176,15 +176,23 @@ According to [Riley & Grey](https://www.rileygrey.com/wedding-guide/wedding-plan
 
 **[Punta Cana](/destinations/punta-cana/):** Airport code PUJ. Most all-inclusive resorts include airport transfers. Dominican pesos are the local currency, but resorts operate in USD. Include a note about the local tipping culture.
 
+<div class="affiliate-card not-prose">
+<span class="affiliate-card-label">Booking.com</span>
+<p class="affiliate-card-title">Wedding Hotels in Bali</p>
+<p class="affiliate-card-desc">Compare all-inclusive resorts and boutique hotels in Bali. Read verified reviews, check wedding-friendly amenities, and book with free cancellation.</p>
+<a class="affiliate-card-cta" href="https://tidd.ly/3Olk427" target="_blank" rel="sponsored nofollow noopener">Search Bali Hotels <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
+
+
 **[Costa Rica](/destinations/costa-rica/) and [Tulum](/destinations/tulum/):** Both require extra ground transportation planning. Tulum is about two hours from CUN airport. Costa Rica's SJO airport may be hours from Pacific coast venues. Spell out the drive times clearly so guests aren't surprised.
 
 According to [Destination I Do](https://destinationido.com/planning-and-advice/everything-you-need-on-your-destination-wedding-website/), 70% of destination wedding guests extend their trip into a full vacation. Add a "Things to Do" section with your favorite local spots. Your guests will thank you.
 
 <div class="affiliate-card not-prose">
 <span class="affiliate-card-label">GetYourGuide</span>
-<p class="affiliate-card-title">Plan Activities for Your Wedding Guests</p>
-<p class="affiliate-card-desc">Snorkeling, sunset cruises, food tours, and more at every major destination. Book activities your guests will actually remember.</p>
-<a class="affiliate-card-cta" href="https://tidd.ly/3NWpGQk" target="_blank" rel="sponsored nofollow noopener">Browse Activities <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+<p class="affiliate-card-title">Things to Do in Bali</p>
+<p class="affiliate-card-desc">Snorkeling, sunset cruises, food tours, and more in Bali. Book wedding-week activities your guests will actually remember.</p>
+<a class="affiliate-card-cta" href="https://tidd.ly/47VP8w3" target="_blank" rel="sponsored nofollow noopener">Browse Bali Activities <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
 </div>
 
 

@@ -191,6 +191,76 @@ export const affiliateLinks: Record<string, AffiliateLink> = {
     awinId: 6776,
     advertiser: 'Booking.com',
   },
+  'booking-key-west': {
+    label: 'Hotels in Key West',
+    url: 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DKey%2BWest%26nflt%3Dht_id%253D204&platform=pl',
+    short: '',
+    awinId: 6776,
+    advertiser: 'Booking.com',
+  },
+  'booking-los-cabos': {
+    label: 'Hotels in Los Cabos',
+    url: 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DLos%2BCabos%26nflt%3Dht_id%253D204&platform=pl',
+    short: '',
+    awinId: 6776,
+    advertiser: 'Booking.com',
+  },
+  'booking-st-lucia': {
+    label: 'Hotels in St. Lucia',
+    url: 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DSt%2BLucia%26nflt%3Dht_id%253D204&platform=pl',
+    short: '',
+    awinId: 6776,
+    advertiser: 'Booking.com',
+  },
+  'booking-riviera-maya': {
+    label: 'Hotels in Riviera Maya',
+    url: 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DRiviera%2BMaya%26nflt%3Dht_id%253D204&platform=pl',
+    short: '',
+    awinId: 6776,
+    advertiser: 'Booking.com',
+  },
+  'booking-turks-and-caicos': {
+    label: 'Hotels in Turks & Caicos',
+    url: 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DTurks%2Band%2BCaicos%26nflt%3Dht_id%253D204&platform=pl',
+    short: '',
+    awinId: 6776,
+    advertiser: 'Booking.com',
+  },
+  'booking-aruba': {
+    label: 'Hotels in Aruba',
+    url: 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DAruba%26nflt%3Dht_id%253D204&platform=pl',
+    short: '',
+    awinId: 6776,
+    advertiser: 'Booking.com',
+  },
+  'booking-amalfi-coast': {
+    label: 'Hotels on the Amalfi Coast',
+    url: 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DAmalfi%2BCoast%26nflt%3Dht_id%253D204&platform=pl',
+    short: '',
+    awinId: 6776,
+    advertiser: 'Booking.com',
+  },
+  'booking-tuscany': {
+    label: 'Hotels in Tuscany',
+    url: 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DTuscany%26nflt%3Dht_id%253D204&platform=pl',
+    short: '',
+    awinId: 6776,
+    advertiser: 'Booking.com',
+  },
+  'booking-maldives': {
+    label: 'Hotels in the Maldives',
+    url: 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DMaldives%26nflt%3Dht_id%253D204&platform=pl',
+    short: '',
+    awinId: 6776,
+    advertiser: 'Booking.com',
+  },
+  'booking-fiji': {
+    label: 'Hotels in Fiji',
+    url: 'https://www.awin1.com/cread.php?awinmid=6776&awinaffid=2852109&ued=https%3A%2F%2Fwww.booking.com%2Fsearchresults.html%3Fss%3DFiji%26nflt%3Dht_id%253D204&platform=pl',
+    short: '',
+    awinId: 6776,
+    advertiser: 'Booking.com',
+  },
 
   // ── Villas ─────────────────────────────────────────────────────────────
   'top-villas': {
@@ -297,6 +367,69 @@ export const affiliateLinks: Record<string, AffiliateLink> = {
     awinId: 18925,
     advertiser: 'GetYourGuide',
   },
+  'getyourguide-los-cabos': {
+    label: 'Things to Do in Los Cabos',
+    url: 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Fcabo-san-lucas-l1058%2F&platform=pl',
+    short: '',
+    awinId: 18925,
+    advertiser: 'GetYourGuide',
+  },
+  'getyourguide-st-lucia': {
+    label: 'Things to Do in St. Lucia',
+    url: 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Fsaint-lucia-l1001%2F&platform=pl',
+    short: '',
+    awinId: 18925,
+    advertiser: 'GetYourGuide',
+  },
+  'getyourguide-riviera-maya': {
+    label: 'Things to Do in Riviera Maya',
+    url: 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Friviera-maya-l2685%2F&platform=pl',
+    short: '',
+    awinId: 18925,
+    advertiser: 'GetYourGuide',
+  },
+  'getyourguide-turks-and-caicos': {
+    label: 'Things to Do in Turks & Caicos',
+    url: 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Fturks-and-caicos-l33654%2F&platform=pl',
+    short: '',
+    awinId: 18925,
+    advertiser: 'GetYourGuide',
+  },
+  'getyourguide-aruba': {
+    label: 'Things to Do in Aruba',
+    url: 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Faruba-l577%2F&platform=pl',
+    short: '',
+    awinId: 18925,
+    advertiser: 'GetYourGuide',
+  },
+  'getyourguide-amalfi-coast': {
+    label: 'Things to Do on the Amalfi Coast',
+    url: 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Famalfi-coast-l2587%2F&platform=pl',
+    short: '',
+    awinId: 18925,
+    advertiser: 'GetYourGuide',
+  },
+  'getyourguide-tuscany': {
+    label: 'Things to Do in Tuscany',
+    url: 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Ftuscany-l2594%2F&platform=pl',
+    short: '',
+    awinId: 18925,
+    advertiser: 'GetYourGuide',
+  },
+  'getyourguide-maldives': {
+    label: 'Things to Do in the Maldives',
+    url: 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Fmaldives-l387%2F&platform=pl',
+    short: '',
+    awinId: 18925,
+    advertiser: 'GetYourGuide',
+  },
+  'getyourguide-fiji': {
+    label: 'Things to Do in Fiji',
+    url: 'https://www.awin1.com/cread.php?awinmid=18925&awinaffid=2852109&ued=https%3A%2F%2Fwww.getyourguide.com%2Ffiji-l271%2F&platform=pl',
+    short: '',
+    awinId: 18925,
+    advertiser: 'GetYourGuide',
+  },
   'xcaret': {
     label: 'Xcaret Parks (Cancun)',
     url: 'https://www.awin1.com/cread.php?awinmid=34947&awinaffid=2852109&ued=https%3A%2F%2Fwww.xcaret.com%2Fen%2F&platform=pl',
@@ -374,30 +507,14 @@ export function affiliateAttrs(key: string): Record<string, string> {
  * Maps destination slugs (from destinations.json) to booking link keys.
  */
 export function getBookingKey(destinationSlug: string): string | null {
-  const map: Record<string, string> = {
-    'cancun': 'booking-cancun',
-    'punta-cana': 'booking-punta-cana',
-    'jamaica': 'booking-jamaica',
-    'hawaii': 'booking-hawaii',
-    'bali': 'booking-bali',
-    'santorini': 'booking-santorini',
-    'tulum': 'booking-tulum',
-    'costa-rica': 'booking-costa-rica',
-  };
-  return map[destinationSlug] || null;
+  const key = `booking-${destinationSlug}`;
+  return affiliateLinks[key] ? key : null;
 }
 
 /**
  * Get a destination-specific GetYourGuide link key.
  */
 export function getActivityKey(destinationSlug: string): string | null {
-  const map: Record<string, string> = {
-    'cancun': 'getyourguide-cancun',
-    'punta-cana': 'getyourguide-punta-cana',
-    'jamaica': 'getyourguide-jamaica',
-    'hawaii': 'getyourguide-hawaii',
-    'bali': 'getyourguide-bali',
-    'santorini': 'getyourguide-santorini',
-  };
-  return map[destinationSlug] || null;
+  const key = `getyourguide-${destinationSlug}`;
+  return affiliateLinks[key] ? key : null;
 }
