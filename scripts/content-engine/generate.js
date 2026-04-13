@@ -390,7 +390,7 @@ async function writeArticle(topic, existingArticles) {
   const articleList = existingArticles.map(a => `- /${a.slug}/ — ${a.title}`).join('\n');
   const linkTargets = LINK_TARGETS.map(t => `- /${t.slug}/ — matches: ${t.patterns.join(', ')}`).join('\n');
   const affiliateTargets = brief.affiliateOpportunity
-    ? AFFILIATE_TARGETS.map(t => `- [${t.label}](${t.url}){rel="${t.rel} noopener"} — matches: ${t.patterns.join(', ')}`).join('\n')
+    ? AFFILIATE_TARGETS.map(t => `- ${t.label}: url="${t.url}" | cta="${t.cardCta}" | title="${t.cardTitle}" | desc="${t.cardDesc}" | matches: ${t.patterns.join(', ')}`).join('\n')
     : '';
 
   const researchContext = research.sections.map(s =>
@@ -417,7 +417,16 @@ CRITICAL RULES:
 - Every number/statistic needs attribution
 - Legal requirements must note that they change — "consult your local planner or the [country] embassy to confirm current requirements"
 - Cost figures must include a disclaimer: "costs vary significantly based on season, guest count, and specific vendors"
-- Affiliate links: MUST use rel="sponsored nofollow noopener" and target="_blank". Max 2-3 affiliate links per article. Only link where the product is genuinely relevant to the reader's need.
+- Affiliate promotions: Use styled affiliate cards (not inline links). Place 2-3 cards after relevant paragraphs using this exact HTML format:
+
+<div class="affiliate-card not-prose">
+<span class="affiliate-card-label">LABEL</span>
+<p class="affiliate-card-title">TITLE</p>
+<p class="affiliate-card-desc">DESCRIPTION</p>
+<a class="affiliate-card-cta" href="URL" target="_blank" rel="sponsored nofollow noopener">CTA TEXT <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
+
+Replace LABEL, TITLE, DESCRIPTION, CTA TEXT, and URL with values from the AFFILIATE TARGETS list below. Only place cards where the product is genuinely relevant to the reader's need. Never place a card inside or immediately after an H2 heading.
 - NEVER use: em-dashes (—), "game-changer", "seamlessly", "cutting-edge", "robust", "comprehensive", "In conclusion", "not just X but also Y", "It's worth noting", "In today's world", "dream wedding" (overused — use "your wedding" or "the wedding you've imagined")
 
 STRUCTURE RULES:
@@ -440,7 +449,7 @@ ${researchContext}
 INTERNAL LINK TARGETS (link naturally on first mention):
 ${linkTargets}
 
-${affiliateTargets ? `AFFILIATE LINK TARGETS (link naturally where topic matches, use rel="noopener noreferrer sponsored"):
+${affiliateTargets ? `AFFILIATE TARGETS — place 2-3 affiliate cards using the HTML template from the rules above. Use the values below:
 ${affiliateTargets}
 
 ` : ''}EXISTING ARTICLES (for \`related\` frontmatter and context):

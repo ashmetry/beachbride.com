@@ -298,45 +298,56 @@ function ensureOutboundLinks(body, currentSlug) {
 
 // ── Affiliate Linking ──────────────────────────────────────────────────────────
 
+function buildAffiliateCardHtml(target) {
+  const arrow = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>';
+  return `\n<div class="affiliate-card not-prose">\n<span class="affiliate-card-label">${target.label}</span>\n<p class="affiliate-card-title">${target.cardTitle}</p>\n<p class="affiliate-card-desc">${target.cardDesc}</p>\n<a class="affiliate-card-cta" href="${target.url}" target="_blank" rel="${target.rel} noopener">${target.cardCta} ${arrow}</a>\n</div>\n`;
+}
+
 function ensureAffiliateLinks(body) {
-  const MAX_AFFILIATE_LINKS = 3;
+  const MAX_AFFILIATE_CARDS = 3;
   let updated = body;
   let added = 0;
   const linked = new Set();
 
   for (const target of AFFILIATE_TARGETS) {
-    if (added >= MAX_AFFILIATE_LINKS) break;
+    if (added >= MAX_AFFILIATE_CARDS) break;
     if (linked.has(target.url)) continue;
 
-    // Skip if this affiliate URL is already in the article
+    // Skip if this affiliate URL is already in the article (card or inline)
     if (updated.includes(target.url)) {
       linked.add(target.url);
       continue;
     }
 
     for (const pattern of target.patterns) {
-      if (added >= MAX_AFFILIATE_LINKS) break;
+      if (added >= MAX_AFFILIATE_CARDS) break;
 
       const regex = new RegExp(`\\b(${escapeRegex(pattern)})\\b`, 'i');
       const match = updated.match(regex);
       if (!match) continue;
 
       const idx = match.index;
-      // Don't link inside existing links, headings, image alts, or frontmatter
+      // Don't match inside existing links, headings, image alts, or HTML tags
       const before = updated.slice(Math.max(0, idx - 10), idx);
-      if (before.includes('[') || before.includes('(') || before.includes('#') || before.includes('!')) continue;
+      if (before.includes('[') || before.includes('(') || before.includes('#') || before.includes('!') || before.includes('<')) continue;
 
-      // Don't link in the first paragraph after an H2 (answer capsule rule)
+      // Don't place card after first paragraph under H2 (answer capsule)
       const linesBefore = updated.slice(0, idx).split('\n');
       const lastH2Idx = linesBefore.findLastIndex(l => l.startsWith('## '));
       if (lastH2Idx >= 0) {
         const linesBetween = linesBefore.slice(lastH2Idx + 1).filter(l => l.trim()).length;
-        if (linesBetween < 1) continue; // Still in the first paragraph
+        if (linesBetween < 1) continue;
       }
 
-      updated = updated.slice(0, idx) +
-        `<a href="${target.url}" target="_blank" rel="${target.rel} noopener">${match[1]}</a>` +
-        updated.slice(idx + match[1].length);
+      // Find the end of the paragraph containing this keyword match
+      const afterMatch = updated.slice(idx);
+      const nextBlankLine = afterMatch.indexOf('\n\n');
+      const insertPos = nextBlankLine === -1
+        ? updated.length
+        : idx + nextBlankLine;
+
+      const card = buildAffiliateCardHtml(target);
+      updated = updated.slice(0, insertPos) + '\n' + card + updated.slice(insertPos);
       linked.add(target.url);
       added++;
       break;
@@ -344,7 +355,7 @@ function ensureAffiliateLinks(body) {
   }
 
   if (added > 0) {
-    console.log(`    Affiliate links added: ${added}`);
+    console.log(`    Affiliate cards added: ${added}`);
   }
   return { body: updated, added };
 }

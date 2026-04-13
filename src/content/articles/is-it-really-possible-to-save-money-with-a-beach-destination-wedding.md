@@ -191,7 +191,15 @@ Here's the side-by-side comparison that puts the savings question to rest.
 
 The honeymoon factor is one that couples often overlook. With a traditional wedding, you pay for the wedding *and* a separate honeymoon trip. With a destination wedding, you're already there. Many couples extend their stay by a few days and call it their honeymoon, saving $5,000 to $10,000 on a separate trip.
 
-And here's a thought: the money you save on the wedding itself could go toward something lasting. A <a href="https://www.brilliantearth.com/" rel="noopener noreferrer sponsored">lab-grown <a href="https://tidd.ly/3Q7Po4S" target="_blank" rel="sponsored nofollow noopener">diamond ring</a></a> that would have felt like a stretch suddenly fits comfortably in the budget. Or a down payment fund. Or a longer honeymoon extension. The point is, you get choices.
+And here's a thought: the money you save on the wedding itself could go toward something lasting. A lab-grown diamond ring that would have felt like a stretch suddenly fits comfortably in the budget. Or a down payment fund. Or a longer honeymoon extension. The point is, you get choices.
+
+<div class="affiliate-card not-prose">
+<span class="affiliate-card-label">Rare Carat</span>
+<p class="affiliate-card-title">Compare Diamond Prices Instantly</p>
+<p class="affiliate-card-desc">Rare Carat searches across all major jewelers to find the best diamond for your budget. Save up to 40% vs. retail with AI-powered price comparison.</p>
+<a class="affiliate-card-cta" href="https://tidd.ly/3Q7Po4S" target="_blank" rel="sponsored nofollow noopener">Compare Diamonds <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
+
 
 Use our [beach wedding checklist](/beach-wedding-checklist/) to make sure you're tracking every expense from the start.
 
@@ -201,7 +209,15 @@ Planning a wedding from thousands of miles away is hard. You can't taste-test ca
 
 We connect you with vetted [destination wedding planners](/vendors/) and vendors who specialize in the locations you're considering. These aren't generic referrals. They're professionals who know which resorts actually deliver on their package promises, which local florists do stunning work for half the price of imported arrangements, and which photographers know the best light at your specific beach.
 
-According to [The Budget Savvy Bride](https://thebudgetsavvybride.com/hiring-budget-friendly-vendors/), independent vendors often charge significantly less than large companies due to lower overhead, while delivering comparable (or better) personalized service. A <a href="https://tidd.ly/4vkss2p" target="_blank" rel="sponsored nofollow noopener">local photographer</a> in Cancun who shoots weddings every week at your resort will likely outperform a U.S.-based photographer who's never been there, and cost less after you factor in travel fees.
+According to [The Budget Savvy Bride](https://thebudgetsavvybride.com/hiring-budget-friendly-vendors/), independent vendors often charge significantly less than large companies due to lower overhead, while delivering comparable (or better) personalized service. A local photographer in Cancun who shoots weddings every week at your resort will likely outperform a U.S.-based photographer who's never been there, and cost less after you factor in travel fees.
+
+<div class="affiliate-card not-prose">
+<span class="affiliate-card-label">Flytographer</span>
+<p class="affiliate-card-title">Book a Local Wedding Photographer</p>
+<p class="affiliate-card-desc">Professional photographers in 400+ cities worldwide who know the best light, angles, and hidden spots at your destination. Browse portfolios and book online.</p>
+<a class="affiliate-card-cta" href="https://tidd.ly/4vkss2p" target="_blank" rel="sponsored nofollow noopener">Find a Photographer <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
+
 
 Our [destination wedding guide](/destination-wedding-guide/) walks you through the full planning timeline. But if you want personalized recommendations based on your budget, guest count, and style, the fastest path is our matching quiz.
 

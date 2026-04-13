@@ -156,7 +156,15 @@ According to [Wedding Bells and Seashells](https://www.weddingbellsandseashells.
 
 Fall is an underrated pick. According to [Married in Palm Beach](https://marriedinpalmbeach.com/things-every-couple-needs-to-know/), late September through November brings warm breezy days, tapering humidity, and often lower venue pricing.
 
-**The hurricane factor:** According to [Sugar Beach Weddings](https://sugarbeachweddings.com/articles/best-time-of-year-for-a-beach-wedding-in-florida/), hurricane season runs June 1 through November 30, with peak activity from mid-August through late October. This does not make fall impossible, but it does make <a href="https://tidd.ly/4mspchp" target="_blank" rel="sponsored nofollow noopener">wedding insurance</a> essential. If you are using our [beach wedding checklist](/beach-wedding-checklist/), add "purchase event insurance" to your to-do list for any date between June and November.
+**The hurricane factor:** According to [Sugar Beach Weddings](https://sugarbeachweddings.com/articles/best-time-of-year-for-a-beach-wedding-in-florida/), hurricane season runs June 1 through November 30, with peak activity from mid-August through late October. This does not make fall impossible, but it does make wedding insurance essential. If you are using our [beach wedding checklist](/beach-wedding-checklist/), add "purchase event insurance" to your to-do list for any date between June and November.
+
+<div class="affiliate-card not-prose">
+<span class="affiliate-card-label">eWed Insurance</span>
+<p class="affiliate-card-title">Protect Your Wedding Day</p>
+<p class="affiliate-card-desc">Destination wedding insurance covers cancellation, vendor no-shows, extreme weather, and more. Policies start under $200 for up to $35,000 in coverage.</p>
+<a class="affiliate-card-cta" href="https://tidd.ly/4mspchp" target="_blank" rel="sponsored nofollow noopener">Get a Free Quote <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
+
 
 **Summer warning:** June through August brings frequent afternoon thunderstorms, high humidity, and peak vacation crowds. If you must go summer, plan for an early evening start and provide guests with fans, cold water, and shade.
 

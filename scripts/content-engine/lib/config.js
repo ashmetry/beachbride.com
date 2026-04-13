@@ -121,34 +121,64 @@ export const LINK_TARGETS = [
 // rel="sponsored nofollow noopener" is enforced in the write prompt.
 export const AFFILIATE_TARGETS = [
   // Wedding insurance
-  { patterns: ['wedding insurance', 'wedding cancellation insurance', 'wedding liability insurance', 'protect your wedding'], url: 'https://tidd.ly/4mspchp', label: 'eWed Insurance', rel: 'sponsored nofollow' },
+  { patterns: ['wedding insurance', 'wedding cancellation insurance', 'wedding liability insurance', 'protect your wedding'],
+    url: 'https://tidd.ly/4mspchp', label: 'eWed Insurance', rel: 'sponsored nofollow',
+    cardTitle: 'Protect Your Wedding Day', cardDesc: 'Destination wedding insurance covers cancellation, vendor no-shows, extreme weather, and more. Policies start under $200 for up to $35,000 in coverage.', cardCta: 'Get a Free Quote' },
   // Travel insurance
-  { patterns: ['travel insurance', 'trip protection', 'trip cancellation', 'travel protection plan'], url: 'https://tidd.ly/4dD5Vrk', label: 'Generali Travel Insurance', rel: 'sponsored nofollow' },
+  { patterns: ['travel insurance', 'trip protection', 'trip cancellation', 'travel protection plan'],
+    url: 'https://tidd.ly/4dD5Vrk', label: 'Generali Travel Insurance', rel: 'sponsored nofollow',
+    cardTitle: 'Trip Protection for Your Wedding Party', cardDesc: 'Cover flights, hotels, and medical emergencies for your entire guest list. Generali plans include cancel-for-any-reason options ideal for destination weddings.', cardCta: 'Compare Plans' },
   // Fine jewelry — bridal
-  { patterns: ['luxury wedding jewelry', 'bridal jewelry', '18k gold', 'platinum ring', 'diamond necklace', 'fine jewelry'], url: 'https://tidd.ly/4t9ttch', label: 'Jade Trau Bridal', rel: 'sponsored nofollow' },
+  { patterns: ['luxury wedding jewelry', 'bridal jewelry', '18k gold', 'platinum ring', 'diamond necklace', 'fine jewelry'],
+    url: 'https://tidd.ly/4t9ttch', label: 'Jade Trau Bridal', rel: 'sponsored nofollow',
+    cardTitle: 'Bridal Jewelry That Travels Beautifully', cardDesc: 'Handcrafted fine jewelry designed for the modern bride. Pieces that look stunning in natural light and ocean backdrops.', cardCta: 'Browse the Collection' },
   // Engagement rings
-  { patterns: ['engagement ring', 'diamond ring', 'solitaire ring', 'halo ring', 'compare diamonds'], url: 'https://tidd.ly/3Q7Po4S', label: 'Rare Carat', rel: 'sponsored nofollow' },
-  { patterns: ['custom engagement ring', 'design your ring', 'bespoke ring'], url: 'https://tidd.ly/4c5uGez', label: 'AnjaysDesigns', rel: 'sponsored nofollow' },
+  { patterns: ['engagement ring', 'diamond ring', 'solitaire ring', 'halo ring', 'compare diamonds'],
+    url: 'https://tidd.ly/3Q7Po4S', label: 'Rare Carat', rel: 'sponsored nofollow',
+    cardTitle: 'Compare Diamond Prices Instantly', cardDesc: 'Rare Carat searches across all major jewelers to find the best diamond for your budget. Save up to 40% vs. retail with AI-powered price comparison.', cardCta: 'Compare Diamonds' },
+  { patterns: ['custom engagement ring', 'design your ring', 'bespoke ring'],
+    url: 'https://tidd.ly/4c5uGez', label: 'AnjaysDesigns', rel: 'sponsored nofollow',
+    cardTitle: 'Design a One-of-a-Kind Ring', cardDesc: 'Custom engagement rings handcrafted to your exact vision. Work directly with a designer to create something as unique as your love story.', cardCta: 'Start Your Custom Design' },
   // Men's wedding bands
-  { patterns: ['wedding band', "groom's ring", 'tungsten ring', 'titanium ring', 'silicone ring', "men's wedding ring"], url: 'https://tidd.ly/47SJc6X', label: 'Larson Jewelers', rel: 'sponsored nofollow' },
+  { patterns: ['wedding band', "groom's ring", 'tungsten ring', 'titanium ring', 'silicone ring', "men's wedding ring"],
+    url: 'https://tidd.ly/47SJc6X', label: 'Larson Jewelers', rel: 'sponsored nofollow',
+    cardTitle: "Wedding Bands Built for Adventure", cardDesc: "Tungsten, titanium, and alternative metal bands that handle sand, salt water, and everything else your destination wedding throws at them.", cardCta: 'Shop Wedding Bands' },
   // Hotels — destination-specific (generic fallback)
-  { patterns: ['book a hotel', 'find accommodation', 'resort booking', 'hotel deals', 'where to stay'], url: 'https://tidd.ly/4ssglOg', label: 'Booking.com', rel: 'sponsored nofollow' },
+  { patterns: ['book a hotel', 'find accommodation', 'resort booking', 'hotel deals', 'where to stay'],
+    url: 'https://tidd.ly/4ssglOg', label: 'Booking.com', rel: 'sponsored nofollow',
+    cardTitle: 'Find Your Wedding Venue & Guest Hotels', cardDesc: 'Compare resort rates, read verified guest reviews, and book with free cancellation. Filter by wedding-friendly properties at your destination.', cardCta: 'Search Hotels' },
   // Destination photographers
-  { patterns: ['destination photographer', 'local photographer', 'vacation photographer', 'book a photographer abroad', 'destination wedding photographer'], url: 'https://tidd.ly/4vkss2p', label: 'Flytographer', rel: 'sponsored nofollow' },
+  { patterns: ['destination photographer', 'local photographer', 'vacation photographer', 'book a photographer abroad', 'destination wedding photographer'],
+    url: 'https://tidd.ly/4vkss2p', label: 'Flytographer', rel: 'sponsored nofollow',
+    cardTitle: 'Book a Local Wedding Photographer', cardDesc: 'Professional photographers in 400+ cities worldwide who know the best light, angles, and hidden spots at your destination. Browse portfolios and book online.', cardCta: 'Find a Photographer' },
   // Villas
-  { patterns: ['private villa', 'villa wedding', 'luxury villa', 'rent a villa'], url: 'https://tidd.ly/4syBRRf', label: 'Top Villas', rel: 'sponsored nofollow' },
+  { patterns: ['private villa', 'villa wedding', 'luxury villa', 'rent a villa'],
+    url: 'https://tidd.ly/4syBRRf', label: 'Top Villas', rel: 'sponsored nofollow',
+    cardTitle: 'Private Villa Weddings', cardDesc: 'Luxury villas with pools, ocean views, and space for your entire wedding party. From Caribbean beachfront estates to Tuscan hilltop retreats.', cardCta: 'Browse Villas' },
   // Video guest book
-  { patterns: ['video guest book', 'guest video messages', 'virtual guest book', 'guests who can\'t attend'], url: 'https://tidd.ly/4dD5NrQ', label: 'Voast', rel: 'sponsored nofollow' },
+  { patterns: ['video guest book', 'guest video messages', 'virtual guest book', 'guests who can\'t attend'],
+    url: 'https://tidd.ly/4dD5NrQ', label: 'Voast', rel: 'sponsored nofollow',
+    cardTitle: 'Video Guest Book for Your Wedding', cardDesc: 'Let guests who can\'t make the trip send heartfelt video messages. Collect, organize, and rewatch forever.', cardCta: 'Create Your Guest Book' },
   // Activities / tours
-  { patterns: ['guest activities', 'things to do', 'excursions for guests', 'tours and activities', 'local tours'], url: 'https://tidd.ly/3NWpGQk', label: 'GetYourGuide', rel: 'sponsored nofollow' },
+  { patterns: ['guest activities', 'things to do', 'excursions for guests', 'tours and activities', 'local tours'],
+    url: 'https://tidd.ly/3NWpGQk', label: 'GetYourGuide', rel: 'sponsored nofollow',
+    cardTitle: 'Plan Activities for Your Wedding Guests', cardDesc: 'Snorkeling, sunset cruises, food tours, and more at every major destination. Book activities your guests will actually remember.', cardCta: 'Browse Activities' },
   // Cruises
-  { patterns: ['honeymoon cruise', 'cruise wedding', 'caribbean cruise', 'wedding cruise'], url: 'https://tidd.ly/47VOU8b', label: 'GoToSea', rel: 'sponsored nofollow' },
+  { patterns: ['honeymoon cruise', 'cruise wedding', 'caribbean cruise', 'wedding cruise'],
+    url: 'https://tidd.ly/47VOU8b', label: 'GoToSea', rel: 'sponsored nofollow',
+    cardTitle: 'Wedding Cruises & Honeymoon Sailings', cardDesc: 'Compare cruise lines, itineraries, and onboard wedding packages. Caribbean, Mediterranean, and beyond.', cardCta: 'Explore Cruises' },
   // Car rental
-  { patterns: ['car rental', 'rent a car', 'airport transfer', 'transportation at destination'], url: 'https://tidd.ly/47R2REo', label: 'Discover Cars', rel: 'sponsored nofollow' },
+  { patterns: ['car rental', 'rent a car', 'airport transfer', 'transportation at destination'],
+    url: 'https://tidd.ly/47R2REo', label: 'Discover Cars', rel: 'sponsored nofollow',
+    cardTitle: 'Destination Car Rentals', cardDesc: 'Compare rates from all major rental companies at your destination. Free cancellation and no hidden fees.', cardCta: 'Compare Car Rentals' },
   // Bridal box
-  { patterns: ['bridal subscription box', 'bride-to-be gift', 'bridal box', 'engagement gift box'], url: 'https://tidd.ly/4dEvEj6', label: 'Miss To Mrs', rel: 'sponsored nofollow' },
+  { patterns: ['bridal subscription box', 'bride-to-be gift', 'bridal box', 'engagement gift box'],
+    url: 'https://tidd.ly/4dEvEj6', label: 'Miss To Mrs', rel: 'sponsored nofollow',
+    cardTitle: 'The Ultimate Bridal Subscription Box', cardDesc: 'Curated bride-to-be gifts delivered monthly from engagement to wedding day. The perfect gift for a bride planning a destination wedding.', cardCta: 'See What\'s Inside' },
   // Xcaret (Cancun-specific activities)
-  { patterns: ['xcaret', 'cancun eco park', 'riviera maya activities', 'cancun attractions'], url: 'https://tidd.ly/47ZjZrr', label: 'Xcaret', rel: 'sponsored nofollow' },
+  { patterns: ['xcaret', 'cancun eco park', 'riviera maya activities', 'cancun attractions'],
+    url: 'https://tidd.ly/47ZjZrr', label: 'Xcaret', rel: 'sponsored nofollow',
+    cardTitle: 'Xcaret Parks — Cancun\'s Best Group Activity', cardDesc: 'Underground rivers, snorkeling, cultural shows, and more. Perfect for a wedding-week outing your guests will never forget.', cardCta: 'Get Tickets' },
 ];
 
 // ── Existing Articles Inventory ────────────────────────────────────────────────

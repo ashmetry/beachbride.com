@@ -79,7 +79,15 @@ heroImage: /images/unique-beach-wedding-ideas.jpg
 
 You've seen the Pinterest boards. Starfish on every table. Mason jars filled with sand. A chalkboard sign that says "Toes in the Sand." And while there's nothing wrong with any of that, you clicked on this article because you want something different. You want unique beach wedding ideas that actually feel like *you*, not like a template someone downloaded in 2014.
 
-Good news: the coast is wide open for creativity. According to [Playa del Carmen Weddings](https://www.playadelcarmen.com/blog/beach-wedding-ideas/), over 25 distinct beach wedding concepts are trending right now, from driftwood ceremony arches to post-wedding beach cleanups that double as <a href="https://tidd.ly/3NWpGQk" target="_blank" rel="sponsored nofollow noopener">guest activities</a>. And with the average destination beach wedding hosting around 50 guests, according to [Rustic Pathways](https://rusticpathways.com/blog/fun-facts-about-destination-weddings), you have the intimacy to make every single detail personal.
+Good news: the coast is wide open for creativity. According to [Playa del Carmen Weddings](https://www.playadelcarmen.com/blog/beach-wedding-ideas/), over 25 distinct beach wedding concepts are trending right now, from driftwood ceremony arches to post-wedding beach cleanups that double as guest activities. And with the average destination beach wedding hosting around 50 guests, according to [Rustic Pathways](https://rusticpathways.com/blog/fun-facts-about-destination-weddings), you have the intimacy to make every single detail personal.
+
+<div class="affiliate-card not-prose">
+<span class="affiliate-card-label">GetYourGuide</span>
+<p class="affiliate-card-title">Plan Activities for Your Wedding Guests</p>
+<p class="affiliate-card-desc">Snorkeling, sunset cruises, food tours, and more at every major destination. Book activities your guests will actually remember.</p>
+<a class="affiliate-card-cta" href="https://tidd.ly/3NWpGQk" target="_blank" rel="sponsored nofollow noopener">Browse Activities <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
+
 
 Whether you're deep into your [destination wedding planning](/destination-wedding-guide/) or just starting to daydream, these 27 ideas are organized by category so you can pick and choose what fits your vibe, your venue, and your budget.
 

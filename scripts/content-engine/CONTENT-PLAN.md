@@ -626,10 +626,23 @@ Rules:
 - Skips first paragraph after H2 (preserves answer capsule rule)
 - Sets `frontmatter.affiliateDisclosure = true` when links are added
 
+**Affiliate card format (updated 2026-04-12):**
+Affiliate promotions use styled cards (`<div class="affiliate-card not-prose">`)
+instead of invisible inline links. Each card has: label (advertiser name), title
+(value prop headline), description (1-2 sentence pitch), and a CTA button with
+arrow icon. Cards break out of prose styling via `not-prose` class.
+
+CSS lives in `src/styles/global.css` (`.affiliate-card` class). Colors: white
+card with gold accent CTA button, on-brand hover effect.
+
+Each `AFFILIATE_TARGETS` entry now carries `cardTitle`, `cardDesc`, and `cardCta`
+fields alongside the original `patterns`, `url`, `label`, and `rel`.
+
 **Backfill script (`scripts/backfill-affiliate-links.js`):**
-One-time script to inject affiliate links into existing articles. Same logic as
-`ensureAffiliateLinks()`. Run with `--dry-run` first. Applied 2026-04-12:
-9 articles modified, 12 total links added.
+Strips old inline affiliate links (the `<a href="tidd.ly/...">` tags from
+the first iteration), fixes any nested link bugs, and injects affiliate cards.
+Run with `--dry-run` first. Applied 2026-04-12: 9 articles modified, 12 old
+inline links stripped, 12 affiliate cards added.
 
 **Centralized link registry (`src/data/affiliate-links.ts`):**
 42 tracked links across 15 advertisers. All Awin-tracked with tidd.ly short URLs.
