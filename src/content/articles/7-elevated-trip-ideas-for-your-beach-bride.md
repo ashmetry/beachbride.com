@@ -85,10 +85,13 @@ According to [One Stop Bride Shop](https://onestopbrideshop.com/blogs/news/best-
 Here's a quick framework. If the bride lives for nightlife, lean toward Cancún or Miami. If she's a yoga-and-smoothie person, Tulum or Hawaii will feel right. If the group has wildly different budgets, an all-inclusive in Punta Cana takes the guesswork out of splitting costs. And if she wants something European and unforgettable, Santorini or the Amalfi Coast will deliver.
 
 <div class="affiliate-card not-prose">
-<span class="affiliate-card-label">Booking.com</span>
+<div class="affiliate-card-inner">
+<span class="affiliate-card-label">We Recommend</span>
 <p class="affiliate-card-title">Wedding Hotels in Tulum</p>
 <p class="affiliate-card-desc">Compare all-inclusive resorts and boutique hotels in Tulum. Read verified reviews, check wedding-friendly amenities, and book with free cancellation.</p>
+<p class="affiliate-card-proof">Free cancellation on most properties. No booking fees.</p>
 <a class="affiliate-card-cta" href="https://tidd.ly/3Q6G80X" target="_blank" rel="sponsored nofollow noopener">Search Tulum Hotels <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
 </div>
 
 

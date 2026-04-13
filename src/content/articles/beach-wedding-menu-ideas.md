@@ -164,10 +164,13 @@ Station ideas that work beautifully on the beach:
 If you're planning a larger celebration at an all-inclusive resort, properties like <a href="https://www.sandals.com/" rel="noopener noreferrer sponsored">Sandals</a> and <a href="https://www.beaches.com/" rel="noopener noreferrer sponsored">Beaches</a> often include customizable station-style catering in their wedding packages.
 
 <div class="affiliate-card not-prose">
-<span class="affiliate-card-label">Booking.com</span>
+<div class="affiliate-card-inner">
+<span class="affiliate-card-label">We Recommend</span>
 <p class="affiliate-card-title">Wedding Hotels in Hawaii</p>
 <p class="affiliate-card-desc">Compare all-inclusive resorts and boutique hotels in Hawaii. Read verified reviews, check wedding-friendly amenities, and book with free cancellation.</p>
+<p class="affiliate-card-proof">Free cancellation on most properties. No booking fees.</p>
 <a class="affiliate-card-cta" href="https://tidd.ly/4tK8Z9T" target="_blank" rel="sponsored nofollow noopener">Search Hawaii Hotels <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
 </div>
 
 

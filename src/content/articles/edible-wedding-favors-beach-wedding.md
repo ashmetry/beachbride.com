@@ -214,10 +214,13 @@ Planning edible favors for a destination wedding means juggling vendors, shippin
 We built BeachBride to take the guesswork out of exactly this kind of decision. Our [vendor directory](/vendors/) connects you with local artisan food makers, resort pastry teams, and favor specialists at popular beach wedding destinations worldwide. Many all-inclusive resorts at properties in [Cancun](/destinations/cancun/), [Punta Cana](/destinations/punta-cana/), and [Jamaica](/destinations/jamaica/) include a favor budget or can pair you with their on-site culinary team to create something custom. (If you're booking through a resort partner like <a href="https://www.sandals.com/" rel="noopener noreferrer sponsored">Sandals</a>, ask about their wedding packages, which often include favor options.)
 
 <div class="affiliate-card not-prose">
-<span class="affiliate-card-label">Booking.com</span>
+<div class="affiliate-card-inner">
+<span class="affiliate-card-label">We Recommend</span>
 <p class="affiliate-card-title">Find Your Wedding Venue & Guest Hotels</p>
 <p class="affiliate-card-desc">Compare resort rates, read verified guest reviews, and book with free cancellation. Filter by wedding-friendly properties at your destination.</p>
+<p class="affiliate-card-proof">Free cancellation on most properties. No booking fees.</p>
 <a class="affiliate-card-cta" href="https://tidd.ly/4ssglOg" target="_blank" rel="sponsored nofollow noopener">Search Hotels <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
 </div>
 
 

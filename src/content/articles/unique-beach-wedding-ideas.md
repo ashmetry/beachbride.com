@@ -82,10 +82,13 @@ You've seen the Pinterest boards. Starfish on every table. Mason jars filled wit
 Good news: the coast is wide open for creativity. According to [Playa del Carmen Weddings](https://www.playadelcarmen.com/blog/beach-wedding-ideas/), over 25 distinct beach wedding concepts are trending right now, from driftwood ceremony arches to post-wedding beach cleanups that double as guest activities. And with the average destination beach wedding hosting around 50 guests, according to [Rustic Pathways](https://rusticpathways.com/blog/fun-facts-about-destination-weddings), you have the intimacy to make every single detail personal.
 
 <div class="affiliate-card not-prose">
-<span class="affiliate-card-label">GetYourGuide</span>
+<div class="affiliate-card-inner">
+<span class="affiliate-card-label">We Recommend</span>
 <p class="affiliate-card-title">Things to Do in Bali</p>
 <p class="affiliate-card-desc">Snorkeling, sunset cruises, food tours, and more in Bali. Book wedding-week activities your guests will actually remember.</p>
+<p class="affiliate-card-proof">Free cancellation up to 24 hours before. Mobile tickets.</p>
 <a class="affiliate-card-cta" href="https://tidd.ly/47VP8w3" target="_blank" rel="sponsored nofollow noopener">Browse Bali Activities <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
 </div>
 
 
@@ -98,10 +101,13 @@ A beach wedding becomes memorable when it reflects your story, not a stock photo
 The natural setting is already stunning. That's the whole point. But relying on the ocean to do all the heavy lifting is exactly why so many beach weddings blur together in guests' memories. According to [Paradise Weddings](https://paradiseweddings.com/blog/destination-wedding-statistics/), 75% of couples hosting destination weddings now prioritize unique venues like deserted beaches or beachfront villas over standard all-inclusive resort setups. Couples are actively choosing to break the mold.
 
 <div class="affiliate-card not-prose">
-<span class="affiliate-card-label">Booking.com</span>
+<div class="affiliate-card-inner">
+<span class="affiliate-card-label">We Recommend</span>
 <p class="affiliate-card-title">Wedding Hotels in Bali</p>
 <p class="affiliate-card-desc">Compare all-inclusive resorts and boutique hotels in Bali. Read verified reviews, check wedding-friendly amenities, and book with free cancellation.</p>
+<p class="affiliate-card-proof">Free cancellation on most properties. No booking fees.</p>
 <a class="affiliate-card-cta" href="https://tidd.ly/3Olk427" target="_blank" rel="sponsored nofollow noopener">Search Bali Hotels <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
 </div>
 
 

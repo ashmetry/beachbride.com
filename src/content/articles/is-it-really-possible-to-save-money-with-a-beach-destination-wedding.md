@@ -72,10 +72,13 @@ The biggest reason destination weddings cost less has nothing to do with cheaper
 According to [The Knot](https://www.theknot.com/content/average-destination-wedding-cost), the average U.S. hometown wedding costs around $33,000. Meanwhile, all-inclusive resort packages can bring a 40-to-50-person destination wedding in at $10,000 to $20,000 in places like [Riviera Maya](/destinations/riviera-maya/) or [Punta Cana](/destinations/punta-cana/). That's not a typo. When you're feeding and entertaining half as many people, the numbers shift dramatically.
 
 <div class="affiliate-card not-prose">
-<span class="affiliate-card-label">Booking.com</span>
+<div class="affiliate-card-inner">
+<span class="affiliate-card-label">We Recommend</span>
 <p class="affiliate-card-title">Find Your Wedding Venue & Guest Hotels</p>
 <p class="affiliate-card-desc">Compare resort rates, read verified guest reviews, and book with free cancellation. Filter by wedding-friendly properties at your destination.</p>
+<p class="affiliate-card-proof">Free cancellation on most properties. No booking fees.</p>
 <a class="affiliate-card-cta" href="https://tidd.ly/4ssglOg" target="_blank" rel="sponsored nofollow noopener">Search Hotels <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
 </div>
 
 
@@ -202,10 +205,13 @@ The honeymoon factor is one that couples often overlook. With a traditional wedd
 And here's a thought: the money you save on the wedding itself could go toward something lasting. A lab-grown diamond ring that would have felt like a stretch suddenly fits comfortably in the budget. Or a down payment fund. Or a longer honeymoon extension. The point is, you get choices.
 
 <div class="affiliate-card not-prose">
-<span class="affiliate-card-label">Rare Carat</span>
+<div class="affiliate-card-inner">
+<span class="affiliate-card-label">We Recommend</span>
 <p class="affiliate-card-title">Compare Diamond Prices Instantly</p>
-<p class="affiliate-card-desc">Rare Carat searches across all major jewelers to find the best diamond for your budget. Save up to 40% vs. retail with AI-powered price comparison.</p>
+<p class="affiliate-card-desc">Search across all major jewelers to find the best diamond for your budget. Save up to 40% vs. retail with AI-powered price comparison.</p>
+<p class="affiliate-card-proof">Featured in the NY Times. Over 1 million diamonds compared.</p>
 <a class="affiliate-card-cta" href="https://tidd.ly/3Q7Po4S" target="_blank" rel="sponsored nofollow noopener">Compare Diamonds <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
 </div>
 
 
@@ -220,10 +226,13 @@ We connect you with vetted [destination wedding planners](/vendors/) and vendors
 According to [The Budget Savvy Bride](https://thebudgetsavvybride.com/hiring-budget-friendly-vendors/), independent vendors often charge significantly less than large companies due to lower overhead, while delivering comparable (or better) personalized service. A local photographer in Cancun who shoots weddings every week at your resort will likely outperform a U.S.-based photographer who's never been there, and cost less after you factor in travel fees.
 
 <div class="affiliate-card not-prose">
-<span class="affiliate-card-label">Flytographer</span>
+<div class="affiliate-card-inner">
+<span class="affiliate-card-label">We Recommend</span>
 <p class="affiliate-card-title">Book a Local Wedding Photographer</p>
-<p class="affiliate-card-desc">Professional photographers in 400+ cities worldwide who know the best light, angles, and hidden spots at your destination. Browse portfolios and book online.</p>
+<p class="affiliate-card-desc">Professional photographers in 400+ cities worldwide who know the best light, angles, and hidden spots at your destination.</p>
+<p class="affiliate-card-proof">3 million+ photos taken. 100% happiness guarantee.</p>
 <a class="affiliate-card-cta" href="https://tidd.ly/4vkss2p" target="_blank" rel="sponsored nofollow noopener">Find a Photographer <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
 </div>
 
 

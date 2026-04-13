@@ -160,10 +160,13 @@ Between 75% and 85% of wedding guests will enjoy a piece of cake, according to t
 These are ideal for a [Cancun wedding](/destinations/cancun/), a [Bali celebration](/destinations/bali/), or a [Jamaica resort reception](/destinations/jamaica/). Many all-inclusive resorts at destinations like these include wedding cake as part of their packages, which can simplify both logistics and budget. Resorts like <a href="https://www.sandals.com/" rel="noopener noreferrer sponsored">Sandals</a> and <a href="https://www.beaches.com/" rel="noopener noreferrer sponsored">Beaches</a> often offer customizable cake options within their wedding packages.
 
 <div class="affiliate-card not-prose">
-<span class="affiliate-card-label">Booking.com</span>
+<div class="affiliate-card-inner">
+<span class="affiliate-card-label">We Recommend</span>
 <p class="affiliate-card-title">Find Your Wedding Venue & Guest Hotels</p>
 <p class="affiliate-card-desc">Compare resort rates, read verified guest reviews, and book with free cancellation. Filter by wedding-friendly properties at your destination.</p>
+<p class="affiliate-card-proof">Free cancellation on most properties. No booking fees.</p>
 <a class="affiliate-card-cta" href="https://tidd.ly/4ssglOg" target="_blank" rel="sponsored nofollow noopener">Search Hotels <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
 </div>
 
 

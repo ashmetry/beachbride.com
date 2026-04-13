@@ -244,10 +244,13 @@ According to [Wedding Planner Institute](https://weddingplannerinstitute.com/58-
 Popular beachfront destinations like [Cancun](/destinations/cancun/), [Punta Cana](/destinations/punta-cana/), [Hawaii](/destinations/hawaii/), and [Tulum](/destinations/tulum/) offer all-inclusive resort packages that include indoor reception spaces for weather contingency. Many couples find that the cost of a destination wedding, including the venue, catering, and decor, competes favorably with a hometown wedding once you factor in the built-in scenery. Check our breakdown of [destination wedding costs](/destination-wedding-cost/) for real numbers.
 
 <div class="affiliate-card not-prose">
-<span class="affiliate-card-label">Booking.com</span>
+<div class="affiliate-card-inner">
+<span class="affiliate-card-label">We Recommend</span>
 <p class="affiliate-card-title">Find Your Wedding Venue & Guest Hotels</p>
 <p class="affiliate-card-desc">Compare resort rates, read verified guest reviews, and book with free cancellation. Filter by wedding-friendly properties at your destination.</p>
+<p class="affiliate-card-proof">Free cancellation on most properties. No booking fees.</p>
 <a class="affiliate-card-cta" href="https://tidd.ly/4ssglOg" target="_blank" rel="sponsored nofollow noopener">Search Hotels <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
 </div>
 
 

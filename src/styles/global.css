@@ -47,29 +47,39 @@
     @apply bg-brand/5 border border-brand/20 rounded-xl p-6 my-8;
   }
 
-  /* Affiliate recommendation card — injected into article body as raw HTML */
+  /* Affiliate recommendation card — injected into article body as raw HTML.
+     Left accent bar distinguishes from lead-capture and editorial callouts.
+     Navy CTA avoids competing with gold primary CTAs (quiz, lead capture). */
   .affiliate-card {
-    @apply bg-white border border-gray-200 rounded-xl p-5 my-8 shadow-sm;
+    @apply bg-white rounded-xl my-8 shadow-sm overflow-hidden;
+    border: 1px solid #e5e7eb;
+    border-left: 4px solid #C9974A;
   }
   .affiliate-card:hover {
-    @apply shadow-md border-brand-accent/40;
-    transition: box-shadow 0.2s, border-color 0.2s;
+    @apply shadow-md;
+    transition: box-shadow 0.2s;
+  }
+  .affiliate-card-inner {
+    @apply p-5;
   }
   .affiliate-card .affiliate-card-label {
-    @apply text-[11px] font-semibold uppercase tracking-wider text-brand-accent mb-2 block;
+    @apply text-[11px] font-semibold uppercase tracking-wider text-brand-accent/70 mb-2 block;
   }
   .affiliate-card .affiliate-card-title {
     @apply text-lg font-bold text-gray-900 mb-1;
   }
   .affiliate-card .affiliate-card-desc {
-    @apply text-sm text-gray-600 mb-4 leading-relaxed;
+    @apply text-sm text-gray-600 mb-1 leading-relaxed;
+  }
+  .affiliate-card .affiliate-card-proof {
+    @apply text-xs text-gray-500 mb-3 italic;
   }
   .affiliate-card .affiliate-card-cta {
-    @apply inline-flex items-center gap-1.5 px-5 py-2.5 bg-brand-accent text-white text-sm font-semibold rounded-lg no-underline;
+    @apply inline-flex items-center gap-1.5 px-5 py-2.5 bg-brand text-white text-sm font-semibold rounded-lg no-underline;
     transition: background-color 0.2s;
   }
   .affiliate-card .affiliate-card-cta:hover {
-    @apply bg-brand-accent-dark;
+    @apply bg-brand-dark;
   }
   .affiliate-card .affiliate-card-cta svg {
     @apply w-4 h-4;

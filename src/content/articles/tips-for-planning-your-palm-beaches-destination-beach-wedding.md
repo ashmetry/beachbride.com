@@ -84,10 +84,13 @@ A few things set this area apart from other Florida wedding spots like [Key West
 One common misconception: people assume Palm Beaches weddings are beach-only affairs. The reality is that many couples hold a 15-to-25-minute ceremony on the sand and then move indoors for cocktails and dinner at a nearby resort or gallery.
 
 <div class="affiliate-card not-prose">
-<span class="affiliate-card-label">Booking.com</span>
+<div class="affiliate-card-inner">
+<span class="affiliate-card-label">We Recommend</span>
 <p class="affiliate-card-title">Find Your Wedding Venue & Guest Hotels</p>
 <p class="affiliate-card-desc">Compare resort rates, read verified guest reviews, and book with free cancellation. Filter by wedding-friendly properties at your destination.</p>
+<p class="affiliate-card-proof">Free cancellation on most properties. No booking fees.</p>
 <a class="affiliate-card-cta" href="https://tidd.ly/4ssglOg" target="_blank" rel="sponsored nofollow noopener">Search Hotels <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
 </div>
 
 
@@ -167,10 +170,13 @@ Fall is an underrated pick. According to [Married in Palm Beach](https://married
 **The hurricane factor:** According to [Sugar Beach Weddings](https://sugarbeachweddings.com/articles/best-time-of-year-for-a-beach-wedding-in-florida/), hurricane season runs June 1 through November 30, with peak activity from mid-August through late October. This does not make fall impossible, but it does make wedding insurance essential. If you are using our [beach wedding checklist](/beach-wedding-checklist/), add "purchase event insurance" to your to-do list for any date between June and November.
 
 <div class="affiliate-card not-prose">
-<span class="affiliate-card-label">eWed Insurance</span>
+<div class="affiliate-card-inner">
+<span class="affiliate-card-label">We Recommend</span>
 <p class="affiliate-card-title">Protect Your Wedding Day</p>
 <p class="affiliate-card-desc">Destination wedding insurance covers cancellation, vendor no-shows, extreme weather, and more. Policies start under $200 for up to $35,000 in coverage.</p>
+<p class="affiliate-card-proof">Rated A+ by the BBB. Policies issued within minutes.</p>
 <a class="affiliate-card-cta" href="https://tidd.ly/4mspchp" target="_blank" rel="sponsored nofollow noopener">Get a Free Quote <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
+</div>
 </div>
 
 

@@ -446,13 +446,16 @@ CRITICAL RULES:
 - Affiliate promotions: Use styled affiliate cards (not inline links). Place 2-3 cards after relevant paragraphs using this exact HTML format:
 
 <div class="affiliate-card not-prose">
-<span class="affiliate-card-label">LABEL</span>
+<div class="affiliate-card-inner">
+<span class="affiliate-card-label">We Recommend</span>
 <p class="affiliate-card-title">TITLE</p>
 <p class="affiliate-card-desc">DESCRIPTION</p>
+<p class="affiliate-card-proof">PROOF</p>
 <a class="affiliate-card-cta" href="URL" target="_blank" rel="sponsored nofollow noopener">CTA TEXT <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></a>
 </div>
+</div>
 
-Replace LABEL, TITLE, DESCRIPTION, CTA TEXT, and URL with values from the AFFILIATE TARGETS list below. Only place cards where the product is genuinely relevant to the reader's need. Never place a card inside or immediately after an H2 heading.
+Replace TITLE, DESCRIPTION, PROOF, CTA TEXT, and URL with values from the AFFILIATE TARGETS list below. The label is always "We Recommend". Only place cards where the product is genuinely relevant to the reader's need. Never place a card inside or immediately after an H2 heading. Never place a card in the first two sections of the article — let the reader get invested before showing recommendations.
 - NEVER use: em-dashes (—), "game-changer", "seamlessly", "cutting-edge", "robust", "comprehensive", "In conclusion", "not just X but also Y", "It's worth noting", "In today's world", "dream wedding" (overused — use "your wedding" or "the wedding you've imagined")
 
 STRUCTURE RULES:
