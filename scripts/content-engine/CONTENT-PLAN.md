@@ -626,17 +626,31 @@ Rules:
 - Skips first paragraph after H2 (preserves answer capsule rule)
 - Sets `frontmatter.affiliateDisclosure = true` when links are added
 
-**Affiliate card format (updated 2026-04-12):**
+**Affiliate card format (updated 2026-04-12, CRO redesign):**
 Affiliate promotions use styled cards (`<div class="affiliate-card not-prose">`)
-instead of invisible inline links. Each card has: label (advertiser name), title
-(value prop headline), description (1-2 sentence pitch), and a CTA button with
-arrow icon. Cards break out of prose styling via `not-prose` class.
+instead of invisible inline links. Each card has:
+- `affiliate-card-inner` wrapper div (handles padding, allows overflow-hidden on outer)
+- "We Recommend" editorial label (not brand name — editorial framing converts better)
+- Title (value prop headline)
+- Description (1-2 sentence pitch)
+- Proof line (`cardProof`) — social proof or trust signal (e.g. "Free cancellation on most properties")
+- Navy CTA button with arrow icon (navy avoids competing with gold primary quiz CTAs)
+
+Cards break out of prose styling via `not-prose` class. Left gold accent bar
+(`border-left: 4px solid #C9974A`) distinguishes from editorial callouts.
 
 CSS lives in `src/styles/global.css` (`.affiliate-card` class). Colors: white
-card with gold accent CTA button, on-brand hover effect.
+card with left gold accent bar, navy CTA button, subtle shadow with hover lift.
 
-Each `AFFILIATE_TARGETS` entry now carries `cardTitle`, `cardDesc`, `cardCta`,
-and optionally `deepLinkPrefix` fields.
+Each `AFFILIATE_TARGETS` entry carries `cardTitle`, `cardDesc`, `cardCta`,
+`cardProof`, and optionally `deepLinkPrefix` fields.
+
+**Placement guardrails:**
+- Max 3 cards per article
+- First card must appear after 500+ characters into article body (reader investment)
+- Never after answer capsule (first paragraph under H2)
+- Never inside headings, links, image alts, or HTML tags
+- generate.js prompt instructs LLM to avoid first two sections
 
 **Destination-aware deep linking (added 2026-04-12):**
 Targets with `deepLinkPrefix` (Booking.com, GetYourGuide, Top Villas) resolve
@@ -659,8 +673,9 @@ All deep links generated via Awin Publisher Link Builder API.
 **Backfill script (`scripts/backfill-affiliate-links.js`):**
 Strips old inline affiliate links (the `<a href="tidd.ly/...">` tags from
 the first iteration), fixes any nested link bugs, and injects affiliate cards.
-Run with `--dry-run` first. Applied 2026-04-12: 9 articles modified, 12 old
-inline links stripped, 12 affiliate cards added.
+Run with `--dry-run` first. Last run 2026-04-12: 37 articles modified, 48 old
+cards stripped and replaced with CRO-redesigned format, 47 cards added (one
+fewer due to 500-char minimum distance enforcement).
 
 **Centralized link registry (`src/data/affiliate-links.ts`):**
 42 tracked links across 15 advertisers. All Awin-tracked with tidd.ly short URLs.
