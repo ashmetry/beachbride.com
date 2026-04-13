@@ -9,7 +9,7 @@ import destinations from '../../data/destinations.json';
 import vendors from '../../data/vendors.json';
 import { getDestinationSchema } from '../../lib/schema/destination';
 import { SITE_CONFIG } from '../../lib/site-config';
-import { affiliateAttrs } from '../../data/affiliate-links';
+import { affiliateLinks } from '../../data/affiliate-links';
 import { VENDOR_TYPES, typePluralLabels, type VendorType } from '../../lib/vendors';
 import { getCollection } from 'astro:content';
 import { existsSync } from 'fs';
@@ -33,6 +33,10 @@ const allArticles = await getCollection('articles').catch(() => []);
 const destArticles = allArticles
   .filter(a => a.data.destination === slug && !a.data.noIndex)
   .slice(0, 3);
+
+// Affiliate link keys for this destination (fall back to generic if no deep link)
+const bookingKey = affiliateLinks[`booking-${slug}`] ? `booking-${slug}` : 'booking';
+const gygKey = affiliateLinks[`getyourguide-${slug}`] ? `getyourguide-${slug}` : 'getyourguide';
 
 const heroExists = dest.heroImage && existsSync(join('public', dest.heroImage));
 const schema = getDestinationSchema(dest);
@@ -90,7 +94,8 @@ const legalDisplay = dest.legalCeremonyType === 'legal' ? 'Yes — legal' :
         <p class="text-gray-500">{dest.country} &middot; {dest.region}</p>
       </div>
     </div>
-    <p class="text-lg text-gray-600 mt-4 mb-8">{dest.description}</p>
+    <p class="text-lg text-gray-600 mt-4 mb-4">{dest.description}</p>
+    <p class="text-xs text-gray-400 bg-gray-50 rounded-lg px-4 py-2 mb-8 not-prose">This guide contains affiliate links. BeachBride may earn a commission at no extra cost to you.</p>
 
     <!-- Quick stats -->
     <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-10">
@@ -157,30 +162,23 @@ const legalDisplay = dest.legalCeremonyType === 'legal' ? 'Yes — legal' :
       destinationName={dest.name}
     />
 
-    <!-- Featured Resorts (Affiliate) -->
+    <!-- Wedding Resorts (Tracked Affiliate) -->
     <section class="mb-10">
       <h2 class="text-2xl font-bold text-gray-900 mb-2">Top resorts for {dest.name} weddings</h2>
-      <p class="text-xs text-gray-400 mb-4">
-        Affiliate disclosure: BeachBride may earn a commission if you book through these links, at no extra cost to you.
+      <p class="text-gray-600 text-sm mb-4">
+        Comparing resorts is the biggest early decision. We filter for 4-5 star properties rated 8.0+ by verified guests — the kind of places that actually host weddings well.
       </p>
-      <div class="grid sm:grid-cols-3 gap-4">
-        {dest.resortAffiliates.map(resort => (
-          <a
-            href={resort.url}
-            target="_blank"
-            rel="noopener noreferrer sponsored"
-            class="card p-4 hover:shadow-md transition-shadow no-underline group"
-          >
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-semibold text-brand uppercase tracking-wide">{resort.type}</span>
-              <svg class="w-4 h-4 text-gray-300 group-hover:text-brand transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </div>
-            <h3 class="font-bold text-gray-900 group-hover:text-brand transition-colors mb-1 text-sm">{resort.name}</h3>
-            <p class="text-xs text-gray-500 leading-relaxed">{resort.description}</p>
+      <div class="affiliate-card not-prose">
+        <div class="affiliate-card-inner">
+          <span class="affiliate-card-label">We Recommend</span>
+          <p class="affiliate-card-title">Luxury Wedding Resorts in {dest.name}</p>
+          <p class="affiliate-card-desc">4-5 star resorts rated 8.0+ by verified guests. Filter by all-inclusive, beachfront, wedding-friendly amenities, and free cancellation.</p>
+          <p class="affiliate-card-proof">Free cancellation on most properties. No booking fees.</p>
+          <a class="affiliate-card-cta" href={`/go/${bookingKey}`} target="_blank" rel="sponsored nofollow noopener">
+            Search {dest.name} Resorts
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>
           </a>
-        ))}
+        </div>
       </div>
     </section>
 
@@ -237,28 +235,32 @@ const legalDisplay = dest.legalCeremonyType === 'legal' ? 'Yes — legal' :
 
     <!-- Travel Insurance -->
     <section class="mb-10">
-      <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center gap-5">
-        <div class="flex-shrink-0">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-          </svg>
-        </div>
-        <div class="flex-1">
-          <h3 class="font-bold text-gray-900 mb-1">Protect your wedding investment</h3>
-          <p class="text-sm text-gray-600 mb-3">
-            International flights, non-refundable deposits, and tropical weather all carry real risk.
-            Most destination couples skip travel insurance — and regret it. Compare plans in 2 minutes.
-          </p>
-          <a
-            {...affiliateAttrs('generali')}
-            class="inline-flex items-center gap-2 text-sm font-semibold text-amber-700 hover:text-amber-900 transition-colors no-underline"
-          >
-            Compare destination wedding insurance plans
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-            </svg>
+      <div class="affiliate-card not-prose">
+        <div class="affiliate-card-inner">
+          <span class="affiliate-card-label">We Recommend</span>
+          <p class="affiliate-card-title">Trip Protection for Your Wedding Party</p>
+          <p class="affiliate-card-desc">International flights, non-refundable deposits, and tropical weather all carry real risk. Cover your entire guest list with cancel-for-any-reason options designed for destination weddings.</p>
+          <p class="affiliate-card-proof">A+ rated insurer. Group plans available for wedding parties.</p>
+          <a class="affiliate-card-cta" href="/go/generali" target="_blank" rel="sponsored nofollow noopener">
+            Compare Plans
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>
           </a>
-          <p class="text-xs text-gray-400 mt-1">Affiliate disclosure: BeachBride may earn a commission at no cost to you.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Destination Photographer -->
+    <section class="mb-10">
+      <div class="affiliate-card not-prose">
+        <div class="affiliate-card-inner">
+          <span class="affiliate-card-label">We Recommend</span>
+          <p class="affiliate-card-title">Book a Local Photographer in {dest.name}</p>
+          <p class="affiliate-card-desc">Professional photographers who know {dest.name}'s best light, angles, and hidden spots. They handle permits, backup plans for weather, and deliver within weeks.</p>
+          <p class="affiliate-card-proof">3 million+ photos taken. 100% happiness guarantee.</p>
+          <a class="affiliate-card-cta" href="/go/flytographer-wedding" target="_blank" rel="sponsored nofollow noopener">
+            Find a Photographer
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>
+          </a>
         </div>
       </div>
     </section>
@@ -315,6 +317,22 @@ const legalDisplay = dest.legalCeremonyType === 'legal' ? 'Yes — legal' :
         >
           All vendors →
         </a>
+      </div>
+    </section>
+
+    <!-- Guest Activities -->
+    <section class="mb-10">
+      <div class="affiliate-card not-prose">
+        <div class="affiliate-card-inner">
+          <span class="affiliate-card-label">We Recommend</span>
+          <p class="affiliate-card-title">Wedding-Week Activities in {dest.name}</p>
+          <p class="affiliate-card-desc">Snorkeling, sunset cruises, food tours, and more. Book group activities your guests will actually remember — with free cancellation up to 24 hours before.</p>
+          <p class="affiliate-card-proof">Free cancellation up to 24 hours before. Mobile tickets.</p>
+          <a class="affiliate-card-cta" href={`/go/${gygKey}`} target="_blank" rel="sponsored nofollow noopener">
+            Browse {dest.name} Activities
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>
+          </a>
+        </div>
       </div>
     </section>
 
