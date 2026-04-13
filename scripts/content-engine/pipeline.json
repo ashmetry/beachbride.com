@@ -9488,20 +9488,76 @@
       "id": "peacock-cake-wedding",
       "keyword": "peacock cake wedding",
       "secondaryKeywords": [],
-      "status": "discovered",
+      "status": "skipped-intent-overlap",
       "score": 56.51093922785061,
       "contentType": "informational",
       "schemaType": "article",
       "isRefresh": false,
       "existingSlug": null,
-      "brief": null,
+      "brief": {
+        "slug": "peacock-cake-wedding",
+        "title": "Peacock Wedding Cake Ideas: 20 Stunning Designs for Your Destination Wedding",
+        "metaDescription": "Peacock wedding cakes bring drama, color & artistry to any destination wedding. Explore 20 stunning designs, costs, and how to find the right baker abroad.",
+        "targetWordCount": 2000,
+        "schemaType": "article",
+        "h2Outline": [
+          "What Is a Peacock Wedding Cake (and Why It Works So Well for Destination Weddings)?",
+          "What Factors Affect the Look and Cost of a Peacock Cake?",
+          "Which Peacock Cake Styles Work Best at Each Destination?",
+          "How Much Does a Peacock Wedding Cake Cost? (Real Numbers)",
+          "How Do You Find a Skilled Peacock Cake Artist Abroad?",
+          "Practical Tips for Ordering a Peacock Cake at a Destination Wedding",
+          "How BeachBride Can Help You Find the Right Vendors",
+          "Frequently Asked Questions"
+        ],
+        "faqTopics": [
+          "What is a peacock wedding cake?",
+          "How far in advance should I book a cake artist for a destination wedding?",
+          "Can a peacock cake survive heat and humidity at a beach wedding?",
+          "What flavors pair well with a peacock-themed wedding cake?",
+          "Is fondant or buttercream better for a peacock cake design?",
+          "How do I incorporate peacock feather colors into my overall wedding palette?",
+          "Can I bring peacock cake decorations from home to use abroad?"
+        ],
+        "internalLinkTargets": [
+          "/peacock-wedding-cake/",
+          "/gorgeous-beach-themed-wedding-cakes/",
+          "/beach-wedding-colors/",
+          "/destination-wedding-cost/",
+          "/beach-wedding-checklist/",
+          "/destination-wedding-guide/",
+          "/dessert-bar-menu-ideas-for-a-beach-wedding/",
+          "/vendors/planner/",
+          "/quiz/"
+        ],
+        "externalSourceTypes": [
+          "wedding industry surveys (e.g., The Knot, WeddingWire cost data)",
+          "professional cake artist interviews or quotes",
+          "destination-specific bakery pricing data",
+          "food safety and transport guidelines for wedding cakes"
+        ],
+        "disclaimers": [
+          "financial",
+          "referral"
+        ],
+        "relatedSlugs": [
+          "peacock-wedding-cake",
+          "gorgeous-beach-themed-wedding-cakes",
+          "beach-wedding-colors",
+          "dessert-bar-menu-ideas-for-a-beach-wedding",
+          "destination-wedding-cost"
+        ],
+        "affiliateOpportunity": "Luxury resort packages that include wedding cake as part of an all-inclusive wedding package (e.g., Cancun or Punta Cana resort affiliates); also edible gold leaf and fondant decoration supply affiliates for DIY-curious couples",
+        "uniqueAngle": "Unlike generic peacock cake roundups, this article is written specifically for couples planning destination weddings — addressing the real logistical challenges of ordering a show-stopping peacock cake abroad (heat, humidity, finding skilled artists, resort bakery vs. outside vendor rules) while matching cake styles to specific destinations like Bali, Santorini, and Tulum.",
+        "sectionImageCount": 3
+      },
       "researchData": null,
       "qualityReport": null,
       "rewriteAttempts": 0,
-      "failReason": null,
+      "failReason": "Intent overlap with /peacock-wedding-cake/: The candidate article is identical to the existing published article at /peacock-wedding-cake/. The title, keyword, H2 structure, and FAQ topics are virtually the same. The existing article already covers peacock cake styles, destination-specific considerations (Bali, Santorini, Tulum), heat/humidity logistics, cost, finding a skilled baker abroad, and all the same FAQ questions (flavors, fondant vs. buttercream, advance booking, heat/humidity survival, transporting/storing the cake). This is not a case of partial overlap — it is the same article.",
       "discoveredAt": "2026-04-08",
       "publishedAt": null,
-      "articleSlug": null,
+      "articleSlug": "peacock-cake-wedding",
       "_source": {
         "impressions": 0,
         "clicks": 0,
@@ -10235,20 +10291,261 @@
       "id": "bora-bora-elopement",
       "keyword": "bora bora elopement",
       "secondaryKeywords": [],
-      "status": "discovered",
+      "status": "staged",
       "score": 55.986810989071635,
       "contentType": "informational",
       "schemaType": "article",
       "isRefresh": false,
       "existingSlug": null,
-      "brief": null,
-      "researchData": null,
-      "qualityReport": null,
+      "brief": {
+        "slug": "bora-bora-elopement",
+        "title": "Bora Bora Elopement: The Complete Guide (Costs, Legalities & Best Spots)",
+        "metaDescription": "Planning a Bora Bora elopement? Get real costs, legal requirements, best overwater venues, and expert tips to pull it off beautifully in French Polynesia.",
+        "targetWordCount": 2200,
+        "schemaType": "article",
+        "h2Outline": [
+          "What Is a Bora Bora Elopement (And Why Couples Are Obsessed With It)?",
+          "Can You Legally Get Married in Bora Bora as a Foreigner?",
+          "What Does a Bora Bora Elopement Actually Cost?",
+          "The Best Spots to Elope in Bora Bora",
+          "What Factors Shape Your Bora Bora Elopement Experience?",
+          "How Does Bora Bora Compare to Other Tropical Elopement Destinations?",
+          "How to Plan a Bora Bora Elopement Step by Step",
+          "How BeachBride Can Help You Find the Right Vendors"
+        ],
+        "faqTopics": [
+          "Is it legal for Americans (or Australians/UK citizens) to get married in Bora Bora?",
+          "How far in advance do you need to plan a Bora Bora elopement?",
+          "What is the best time of year to elope in Bora Bora?",
+          "Do most couples do a symbolic ceremony or a legal ceremony in Bora Bora?",
+          "What should you wear to a Bora Bora elopement?",
+          "Can you elope in Bora Bora on an overwater bungalow deck?",
+          "How many people can attend a Bora Bora elopement?"
+        ],
+        "internalLinkTargets": [
+          "/destination-wedding-guide/",
+          "/destination-wedding-cost/",
+          "/beach-wedding-checklist/",
+          "/destinations/maldives/",
+          "/destinations/fiji/",
+          "/destinations/bali/",
+          "/destinations/hawaii/",
+          "/destinations/santorini/",
+          "/guides/symbolic-ceremony/",
+          "/vendors/photographer/",
+          "/vendors/planner/",
+          "/quiz/"
+        ],
+        "externalSourceTypes": [
+          "French Polynesia tourism authority (Tahiti Tourisme) official requirements",
+          "Wedding industry cost surveys (The Knot, Brides magazine)",
+          "Travel industry pricing data for French Polynesia resorts",
+          "Legal marriage documentation requirements from French Polynesian civil authorities"
+        ],
+        "disclaimers": [
+          "financial",
+          "professional"
+        ],
+        "relatedSlugs": [
+          "destination-wedding-cost",
+          "destination-wedding-guide",
+          "beach-wedding-checklist",
+          "considering-having-a-beach-wedding-think-about-these-pros-and-cons-first",
+          "destination-wedding-tips"
+        ],
+        "affiliateOpportunity": "Luxury overwater bungalow resorts (Four Seasons Bora Bora, InterContinental, Conrad) via affiliate booking partnerships; travel insurance for international elopement travel; destination wedding photography packages; honeymoon cruise or catamaran excursion bookings",
+        "uniqueAngle": "Most Bora Bora elopement content glosses over the legal complexity (foreigners cannot legally marry in French Polynesia without significant bureaucratic hurdles) and pushes symbolic ceremonies without being upfront about it. This article leads with honest, warm transparency — explaining the legal reality, why symbolic ceremonies are actually the norm and why that's totally okay — then delivers real cost ranges, the best overwater and beach ceremony spots, and a side-by-side comparison with alternative South Pacific and tropical destinations for couples who want to weigh their options. It's the article a trusted friend who has done this a hundred times would write.",
+        "sectionImageCount": 2
+      },
+      "researchData": {
+        "sections": [
+          {
+            "h2": "What Is a Bora Bora Elopement (And Why Couples Are Obsessed With It)?",
+            "content": "### Key Facts with Specific Numbers/Statistics\n\n- **Legal marriage requires at least 180 days advance notice** to the authorities in French Polynesia (including Bora Bora), allowing time for document publication and processing; couples must also be physically present on the islands at least **3 days prior** to the ceremony.[2]\n- **Publication of marriage intentions must occur at least 45 days prior** in the local press, as mandated by French laws governing French Polynesia; this applies even for elopements seeking legal status.[3]\n- **Required documents include birth certificates issued less than 6 months prior**, each authenticated with an Apostille, translated into French by an approved translator, and legalized by the French Consulate; previously married couples need divorce decrees similarly processed.[2][3]\n- **Both spouses must be at least 18 years old**, not already married, of opposite sex, unrelated by direct lineage, and not of French origin or holding French residential status.[2]\n- Small, intimate Bora Bora elopements or weddings can cost upwards of **$20,000**, covering local ceremonies, coordination, and symbolic elements like Polynesian performances, even without large guest lists.[3]\n\n### Tourism Board Guidelines, Legal Requirements, or Industry Data\nBora Bora, as part of French Polynesia, follows strict French civil marriage laws for legal ceremonies, which can only occur at the local city hall (e.g., Vaitape or Bora Bora City Hall) officiated by the mayor; resort ceremonies are **purely ceremonial and not legally binding**.[1][2][3]  \nKey requirements include:\n- Completing the “Marriage of Foreign Citizens in French Polynesia” form and a letter to the mayor.[2]\n- Providing proof of identity (passport copies), proof of residency (e.g., utility bill), and a “Certificate of Non-Marital Status” (or divorce decrees) for each spouse, all translated and legalized.[2][3]\n- Each spouse must select a witness (18+ years old), and a translator must attend the ceremony (often provided by resorts).[2]\n- Resorts like InterContinental Le Moana handle coordination via concierge but emphasize collecting documents **at least 5 months in advance**.[1]  \nNo specific Bora Bora tourism board data appears in results, but industry sources note legal recognition for US, Canadian, and British citizens became available around 2010.[2]\n\n### Common Misconceptions Couples Have\n- **Resort ceremonies are legally binding**: Most couples assume overwater bungalow or beach weddings at luxury resorts (e.g., Four Seasons, St. Regis) count as legal marriages, but they are symbolic only—legal ones require city hall and extensive paperwork.[1][2][3]\n- **Elopements are simple and quick**: Many expect spontaneous, hassle-free ceremonies, overlooking the **180-day notice**, document translations, Apostilles, and **45-day publication** requirements, which can take 5+ months total.[2][3]\n- **Any couple qualifies easily**: Restrictions like opposite-sex requirement, no French residency, and prior marriage proofs trip up couples; previously married individuals face extra hurdles with divorce documents.[2][3]\n- **Costs are low for intimacy**: Eloping seems budget-friendly, but real examples show small local setups exceeding **$20,000** due to coordination, transport, and cultural elements.[3]",
+            "citations": [
+              "https://lemoana.intercontinental.com/weddings",
+              "https://www.remarkablehoneymoons.com/plan-my-honeymoon/destination-weddings/bora-bora-wedding-packages/",
+              "https://bora-bora-insider.com/wedding-in-bora-bora/",
+              "https://www.fourseasons.com/borabora/weddings/",
+              "https://whatifweelope.com/bora-bora-elopement-brittany-jeffery/",
+              "https://magnoliarouge.com/intimate-elopement-in-bora-bora/",
+              "https://www.wedotahiti.com/wanting-to-elope-in-bora-bora/",
+              "https://www.marriott.com/en-us/hotels/bobxr-the-st-regis-bora-bora-resort/events/",
+              "https://www.tripadvisor.com/ShowTopic-g294338-i867-k12588016-Eloping_Help_wanted-French_Polynesia.html"
+            ]
+          },
+          {
+            "h2": "Can You Legally Get Married in Bora Bora as a Foreigner?",
+            "content": "**Yes, foreigners can legally marry in Bora Bora through a civil ceremony at the town hall (Mairie), as French Polynesian law permits this without a residency requirement for non-residents, following a 2009 law change.**[1][2][5][8]\n\n### 3-5 Key Facts with Specific Numbers/Statistics\n- **Minimum age requirement**: Both spouses must be at least **18 years old** on the wedding day.[2][3][4]\n- **Document freshness**: Birth certificates must be issued **less than 6 months** before the wedding and notarized, with certified French translations.[1][2][3]\n- **Preparation timeline**: It typically takes a **minimum of 3 months** to gather documents and reserve a date at the town hall; more notice is recommended.[2]\n- **Banns publication period**: A public notice (marriage banns) must be published **10 days** before the wedding.[1][5]\n- **Ceremony duration**: The civil ceremony lasts **25-30 minutes** and requires both spouses, at least **2 witnesses** (aged 18+), and a French interpreter if needed.[1][2]\n\n### Relevant Tourism Board Guidelines and Legal Requirements\nTahiti Tourisme, the official tourism board, confirms that a 2009 French law authorizes civil marriages for foreign nationals in French Polynesia (including Bora Bora) without residency periods; required documents include the “Marriage of Foreign Citizens in French Polynesia” form, a letter to the mayor, proof of single status (e.g., celibacy certificate), passports, birth certificates (with apostille and French translation), and proof of residence (e.g., utility bill).[5] The ceremony must occur at Bora Bora's town hall on weekdays (no Saturdays, Sundays, or holidays), officiated by the mayor or representative, with both spouses physically present.[1][2][4] Post-ceremony, couples handle home-country registration (e.g., U.S. states via vital records; Australia via DFAT).[1]\n\n| Requirement | Details | Sources |\n|-------------|---------|---------|\n| Location | Bora Bora Town Hall only | [1][2] |\n| Witnesses | Minimum 2, aged 18+ | [2][3] |\n| Interpreter | Required if not French-speaking | [1][3] |\n| Processing Time | 10 days for banns after document submission | [1][5] |\n\n### Common Misconceptions Couples Have\n- **Myth: Resort ceremonies are legally binding** – Only town hall civil marriages are legal; beach/resort events are symbolic.[1][2][6]\n- **Myth: Residency is required** – A 2009 law eliminated this for foreigners (previously 1 month needed if one spouse had French ties).[4][5][7][8]\n- **Myth: Same-day weddings possible** – Paperwork must be submitted 45 days prior at minimum, with 3+ months typical; no instant ceremonies.[2][6]\n- **Myth: No translations needed** – All key documents (birth certificates, celibacy proofs) require certified French translations and legalization.[1][2][3]\n\n**Sources for Facts and Guidelines** (with URLs as provided in search results):  \n- [1] Bora Bora Photo Video: https://www.boraboraphotovideo.com/bora-bora-getting-married-legal-wedding/  \n- [2] Wedding Bora Bora: https://www.weddingborabora.com/bora-bora-civil-marriage/  \n- [3] Remarkable Honeymoons: https://www.remarkablehoneymoons.com/plan-my-honeymoon/destination-weddings/bora-bora-wedding-packages/  \n- [4] Tahiti Tours PDF: https://tahiti-tours.com/wp-content/uploads/sites/3/2018/03/EN-Requirements-and-Conditions-for-Legal-Wedding-in-French-Polynesia.pdf  \n- [5] Tahiti Tourisme: https://www.tahititourisme.com/discover/marriage-and-romance/what-are-the-formalities-for-getting-married-in-the-islands-of-tahiti/  \n- [6] TravelAge West: https://www.travelagewest.com/Travel/Asia-Pacific/Tahiti-Weddings-Go-Legal  \n- [7] TripAdvisor Forum: https://www.tripadvisor.ca/ShowTopic-g294338-i867-k2901176-How_to_get_LEGALLY_married_in_FP-French_Polynesia.html  \n- [8] wedOtahiti: https://www.wedotahiti.com/category/blog/legal-wedding/",
+            "citations": [
+              "https://www.boraboraphotovideo.com/bora-bora-getting-married-legal-wedding/",
+              "https://www.weddingborabora.com/bora-bora-civil-marriage/",
+              "https://www.remarkablehoneymoons.com/plan-my-honeymoon/destination-weddings/bora-bora-wedding-packages/",
+              "https://tahiti-tours.com/wp-content/uploads/sites/3/2018/03/EN-Requirements-and-Conditions-for-Legal-Wedding-in-French-Polynesia.pdf",
+              "https://www.tahititourisme.com/discover/marriage-and-romance/what-are-the-formalities-for-getting-married-in-the-islands-of-tahiti/",
+              "https://www.travelagewest.com/Travel/Asia-Pacific/Tahiti-Weddings-Go-Legal",
+              "https://www.tripadvisor.ca/ShowTopic-g294338-i867-k2901176-How_to_get_LEGALLY_married_in_FP-French_Polynesia.html",
+              "https://www.wedotahiti.com/category/blog/legal-wedding/"
+            ]
+          },
+          {
+            "h2": "What Does a Bora Bora Elopement Actually Cost?",
+            "content": "### Key Facts with Specific Numbers/Statistics\n\n1. **Tahiti elopement total cost (including Bora Bora options)**: A full Tahiti elopement, which can incorporate Bora Bora, ranges from **$10,000 to $22,000 USD**, breaking down as $900–$1,600 flights, $500–$5,000 attire, $800–$3,500 accommodation, $150 car rental (optional), $500–$1,500 excursions (optional), $7,000–$10,000 photographer, and $200 flowers. Source: Lucy Schultz Photography (https://lucyschultzphotography.com/tahiti-elopement-photographer/)[2]\n\n2. **Ceremony cost**: Basic **Tahitian wedding or vow renewal ceremonies** at Matira Beach in Bora Bora start at **$700 USD**. Source: WeddingBoraBora.com (https://www.weddingborabora.com/faq-tahitian-wedding-cost-bora-bora/)[3]\n\n3. **Daily accommodation costs for elopement stays**: Budget guesthouses near Matira Beach cost **~$189/night**; mid-range hotels **$237–$348/night**; luxury overwater bungalows (e.g., St. Regis) start at **$1,170+/night** (taxes included), with a typical one-night overwater experience at **~$1,454**. Source: GoTripzi 2026 Budget Guide (https://gotripzi.com/destinations/bora-bora-pf/cost)[1]\n\n4. **Luxury honeymoon package including Bora Bora (post-elopement)**: A 5-night stay at St. Regis Bora Bora Resort starts at **$6,970 per person** (includes overwater villa, breakfast/dinner, snorkeling, WiFi). Source: TrueTahitiVacation.com (https://www.truetahitivacation.com/tahiti-guide/bora-bora-vacation-honeymoon-packages-guide)[5]\n\n5. **Per-person trip budget (excluding flights, relevant for elopement planning)**: A **7-day luxury trip** averages **$14,931 per person**; mid-range **$4,412**; budget **$1,764** (covers accommodation, food, transport, activities). Source: GoTripzi 2026 Budget Guide (https://gotripzi.com/destinations/bora-bora-pf/cost)[1]\n\n### Tourism Board Guidelines, Legal Requirements, or Industry Data\n- **Legal requirements**: French Polynesia (including Bora Bora) requires civil marriages to be performed at the local mayor's office (mairie) for legal validity; symbolic Tahitian ceremonies (common for elopements) are non-legal and start at $700 but must be paired with prior civil paperwork from home country or local registry. No specific tourism board (e.g., Tahiti Tourisme) guidelines on elopement costs, but industry sources emphasize advance legal assistance via coordinators for residency proofs and apostilles. Sources: WeddingBoraBora.com (https://www.weddingborabora.com/faq-tahitian-wedding-cost-bora-bora/)[3]; wedOtahiti (https://www.wedotahiti.com/elopement-wedding-officiant-in-moorea/bora-bora-weddings/)[9]\n- **Industry data**: Bora Bora's luxury daily budget (**$2,133/person**) matches high-end Maldives but offers budget options (**$252/person**) due to main-island access; elopement packages often bundle photography ($7,900–$10,900 for 1–2 days). Sources: GoTripzi (https://gotripzi.com/destinations/bora-bora-pf/cost)[1]; Lucy Schultz Photography (https://lucyschultzphotography.com/tahiti-elopement-photographer/)[2]\n\n### Common Misconceptions Couples Have\n- **Misconception: All Bora Bora weddings/elopements are ultra-cheap beach ceremonies**. Reality: Basic ceremonies start at $700, but total elopement costs hit $10,000+ with stays/photography; small intimate ones can exceed **$20,000** due to resort minimums and add-ons.[3][6]\n- **Misconception: Overwater bungalows are affordable for elopements (~$500/night)**. Reality: They start at **$1,170–$1,736+/night** in 5-star resorts, driving 7-day luxury budgets to **$14,931/person** excluding flights.[1]\n- **Misconception: Tahitian ceremonies are legally binding without extra steps**. Reality: They are symbolic only; legal marriage requires civil office paperwork, often needing a coordinator (~included in elopement packages).[3][9]\n- **Misconception: Bora Bora is inaccessible for budget elopements**. Reality: Main-island guesthouses enable **$252/day** budgets, unlike pure-luxury Maldives equivalents.[1]",
+            "citations": [
+              "https://gotripzi.com/destinations/bora-bora-pf/cost",
+              "https://lucyschultzphotography.com/tahiti-elopement-photographer/",
+              "https://www.weddingborabora.com/faq-tahitian-wedding-cost-bora-bora/",
+              "https://www.viator.com/Bora-Bora-tours/Wedding-Packages/d5180-g18-c61",
+              "https://www.truetahitivacation.com/tahiti-guide/bora-bora-vacation-honeymoon-packages-guide",
+              "https://bora-bora-insider.com/wedding-in-bora-bora/",
+              "https://www.zephyr-et-luna.com/planning-tips-elopements/french-polynesia-elopement-guide/",
+              "https://www.fourseasons.com/borabora/weddings/packages/",
+              "https://www.wedotahiti.com/elopement-wedding-officiant-in-moorea/bora-bora-weddings/"
+            ]
+          },
+          {
+            "h2": "The Best Spots to Elope in Bora Bora",
+            "content": "### Key Facts with Specific Numbers/Statistics\n\n1. **Matira Beach spans over a mile of pristine white sands**, making it one of Bora Bora's most popular public beaches for elopements, ideal for snorkeling, paddleboarding, and sunset vows along the vibrant coral reefs.[2] (Source: https://adventureinstead.com/best-places-to-elope-in-french-polynesia/)\n\n2. **Mount Otemanu rises to 2,385 feet**, serving as Bora Bora's highest point and a dramatic dormant volcano backdrop for elopements, contrasting turquoise lagoons with its forest-covered slopes—accessible via hikes, boating, or views from resorts.[2] (Source: https://adventureinstead.com/best-places-to-elope-in-french-polynesia/)\n\n3. **May to October is the optimal dry season for Bora Bora elopements**, featuring the least rainfall, clearest weather, and peak conditions for beach, lagoon, and mountain ceremonies, though with higher crowds and prices compared to the wet season (November-April).[2][3] (Sources: https://adventureinstead.com/best-places-to-elope-in-french-polynesia/; https://lukaspiatek.com/bora-bora-elopement-wedding-packages/)\n\n4. **At least 5 major resorts cater specifically to Bora Bora weddings and elopements**, including Le Taha'a By Pearl Resorts, The Westin Bora Bora Resort & Spa, Hotel Royal Bora Bora, Maitai Polynesia Bora Bora, and Vahine Private Island, offering packages with overwater bungalows and private beaches.[8] (Source: https://www.tripadvisor.com/HotelsList-Bora_Bora-Wedding-Resorts-zfp16206.html)\n\n5. **Secluded spots like Tupai Island (via helicopter) provide private beach elopements**, as used by recent couples for intimate settings with stunning backdrops, complementing main island options like Matira Beach or resort lagoons.[3] (Source: https://lukaspiatek.com/bora-bora-elopement-wedding-packages/)\n\n### Recommended Best Spots to Elope in Bora Bora\n- **Matira Beach**: Public access, over 1-mile stretch of white sands, crystal waters for snorkeling/paddleboarding; best May-October.[2]\n- **Mount Otemanu viewpoints**: 2,385-ft peak for hikes or boat-accessed dramatic photos; pairs with lagoon activities.[2]\n- **Overwater bungalows or resort beaches** (e.g., St. Regis, Four Seasons): Private ceremonies with Polynesian elements like leis and conch shell blessings.[4][5]\n- **Tupai Island private beaches**: Helicopter-accessed seclusion for ultimate intimacy.[3]\n\n### Tourism Board Guidelines, Legal Requirements, and Industry Data\nNo direct Bora Bora tourism board (e.g., Tahiti Tourisme) guidelines appear in results, but industry sources emphasize French Polynesia's legal marriage process requires advance paperwork: apostilled birth certificates, proof of single status, and civil ceremony at the mayor's office before symbolic elopements—plan 1-2 months ahead via local coordinators.[7] Resorts like Four Seasons and St. Regis offer streamlined elopement packages incorporating cultural elements (e.g., Auti leaf handfasting, plumeria leis) without full legal handling.[4][5] No specific statistics on elopement volumes, but Bora Bora ranks high for luxury destination weddings, with peak season (May-Oct) seeing elevated bookings.[2][3][8]\n\n### Common Misconceptions Couples Have\n- **Bora Bora elopements are always legally binding on-site**: Symbolic ceremonies at beaches/resorts are popular, but legal marriage demands a separate civil registry office visit with translated, apostilled documents—many couples overlook this and treat it as symbolic only.[7]\n- **Any beach is equally accessible/private**: While Matira is public and ideal, most stunning lagoons/beaches are resort-private; non-guests face restrictions, leading to crowded or logistically complex \"spontaneous\" plans.[2][1]\n- **Year-round weather is perfect**: Wet season (Nov-Apr) brings heavy rain/clouds, reducing viability for outdoor elopements despite lower costs—dry season (May-Oct) is essential for reliable conditions.[3]\n- **Underwater elopements are standard/easy**: Promoted for scuba divers (e.g., shark/reef dives), but requires certification, special slate vows, and operators—not a default option and logistically advanced.[1]",
+            "citations": [
+              "https://lucyschultzphotography.com/tahiti-elopement-photographer/",
+              "https://adventureinstead.com/best-places-to-elope-in-french-polynesia/",
+              "https://lukaspiatek.com/bora-bora-elopement-wedding-packages/",
+              "https://whatifweelope.com/bora-bora-elopement-at-the-st-regis-resort-kim-gadi/",
+              "https://www.fourseasons.com/borabora/weddings/",
+              "https://www.wedotahiti.com/wanting-to-elope-in-bora-bora/",
+              "https://bora-bora-insider.com/wedding-in-bora-bora/",
+              "https://www.tripadvisor.com/HotelsList-Bora_Bora-Wedding-Resorts-zfp16206.html"
+            ]
+          },
+          {
+            "h2": "What Factors Shape Your Bora Bora Elopement Experience?",
+            "content": "### Key Facts Shaping Bora Bora Elopement Experiences\n\n1. **Legal paperwork must start 6 months in advance** for a legally binding marriage in Bora Bora, as French Polynesia has specific requirements handled through local town halls like Viatape, often coordinated by resort concierges such as Mayana Tapi at Bora Bora Le Moana Resort.[2]  \n   Source: https://destinationweddingdetails.com/breathtaking-bora-bora-elopement-wedding-and-trash-the-dress-photos.html\n\n2. **Small, intimate elopement ceremonies can exceed $20,000 USD**, driven by resort coordination, transportation (water taxis, mainland taxis), legal fees, Polynesian elements like flower crowns, hula dancers, steel drum bands, and private beach setups.[4]  \n   Source: https://bora-bora-insider.com/wedding-in-bora-bora/\n\n3. **Resorts like Four Seasons Bora Bora fully coordinate ceremonies**, reducing decision-making for couples by limiting options (e.g., flowers, cake, location) and sourcing local vendors, which lightens planning stress compared to home weddings.[3]  \n   Source: https://destinationido.com/real-weddings/bora-bora-real-elopement/\n\n4. **Elopements often combine legal town hall ceremonies in traditional Tahitian outfits with symbolic beach events**, including Polynesian vows, palm fronds, sarongs, and private dances, scheduled the same day via resort itineraries.[2][4]  \n   Sources: https://destinationweddingdetails.com/breathtaking-bora-bora-elopement-wedding-and-trash-the-dress-photos.html; https://bora-bora-insider.com/wedding-in-bora-bora/\n\n5. **Weather can shift rapidly**, with rain concerns dissipating into sunny conditions ideal for beach ceremonies under Mount Otemanu, emphasizing the need for flexible timing in tropical elopements.[1]  \n   Source: https://whatifweelope.com/bora-bora-elopement-brittany-jeffery/\n\n### Tourism Board Guidelines, Legal Requirements, and Industry Data\nFrench Polynesia (governing Bora Bora) allows straightforward legal marriages for foreigners, but requires advance paperwork submission (at least 6 months) to the mayor's office, including birth certificates, proof of single status, and translations; resorts handle logistics like transport to Viatape town hall for the civil ceremony.[2][4][6]  \nNo specific Bora Bora tourism board guidelines appear in results, but industry practice favors luxury resorts (e.g., Four Seasons, St. Regis) for overwater bungalows and private lagoons like Matira Beach, with all-year-round viability per 2025-2026 updates.[3][6]  \nCOVID-era data shows elopements reschedule easily due to small guest lists (just the couple).[3]\n\n### Common Misconceptions Couples Have\n- **Assuming rings or wedding attire are easily available locally**: Couples report desperation for men's rings, as shops lack options, requiring pre-purchase or borrowing.[2]\n- **Underestimating costs and scale**: Many expect simple elopements but face $20,000+ totals from resort add-ons, not \"budget\" despite intimacy.[4]\n- **Believing it's hard to marry legally**: It's accessible with planning, not overly restrictive, countering fears of complex foreign bureaucracy.[6]\n- **Overlooking dual ceremonies**: Legal town hall events are mandatory for validity, separate from romantic beach rituals; skipping paperwork voids legality.[2][4]",
+            "citations": [
+              "https://whatifweelope.com/bora-bora-elopement-brittany-jeffery/",
+              "https://destinationweddingdetails.com/breathtaking-bora-bora-elopement-wedding-and-trash-the-dress-photos.html",
+              "https://destinationido.com/real-weddings/bora-bora-real-elopement/",
+              "https://bora-bora-insider.com/wedding-in-bora-bora/",
+              "https://www.youtube.com/watch?v=W7gQ-U8WRaQ",
+              "https://www.zephyr-et-luna.com/planning-tips-elopements/french-polynesia-elopement-guide/",
+              "https://www.wedotahiti.com/wanting-to-elope-in-bora-bora/",
+              "https://magnoliarouge.com/intimate-elopement-in-bora-bora/"
+            ]
+          },
+          {
+            "h2": "How Does Bora Bora Compare to Other Tropical Elopement Destinations?",
+            "content": "### Key Facts Comparing Bora Bora to Other Tropical Elopement Destinations (e.g., Maldives)\n\n- **Landscape and Activities**: Bora Bora features a dramatic mountainous terrain, including the 727-meter-high Mount Otemanu, enabling land-based adventures like hiking and ATVing, unlike the Maldives, which is 99% water with a maximum elevation of just 6 feet and focuses solely on water activities.[1][4]\n- **Resort Scale and Vibe**: Bora Bora resorts feel larger and more \"resort-ey\" with a chic, luxurious atmosphere integrated into island society, while Maldives resorts occupy private islands for a secluded \"barefoot luxury\" experience where guests often go shoeless the entire stay.[1]\n- **Accessibility from the US**: Reaching Bora Bora typically requires about 4 flights from the US West Coast (e.g., 1.5 hours to Melbourne, 3.5 to Auckland, 5 to Tahiti, 1 to Bora Bora), shorter overall travel time than to the Maldives for Americans, though Europeans find Maldives easier.[1][4]\n- **Best Season for Elopements**: Optimal weather in Bora Bora runs May to October (dry season), with peak crowds and higher rates June-August; Matira Beach, a top public elopement spot with over 1-mile of white sand, supports year-round lagoon activities like snorkeling.[1][2]\n- **Lagoon Uniqueness**: Bora Bora's protected lagoon offers exceptionally calm waters with vibrant shades of blue, ideal for elopements featuring shark and stingray encounters at spots like Coral Gardens, surpassing flat Maldives atolls in scenic variety.[4]\n\n### Relevant Tourism Board Guidelines, Legal Requirements, or Industry Data\nFrench Polynesia (including Bora Bora) has no specific residency requirement for marriages; couples need a valid passport, birth certificates, and proof of divorce/death if applicable, with ceremonies often handled via resorts or local officiants—no tourism board mandates unique elopement permits beyond standard civil registration.[6] Industry data highlights Bora Bora as a top wedding resort hub, with properties like Four Seasons and St. Regis offering elopement packages amid its \"Pearl of the Pacific\" reputation for overwater bungalows and reefs.[2][5][7] No quantitative wedding stats (e.g., from The Knot) appear in current data, but resorts emphasize May-October for minimal rain disruption.[1][2]\n\n### Common Misconceptions Couples Have\n- **Bora Bora is Cheaper or Easier to Reach Globally**: Many assume Bora Bora is more accessible worldwide, but it's far more flight-intensive from Europe compared to Maldives, with luxury costs similar (e.g., overwater bungalows at both start high-end).[1][4]\n- **Identical to Maldives in Every Way**: Couples overlook Bora Bora's mountains and land activities, mistaking it for the flat, water-only Maldives; Bora Bora provides more \"civilization\" and resort bustle, not total isolation.[1][3]\n- **Rainy Season Ruins Everything**: Tropical rain occurs year-round, but Bora Bora's lagoon stays swimmable; peak US winter visits remain popular despite showers, contrary to avoiding it entirely.[1]\n- **Public Beaches Are Off-Limits for Elopements**: Matira Beach is fully public and accessible for ceremonies, not resort-exclusive, allowing budget-friendly, scenic elopements with paddleboarding or snorkeling.[2]",
+            "citations": [
+              "https://www.jetsetchristina.com/bora-bora-vs-the-maldives-which-is-better-for-a-honeymoon/",
+              "https://adventureinstead.com/best-places-to-elope-in-french-polynesia/",
+              "https://enrichingpursuits.com/places-like-bora-bora/",
+              "https://bora-bora-insider.com/maldives-vs-bora-bora/",
+              "https://www.tripadvisor.com/HotelsList-Bora_Bora-Wedding-Resorts-zfp16206.html",
+              "https://www.wedotahiti.com/wanting-to-elope-in-bora-bora/",
+              "https://www.allinclusiveweddings.com/blog/how-to-choose-the-perfect-bora-bora-resort-for-your-tropical-getaway"
+            ]
+          },
+          {
+            "h2": "How to Plan a Bora Bora Elopement Step by Step",
+            "content": "### Key Facts with Specific Numbers/Statistics\n- Couples must arrive in Bora Bora at least **3 working days** before the wedding to complete paperwork and legal procedures.[2]\n- Marriage plans must be published in the local press at least **45 days** prior to the ceremony, as required by French Polynesian law.[4]\n- Legal ceremonies require documents like birth certificates and, if previously married, divorce decrees, all translated into French; originals must be sent via FedEx to the Mayor’s office after email verification.[4][5]\n- Recommended elopement stay duration is **3 to 7 days** to accommodate planning, ceremony, and activities.[3]\n- A standard planning process for legal marriage at resorts like Four Seasons involves **three key steps**: gathering documents, sending translated PDFs for verification, and FedExing originals to Town Hall.[5]\n\n**Source names and URLs for each fact** (directly from search results):\n1. 3 working days: Lukas Piatek (https://lukaspiatek.com/bora-bora-elopement-wedding-packages/)[2]\n2. 45 days publication: Bora Bora Insider (https://bora-bora-insider.com/wedding-in-bora-bora/)[4]\n3. Documents/translation/FedEx: Bora Bora Insider (https://bora-bora-insider.com/wedding-in-bora-bora/)[4]; Four Seasons Wedding Guide (https://www.fourseasons.com/content/dam/fourseasons/images/web/BOR/PDF/Weddings/BOR_Wedding_Planning_Guide_2025.pdf)[5]\n4. 3-7 days stay: Zephyr et Luna (https://www.zephyr-et-luna.com/planning-tips-elopements/french-polynesia-elopement-guide/)[3]\n5. Three steps: Four Seasons Wedding Guide (https://www.fourseasons.com/content/dam/fourseasons/images/web/BOR/PDF/Weddings/BOR_Wedding_Planning_Guide_2025.pdf)[5]\n\n### Relevant Tourism Board Guidelines, Legal Requirements, or Industry Data\nFrench Polynesia (governing Bora Bora) requires a civil legal ceremony at the mayor’s office (e.g., Viatape on Bora Bora mainland) in **French** with **two witnesses**; resorts handle transport, but witnesses can be provided by the office if eloping without guests.[3][4] Required documents include: valid passports, birth certificates (translated to French), Certificate of No Impediment or Non-Marital Status (legalized by French Consulate), proof of residency, and a letter to the mayor; previously married couples need divorce decrees translated.[2][3][4][5] Resorts like Four Seasons and Le Bora Bora coordinate with local firms for publication, translations, and FedEx shipping, emphasizing no expedited options due to remote location.[4][5] Industry practice: Many resorts recommend planners for validity; symbolic ceremonies are common to skip paperwork, done after home legal marriage.[2][4][6] No specific tourism board data in results, but hotel guides (e.g., Four Seasons 2025) align with French Polynesian civil marriage laws.[5]\n\n### Common Misconceptions Couples Have\n- **Elopements are simple with no paperwork**: Legal marriage requires extensive French-translated documents, 45-day publication, and 3-day residency, often needing planners; many opt for symbolic ceremonies instead.[2][3][4]\n- **Ceremonies can happen anywhere on the island**: Legal ones must be at the mayor’s office; beach/overwater events are symbolic add-ons.[3][4]\n- **Overnight/expedited shipping works**: FedEx to Bora Bora takes weeks via global routes (e.g., US to NZ to Tahiti), with no rush options.[4]\n- **No witnesses needed for intimate elopements**: French law mandates two, providable by the office.[3]\n\n### Step-by-Step Guide: How to Plan a Bora Bora Elopement\n1. **Choose location and date (dry season May-Oct ideal for weather)**: Select overwater bungalows (e.g., Four Seasons, St. Regis), Matira Beach, or secluded spots like Tupai via helicopter; book 3-7 days stay.[1][2][3]\n2. **Gather legal documents (start 2-3 months early)**: Obtain passport, birth certificate, Certificate of No Impediment (from home country), divorce decrees if applicable; get French translations and legalize via French Consulate.[2][3][4][5]\n3. **Publish banns and submit (45+ days prior)**: Email PDFs to resort planner for Town Hall verification, then FedEx originals; arrive 3 working days early.[2][4][5]\n4. **Book vendors and logistics**: Hire planner/photographer for ceremony (half-day: 4 hours; full-day: 8 hours), transport to mayor’s office, and symbolic beach event; add activities like snorkeling.[1][2][4][5]\n5. **Ceremony and celebration**: Legal at mayor’s office (French vows, ring bell), followed by resort beach setup with photos, dinner, canoe arrival.[1][4]\n6. **Post-elopement**: For legal recognition at home, register documents; plan pre-wedding activities for bonding.[2][3]",
+            "citations": [
+              "https://marcgerardphotographytahiti.com/elope-in-bora-bora/?en=2.8.1",
+              "https://lukaspiatek.com/bora-bora-elopement-wedding-packages/",
+              "https://www.zephyr-et-luna.com/planning-tips-elopements/french-polynesia-elopement-guide/",
+              "https://bora-bora-insider.com/wedding-in-bora-bora/",
+              "https://www.fourseasons.com/content/dam/fourseasons/images/web/BOR/PDF/Weddings/BOR_Wedding_Planning_Guide_2025.pdf",
+              "https://www.wedotahiti.com/wanting-to-elope-in-bora-bora/",
+              "https://www.adlerranch.com/adlerblog/bora-bora-honeymoon-amp-mini-moon-guide-how-to-plan-your-first-trip-to-paradise"
+            ]
+          },
+          {
+            "h2": "How BeachBride Can Help You Find the Right Vendors",
+            "content": "BeachBride connects couples planning Bora Bora elopements with vetted local vendors like photographers, planners, and resorts specializing in beach ceremonies.[3]\n\n### 3 Key Facts with Specific Numbers/Statistics\n- **BeachBride lists vendors serving Bora Bora alongside top destinations like Cancun, Punta Cana, Bali, Santorini, and Hawaii**, enabling easy matching for elopements with local expertise in overwater bungalows and beach setups.[3]\n- Le Bora Bora by Pearl Resorts offers wedding packages valid through **March 31, 2026**, including 5 nights in an overwater bungalow, beach ceremony, private dinner, and extras like shark/ray tours for eloping couples.[5]\n- Bora Bora wedding packages from resorts often partner with **several specialized companies** for personalized services, including flower garlands, musicians, photographers, and private motu excursions, as promoted by the official tourism board.[4]\n\n### Relevant Tourism Board Guidelines, Legal Requirements, or Industry Data\nThe **Tahiti Tourisme board** (official authority for Bora Bora) recommends using local wedding companies for beach ceremonies featuring Tahitian musicians, flower leis, and Mount Otemanu views; venues like Le Bora Bora provide a Polynesian Master of Ceremony to bless the union with Tahitian names, but legal ceremonies require witnesses and may need advance coordination via resort concierges like those at InterContinental Bora Bora.[4][5][2]\nNo U.S.-style marriage licenses are issued on-site; couples must handle legal paperwork in French Polynesia via local officials, often with vendor assistance for authentic Tahitian attire and rings, which are scarce locally.[2]\n\n### Common Misconceptions Couples Have\n- **Vendors and rings are readily available like at home**: Couples often assume men's wedding rings or Western attire can be bought on-island, but shops are limited, requiring pre-shipment or concierge sourcing; one eloping couple nearly borrowed a ring for their legal ceremony.[2]\n- **Any photographer or planner works without local knowledge**: Non-local vendors lack expertise in lagoon access, motu permits, or weather, leading to stress; vetted locals like Damien Gobron provide direction for effortless beach shoots and even serve as witnesses.[1][2]\n- **Elopements skip all planning**: Many think Bora Bora's resorts handle everything seamlessly, but coordination via concierges (e.g., Sophie Jordan at InterContinental) is essential for legal, symbolic, and trash-the-dress elements.[2][6]",
+            "citations": [
+              "https://www.youtube.com/watch?v=4445u6vnE2s",
+              "https://destinationweddingdetails.com/breathtaking-bora-bora-elopement-wedding-and-trash-the-dress-photos.html",
+              "https://beachbride.com/vendors/",
+              "https://www.tahititourisme.com/bora-bora-weddings/",
+              "https://www.tahiti.com/vacations/bora-bora-aro-tai--wedding-8655",
+              "https://beachbride.com/real-weddings/bora-bora-elopement/",
+              "https://www.weddingborabora.com/services/",
+              "https://magnoliarouge.com/intimate-elopement-in-bora-bora/",
+              "https://www.ruffledblog.com/get-married-in-bora-bora/"
+            ]
+          }
+        ],
+        "allCitations": [
+          "https://lemoana.intercontinental.com/weddings",
+          "https://www.remarkablehoneymoons.com/plan-my-honeymoon/destination-weddings/bora-bora-wedding-packages/",
+          "https://bora-bora-insider.com/wedding-in-bora-bora/",
+          "https://www.fourseasons.com/borabora/weddings/",
+          "https://whatifweelope.com/bora-bora-elopement-brittany-jeffery/",
+          "https://magnoliarouge.com/intimate-elopement-in-bora-bora/",
+          "https://www.wedotahiti.com/wanting-to-elope-in-bora-bora/",
+          "https://www.marriott.com/en-us/hotels/bobxr-the-st-regis-bora-bora-resort/events/",
+          "https://www.tripadvisor.com/ShowTopic-g294338-i867-k12588016-Eloping_Help_wanted-French_Polynesia.html",
+          "https://www.boraboraphotovideo.com/bora-bora-getting-married-legal-wedding/",
+          "https://www.weddingborabora.com/bora-bora-civil-marriage/",
+          "https://tahiti-tours.com/wp-content/uploads/sites/3/2018/03/EN-Requirements-and-Conditions-for-Legal-Wedding-in-French-Polynesia.pdf",
+          "https://www.tahititourisme.com/discover/marriage-and-romance/what-are-the-formalities-for-getting-married-in-the-islands-of-tahiti/",
+          "https://www.travelagewest.com/Travel/Asia-Pacific/Tahiti-Weddings-Go-Legal",
+          "https://www.tripadvisor.ca/ShowTopic-g294338-i867-k2901176-How_to_get_LEGALLY_married_in_FP-French_Polynesia.html",
+          "https://www.wedotahiti.com/category/blog/legal-wedding/",
+          "https://gotripzi.com/destinations/bora-bora-pf/cost",
+          "https://lucyschultzphotography.com/tahiti-elopement-photographer/",
+          "https://www.weddingborabora.com/faq-tahitian-wedding-cost-bora-bora/",
+          "https://www.viator.com/Bora-Bora-tours/Wedding-Packages/d5180-g18-c61",
+          "https://www.truetahitivacation.com/tahiti-guide/bora-bora-vacation-honeymoon-packages-guide",
+          "https://www.zephyr-et-luna.com/planning-tips-elopements/french-polynesia-elopement-guide/",
+          "https://www.fourseasons.com/borabora/weddings/packages/",
+          "https://www.wedotahiti.com/elopement-wedding-officiant-in-moorea/bora-bora-weddings/",
+          "https://adventureinstead.com/best-places-to-elope-in-french-polynesia/",
+          "https://lukaspiatek.com/bora-bora-elopement-wedding-packages/",
+          "https://whatifweelope.com/bora-bora-elopement-at-the-st-regis-resort-kim-gadi/",
+          "https://www.tripadvisor.com/HotelsList-Bora_Bora-Wedding-Resorts-zfp16206.html",
+          "https://destinationweddingdetails.com/breathtaking-bora-bora-elopement-wedding-and-trash-the-dress-photos.html",
+          "https://destinationido.com/real-weddings/bora-bora-real-elopement/",
+          "https://www.youtube.com/watch?v=W7gQ-U8WRaQ",
+          "https://www.jetsetchristina.com/bora-bora-vs-the-maldives-which-is-better-for-a-honeymoon/",
+          "https://enrichingpursuits.com/places-like-bora-bora/",
+          "https://bora-bora-insider.com/maldives-vs-bora-bora/",
+          "https://www.allinclusiveweddings.com/blog/how-to-choose-the-perfect-bora-bora-resort-for-your-tropical-getaway",
+          "https://marcgerardphotographytahiti.com/elope-in-bora-bora/?en=2.8.1",
+          "https://www.fourseasons.com/content/dam/fourseasons/images/web/BOR/PDF/Weddings/BOR_Wedding_Planning_Guide_2025.pdf",
+          "https://www.adlerranch.com/adlerblog/bora-bora-honeymoon-amp-mini-moon-guide-how-to-plan-your-first-trip-to-paradise",
+          "https://www.youtube.com/watch?v=4445u6vnE2s",
+          "https://beachbride.com/vendors/",
+          "https://www.tahititourisme.com/bora-bora-weddings/",
+          "https://www.tahiti.com/vacations/bora-bora-aro-tai--wedding-8655",
+          "https://beachbride.com/real-weddings/bora-bora-elopement/",
+          "https://www.weddingborabora.com/services/",
+          "https://www.ruffledblog.com/get-married-in-bora-bora/"
+        ],
+        "conductedAt": "2026-04-13T06:15:47.941Z"
+      },
+      "qualityReport": {
+        "seoScore": 90,
+        "seoDetails": [
+          "word count: 2663 (need 1500-2500)"
+        ],
+        "factualPass": true,
+        "factualDetails": [],
+        "aiScore": 0,
+        "aiDetails": {
+          "patternCount": 0,
+          "uniformityPenalty": 0,
+          "cv": "1.22",
+          "sentenceCount": 182
+        },
+        "wordCount": 2663,
+        "internalLinks": 11,
+        "externalLinks": 20,
+        "citations": 20
+      },
       "rewriteAttempts": 0,
       "failReason": null,
       "discoveredAt": "2026-04-08",
       "publishedAt": null,
-      "articleSlug": null,
+      "articleSlug": "bora-bora-elopement",
       "_source": {
         "impressions": 0,
         "clicks": 0,
@@ -12832,17 +13129,77 @@
         "all inclusive resort group rate cost wedding",
         "how much do hotels charge for room blocks"
       ],
-      "status": "discovered",
+      "status": "skipped-intent-overlap",
       "score": 85,
       "contentType": "guide",
       "schemaType": "article",
       "isRefresh": false,
       "existingSlug": null,
-      "brief": null,
+      "brief": {
+        "slug": "destination-wedding-hotel-block-cost",
+        "title": "Destination Wedding Hotel Block Cost: What You'll Actually Pay (and What You'll Get Free)",
+        "metaDescription": "Learn what a destination wedding hotel block really costs, how resort perks work, and how to negotiate your group contract like a pro. Real numbers inside.",
+        "targetWordCount": 2200,
+        "schemaType": "article",
+        "h2Outline": [
+          "What Is a Destination Wedding Hotel Block — and Why Does It Matter?",
+          "Courtesy Block vs. Contracted Block: Which One Do You Actually Need?",
+          "What Does a Hotel Block Actually Cost Your Guests?",
+          "What Factors Affect Your Hotel Block Cost and Perks?",
+          "How Many Rooms Should You Block?",
+          "Resort Brand Perk Thresholds: What You Unlock at Each Level",
+          "What Are the Contract Terms You Need to Negotiate?",
+          "When Should You Secure Your Hotel Block?",
+          "Does a Hotel Block Save Money — or Just Unlock Perks?",
+          "How BeachBride Handles Your Hotel Block Negotiation (For Free)"
+        ],
+        "faqTopics": [
+          "Do hotel blocks give guests a discounted room rate?",
+          "What happens if not enough guests book the room block?",
+          "What is an attrition clause and how do I negotiate it?",
+          "How far in advance do I need to set up a hotel block for a destination wedding?",
+          "Can guests book outside the room block?",
+          "What is a resale clause and why does it matter?",
+          "Do I need wedding insurance if I have a hotel block contract?"
+        ],
+        "internalLinkTargets": [
+          "/tools/room-block-calculator/",
+          "/how-many-hotel-rooms-to-block-destination-wedding/",
+          "/destination-wedding-cost/",
+          "/destination-wedding-guide/",
+          "/beach-wedding-checklist/",
+          "/destinations/cancun/",
+          "/destinations/jamaica/",
+          "/destinations/punta-cana/",
+          "/destinations/riviera-maya/",
+          "/destination-wedding-budget-hacks-that-dont-sacrifice-luxury/",
+          "/destination-wedding-tips/"
+        ],
+        "externalSourceTypes": [
+          "Resort brand group sales pages (Sandals, AMR Collection, Hyatt Ziva/Zilara, Hard Rock Hotels)",
+          "Travel agency group booking guides (58 Stars Travel, Caribbean Resort Guide)",
+          "Wedding planning industry sources (Bliss Honeymoon, Yellow Umbrella Events)",
+          "Wedding insurance provider pricing (Travelers, WedSafe, Markel)"
+        ],
+        "disclaimers": [
+          "financial",
+          "referral"
+        ],
+        "relatedSlugs": [
+          "how-many-hotel-rooms-to-block-destination-wedding",
+          "destination-wedding-cost",
+          "destination-wedding-guide",
+          "destination-wedding-budget-hacks-that-dont-sacrifice-luxury",
+          "beach-wedding-checklist"
+        ],
+        "affiliateOpportunity": "Wedding event insurance (Travelers, WedSafe, Markel — starts ~$160; natural fit in the contract/risk section). Luxury resort affiliate links for Sandals, AMR Collection (Dreams/Secrets/Now), and Hyatt Ziva properties where room block inquiries are initiated.",
+        "uniqueAngle": "Most articles on this topic either vaguely promise 'group discounts' (which post-COVID Caribbean resorts rarely offer) or list generic contract tips. This article corrects that misconception head-on, then pivots to the real value story: comp rooms, hosted cocktail parties, and F&B credits unlocked at specific, verified thresholds by brand. It gives couples a brand-by-brand perk breakdown with exact numbers — something no competitor currently publishes — and frames BeachBride's free negotiation service as the logical next step.",
+        "sectionImageCount": 0
+      },
       "researchData": null,
       "qualityReport": null,
       "rewriteAttempts": 0,
-      "failReason": null,
+      "failReason": "Intent overlap with /how-many-hotel-rooms-to-block-destination-wedding/: The existing article at /how-many-hotel-rooms-to-block-destination-wedding/ directly overlaps with the candidate on multiple critical dimensions. Both articles cover: (1) what a hotel room block is and why it matters, (2) the distinction between courtesy blocks and contracted blocks (existing FAQ: 'What's the difference between a courtesy block and a contracted block?'), (3) attrition clauses and how to negotiate/avoid them (existing FAQ: 'What is an attrition clause and how do I avoid getting burned by it?'), (4) how many rooms to block, (5) what happens if guests don't fill the block, (6) blocking rooms at the wedding venue vs. nearby hotels, and (7) how far in advance to set up the block. The candidate's FAQ list ('What is an attrition clause and how do I negotiate it?', 'What happens if not enough guests book the room block?', 'How far in advance do I need to set up a hotel block?', 'Can guests book outside the room block?') maps almost entirely onto the existing article's FAQ set. While the candidate's unique angle — brand-by-brand perk thresholds and correcting the 'group discount' misconception — is genuinely differentiated, the core search intent ('destination wedding hotel block cost') is substantially served by the existing article, which already covers cost implications (attrition liability, what you pay for unbooked rooms) and perks (comp rooms are referenced in the room block tips). A searcher landing on the existing article would have their primary query addressed, making the candidate redundant under the strict false-negative cost standard.",
       "discoveredAt": "2026-04-08",
       "publishedAt": null,
       "articleSlug": "destination-wedding-hotel-block-cost",
@@ -13558,7 +13915,7 @@
     }
   ],
   "lastDiscoveryRun": "2026-04-08T19:17:14.938Z",
-  "lastGenerationRun": "2026-04-11T15:56:31.347Z",
+  "lastGenerationRun": "2026-04-13T06:19:09.100Z",
   "rejectedKeywords": [
     "spring beach wedding colors",
     "best destination wedding websites",
